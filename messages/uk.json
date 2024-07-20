@@ -1,0 +1,68 @@
+{
+	"LocaleSwitcher": {
+		"uk": "UA",
+		"en": "EN",
+		"label": "Language"
+	},
+	"page": {
+		"home": {
+			"boost": "Boost your productivity",
+			"description": "Discover Taskronic, your go-to solution for managing tasks and enhancing productivity. Our app offers a user-friendly interface, seamless collaboration tools, and customizable reminders to keep you on track."
+		},
+		"signin": {
+			"forgot_pass": "Forgot password?",
+			"use_account": "or use your account",
+			"have_account": "Already have an account?",
+			"dont_have_account": "Don't have an account?"
+		}
+	},
+	"button": {
+		"lets_try_it": "Let's try it",
+		"sign_in": "Sign In!!!",
+		"create_account": "Create account"
+	},
+	"form": {
+		"label": {
+			"email": "Email",
+			"pass": "Password",
+			"confirm_pass": "Confirm password",
+			"new_pass": "New password",
+			"name": "Name"
+		},
+		"error": {
+			"name": "Name is required",
+			"email_req": "Email is required",
+			"email_valid": "Invalid email address",
+			"password": "Password must be 6+ characters, with at least one digit",
+			"passDoNotMatch": "Passwords do not match"
+		}
+	},
+	"api": {
+		"access_denied": "Access denied",
+		"invalid_id_format": "Invalid ID format",
+		"bad_request": "Bad Request",
+		"unauthorized": "Unauthorized",
+		"forbidden": "Forbidden",
+		"conflict": "Conflict",
+		"server_error": "Server Error",
+		"email_in_use": "Email is already in use",
+		"user_not_found": "User not found",
+		"invalid_credentials": "Invalid credentials format",
+		"incorrect_credentials": "Incorrect login or password!!!",
+		"invalid_token": "Invalid token",
+		"passwords_do_not_match": "Passwords do not match",
+		"not_found": "Not Found",
+		"board_not_found": "Board not found",
+		"list_not_found": "List not found",
+		"invite_not_found": "Invite not found",
+		"comment_not_found": "Comment not found",
+		"note_not_found": "Note not found",
+		"task_not_found": "Task not found",
+		"subtask_not_found": "Subtask not found",
+		"workspace_not_found": "Workspace not found",
+		"already_member": "User is already member",
+		"already_admin": "User is already admin",
+		"email_auth_error": "Email service authorization error",
+		"mailer_error": "Mailer error"
+	}
+}

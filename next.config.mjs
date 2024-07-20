@@ -1,4 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import createNextIntlPlugin from 'next-intl/plugin';
 
-export default nextConfig;
+const nextConfig = {
+	transpilePackages: ['lucide-react'],
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'images.unsplash.com',
+			},
+		],
+	},
+};
+
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);
