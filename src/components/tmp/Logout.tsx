@@ -1,17 +1,17 @@
-// 'use client';
+'use client';
 
-// import { Button } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 
-// import { logout } from '@/actions/logout';
+import { logout } from '@/actions/logout';
 
-// export const Logout: React.FC = () => {
-// 	const handleLogout = () => {
-// 		logout();
-// 	};
+export const Logout: React.FC = () => {
+	const handleLogout = () => {
+		logout();
+	};
 
-// 	return (
-// 		<Button color="danger" variant="flat" onClick={handleLogout}>
-// 			<span>Вихід</span>
-// 		</Button>
-// 	);
-// };
+	return (
+		<Button color="danger" variant="flat" onClick={handleLogout}>
+			<span>Вихід</span>
+		</Button>
+	);
+};

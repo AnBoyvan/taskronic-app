@@ -1,5 +1,4 @@
 const withouthAuth = {
-	HOME: ``,
 	AUTH: `/auth`,
 	PASS: `/password`,
 };
@@ -12,6 +11,8 @@ const withAuth = {
 	CALENDAR: `/calendar`,
 	WORKSPACE: `/workspace`,
 };
+
+export const apiAuthPrefix = '/api/auth';
 
 export const AUTH_REDIRECT = withAuth.CALENDAR;
 

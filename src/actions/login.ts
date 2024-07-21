@@ -1,14 +1,14 @@
 'use server';
 
 import { signIn } from '@/auth';
+import { AUTH_REDIRECT } from '@/configs/routes.config';
 import { ILoginForm } from '@/interfaces/auth.interface';
 
-export const login = async (data: ILoginForm) => {
+export const login = async (data: ILoginForm, callbackUrl?: string | null) => {
 	try {
-		const result = await signIn('credentials', {
+		await signIn('credentials', {
 			...data,
-			// redirect: false,
-			redirectTo: '/calendar',
+			redirectTo: callbackUrl || AUTH_REDIRECT,
 		});
 	} catch (error: any) {
 		if (error.type === 'AuthError') {

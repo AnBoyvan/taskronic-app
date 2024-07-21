@@ -1,4 +1,4 @@
-import { PublicHeader } from '@/components/layout/PublicHeader';
+import { Logout } from '@/components/tmp/Logout';
 
 export default function PublicLayout({
 	children,
@@ -7,10 +7,8 @@ export default function PublicLayout({
 }>) {
 	return (
 		<>
-			<main>
-				<PublicHeader />
-				{children}
-			</main>
+			<Logout />
+			<main>{children}</main>
 		</>
 	);
 }

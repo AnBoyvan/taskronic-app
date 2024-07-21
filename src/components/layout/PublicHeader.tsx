@@ -9,7 +9,7 @@ import { ROUTES } from '@/configs/routes.config';
 
 import { LocaleSwitcher } from '../tmp/LocaleSwitcher';
 
-export const PublicHeader: React.FC = async () => {
+export const PublicHeader: React.FC = () => {
 	const t = useTranslations();
 	return (
 		<Navbar maxWidth="full">

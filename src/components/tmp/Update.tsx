@@ -1,16 +1,19 @@
-// 'use client';
+'use client';
 
-// import { Button } from '@nextui-org/react';
+import { useSession } from 'next-auth/react';
 
-// export const Update: React.FC = () => {
-// 	// const { data } = useSession();
+import { Button } from '@nextui-org/react';
 
-// 	// console.log(data);
-// 	const handleUpdate = () => {};
+export const Update: React.FC = () => {
+	const { update } = useSession();
 
-// 	return (
-// 		<Button color="danger" variant="flat" onClick={handleUpdate}>
-// 			<span>UPD</span>
-// 		</Button>
-// 	);
-// };
+	const handleUpdate = () => {
+		update({ name: 'Testing User' });
+	};
+
+	return (
+		<Button color="danger" variant="flat" onClick={handleUpdate}>
+			<span>UPD</span>
+		</Button>
+	);
+};
