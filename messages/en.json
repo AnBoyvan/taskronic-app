@@ -23,17 +23,22 @@
 	},
 	"form": {
 		"label": {
+			"name": "Name",
 			"email": "Email",
 			"pass": "Password",
 			"confirm_pass": "Confirm password",
-			"new_pass": "New password",
-			"name": "Name"
+			"new_pass": "New password"
+		},
+		"placeholder": {
+			"name": "John Doe",
+			"email": "john.doe@example.com",
+			"pass": "******"
 		},
 		"error": {
 			"name": "Name is required",
 			"email_req": "Email is required",
 			"email_valid": "Invalid email address",
-			"password": "Password must be 6+ characters, with at least one digit",
+			"pass": "Password must be 6+ characters, with at least one digit",
 			"passDoNotMatch": "Passwords do not match"
 		}
 	},
@@ -48,7 +53,7 @@
 		"email_in_use": "Email is already in use",
 		"user_not_found": "User not found",
 		"invalid_credentials": "Invalid credentials format",
-		"incorrect_credentials": "Incorrect login or password!!!!",
+		"incorrect_credentials": "Incorrect login or password",
 		"invalid_token": "Invalid token",
 		"passwords_do_not_match": "Passwords do not match",
 		"not_found": "Not Found",

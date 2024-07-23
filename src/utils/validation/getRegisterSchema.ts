@@ -13,10 +13,10 @@ export const getRegisterSchema = (
 
 		avatarColor: Yup.string(),
 
-		password: Yup.string().required(error.password).matches(REGEXP.password, error.password),
+		password: Yup.string().required(error.pass).matches(REGEXP.password, error.pass),
 
 		confirmPassword: Yup.string()
-			.required(error.password)
+			.required(error.pass)
 			.oneOf([Yup.ref<string>('password')], error.passDoNotMatch),
 	});
 };

@@ -21,6 +21,7 @@ export const FormInput: React.FC<FormInputProps> = ({
 	type,
 	color,
 	autoComplete,
+	labelPlacement,
 	...props
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -39,6 +40,7 @@ export const FormInput: React.FC<FormInputProps> = ({
 				return (
 					<Input
 						{...props}
+						labelPlacement={labelPlacement ? labelPlacement : 'outside'}
 						isInvalid={!!formState.errors?.[name]?.message}
 						color={field.value && !fieldState.invalid ? 'success' : color || 'default'}
 						errorMessage={formState.errors?.[name]?.message?.toString()}

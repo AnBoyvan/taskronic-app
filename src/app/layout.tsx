@@ -66,8 +66,8 @@ export default async function RootLayout({
 						<Toaster
 							position="top-right"
 							expand={true}
-							richColors
-							closeButton
+							richColors={true}
+							closeButton={false}
 							duration={1500}
 							visibleToasts={3}
 						/>

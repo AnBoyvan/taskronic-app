@@ -2,67 +2,72 @@
 	"LocaleSwitcher": {
 		"uk": "UA",
 		"en": "EN",
-		"label": "Language"
+		"label": "Мова"
 	},
 	"page": {
 		"home": {
-			"boost": "Boost your productivity",
-			"description": "Discover Taskronic, your go-to solution for managing tasks and enhancing productivity. Our app offers a user-friendly interface, seamless collaboration tools, and customizable reminders to keep you on track."
+			"boost": "Підвищте свою продуктивність",
+			"description": "Відкрийте для себе Taskronic, ваше рішення для управління завданнями та підвищення продуктивності. Наш додаток пропонує зручний інтерфейс, безшовні інструменти для співпраці та налаштовувані нагадування, щоб ви залишалися на правильному шляху."
 		},
 		"signin": {
-			"forgot_pass": "Forgot password?",
-			"use_account": "or use your account",
-			"have_account": "Already have an account?",
-			"dont_have_account": "Don't have an account?"
+			"forgot_pass": "Забули пароль?",
+			"use_account": "або використайте свій акаунт",
+			"have_account": "Вже маєте акаунт?",
+			"dont_have_account": "Не маєте акаунту?"
 		}
 	},
 	"button": {
-		"lets_try_it": "Let's try it",
-		"sign_in": "Sign In!!!",
-		"create_account": "Create account"
+		"lets_try_it": "Спробувати",
+		"sign_in": "Увійти",
+		"create_account": "Створити акаунт"
 	},
 	"form": {
 		"label": {
+			"name": "Ім'я",
 			"email": "Email",
-			"pass": "Password",
-			"confirm_pass": "Confirm password",
-			"new_pass": "New password",
-			"name": "Name"
+			"pass": "Пароль",
+			"confirm_pass": "Підтвердьте пароль",
+			"new_pass": "Новий пароль"
+		},
+		"placeholder": {
+			"name": "John Doe",
+			"email": "john.doe@example.com",
+			"pass": "******"
 		},
 		"error": {
-			"name": "Name is required",
-			"email_req": "Email is required",
-			"email_valid": "Invalid email address",
-			"password": "Password must be 6+ characters, with at least one digit",
-			"passDoNotMatch": "Passwords do not match"
+			"name": "Ім'я є обов'язковим",
+			"email_req": "Email є обов'язковим",
+			"email_valid": "Недійсна адреса електронної пошти",
+			"pass": "Пароль має містити 6+ символів, включаючи хоча б одну цифру",
+			"passDoNotMatch": "Паролі не збігаються"
 		}
 	},
 	"api": {
-		"access_denied": "Access denied",
-		"invalid_id_format": "Invalid ID format",
-		"bad_request": "Bad Request",
-		"unauthorized": "Unauthorized",
-		"forbidden": "Forbidden",
-		"conflict": "Conflict",
-		"server_error": "Server Error",
-		"email_in_use": "Email is already in use",
-		"user_not_found": "User not found",
-		"invalid_credentials": "Invalid credentials format",
-		"incorrect_credentials": "Incorrect login or password!!!",
-		"invalid_token": "Invalid token",
-		"passwords_do_not_match": "Passwords do not match",
-		"not_found": "Not Found",
-		"board_not_found": "Board not found",
-		"list_not_found": "List not found",
-		"invite_not_found": "Invite not found",
-		"comment_not_found": "Comment not found",
-		"note_not_found": "Note not found",
-		"task_not_found": "Task not found",
-		"subtask_not_found": "Subtask not found",
-		"workspace_not_found": "Workspace not found",
-		"already_member": "User is already member",
-		"already_admin": "User is already admin",
-		"email_auth_error": "Email service authorization error",
-		"mailer_error": "Mailer error"
+		"access_denied": "Доступ заборонено",
+		"invalid_id_format": "Неправильний формат ID",
+		"bad_request": "Неправильний запит",
+		"unauthorized": "Неавторизований",
+		"forbidden": "Заборонено",
+		"conflict": "Конфлікт",
+		"server_error": "Помилка сервера",
+		"email_in_use": "Email вже використовується",
+		"user_not_found": "Користувача не знайдено",
+		"invalid_credentials": "Неправильний формат облікових даних",
+		"incorrect_credentials": "Неправильний логін або пароль!",
+		"invalid_token": "Недійсний токен",
+		"passwords_do_not_match": "Паролі не збігаються",
+		"not_found": "Не знайдено",
+		"board_not_found": "Дошку не знайдено",
+		"list_not_found": "Список не знайдено",
+		"invite_not_found": "Запрошення не знайдено",
+		"comment_not_found": "Коментар не знайдено",
+		"note_not_found": "Нотатку не знайдено",
+		"task_not_found": "Завдання не знайдено",
+		"subtask_not_found": "Підзавдання не знайдено",
+		"workspace_not_found": "Робоче простір не знайдено",
+		"already_member": "Користувач вже є учасником",
+		"already_admin": "Користувач вже є адміністратором",
+		"email_auth_error": "Помилка авторизації служби електронної пошти",
+		"mailer_error": "Помилка відправлення листів"
 	}
 }

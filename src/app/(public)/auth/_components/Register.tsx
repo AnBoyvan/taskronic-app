@@ -1,6 +1,6 @@
 'use client';
 
-import { useMessages, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
 import { useTransition } from 'react';
@@ -11,21 +11,19 @@ import { Button } from '@nextui-org/react';
 
 import { toast } from 'sonner';
 
-import { register } from '@/actions/register';
+import { register } from '@/actions/auth/register';
 import { FormInput } from '@/components/ui/FormInput';
+import { useValidation } from '@/hooks/useValidation';
 import { IRegisterForm } from '@/interfaces/auth.interface';
-import { getRegisterSchema } from '@/utils/validation/getRegisterSchema';
 
 export const Register: React.FC = () => {
 	const t = useTranslations();
-	const {
-		form: { error },
-	} = useMessages() as IntlMessages;
+	const { registerSchema } = useValidation();
 	const [isPending, startTransition] = useTransition();
 	const params = useSearchParams();
 	const callbackUrl = params.get('callbackUrl');
 
-	const { control, handleSubmit } = useForm<IRegisterForm>({
+	const { control, handleSubmit, reset } = useForm<IRegisterForm>({
 		mode: 'onChange',
 		defaultValues: {
 			name: '',
@@ -33,7 +31,7 @@ export const Register: React.FC = () => {
 			password: '',
 			confirmPassword: '',
 		},
-		resolver: yupResolver(getRegisterSchema(error)),
+		resolver: yupResolver(registerSchema),
 	});
 
 	const onSubmit: SubmitHandler<IRegisterForm> = async data => {
@@ -42,43 +40,51 @@ export const Register: React.FC = () => {
 			if (result) {
 				toast.error(result, { closeButton: false });
 			}
+			reset();
 		});
 	};
 
 	return (
 		<form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
 			<FormInput
-				size="sm"
+				control={control}
 				variant="bordered"
+				icon="User"
 				name="name"
 				label={t('form.label.name')}
-				control={control}
+				placeholder={t('form.placeholder.name')}
+				isRequired
 				disabled={isPending}
 			/>
 			<FormInput
-				size="sm"
+				control={control}
 				variant="bordered"
+				icon="Mail"
 				name="email"
 				label={t('form.label.email')}
-				control={control}
+				placeholder={t('form.placeholder.email')}
+				isRequired
 				disabled={isPending}
 			/>
 			<FormInput
-				size="sm"
-				color="default"
+				control={control}
 				variant="bordered"
+				icon="LockKeyhole"
 				name="password"
 				label={t('form.label.pass')}
-				control={control}
+				placeholder={t('form.placeholder.pass')}
+				isRequired
 				type="password"
 				disabled={isPending}
 			/>
 			<FormInput
-				size="sm"
+				control={control}
 				variant="bordered"
+				icon="LockKeyhole"
 				name="confirmPassword"
 				label={t('form.label.confirm_pass')}
-				control={control}
+				placeholder={t('form.placeholder.pass')}
+				isRequired
 				type="password"
 				disabled={isPending}
 			/>

@@ -27,6 +27,7 @@ export const apiRequestWithRefresh = async (data: RequestConfig): Promise<IToken
 		});
 		return response.data;
 	} catch (error) {
-		throw new Error(errorCatch(error));
+		const message = await errorCatch(error);
+		throw new Error(message);
 	}
 };

@@ -2,7 +2,7 @@
 
 import { Button } from '@nextui-org/react';
 
-import { logout } from '@/actions/logout';
+import { logout } from '@/actions/auth/logout';
 
 export const Logout: React.FC = () => {
 	const handleLogout = () => {

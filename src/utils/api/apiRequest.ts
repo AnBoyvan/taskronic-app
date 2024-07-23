@@ -12,6 +12,7 @@ export const apiRequest = async (config: RequestConfig) => {
 		const response = await apiClient(config);
 		return response.data;
 	} catch (error) {
-		throw new Error(errorCatch(error));
+		const message = await errorCatch(error);
+		throw new Error(message);
 	}
 };

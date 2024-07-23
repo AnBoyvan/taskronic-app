@@ -23,8 +23,13 @@ export default {
 				email: {
 					label: 'Email',
 					type: 'email',
+					required: true,
 				},
-				password: { label: 'Password', type: 'password' },
+				password: {
+					label: 'Password',
+					type: 'password',
+					required: true,
+				},
 			},
 			async authorize(credentials) {
 				try {
@@ -40,7 +45,11 @@ export default {
 						...credentials,
 					});
 
-					return data;
+					if (data) {
+						return data;
+					}
+
+					return null;
 				} catch (error: any) {
 					throw new customError(error.message);
 				}

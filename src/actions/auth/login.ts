@@ -11,10 +11,6 @@ export const login = async (data: ILoginForm, callbackUrl?: string | null) => {
 			redirectTo: callbackUrl || AUTH_REDIRECT,
 		});
 	} catch (error: any) {
-		if (error.type === 'AuthError') {
-			return error.message;
-		}
-
-		throw error;
+		return { error: error.message };
 	}
 };
