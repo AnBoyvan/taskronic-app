@@ -3,7 +3,6 @@ import NextAuth from 'next-auth';
 import authConfig from '@/configs/auth.config';
 import { ITokens } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
-import { userService } from '@/services/user.service';
 import { jwtDecode } from '@/utils/helpers/jwtDecode';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -25,33 +24,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 				data = user;
 			}
 
-			if (trigger === 'update' && session) {
-				const updData = {
-					name: session.name || token.user.name,
-					avatarColor: session.avatarColor || token.user.avatarColor,
-					noteGroups: session.noteGroups || token.user.noteGroups,
-				};
-
-				try {
-					const updated = await userService.updGeneral(updData);
-					token.user = updated;
-				} catch (error) {}
-			}
-
-			if (Date.now() > token.access_exp * 1000) {
-				try {
-					data = await authService.refresh(token.refreshToken);
-				} catch (error) {
-					return null;
-				}
+			if (trigger === 'update' && session.sub) {
+				token.user = session;
 			}
 
 			if (data) {
 				const decodedData = jwtDecode(data);
 				token.user = decodedData.user;
 				token.accessToken = decodedData.accessToken;
-				token.access_exp = decodedData.access_exp;
-				token.refreshToken = decodedData.refreshToken;
 			}
 
 			return token;
@@ -60,7 +40,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			return {
 				user: token.user,
 				accessToken: token.accessToken,
-				expires: new Date(token.exp * 1000).toISOString(),
 			};
 		},
 	},

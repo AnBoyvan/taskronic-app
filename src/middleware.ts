@@ -40,7 +40,7 @@ export default auth(request => {
 		const encodedCallbackUrl = encodeURIComponent(callbackUrl);
 
 		return NextResponse.redirect(
-			new URL(`${ROUTES.AUTH}?callbackUrl=${encodedCallbackUrl}`, nextUrl),
+			new URL(`${ROUTES.LOGIN}?callbackUrl=${encodedCallbackUrl}`, nextUrl),
 		);
 	}
 

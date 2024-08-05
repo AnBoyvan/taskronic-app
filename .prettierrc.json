@@ -10,19 +10,10 @@
 	"jsxBracketSameLine": false,
 	"proseWrap": "always",
 	"endOfLine": "auto",
-	"plugins": [
-		"prettier-plugin-tailwindcss",
-		"@trivago/prettier-plugin-sort-imports"
-	],
-	"importOrder": [
-		"^[next]",
-		"^[react]",
-		"^@(?!/)",
-		"<THIRD_PARTY_MODULES>",
-		"^@/",
-		"^[./]"
-	],
-	"importOrderSeparation": true,
-	"importOrderCaseInsensitive": true,
-	"importOrderParserPlugins": ["typescript", "decorators-legacy", "jsx"]
+	"plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],
+	"importOrder": ["^[next]", "^[react]", "^@(?!/)", "<THIRD_PARTY_MODULES>", "^@/", "^[./]"],
+"importOrderSeparation": true,
+"importOrderCaseInsensitive": true,
+"importOrderParserPlugins": ["typescript", "decorators-legacy", "jsx"]
+	
 }

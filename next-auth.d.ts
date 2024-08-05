@@ -4,8 +4,8 @@ import { IUser } from '@/interfaces/user.interface';
 
 declare module 'next-auth' {
 	interface User {
+		id?: string;
 		accessToken: string;
-		refreshToken: string;
 	}
 
 	// interface Account {}
@@ -13,11 +13,13 @@ declare module 'next-auth' {
 	interface DefaultSession {
 		user?: IUser;
 		accessToken?: string;
+		expires?: string;
 	}
 
 	interface Session extends DefaultSession {
 		user: IUser;
 		accessToken: string;
+		expires?: string;
 	}
 }
 
@@ -25,8 +27,5 @@ declare module 'next-auth/jwt' {
 	interface JWT {
 		user: IUser;
 		accessToken: string;
-		access_exp: number;
-		refreshToken: string;
-		exp: number;
 	}
 }

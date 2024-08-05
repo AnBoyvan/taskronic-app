@@ -1,4 +1,5 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { IInvite } from '@/interfaces/workspace.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const inviteService = {
@@ -16,14 +17,14 @@ export const inviteService = {
 		});
 	},
 
-	async findByEmail(email: string): Promise<void> {
+	async findByEmail(email: string): Promise<IInvite[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.invites.findByEmail(email),
 		});
 	},
 
-	async findById(inviteId: string): Promise<void> {
+	async findById(inviteId: string): Promise<IInvite[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.invites.findById(inviteId),

@@ -39,7 +39,9 @@ export const FormInput: React.FC<FormInputProps> = ({
 			render={({ field, fieldState, formState }) => {
 				return (
 					<Input
+						autoComplete={`new-${name}`}
 						{...props}
+						id={name}
 						labelPlacement={labelPlacement ? labelPlacement : 'outside'}
 						isInvalid={!!formState.errors?.[name]?.message}
 						color={field.value && !fieldState.invalid ? 'success' : color || 'default'}

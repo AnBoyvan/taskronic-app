@@ -20,11 +20,9 @@ export interface GoogleAuth {
 }
 export interface ITokens {
 	accessToken: string;
-	refreshToken: string;
 }
 export interface jwtPayload extends IUser {
 	iat: number;
-	exp: number;
 }
 
 export interface IAccessToken {
@@ -43,6 +41,7 @@ export interface IChangePassForm {
 
 export interface IForgotPassRequest {
 	email: string;
+	lang: string;
 }
 
 export interface IResetPassForm {

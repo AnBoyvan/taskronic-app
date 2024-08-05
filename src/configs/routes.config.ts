@@ -1,20 +1,23 @@
 const withouthAuth = {
-	AUTH: `/auth`,
-	PASS: `/password`,
+	LOGIN: '/auth/login',
+	REGISTER: '/auth/register',
+	AUTH_ERR: '/auth/error',
+	PASS: '/auth/password',
 };
 
 const withAuth = {
-	INVITE: `/invite`,
-	BOARDS: `/boards`,
-	TASKS: `/tasks`,
-	NOTES: `/notes`,
-	CALENDAR: `/calendar`,
-	WORKSPACE: `/workspace`,
+	INVITE: '/invite',
+	PROFILE: '/profile',
+	BOARDS: '/boards',
+	TASKS: '/tasks',
+	NOTES: '/notes',
+	CALENDAR: '/calendar',
+	WORKSPACE: '/w',
 };
 
 export const apiAuthPrefix = '/api/auth';
 
-export const AUTH_REDIRECT = withAuth.CALENDAR;
+export const AUTH_REDIRECT = withAuth.BOARDS;
 
 export const publicRoutes = Object.values(withouthAuth);
 

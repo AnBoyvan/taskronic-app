@@ -13,7 +13,7 @@ export const Brand: React.FC = () => {
 			<div className="flex flex-row items-center w-full">
 				<Name />
 			</div>
-			<p>{t('page.home.boost')}</p>
+			<p>{t('site.slogan')}</p>
 		</div>
 	);
 };

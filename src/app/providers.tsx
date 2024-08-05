@@ -4,14 +4,14 @@ import type { PropsWithChildren } from 'react';
 
 import { NextUIProvider } from '@nextui-org/react';
 
-import { AuthProvider } from '@/providers/AuthProvider';
+import { QueryProvider } from '@/components/providers/QueryProvider';
 
 export function Providers({ children }: PropsWithChildren) {
 	return (
-		<ThemeProvider attribute="class" storageKey="theme" disableTransitionOnChange>
-			<NextUIProvider>
-				<AuthProvider>{children}</AuthProvider>
-			</NextUIProvider>
-		</ThemeProvider>
+		<QueryProvider>
+			<ThemeProvider attribute="class" storageKey="theme" disableTransitionOnChange>
+				<NextUIProvider>{children}</NextUIProvider>
+			</ThemeProvider>
+		</QueryProvider>
 	);
 }

@@ -3,6 +3,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Roboto } from 'next/font/google';
 
+import { Suspense } from 'react';
+
 import { Toaster } from 'sonner';
 
 import { APP_NAME, SITE_DESCRIPTION } from '@/constants/seo.constants';
@@ -60,19 +62,21 @@ export default async function RootLayout({
 	return (
 		<html lang={locale} className={roboto.className} suppressHydrationWarning>
 			<body>
-				<NextIntlClientProvider messages={messages}>
-					<Providers>
-						{children}
-						<Toaster
-							position="top-right"
-							expand={true}
-							richColors={true}
-							closeButton={false}
-							duration={1500}
-							visibleToasts={3}
-						/>
-					</Providers>
-				</NextIntlClientProvider>
+				<Suspense fallback={<div>Loading...</div>}>
+					<NextIntlClientProvider messages={messages}>
+						<Providers>
+							<div className="h-svh max-h-svh overflow-y-clip flex flex-col">{children}</div>
+							<Toaster
+								position="top-right"
+								expand={true}
+								richColors={true}
+								closeButton={false}
+								duration={1500}
+								visibleToasts={3}
+							/>
+						</Providers>
+					</NextIntlClientProvider>
+				</Suspense>
 			</body>
 		</html>
 	);

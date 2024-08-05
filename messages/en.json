@@ -1,46 +1,107 @@
 {
 	"LocaleSwitcher": {
+		"current": "en",
 		"uk": "UA",
 		"en": "EN",
-		"label": "Language"
+		"label": "Language",
+		"uk_full": "Ukrainian",
+		"en_full": "English"
 	},
-	"page": {
-		"home": {
-			"boost": "Boost your productivity",
-			"description": "Discover Taskronic, your go-to solution for managing tasks and enhancing productivity. Our app offers a user-friendly interface, seamless collaboration tools, and customizable reminders to keep you on track."
-		},
-		"signin": {
-			"forgot_pass": "Forgot password?",
-			"use_account": "or use your account",
-			"have_account": "Already have an account?",
-			"dont_have_account": "Don't have an account?"
-		}
+	"site": {
+		"slogan": "Boost your productivity",
+		"description": "Discover Taskronic, your go-to solution for managing tasks and enhancing productivity. Enjoy a user-friendly interface, collaborative real-time features, notes and schedule to streamline your workflow.",
+		"email": "taskronic@gmail.com"
 	},
-	"button": {
+	"nav": {
+		"navigation": "Navigaton",
+		"boards": "Boards",
+		"tasks": "Tasks",
+		"notes": "Notes",
+		"calendar": "Calendar",
+		"workspace": "Workspace"
+	},
+	"auth": {
+		"forgot_pass": "Forgot password?",
+		"use_account": "or use your account",
+		"have_account": "Already have an account?",
+		"dont_have_account": "Don't have an account?",
 		"lets_try_it": "Let's try it",
+		"create_account": "Create account",
+		"wellcome_back": "Wellcome back!",
 		"sign_in": "Sign In",
-		"create_account": "Create account"
+		"sign_up": "Sign Up",
+		"send": "Send",
+		"back_to_auth": "Back to Sign In",
+		"did_forgot_pass": "Did you forgot your password?",
+		"enter_email": "Enter your email address you're using for your account below and we will send you a password reset link",
+		"pass_req_succes": "Link to change your password have been sent to your email",
+		"confirm": "Confirm",
+		"pass_reset": "Set new password",
+		"pass_changed": "Password successfuly changed. You can now use new password to sign in to your account.",
+		"auth_error": "Authorization error",
+		"auth_error_message": "There was a problem when trying to authenticate. Please contact us if this error persists."
 	},
-	"form": {
-		"label": {
-			"name": "Name",
-			"email": "Email",
-			"pass": "Password",
-			"confirm_pass": "Confirm password",
-			"new_pass": "New password"
-		},
-		"placeholder": {
-			"name": "John Doe",
-			"email": "john.doe@example.com",
-			"pass": "******"
-		},
-		"error": {
-			"name": "Name is required",
-			"email_req": "Email is required",
-			"email_valid": "Invalid email address",
-			"pass": "Password must be 6+ characters, with at least one digit",
-			"passDoNotMatch": "Passwords do not match"
-		}
+	"account": {
+		"profile": "Profile",
+		"theme": "Theme",
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System",
+		"invites": "Invites",
+		"contacts": "Contacts",
+		"logout": "Log Out",
+		"no_contacts": "Your contacts list is empty",
+		"remove_contact": "Remove contact?",
+		"updated": "Profile updated"
+	},
+	"workspace": {
+		"no_workspace": "Your workspace list is empty",
+		"ws_list_title": "Workspaces",
+		"no_boards": "No boards to display"
+	},
+	"common": {
+		"accept": "Accept",
+		"decline": "Decline",
+		"add": "Add",
+		"create": "Create",
+		"edit": "Edit",
+		"remove": "Remove",
+		"yes": "Yes",
+		"no": "No",
+		"select": "Select...",
+		"settings": "Settings",
+		"members": "Members",
+		"closed": "Closed",
+		"archived": "Archived",
+		"created": "Created",
+		"updated": "Updated"
+	},
+	"sort": {
+		"label": "Sort",
+		"placeholder": "select...",
+		"by_name": "by name",
+		"by_title": "by name",
+		"by_newest": "by newest"
+	},
+	"label": {
+		"name": "Name",
+		"email": "Email",
+		"pass": "Password",
+		"confirm_pass": "Confirm password",
+		"new_pass": "New password",
+		"title": "Name"
+	},
+	"placeholder": {
+		"name": "John Doe",
+		"email": "john.doe@example.com",
+		"pass": "******"
+	},
+	"validation": {
+		"name": "Name is required",
+		"email_req": "Email is required",
+		"email_valid": "Invalid email address",
+		"pass": "Password must be 6+ characters, with at least one digit",
+		"passDoNotMatch": "Passwords do not match"
 	},
 	"api": {
 		"access_denied": "Access denied",
@@ -50,13 +111,13 @@
 		"forbidden": "Forbidden",
 		"conflict": "Conflict",
 		"server_error": "Server Error",
+		"not_found": "Not Found",
 		"email_in_use": "Email is already in use",
 		"user_not_found": "User not found",
 		"invalid_credentials": "Invalid credentials format",
 		"incorrect_credentials": "Incorrect login or password",
 		"invalid_token": "Invalid token",
 		"passwords_do_not_match": "Passwords do not match",
-		"not_found": "Not Found",
 		"board_not_found": "Board not found",
 		"list_not_found": "List not found",
 		"invite_not_found": "Invite not found",

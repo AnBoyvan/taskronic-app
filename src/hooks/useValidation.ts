@@ -1,16 +1,20 @@
 import { useMessages } from 'next-intl';
 
+import { getForgotPasswordSchema } from '@/utils/validation/getForgotPassword';
 import { getLoginSchema } from '@/utils/validation/getLoginSchema';
 import { getRegisterSchema } from '@/utils/validation/getRegisterSchema';
-
-import { Messages } from '../../i18n';
+import { getResetPasswordSchema } from '@/utils/validation/getResetPasswordSchema';
 
 export const useValidation = () => {
-	const messages = useMessages() as Messages;
+	const { validation } = useMessages() as IntlMessages;
 
-	const registerSchema = getRegisterSchema(messages.form.error);
+	const registerSchema = getRegisterSchema(validation);
 
-	const loginSchema = getLoginSchema(messages.form.error);
+	const loginSchema = getLoginSchema(validation);
 
-	return { registerSchema, loginSchema };
+	const forgotPasswordSchema = getForgotPasswordSchema(validation);
+
+	const resetPasswordSchema = getResetPasswordSchema(validation);
+
+	return { registerSchema, loginSchema, forgotPasswordSchema, resetPasswordSchema };
 };

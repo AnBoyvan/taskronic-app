@@ -4,19 +4,19 @@ import { REGEXP } from '@/constants/regexp.constants';
 import { IRegisterForm } from '@/interfaces/auth.interface';
 
 export const getRegisterSchema = (
-	error: IntlMessages['form']['error'],
+	messages: IntlMessages['validation'],
 ): Yup.ObjectSchema<IRegisterForm> => {
 	return Yup.object().shape({
-		name: Yup.string().required(error.name),
+		name: Yup.string().required(messages.name),
 
-		email: Yup.string().required(error.email_req).matches(REGEXP.email, error.email_valid),
+		email: Yup.string().required(messages.email_req).matches(REGEXP.email, messages.email_valid),
 
 		avatarColor: Yup.string(),
 
-		password: Yup.string().required(error.pass).matches(REGEXP.password, error.pass),
+		password: Yup.string().required(messages.pass).matches(REGEXP.password, messages.pass),
 
 		confirmPassword: Yup.string()
-			.required(error.pass)
-			.oneOf([Yup.ref<string>('password')], error.passDoNotMatch),
+			.required(messages.pass)
+			.oneOf([Yup.ref<string>('password')], messages.passDoNotMatch),
 	});
 };

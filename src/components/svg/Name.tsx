@@ -1,6 +1,7 @@
-export const Name = (): JSX.Element => {
+export const Name = ({ ...props }): JSX.Element => {
 	return (
 		<svg
+			{...props}
 			version="1.0"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 3346 603"

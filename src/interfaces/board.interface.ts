@@ -28,6 +28,7 @@ export interface IBoardBase extends IBase {
 	admins: string[];
 	settings: IBoardSettings;
 	lists: IList[];
+	starred: string[];
 	closed: boolean;
 }
 
@@ -57,4 +58,23 @@ export interface IBoardCompose {
 
 export interface IBoardOpen {
 	workspaceId: string;
+}
+
+interface Board {
+	_id: string;
+	createdAt: string;
+	updatedAt: string;
+	title: string;
+	description?: string;
+	thumbImage?: string;
+	bgImage?: string;
+	bgColor: string;
+	workspace?: string;
+	admins: string[];
+	settings: IBoardSettings;
+	lists: IList[];
+	starred: string[];
+	closed: boolean;
+	members: IMember[];
+	tasks: ITaskWorkspaceField[];
 }

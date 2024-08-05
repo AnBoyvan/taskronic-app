@@ -1,7 +1,8 @@
 import { type LucideProps, icons } from 'lucide-react';
 
+export type IconName = keyof typeof icons;
 interface IconProps extends LucideProps {
-	name: keyof typeof icons;
+	name: IconName;
 }
 
 export const Icon: React.FC<IconProps> = ({ name, size, ...props }) => {

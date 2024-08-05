@@ -1,5 +1,7 @@
+'use server';
+
 import { apiClient } from './apiClient';
-import { errorCatch } from './errorCatch';
+import { apiErrorTranslate } from './apiErrorTranslate';
 
 type RequestConfig = {
 	method: 'GET' | 'POST' | 'PATCH' | 'DELETE';
@@ -7,12 +9,16 @@ type RequestConfig = {
 	data?: any;
 };
 
-export const apiRequest = async (config: RequestConfig) => {
+export const apiRequest = async ({ method, url, data }: RequestConfig) => {
 	try {
-		const response = await apiClient(config);
+		const response = await apiClient({
+			method,
+			url,
+			data: data ? data : {},
+		});
 		return response.data;
 	} catch (error) {
-		const message = await errorCatch(error);
+		const message = await apiErrorTranslate(error);
 		throw new Error(message);
 	}
 };

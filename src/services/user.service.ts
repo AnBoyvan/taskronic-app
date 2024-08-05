@@ -24,7 +24,6 @@ export const userService = {
 			method: 'GET',
 			url: API_ROUTES.users.findContacts,
 		});
-
 		return response.contacts;
 	},
 

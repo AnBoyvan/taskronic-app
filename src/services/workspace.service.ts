@@ -24,7 +24,7 @@ export const workspaceService = {
 		});
 	},
 
-	async findAll(): Promise<IWorkspace> {
+	async findAll(): Promise<IWorkspace[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.workspaces.findAll,
