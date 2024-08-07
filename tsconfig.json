@@ -27,7 +27,8 @@
 		"next-auth.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		".next/types/**/*.ts"
+		".next/types/**/*.ts",
+		"src/app/(private)/w/[workspaceId]/members/_components/WorkspacMembers"
 	],
 	"exclude": ["node_modules"]
 }

@@ -6,6 +6,7 @@ import { Accordion, AccordionItem, Button, Listbox, ListboxItem } from '@nextui-
 import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { workspaceNav } from '@/configs/nav.config';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { IWorkspace } from '@/interfaces/workspace.interface';
 
 type WorkspacesListProps = {
@@ -15,6 +16,7 @@ type WorkspacesListProps = {
 export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) => {
 	const router = useRouter();
 	const t = useTranslations();
+	const { user } = useCurrentUser();
 
 	return (
 		<Accordion
@@ -59,6 +61,7 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 								title={t(label)}
 								startContent={<Icon name={icon} size={12} />}
 								endContent={
+									(w.admins.includes(user?.sub!) || w.settings.invite) &&
 									label === 'common.members' ? (
 										<Button
 											variant="light"
@@ -67,6 +70,7 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 											className="h-7"
 											isIconOnly
 											onPress={() => {
+												// TODO:
 												console.log('ADD MEMBER');
 											}}
 										>

@@ -7,7 +7,7 @@ import { DashboardSidebarWorkspaces } from './DashboardSidebarWorkspaces';
 
 export const DashboardSidebar: React.FC = () => {
 	return (
-		<div className="hidden md:flex flex-col w-56 px-4 py-2 border-r">
+		<div className="hidden md:flex flex-col w-64 px-4 py-2 border-r border-divider">
 			<DashboardSidebarNav />
 			<Divider className="my-2" />
 			<DashboardSidebarWorkspaces />

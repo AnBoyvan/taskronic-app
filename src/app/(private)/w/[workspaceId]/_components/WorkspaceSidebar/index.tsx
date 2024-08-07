@@ -46,13 +46,13 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId 
 				className={`transition-all duration-200 ${!isOpen ? 'w-0 mr-4' : 'w-64'} overflow-hidden`}
 			>
 				{isOpen && (
-					<div className="flex flex-col w-64 h-full px-2 border-r">
+					<div className="flex flex-col w-64 h-full px-2 border-r border-divider">
 						<div className="flex flex-row items-center justify-between py-2">
 							<WorkspaceBadge
 								name={workspace.name}
 								avatarColor={workspace.avatarColor}
 								avatarIcon={workspace.avatarIcon}
-								large={true}
+								medium={true}
 							/>
 							<Button
 								variant="flat"
@@ -65,7 +65,12 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId 
 							</Button>
 						</div>
 						<Divider />
-						<WorkspaceSidebarNav _id={workspace._id} name={workspace.name} />
+						<WorkspaceSidebarNav
+							_id={workspace._id}
+							name={workspace.name}
+							admins={workspace.admins}
+							canInvite={workspace.settings.invite}
+						/>
 						<Divider />
 						<WorkspaceSidebarBoards boards={workspace.boards} workspaceId={workspace._id} />
 					</div>

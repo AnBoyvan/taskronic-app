@@ -54,11 +54,11 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 						</Button>
 					</DropdownTrigger>
 					<DropdownMenu>
-						<DropdownItem aria-label={t('sort.label')} closeOnSelect={false} isReadOnly>
+						<DropdownItem aria-label={t('label.sort')} closeOnSelect={false} isReadOnly>
 							<Select
 								labelPlacement="outside"
-								label={t('sort.label')}
-								placeholder={t('sort.placeholder')}
+								label={t('label.sort')}
+								placeholder={t('placeholder.select')}
 								disallowEmptySelection
 								selectedKeys={[sortBy]}
 								selectionMode="single"

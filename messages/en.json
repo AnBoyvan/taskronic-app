@@ -57,7 +57,11 @@
 	"workspace": {
 		"no_workspace": "Your workspace list is empty",
 		"ws_list_title": "Workspaces",
-		"no_boards": "No boards to display"
+		"no_boards": "No boards to display",
+		"ws_boards": "Workspace boards",
+		"remove_member": "Remove member from workspace",
+		"invite": "Invite",
+		"invite_members": "Invite мembers"
 	},
 	"common": {
 		"accept": "Accept",
@@ -77,11 +81,20 @@
 		"updated": "Updated"
 	},
 	"sort": {
-		"label": "Sort",
-		"placeholder": "select...",
 		"by_name": "by name",
 		"by_title": "by name",
 		"by_newest": "by newest"
+	},
+	"roles": {
+		"all": "All",
+		"members": "Members",
+		"admins": "Admins",
+		"guests": "Guests",
+		"user_member": "Member",
+		"user_admin": "Admin",
+		"user_guest": "Guest",
+		"add_admin": "Grant admin access",
+		"remove_admin": "Revoke admin access"
 	},
 	"label": {
 		"name": "Name",
@@ -89,12 +102,15 @@
 		"pass": "Password",
 		"confirm_pass": "Confirm password",
 		"new_pass": "New password",
-		"title": "Name"
+		"title": "Name",
+		"sort": "Sort"
 	},
 	"placeholder": {
 		"name": "John Doe",
 		"email": "john.doe@example.com",
-		"pass": "******"
+		"pass": "******",
+		"search": "Search",
+		"select": "Select..."
 	},
 	"validation": {
 		"name": "Name is required",

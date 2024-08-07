@@ -31,10 +31,10 @@ export const WorkspaceSwitcher: React.FC = () => {
 			items={data || []}
 			aria-label="workspace"
 			variant="flat"
-			selectedKeys={[workspaceId]}
+			selectedKeys={data && [workspaceId]}
 			label={t('nav.workspace')}
 			labelPlacement="outside"
-			placeholder={t('common.select')}
+			placeholder={t('placeholder.select')}
 			onSelectionChange={onWorkspaceSelect}
 			classNames={{
 				trigger: 'pl-2 pr-6 bg-transparent',

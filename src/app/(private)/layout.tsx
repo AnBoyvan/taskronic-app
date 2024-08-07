@@ -25,7 +25,7 @@ export default async function PrivateLayout({
 		<SessionProvider session={session}>
 			<HydrationBoundary state={dehydrate(queryClient)}>
 				<PrivateHeader />
-				<main className="flex flex-row h-full">{children}</main>
+				<main className="flex flex-row h-[calc(100%_-_48px)]">{children}</main>
 				<ModalProvider />
 			</HydrationBoundary>
 		</SessionProvider>

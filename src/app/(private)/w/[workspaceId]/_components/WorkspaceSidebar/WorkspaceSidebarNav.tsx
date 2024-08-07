@@ -5,16 +5,25 @@ import { Button, Listbox, ListboxItem } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
 import { workspaceNav } from '@/configs/nav.config';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 type DWorkspaceSidebarNavProps = {
 	_id: string;
 	name: string;
+	admins: string[];
+	canInvite: boolean;
 };
 
-export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({ _id, name }) => {
+export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
+	_id,
+	name,
+	admins,
+	canInvite,
+}) => {
 	const t = useTranslations();
 	const router = useRouter();
 	const pathname = usePathname();
+	const { user } = useCurrentUser();
 
 	return (
 		<Listbox
@@ -36,13 +45,14 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({ _id, 
 						title: 'font-medium',
 					}}
 					endContent={
-						label === 'common.members' ? (
+						(admins.includes(user?.sub!) || canInvite) && label === 'common.members' ? (
 							<Button
 								variant="light"
 								color="primary"
 								size="sm"
 								isIconOnly
 								onPress={() => {
+									// TODO:
 									console.log('ADD MEMBER');
 								}}
 							>

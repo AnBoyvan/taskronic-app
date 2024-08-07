@@ -31,7 +31,7 @@ export const Account: React.FC = () => {
 	const { user } = useCurrentUser();
 	const { onOpen } = useContactsModal();
 
-	if (!user) return;
+	if (!user) return null;
 
 	return (
 		<Dropdown closeOnSelect={false} className="w-52">
@@ -45,7 +45,7 @@ export const Account: React.FC = () => {
 			</DropdownTrigger>
 			<DropdownMenu aria-label={t('account.profile')}>
 				<DropdownSection showDivider>
-					<DropdownItem isReadOnly textValue={user?.name} className="cursor-default">
+					<DropdownItem isReadOnly textValue={user.name} className="cursor-default">
 						<User
 							name={user.name}
 							description={user.email}

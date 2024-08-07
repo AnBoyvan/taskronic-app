@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { ForwardedRef, forwardRef } from 'react';
 
 import { Avatar, AvatarProps } from '@nextui-org/react';
@@ -10,13 +11,14 @@ interface WorkspaceBadgeProps {
 	name: string;
 	avatarIcon: IconName;
 	avatarColor: ColorVariant;
+	medium?: boolean;
 	large?: boolean;
 	avatarProps?: AvatarProps;
 }
 
 export const WorkspaceBadge = forwardRef(
 	(
-		{ name, avatarIcon, avatarColor, avatarProps, large, ...props }: WorkspaceBadgeProps,
+		{ name, avatarIcon, avatarColor, avatarProps, medium, large, ...props }: WorkspaceBadgeProps,
 		ref: ForwardedRef<HTMLDivElement>,
 	) => {
 		return (
@@ -27,11 +29,24 @@ export const WorkspaceBadge = forwardRef(
 						radius="sm"
 						icon={<Icon name={avatarIcon} size={large ? 24 : 16} />}
 						classNames={{
-							base: `${colorVariants[avatarColor]} ${large ? 'w-8 h-8' : 'w-6 h-6'}`,
+							base: clsx(
+								`${colorVariants[avatarColor]}`,
+								!medium && !large && 'w-6 h-6',
+								medium && 'w-8 h-8',
+								large && 'w-10 h-10',
+							),
 						}}
 					/>
 				</div>
-				<span className={large ? 'text-sm' : 'truncate text-tiny'}>{name}</span>
+				<span
+					className={clsx(
+						!medium && !large && 'truncate text-tiny',
+						medium && 'text-sm ',
+						large && 'text-base',
+					)}
+				>
+					{name}
+				</span>
 			</div>
 		);
 	},

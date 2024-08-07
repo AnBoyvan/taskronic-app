@@ -1,3 +1,9 @@
+import { WorkspaceMembers } from './_components/WorkspaceMembers';
+
 export default function WorkspaceMembersPage() {
-	return <section>WorkspaceMembersPage LayoutChildProps</section>;
+	return (
+		<div className="w-full h-full overflow-hidden">
+			<WorkspaceMembers />
+		</div>
+	);
 }
