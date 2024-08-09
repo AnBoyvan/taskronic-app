@@ -2,16 +2,29 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
-import { IMemberDto } from '@/interfaces/root.interface';
+import { MemberDto } from '@/interfaces/root.interface';
+import { WorkspaceInvite } from '@/interfaces/workspace.interface';
 import { workspaceService } from '@/services/workspace.service';
 
 type MemberServiceProps = {
 	workspaceId: string;
-	dto: IMemberDto;
+	dto: MemberDto;
 };
 
-export const useWorkspaces = () => {
+export const useWorkspaceMembers = () => {
 	const queryClient = useQueryClient();
+
+	const { mutate: invite } = useMutation({
+		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceInvite[] }) =>
+			workspaceService.invite(workspaceId, dto),
+		mutationKey: ['workspaces-remove-member'],
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+		},
+		onError: err => {
+			toast.error(err.message, { closeButton: false });
+		},
+	});
 
 	const { mutate: removeMember } = useMutation({
 		mutationFn: ({ workspaceId, dto }: MemberServiceProps) =>
@@ -49,5 +62,16 @@ export const useWorkspaces = () => {
 		},
 	});
 
-	return { removeMember, addAdmin, removeAdmin };
+	const { mutate: leave } = useMutation({
+		mutationFn: (workspaceId: string) => workspaceService.leave(workspaceId),
+		mutationKey: ['workspaces-leave'],
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+		},
+		onError: err => {
+			toast.error(err.message, { closeButton: false });
+		},
+	});
+
+	return { invite, removeMember, addAdmin, removeAdmin, leave };
 };

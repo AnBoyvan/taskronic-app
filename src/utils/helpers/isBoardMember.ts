@@ -1,7 +1,7 @@
-import { IBoard, IBoardWorkspaceField } from '@/interfaces/board.interface';
+import { Board, BoardWorkspaceField } from '@/interfaces/board.interface';
 
 interface IsBoardMember {
-	(board: IBoardWorkspaceField | IBoard, userId: string): boolean;
+	(board: BoardWorkspaceField | Board, userId: string): boolean;
 }
 
 export const isBoardMember: IsBoardMember = (board, userId) => {

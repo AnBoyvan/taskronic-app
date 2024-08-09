@@ -1,7 +1,7 @@
-import { IBoardTaskField } from './board.interface';
-import { ICommentField } from './comment.interface';
-import { IBase, IMember } from './root.interface';
-import { IWorkspaceField } from './workspace.interface';
+import { BoardTaskField } from './board.interface';
+import { CommentField } from './comment.interface';
+import { Base, Member } from './root.interface';
+import { WorkspaceField } from './workspace.interface';
 
 export enum TaskPriority {
 	NO = 1,
@@ -11,17 +11,17 @@ export enum TaskPriority {
 	CRITICAL = 5,
 }
 
-export interface ISubtask {
+export interface Subtask {
 	_id: string;
 	label: string;
 	completed: boolean;
 }
 
-export interface ITaskBase extends IBase {
+export interface TaskBase extends Base {
 	title: string;
 	description?: string;
 	priority: TaskPriority;
-	subtasks: ISubtask[];
+	subtasks: Subtask[];
 	list: string;
 	dueDate?: Date;
 	order: number;
@@ -29,46 +29,46 @@ export interface ITaskBase extends IBase {
 	archived: boolean;
 }
 
-export interface ITask extends ITaskBase {
-	members?: IMember[];
-	workspace: IWorkspaceField;
-	board: IBoardTaskField;
-	comments?: ICommentField[];
+export interface Task extends TaskBase {
+	members?: Member[];
+	workspace: WorkspaceField;
+	board: BoardTaskField;
+	comments?: CommentField[];
 }
 
-export interface ITaskWorkspaceField extends ITaskBase {
+export interface TaskWorkspaceField extends TaskBase {
 	members?: string[];
 	workspace: string;
 	board: string;
 	comments?: string[];
 }
 
-export interface ITaskBoardField extends ITaskBase {
-	members?: IMember[];
+export interface TaskBoardField extends TaskBase {
+	members?: Member[];
 	workspace: string;
 	board: string;
-	comments?: ICommentField[];
+	comments?: CommentField[];
 }
 
-export interface ITaskCreate {
+export interface TaskCreate {
 	title: string;
 	description?: string;
 	priority: TaskPriority;
-	subtasks: ISubtask[];
+	subtasks: Subtask[];
 	list: string;
 	dueDate?: Date;
 	order: number;
 	members: string[];
 }
 
-export interface ITaskUpdGeneral {
+export interface TaskUpdGeneral {
 	title: string;
 	description?: string;
 	priority: TaskPriority;
 	order: number;
 }
 
-export interface ITaskUpdOrder {
+export interface TaskUpdOrder {
 	taskId: string;
 	order: number;
 	list: string;

@@ -1,9 +1,9 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
-import { INote, INoteCreate, INoteUpdate } from '@/interfaces/note.interface';
+import { Note, NoteCreate, NoteUpdate } from '@/interfaces/note.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const noteService = {
-	async create(dto: INoteCreate): Promise<INote> {
+	async create(dto: NoteCreate): Promise<Note> {
 		return await apiRequest({
 			method: 'POST',
 			url: API_ROUTES.notes.create,
@@ -11,21 +11,21 @@ export const noteService = {
 		});
 	},
 
-	async findById(noteId: string): Promise<INote> {
+	async findById(noteId: string): Promise<Note> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.notes.findById(noteId),
 		});
 	},
 
-	async findByOwner(): Promise<INote[]> {
+	async findByOwner(): Promise<Note[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.notes.findByOwner,
 		});
 	},
 
-	async update(noteId: string, dto: INoteUpdate): Promise<INote> {
+	async update(noteId: string, dto: NoteUpdate): Promise<Note> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.notes.update(noteId),

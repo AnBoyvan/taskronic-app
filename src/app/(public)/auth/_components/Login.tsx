@@ -15,7 +15,7 @@ import { login } from '@/actions/auth/login';
 import { FormInput } from '@/components/ui/FormInput';
 import { AUTH_REDIRECT, ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { ILoginForm } from '@/interfaces/auth.interface';
+import { LoginForm } from '@/interfaces/auth.interface';
 
 export const Login: React.FC = () => {
 	const t = useTranslations();
@@ -25,7 +25,7 @@ export const Login: React.FC = () => {
 	const params = useSearchParams();
 	const callbackUrl = params.get('callbackUrl');
 
-	const { control, handleSubmit, reset } = useForm<ILoginForm>({
+	const { control, handleSubmit, reset } = useForm<LoginForm>({
 		mode: 'onBlur',
 		defaultValues: {
 			email: '',
@@ -34,7 +34,7 @@ export const Login: React.FC = () => {
 		resolver: yupResolver(loginSchema),
 	});
 
-	const onSubmit: SubmitHandler<ILoginForm> = async data => {
+	const onSubmit: SubmitHandler<LoginForm> = async data => {
 		startTransition(async () => {
 			const result = await login(data);
 			if (result?.error) {

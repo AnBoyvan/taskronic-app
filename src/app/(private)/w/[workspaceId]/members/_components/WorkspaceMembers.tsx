@@ -5,9 +5,9 @@ import { useParams } from 'next/navigation';
 import { useState } from 'react';
 
 import { Divider } from '@nextui-org/react';
-import { useQuery } from '@tanstack/react-query';
 
-import { workspaceService } from '@/services/workspace.service';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useFetchCurrentWorkspace } from '@/hooks/useFetchCurrentWorkspace';
 import { Filter, filterUsers } from '@/utils/helpers/filterUsers';
 import { getAllUsers } from '@/utils/helpers/getAllUsers';
 import { isBoardMember } from '@/utils/helpers/isBoardMember';
@@ -19,29 +19,27 @@ import { WorkspaceMembersFilter } from './WorkspaceMembersFilter';
 
 export const WorkspaceMembers: React.FC = () => {
 	const { workspaceId } = useParams<{ workspaceId: string }>();
+	const { user } = useCurrentUser();
 
 	const [filter, setFilter] = useState<Filter>({
 		search: '',
 		role: 'all',
 	});
 
-	const { data: workspace } = useQuery({
-		queryKey: ['workspaces', workspaceId],
-		queryFn: () => workspaceService.findById(workspaceId),
-	});
+	const { data: workspace } = useFetchCurrentWorkspace(workspaceId);
 
-	if (!workspace) return null;
+	if (!workspace || !user) return null;
 
 	const { users, membersIds } = getAllUsers(workspace);
 
 	const filtered = filterUsers(users, workspace.admins, membersIds, filter);
 
-	const sorted = sorter(filtered, 'name');
+	const sorted = sorter(filtered, 'name', 'asc', { field: '_id', value: user.sub });
 
 	return (
 		<div className="h-full flex flex-col">
 			<WorkspaceTitle workspace={workspace} />
-			<div className="h-full flex flex-col lg:flex-row">
+			<div className="h-full flex flex-col lg:flex-row overflow-hidden">
 				<WorkspaceMembersFilter
 					filter={filter}
 					setFilter={setFilter}

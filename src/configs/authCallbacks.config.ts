@@ -1,10 +1,10 @@
 import type { CallbacksOptions } from 'next-auth';
 
-import { ITokens } from '@/interfaces/auth.interface';
+import { Tokens } from '@/interfaces/auth.interface';
 
 export const authCallbacks: Partial<CallbacksOptions> = {
 	async jwt({ token, user, trigger, session, account, profile }) {
-		const data: ITokens | null = null;
+		const data: Tokens | null = null;
 
 		if (trigger === 'signIn' && account?.provider === 'google') {
 			data = await authService.google({

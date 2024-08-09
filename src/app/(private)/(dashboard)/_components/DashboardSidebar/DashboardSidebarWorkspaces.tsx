@@ -4,21 +4,17 @@ import { useTranslations } from 'next-intl';
 
 import { useEffect } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
-
 import { toast } from 'sonner';
 
-import { workspaceService } from '@/services/workspace.service';
+import { useFetchWorkspaces } from '@/hooks/useFetchWorkspaces';
 
 import { WorkspaceListSkeleton } from './WorkspaceListSkeleton';
 import { WorkspacesList } from './WorkspacesList';
 
 export const DashboardSidebarWorkspaces = () => {
 	const t = useTranslations();
-	const { data, isFetching, error } = useQuery({
-		queryKey: ['workspaces'],
-		queryFn: workspaceService.findAll,
-	});
+
+	const { data, isFetching, error } = useFetchWorkspaces();
 
 	useEffect(() => {
 		if (error) {

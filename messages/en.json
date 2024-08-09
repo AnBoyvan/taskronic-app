@@ -39,7 +39,13 @@
 		"pass_reset": "Set new password",
 		"pass_changed": "Password successfuly changed. You can now use new password to sign in to your account.",
 		"auth_error": "Authorization error",
-		"auth_error_message": "There was a problem when trying to authenticate. Please contact us if this error persists."
+		"auth_error_message": "There was a problem when trying to authenticate. Please contact us if this error persists.",
+		"registered": "User successfully registered",
+		"email_in_use": "Email is already in use",
+		"invalid_id_format": "Invalid ID format",
+		"invalid_credentials": "Invalid credentials format",
+		"incorrect_credentials": "Incorrect login or password",
+		"invalid_token": "Invalid token"
 	},
 	"account": {
 		"profile": "Profile",
@@ -61,7 +67,45 @@
 		"ws_boards": "Workspace boards",
 		"remove_member": "Remove member from workspace",
 		"invite": "Invite",
-		"invite_members": "Invite мembers"
+		"invite_members": "Invite мembers",
+		"settings_title": "Permissions for workspace members",
+		"settings_desc": "In this section, administrators can manage member access to various features and resources. This provides flexibility and control over workspace management so that participants have the appropriate levels of access.",
+		"settings_board": "Any workspace member can create board",
+		"settings_invite": "Any workspace member can invite new member",
+		"settings_update": "Any workspace member can change information about the workspace (name, description and logo)",
+		"settings_remove": "Any workspace member can remove another member",
+		"leave_ws": "Leave the workspace",
+		"not_found": "Workspace not found",
+		"invite_sent": "Invite sent",
+		"invite_not_found": "Invitation not found",
+		"remove_button": "Delete workspace",
+		"remove_confirm": "Enter workspace name '{name}' to delete",
+		"remove_label": "Enter the workspace name",
+		"remove_undone": "The workspace cannot be restored",
+		"remove_boards": "All boards will be closed (only board admins can reopen them)",
+		"removed": "Workspace removed"
+	},
+	"board": {
+		"board_not_found": "Board not found",
+		"list_not_found": "List not found",
+		"set_closed": "Board closed",
+		"set_opened": "Board is active",
+		"removed": "Board removed",
+		"starred_add": "Board added to starred",
+		"starred_remove": "Board removed from starred"
+	},
+	"task": {
+		"task_not_found": "Card not found",
+		"subtask_not_found": "Checklist not found",
+		"removed": "Card removed"
+	},
+	"comment": {
+		"not_found": "Comment not found",
+		"removed": "Comment removed"
+	},
+	"note": {
+		"not_found": "Note not found",
+		"removed": "Note removed"
 	},
 	"common": {
 		"accept": "Accept",
@@ -78,7 +122,10 @@
 		"closed": "Closed",
 		"archived": "Archived",
 		"created": "Created",
-		"updated": "Updated"
+		"updated": "Updated",
+		"leave": "Leave",
+		"user_not_found": "User not found",
+		"warning": "Warning"
 	},
 	"sort": {
 		"by_name": "by name",
@@ -94,7 +141,9 @@
 		"user_admin": "Admin",
 		"user_guest": "Guest",
 		"add_admin": "Grant admin access",
-		"remove_admin": "Revoke admin access"
+		"remove_admin": "Revoke admin access",
+		"already_member": "User is already member",
+		"already_admin": "User is already admin"
 	},
 	"label": {
 		"name": "Name",
@@ -119,32 +168,15 @@
 		"pass": "Password must be 6+ characters, with at least one digit",
 		"passDoNotMatch": "Passwords do not match"
 	},
-	"api": {
-		"access_denied": "Access denied",
-		"invalid_id_format": "Invalid ID format",
+	"api_err": {
 		"bad_request": "Bad Request",
 		"unauthorized": "Unauthorized",
 		"forbidden": "Forbidden",
 		"conflict": "Conflict",
 		"server_error": "Server Error",
 		"not_found": "Not Found",
-		"email_in_use": "Email is already in use",
-		"user_not_found": "User not found",
-		"invalid_credentials": "Invalid credentials format",
-		"incorrect_credentials": "Incorrect login or password",
-		"invalid_token": "Invalid token",
-		"passwords_do_not_match": "Passwords do not match",
-		"board_not_found": "Board not found",
-		"list_not_found": "List not found",
-		"invite_not_found": "Invite not found",
-		"comment_not_found": "Comment not found",
-		"note_not_found": "Note not found",
-		"task_not_found": "Task not found",
-		"subtask_not_found": "Subtask not found",
-		"workspace_not_found": "Workspace not found",
-		"already_member": "User is already member",
-		"already_admin": "User is already admin",
 		"email_auth_error": "Email service authorization error",
-		"mailer_error": "Mailer error"
+		"mailer_error": "Mailer error",
+		"access_denied": "Access denied"
 	}
 }

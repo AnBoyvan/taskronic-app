@@ -7,10 +7,10 @@ import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { workspaceNav } from '@/configs/nav.config';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { IWorkspace } from '@/interfaces/workspace.interface';
+import { Workspace } from '@/interfaces/workspace.interface';
 
 type WorkspacesListProps = {
-	workspaces: IWorkspace[];
+	workspaces: Workspace[];
 };
 
 export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) => {

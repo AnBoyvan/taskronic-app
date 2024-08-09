@@ -1,15 +1,15 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
-import { IMemberDto } from '@/interfaces/root.interface';
+import { MemberDto } from '@/interfaces/root.interface';
 import {
-	IWorkspace,
-	IWorkspaceCompose,
-	IWorkspaceInvite,
-	IWorkspaceSettings,
+	Workspace,
+	WorkspaceCompose,
+	WorkspaceInvite,
+	WorkspaceSettings,
 } from '@/interfaces/workspace.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const workspaceService = {
-	async create(dto: IWorkspaceCompose): Promise<IWorkspace> {
+	async create(dto: WorkspaceCompose): Promise<Workspace> {
 		return await apiRequest({
 			method: 'POST',
 			url: API_ROUTES.workspaces.create,
@@ -17,21 +17,21 @@ export const workspaceService = {
 		});
 	},
 
-	async findById(workspaceId: string): Promise<IWorkspace> {
+	async findById(workspaceId: string): Promise<Workspace> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.workspaces.findById(workspaceId),
 		});
 	},
 
-	async findAll(): Promise<IWorkspace[]> {
+	async findAll(): Promise<Workspace[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.workspaces.findAll,
 		});
 	},
 
-	async updGeneral(workspaceId: string, dto: IWorkspaceCompose): Promise<IWorkspace> {
+	async updGeneral(workspaceId: string, dto: WorkspaceCompose): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.updGeneral(workspaceId),
@@ -39,7 +39,7 @@ export const workspaceService = {
 		});
 	},
 
-	async updSettings(workspaceId: string, dto: IWorkspaceSettings): Promise<IWorkspace> {
+	async updSettings(workspaceId: string, dto: WorkspaceSettings): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.updSettings(workspaceId),
@@ -47,7 +47,7 @@ export const workspaceService = {
 		});
 	},
 
-	async invite(workspaceId: string, dto: IWorkspaceInvite[]): Promise<IWorkspace> {
+	async invite(workspaceId: string, dto: WorkspaceInvite[]): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.invite(workspaceId),
@@ -57,7 +57,7 @@ export const workspaceService = {
 		});
 	},
 
-	async removeMember(workspaceId: string, dto: IMemberDto): Promise<IWorkspace> {
+	async removeMember(workspaceId: string, dto: MemberDto): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.removeMember(workspaceId),
@@ -65,7 +65,7 @@ export const workspaceService = {
 		});
 	},
 
-	async addAdmin(workspaceId: string, dto: IMemberDto): Promise<IWorkspace> {
+	async addAdmin(workspaceId: string, dto: MemberDto): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.addAdmin(workspaceId),
@@ -73,11 +73,18 @@ export const workspaceService = {
 		});
 	},
 
-	async removeAdmin(workspaceId: string, dto: IMemberDto): Promise<IWorkspace> {
+	async removeAdmin(workspaceId: string, dto: MemberDto): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.removeAdmin(workspaceId),
 			data: dto,
+		});
+	},
+
+	async leave(workspaceId: string): Promise<Workspace> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.workspaces.leave(workspaceId),
 		});
 	},
 

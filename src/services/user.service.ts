@@ -1,10 +1,10 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
-import { IMember } from '@/interfaces/root.interface';
-import { IUser, IUserUpd } from '@/interfaces/user.interface';
+import { Member } from '@/interfaces/root.interface';
+import { IUser, UserUpd } from '@/interfaces/user.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const userService = {
-	async updGeneral(dto: IUserUpd): Promise<IUser> {
+	async updGeneral(dto: UserUpd): Promise<IUser> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.users.updGeneral,
@@ -19,7 +19,7 @@ export const userService = {
 		});
 	},
 
-	async findContacts(): Promise<IMember[]> {
+	async findContacts(): Promise<Member[]> {
 		const response = await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.users.findContacts,

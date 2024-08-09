@@ -1,7 +1,7 @@
-import { IBase, IMember } from './root.interface';
-import { ITaskBoardField, ITaskWorkspaceField } from './tasks.interface';
+import { Base, Member } from './root.interface';
+import { TaskBoardField, TaskWorkspaceField } from './tasks.interface';
 
-export interface IBoardSettings {
+export interface BoardSettings {
 	addMember: boolean;
 	updateBoard: boolean;
 	createTask: boolean;
@@ -9,7 +9,7 @@ export interface IBoardSettings {
 	archiveTask: boolean;
 }
 
-export interface IList {
+export interface List {
 	_id: string;
 	label: string;
 	bgColor: string;
@@ -18,7 +18,7 @@ export interface IList {
 	archived: boolean;
 }
 
-export interface IBoardBase extends IBase {
+export interface BoardBase extends Base {
 	title: string;
 	description?: string;
 	thumbImage?: string;
@@ -26,28 +26,28 @@ export interface IBoardBase extends IBase {
 	bgColor: string;
 	workspace?: string;
 	admins: string[];
-	settings: IBoardSettings;
-	lists: IList[];
+	settings: BoardSettings;
+	lists: List[];
 	starred: string[];
 	closed: boolean;
 }
 
-export interface IBoard extends IBoardBase {
-	members: IMember[];
-	tasks: ITaskBoardField[];
+export interface Board extends BoardBase {
+	members: Member[];
+	tasks: TaskBoardField[];
 }
 
-export interface IBoardWorkspaceField extends IBoardBase {
-	members: IMember[];
-	tasks: ITaskWorkspaceField[];
+export interface BoardWorkspaceField extends BoardBase {
+	members: Member[];
+	tasks: TaskWorkspaceField[];
 }
 
-export interface IBoardTaskField extends IBoardBase {
+export interface BoardTaskField extends BoardBase {
 	members: string[];
 	tasks: string[];
 }
 
-export interface IBoardCompose {
+export interface BoardCompose {
 	title: string;
 	description?: string;
 	thumbImage?: string;
@@ -56,25 +56,25 @@ export interface IBoardCompose {
 	private: boolean;
 }
 
-export interface IBoardOpen {
+export interface BoardOpen {
 	workspaceId: string;
 }
 
-interface Board {
-	_id: string;
-	createdAt: string;
-	updatedAt: string;
-	title: string;
-	description?: string;
-	thumbImage?: string;
-	bgImage?: string;
-	bgColor: string;
-	workspace?: string;
-	admins: string[];
-	settings: IBoardSettings;
-	lists: IList[];
-	starred: string[];
-	closed: boolean;
-	members: IMember[];
-	tasks: ITaskWorkspaceField[];
-}
+// interface Board {
+// 	_id: string;
+// 	createdAt: string;
+// 	updatedAt: string;
+// 	title: string;
+// 	description?: string;
+// 	thumbImage?: string;
+// 	bgImage?: string;
+// 	bgColor: string;
+// 	workspace?: string;
+// 	admins: string[];
+// 	settings: BoardSettings;
+// 	lists: List[];
+// 	starred: string[];
+// 	closed: boolean;
+// 	members: Member[];
+// 	tasks: ITaskWorkspaceField[];
+// }

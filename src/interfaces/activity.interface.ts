@@ -1,4 +1,4 @@
-import { IBase, IMember } from './root.interface';
+import { Base, Member } from './root.interface';
 
 export enum ActivityAction {
 	ADD = 'added',
@@ -22,10 +22,10 @@ export enum EntityType {
 	USER = 'user',
 }
 
-export interface IActivity extends IBase {
+export interface Activity extends Base {
 	board: string;
 	task?: string;
-	author: IMember;
+	author: Member;
 	action: ActivityAction;
 	entityId: string;
 	entityType: EntityType;

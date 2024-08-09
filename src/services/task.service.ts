@@ -1,16 +1,16 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
-import { IMemberDto } from '@/interfaces/root.interface';
+import { MemberDto } from '@/interfaces/root.interface';
 import {
-	ISubtask,
-	ITask,
-	ITaskCreate,
-	ITaskUpdGeneral,
-	ITaskUpdOrder,
+	Subtask,
+	Task,
+	TaskCreate,
+	TaskUpdGeneral,
+	TaskUpdOrder,
 } from '@/interfaces/tasks.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const taskService = {
-	async create(boardId: string, dto: ITaskCreate): Promise<ITask> {
+	async create(boardId: string, dto: TaskCreate): Promise<Task> {
 		return await apiRequest({
 			method: 'POST',
 			url: API_ROUTES.tasks.create(boardId),
@@ -18,21 +18,21 @@ export const taskService = {
 		});
 	},
 
-	async findById(taskId: string): Promise<ITask> {
+	async findById(taskId: string): Promise<Task> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.tasks.findById(taskId),
 		});
 	},
 
-	async findByUser(): Promise<ITask> {
+	async findByUser(): Promise<Task> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.tasks.findByUser,
 		});
 	},
 
-	async updGeneral(taskId: string, dto: ITaskUpdGeneral): Promise<ITask> {
+	async updGeneral(taskId: string, dto: TaskUpdGeneral): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.updGeneral(taskId),
@@ -40,7 +40,7 @@ export const taskService = {
 		});
 	},
 
-	async updOrder(boardId: string, dto: ITaskUpdOrder[]): Promise<ITask> {
+	async updOrder(boardId: string, dto: TaskUpdOrder[]): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.updOrder(boardId),
@@ -48,21 +48,21 @@ export const taskService = {
 		});
 	},
 
-	async complete(taskId: string): Promise<ITask> {
+	async complete(taskId: string): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.complete(taskId),
 		});
 	},
 
-	async archive(taskId: string): Promise<ITask> {
+	async archive(taskId: string): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.archive(taskId),
 		});
 	},
 
-	async addMember(taskId: string, dto: IMemberDto): Promise<ITask> {
+	async addMember(taskId: string, dto: MemberDto): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.addMember(taskId),
@@ -70,7 +70,7 @@ export const taskService = {
 		});
 	},
 
-	async removeMember(taskId: string, dto: IMemberDto): Promise<ITask> {
+	async removeMember(taskId: string, dto: MemberDto): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.removeMember(taskId),
@@ -78,7 +78,14 @@ export const taskService = {
 		});
 	},
 
-	async addSubtask(taskId: string, dto: ISubtask): Promise<ITask> {
+	async leave(taskId: string): Promise<Task> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.tasks.leave(taskId),
+		});
+	},
+
+	async addSubtask(taskId: string, dto: Subtask): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.addSubtask(taskId),
@@ -86,7 +93,7 @@ export const taskService = {
 		});
 	},
 
-	async updSubtask(taskId: string, dto: ISubtask): Promise<ITask> {
+	async updSubtask(taskId: string, dto: Subtask): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.updSubtask(taskId),
@@ -94,7 +101,7 @@ export const taskService = {
 		});
 	},
 
-	async delSubtask(taskId: string, dto: ISubtask): Promise<ITask> {
+	async delSubtask(taskId: string, dto: Subtask): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.delSubtask(taskId),

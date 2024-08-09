@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 
 import { REGEXP } from '@/constants/regexp.constants';
-import { IResetPassForm } from '@/interfaces/auth.interface';
+import { ResetPassForm } from '@/interfaces/auth.interface';
 
 export const getResetPasswordSchema = (
 	messages: IntlMessages['validation'],
-): Yup.ObjectSchema<IResetPassForm> => {
+): Yup.ObjectSchema<ResetPassForm> => {
 	return Yup.object().shape({
 		token: Yup.string().required(),
 

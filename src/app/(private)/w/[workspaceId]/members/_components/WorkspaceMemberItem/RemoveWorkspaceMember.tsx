@@ -6,13 +6,14 @@ import { useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 
-import { useWorkspaces } from '@/hooks/useWorkspaces';
+import { useWorkspaceMembers } from '@/hooks/useWorkspaceMembers';
 
 type RemoveWorkspaceMemberProps = {
 	userId: string;
 	userName: string;
 	workspaceId: string;
 	isCurrentUserAmin: boolean;
+	currentUserId: string;
 };
 
 export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
@@ -20,15 +21,24 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 	userName,
 	workspaceId,
 	isCurrentUserAmin,
+	currentUserId,
 }) => {
 	const t = useTranslations();
-	const { removeMember } = useWorkspaces();
+	const { removeMember, leave } = useWorkspaceMembers();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
+
+	const isCurrentUser = userId === currentUserId;
 
 	const remove = async () => {
 		const dto = { _id: userId, name: userName };
 
 		await removeMember({ workspaceId, dto });
+
+		setIsOpen(false);
+	};
+
+	const leaveWorkspace = async () => {
+		await leave(workspaceId);
 
 		setIsOpen(false);
 	};
@@ -44,19 +54,25 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 		>
 			<PopoverTrigger>
 				<Button
-					isDisabled={!isCurrentUserAmin}
-					variant="solid"
+					isDisabled={!isCurrentUserAmin && !isCurrentUser}
+					variant="ghost"
 					color="danger"
 					size="sm"
 					className="w-20"
 				>
-					{t('common.remove')}
+					{isCurrentUser ? t('common.leave') : t('common.remove')}
 				</Button>
 			</PopoverTrigger>
 
 			<PopoverContent className="p-2">
-				<Button variant="ghost" color="danger" size="md" radius="sm" onPress={remove}>
-					{t('workspace.remove_member')}
+				<Button
+					variant="ghost"
+					color="danger"
+					size="md"
+					radius="sm"
+					onPress={isCurrentUser ? leaveWorkspace : remove}
+				>
+					{isCurrentUser ? t('workspace.leave_ws') : t('workspace.remove_member')}
 				</Button>
 			</PopoverContent>
 		</Popover>

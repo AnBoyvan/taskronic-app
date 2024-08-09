@@ -1,16 +1,10 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
-import {
-	IBoard,
-	IBoardCompose,
-	IBoardOpen,
-	IBoardSettings,
-	IList,
-} from '@/interfaces/board.interface';
-import { IMemberDto } from '@/interfaces/root.interface';
+import { Board, BoardCompose, BoardOpen, BoardSettings, List } from '@/interfaces/board.interface';
+import { MemberDto } from '@/interfaces/root.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const boardService = {
-	async create(workspaceId: string, dto: IBoardCompose): Promise<IBoard> {
+	async create(workspaceId: string, dto: BoardCompose): Promise<Board> {
 		return await apiRequest({
 			method: 'POST',
 			url: API_ROUTES.boards.create(workspaceId),
@@ -18,21 +12,21 @@ export const boardService = {
 		});
 	},
 
-	async findOne(boardId: string): Promise<IBoard> {
+	async findOne(boardId: string): Promise<Board> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.boards.findOne(boardId),
 		});
 	},
 
-	async findByUser(): Promise<IBoard[]> {
+	async findByUser(): Promise<Board[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.boards.findByUser,
 		});
 	},
 
-	async updGeneral(boardId: string, dto: IBoardCompose): Promise<IBoard> {
+	async updGeneral(boardId: string, dto: BoardCompose): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.updGeneral(boardId),
@@ -40,7 +34,7 @@ export const boardService = {
 		});
 	},
 
-	async updSettings(boardId: string, dto: IBoardSettings): Promise<IBoard> {
+	async updSettings(boardId: string, dto: BoardSettings): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.updSettings(boardId),
@@ -48,14 +42,14 @@ export const boardService = {
 		});
 	},
 
-	async close(boardId: string): Promise<IBoard> {
+	async close(boardId: string): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.close(boardId),
 		});
 	},
 
-	async open(boardId: string, dto: IBoardOpen): Promise<IBoard> {
+	async open(boardId: string, dto: BoardOpen): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.open(boardId),
@@ -70,7 +64,7 @@ export const boardService = {
 		});
 	},
 
-	async addMember(boardId: string, dto: IMemberDto): Promise<IBoard> {
+	async addMember(boardId: string, dto: MemberDto): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.addMember(boardId),
@@ -78,7 +72,7 @@ export const boardService = {
 		});
 	},
 
-	async removeMember(boardId: string, dto: IMemberDto): Promise<IBoard> {
+	async removeMember(boardId: string, dto: MemberDto): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.removeMember(boardId),
@@ -86,7 +80,7 @@ export const boardService = {
 		});
 	},
 
-	async addAdmin(boardId: string, dto: IMemberDto): Promise<IBoard> {
+	async addAdmin(boardId: string, dto: MemberDto): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.addAdmin(boardId),
@@ -94,7 +88,14 @@ export const boardService = {
 		});
 	},
 
-	async removeAdmin(boardId: string, dto: IMemberDto): Promise<IBoard> {
+	async leave(boardId: string): Promise<Board> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.boards.leave(boardId),
+		});
+	},
+
+	async removeAdmin(boardId: string, dto: MemberDto): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.removeAdmin(boardId),
@@ -102,7 +103,7 @@ export const boardService = {
 		});
 	},
 
-	async addList(boardId: string, dto: IList): Promise<IBoard> {
+	async addList(boardId: string, dto: List): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.addList(boardId),
@@ -110,7 +111,7 @@ export const boardService = {
 		});
 	},
 
-	async updList(boardId: string, dto: IList): Promise<IBoard> {
+	async updList(boardId: string, dto: List): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.updList(boardId),
@@ -118,7 +119,7 @@ export const boardService = {
 		});
 	},
 
-	async listsOrder(boardId: string, dto: IList[]): Promise<IBoard> {
+	async listsOrder(boardId: string, dto: List[]): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.listsOrder(boardId),

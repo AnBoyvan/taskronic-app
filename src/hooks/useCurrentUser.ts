@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
-import { IUserUpd } from '@/interfaces/user.interface';
+import { UserUpd } from '@/interfaces/user.interface';
 import { userService } from '@/services/user.service';
 
 export const useCurrentUser = () => {
@@ -12,7 +12,7 @@ export const useCurrentUser = () => {
 
 	const user = data?.user;
 
-	const update = async (data: IUserUpd) => {
+	const update = async (data: UserUpd) => {
 		try {
 			const res = await userService.updGeneral(data);
 			if (res) {

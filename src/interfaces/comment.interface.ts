@@ -1,28 +1,28 @@
-import { IBase, IMember } from './root.interface';
+import { Base, Member } from './root.interface';
 
-export interface ICommentBase extends IBase {
+export interface CommentBase extends Base {
 	content: string;
-	author: IMember;
+	author: Member;
 	board: string;
 }
 
-export interface IComment extends ICommentBase {
+export interface Comment extends CommentBase {
 	task: {
 		_id: string;
 		title: string;
 	};
 }
 
-export interface ICommentField extends ICommentBase {
+export interface CommentField extends CommentBase {
 	task: string;
 }
 
-export interface ICommentCreate {
+export interface CommentCreate {
 	content: string;
 	board: string;
 	task: string;
 }
 
-export interface ICommentUpdate {
+export interface CommentUpdate {
 	content: string;
 }

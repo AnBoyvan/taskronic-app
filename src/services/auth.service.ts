@@ -1,18 +1,18 @@
 import { API_ROUTES } from '@/configs/apiRoutes.config';
 import {
+	ChangePassForm,
+	ForgotPassRequest,
 	GoogleAuth,
-	IChangePassForm,
-	IForgotPassRequest,
-	ILoginForm,
-	IRegisterForm,
-	IResetPassForm,
-	ITokens,
+	LoginForm,
+	RegisterForm,
+	ResetPassForm,
+	Tokens,
 } from '@/interfaces/auth.interface';
 import { apiRequestAuth } from '@/utils/api/apiRequesAuth';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const authService = {
-	async register(dto: IRegisterForm): Promise<void> {
+	async register(dto: RegisterForm): Promise<void> {
 		return await apiRequestAuth({
 			method: 'POST',
 			url: API_ROUTES.auth.register,
@@ -20,7 +20,7 @@ export const authService = {
 		});
 	},
 
-	async login(dto: ILoginForm): Promise<ITokens> {
+	async login(dto: LoginForm): Promise<Tokens> {
 		return await apiRequestAuth({
 			method: 'POST',
 			url: API_ROUTES.auth.login,
@@ -28,7 +28,7 @@ export const authService = {
 		});
 	},
 
-	async google(dto: GoogleAuth): Promise<ITokens> {
+	async google(dto: GoogleAuth): Promise<Tokens> {
 		return await apiRequestAuth({
 			method: 'POST',
 			url: API_ROUTES.auth.google,
@@ -36,7 +36,7 @@ export const authService = {
 		});
 	},
 
-	async passChange(dto: IChangePassForm): Promise<{ message: string }> {
+	async passChange(dto: ChangePassForm): Promise<{ message: string }> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.auth.passChange,
@@ -44,7 +44,7 @@ export const authService = {
 		});
 	},
 
-	async passRequest(dto: IForgotPassRequest): Promise<{ message: string }> {
+	async passRequest(dto: ForgotPassRequest): Promise<{ message: string }> {
 		return await apiRequestAuth({
 			method: 'PATCH',
 			url: API_ROUTES.auth.passRequest,
@@ -52,7 +52,7 @@ export const authService = {
 		});
 	},
 
-	async passReset(dto: IResetPassForm): Promise<{ message: string }> {
+	async passReset(dto: ResetPassForm): Promise<{ message: string }> {
 		return await apiRequestAuth({
 			method: 'PATCH',
 			url: API_ROUTES.auth.passReset,

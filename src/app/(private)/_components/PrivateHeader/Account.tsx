@@ -4,6 +4,8 @@ import { signOut } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
+import { useState } from 'react';
+
 import {
 	Dropdown,
 	DropdownItem,
@@ -26,6 +28,8 @@ import { ThemeSwitcher } from './ThemeSwitcher';
 import { WorkspaceSwitcher } from './WorkspaceSwitcher';
 
 export const Account: React.FC = () => {
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+
 	const router = useRouter();
 	const t = useTranslations();
 	const { user } = useCurrentUser();
@@ -34,7 +38,12 @@ export const Account: React.FC = () => {
 	if (!user) return null;
 
 	return (
-		<Dropdown closeOnSelect={false} className="w-52">
+		<Dropdown
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			closeOnSelect={false}
+			className="w-52"
+		>
 			<DropdownTrigger>
 				<UserAvatar
 					avatarName={user.avatarName}
@@ -76,7 +85,7 @@ export const Account: React.FC = () => {
 
 				<DropdownSection showDivider>
 					<DropdownItem aria-label={t('account.theme')} isReadOnly className="p-0">
-						<WorkspaceSwitcher />
+						<WorkspaceSwitcher onChange={setIsOpen} />
 					</DropdownItem>
 				</DropdownSection>
 
@@ -114,6 +123,7 @@ export const Account: React.FC = () => {
 
 				<DropdownSection className="mb-0">
 					<DropdownItem
+						aria-label={t('account.logout')}
 						color="danger"
 						className="text-danger"
 						endContent={<Icon name="LogOut" size={16} />}

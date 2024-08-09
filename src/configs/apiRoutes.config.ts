@@ -25,6 +25,7 @@ export const API_ROUTES = {
 		removeMember: (boardId: string) => `/boards/members/remove/${boardId}`,
 		addAdmin: (boardId: string) => `/boards/admins/add/${boardId}`,
 		removeAdmin: (boardId: string) => `/boards/admins/remove/${boardId}`,
+		leave: (boardId: string) => `/boards/leave/${boardId}`,
 		addList: (boardId: string) => `/boards/lists/add/${boardId}`,
 		updList: (boardId: string) => `/boards/lists/update/${boardId}`,
 		listsOrder: (boardId: string) => `/boards/lists/order/${boardId}`,
@@ -59,6 +60,7 @@ export const API_ROUTES = {
 		archive: (taskId: string) => `/tasks/update/archive/${taskId}`,
 		addMember: (taskId: string) => `/tasks/members/add/${taskId}`,
 		removeMember: (taskId: string) => `/tasks/members/remove/${taskId}`,
+		leave: (taskId: string) => `/tasks/members/leave/${taskId}`,
 		addSubtask: (taskId: string) => `/subtasks/add/${taskId}`,
 		updSubtask: (taskId: string) => `/subtasks/update/${taskId}`,
 		delSubtask: (taskId: string) => `/subtasks/delete/${taskId}`,
@@ -80,6 +82,7 @@ export const API_ROUTES = {
 		removeMember: (workspaceId: string) => `/workspaces/members/remove/${workspaceId}`,
 		addAdmin: (workspaceId: string) => `/workspaces/admins/add/${workspaceId}`,
 		removeAdmin: (workspaceId: string) => `/workspaces/admins/remove/${workspaceId}`,
+		leave: (workspaceId: string) => `/workspaces/leave/${workspaceId}`,
 		delete: (workspaceId: string) => `/workspaces/delete/${workspaceId}`,
 	},
 };

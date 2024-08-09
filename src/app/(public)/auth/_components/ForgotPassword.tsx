@@ -13,7 +13,7 @@ import { FormInput } from '@/components/ui/FormInput';
 import { Icon } from '@/components/ui/Icon';
 import { ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { IForgotPassRequest } from '@/interfaces/auth.interface';
+import { ForgotPassRequest } from '@/interfaces/auth.interface';
 
 export const ForgotPassword: React.FC = () => {
 	const t = useTranslations();
@@ -23,7 +23,7 @@ export const ForgotPassword: React.FC = () => {
 	const [success, setSuccess] = useState<string | undefined>(undefined);
 	const [error, setError] = useState<string | undefined>(undefined);
 
-	const { control, handleSubmit, reset } = useForm<IForgotPassRequest>({
+	const { control, handleSubmit, reset } = useForm<ForgotPassRequest>({
 		mode: 'onBlur',
 		defaultValues: {
 			email: '',
@@ -32,7 +32,7 @@ export const ForgotPassword: React.FC = () => {
 		resolver: yupResolver(forgotPasswordSchema),
 	});
 
-	const onSubmit: SubmitHandler<IForgotPassRequest> = async data => {
+	const onSubmit: SubmitHandler<ForgotPassRequest> = async data => {
 		startTransition(async () => {
 			const result = await forgotPassword(data);
 			if (result?.error) {

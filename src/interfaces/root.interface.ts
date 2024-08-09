@@ -1,12 +1,12 @@
 import { ColorVariant } from '@/styles/colorVariants';
 
-export interface IBase {
+export interface Base {
 	_id: string;
 	createdAt: string;
 	updatedAt: string;
 }
 
-export interface IMember {
+export interface Member {
 	_id: string;
 	name: string;
 	email: string;
@@ -14,12 +14,12 @@ export interface IMember {
 	avatarColor: ColorVariant;
 }
 
-export interface IMemberDto {
+export interface MemberDto {
 	_id: string;
 	name: string;
 }
 
-export interface ITableColumn {
+export interface TableColumn {
 	key: string;
 	label: TranslationKeys;
 }

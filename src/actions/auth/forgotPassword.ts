@@ -1,9 +1,9 @@
 'use server';
 
-import { IForgotPassRequest } from '@/interfaces/auth.interface';
+import { ForgotPassRequest } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
 
-export const forgotPassword = async (data: IForgotPassRequest) => {
+export const forgotPassword = async (data: ForgotPassRequest) => {
 	try {
 		await authService.passRequest(data);
 	} catch (error: any) {

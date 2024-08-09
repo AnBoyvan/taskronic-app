@@ -1,6 +1,6 @@
-import { IBase } from './root.interface';
+import { Base } from './root.interface';
 
-export interface IImage extends IBase {
+export interface BackgroundImage extends Base {
 	usplashId: string;
 	author: string;
 	link: string;

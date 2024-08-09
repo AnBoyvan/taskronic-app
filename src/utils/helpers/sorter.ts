@@ -1,7 +1,28 @@
 type Order = 'asc' | 'desc';
 
-export const sorter = <T>(array: T[], field: keyof T, order: Order = 'asc'): T[] => {
-	return array.sort((a, b) => {
+interface PriorityItem<T> {
+	field: keyof T;
+	value: any;
+}
+
+export const sorter = <T>(
+	array: T[],
+	field: keyof T,
+	order: Order = 'asc',
+	priorityItem?: PriorityItem<T>,
+): T[] => {
+	const prioritizedArray: T[] = [];
+
+	if (priorityItem) {
+		const priorityIndex = array.findIndex(item => item[priorityItem.field] === priorityItem.value);
+
+		if (priorityIndex !== -1) {
+			const [priorityObject] = array.splice(priorityIndex, 1);
+			prioritizedArray.push(priorityObject);
+		}
+	}
+
+	const sortedArray = array.sort((a, b) => {
 		const aValue = a[field];
 		const bValue = b[field];
 		const isDateField = field === 'createdAt' || field === 'updatedAt';
@@ -44,4 +65,6 @@ export const sorter = <T>(array: T[], field: keyof T, order: Order = 'asc'): T[]
 
 		return 0;
 	});
+
+	return [...prioritizedArray, ...sortedArray];
 };

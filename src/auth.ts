@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 
 import authConfig from '@/configs/auth.config';
-import { ITokens } from '@/interfaces/auth.interface';
+import { Tokens } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
 import { jwtDecode } from '@/utils/helpers/jwtDecode';
 
@@ -10,7 +10,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	session: { strategy: 'jwt' },
 	callbacks: {
 		async jwt({ token, user, trigger, session, account, profile }) {
-			let data: ITokens | null = null;
+			let data: Tokens | null = null;
 
 			if (trigger === 'signIn' && account?.provider === 'google') {
 				data = await authService.google({

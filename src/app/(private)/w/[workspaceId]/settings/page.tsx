@@ -1,3 +1,5 @@
+import { WorkspaceSettings } from './_components/WorkspaceSettings';
+
 export default function WorkspaceSettingsPage() {
-	return <section>WorkspaceSettingsPage</section>;
+	return <WorkspaceSettings />;
 }

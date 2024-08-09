@@ -20,11 +20,11 @@ import {
 import { Icon } from '@/components/ui/Icon';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
-import { IBoardWorkspaceField } from '@/interfaces/board.interface';
+import { BoardWorkspaceField } from '@/interfaces/board.interface';
 import { sorter } from '@/utils/helpers/sorter';
 
 type WorkspaceSidebarBoardsProps = {
-	boards: IBoardWorkspaceField[];
+	boards: BoardWorkspaceField[];
 	workspaceId: string;
 };
 
@@ -44,7 +44,7 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 	};
 
 	return (
-		<div className="flex flex-col overflow-hidden py-2">
+		<div className="h-full flex flex-col overflow-hidden py-2">
 			<div className="flex flex-row items-center justify-between px-2">
 				<span className="text-sm font-medium">{t('nav.boards')}:</span>
 				<Dropdown>

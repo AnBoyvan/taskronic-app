@@ -1,4 +1,4 @@
-import { IBase } from './root.interface';
+import { Base } from './root.interface';
 
 export enum NotePriority {
 	NO = 1,
@@ -8,17 +8,17 @@ export enum NotePriority {
 	CRITICAL = 5,
 }
 
-export interface IToDo {
+export interface ToDo {
 	_id: string;
 	label: string;
 	completed: boolean;
 }
 
-export interface INote extends IBase {
+export interface Note extends Base {
 	owner: string;
 	title: string;
 	content: string;
-	todos: IToDo[];
+	todos: ToDo[];
 	group?: string;
 	priority: NotePriority;
 	dueDate?: Date;
@@ -26,16 +26,16 @@ export interface INote extends IBase {
 	archived: boolean;
 }
 
-export interface INoteCreate {
+export interface NoteCreate {
 	title: string;
 	content?: string;
-	todos?: IToDo[];
+	todos?: ToDo[];
 	group?: string;
 	priority: NotePriority;
 	dueDate?: Date;
 }
 
-export interface INoteUpdate extends INoteCreate {
+export interface NoteUpdate extends NoteCreate {
 	closed?: boolean;
 	archived?: boolean;
 }

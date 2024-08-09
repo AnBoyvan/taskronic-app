@@ -1,12 +1,11 @@
-import { IMember } from '@/interfaces/root.interface';
-import { IWorkspace } from '@/interfaces/workspace.interface';
+import { Member } from '@/interfaces/root.interface';
+import { Workspace } from '@/interfaces/workspace.interface';
 
 type GetAllUsers = {
-	users: IMember[];
-	membersIds: string[];
+	(workspace: Workspace): { users: Member[]; membersIds: string[] };
 };
 
-export const getAllUsers = (workspace: IWorkspace): GetAllUsers => {
+export const getAllUsers: GetAllUsers = (workspace: Workspace) => {
 	const workspaceMembers = workspace.members;
 
 	const allBoardsMembers = workspace.boards.flatMap(board => board.members);
@@ -20,7 +19,7 @@ export const getAllUsers = (workspace: IWorkspace): GetAllUsers => {
 	});
 
 	const filteredUniqueMembers = uniqueMembers.filter(
-		(member): member is IMember => member !== undefined,
+		(member): member is Member => member !== undefined,
 	);
 
 	const workspaceMembersIds = workspaceMembers.map(member => member._id);

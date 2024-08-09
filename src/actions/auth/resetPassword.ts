@@ -1,9 +1,9 @@
 'use server';
 
-import { IResetPassForm } from '@/interfaces/auth.interface';
+import { ResetPassForm } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
 
-export const resetPassword = async (data: IResetPassForm) => {
+export const resetPassword = async (data: ResetPassForm) => {
 	try {
 		await authService.passReset(data);
 	} catch (error: any) {

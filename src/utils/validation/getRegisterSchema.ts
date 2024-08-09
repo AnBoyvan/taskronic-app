@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 
 import { REGEXP } from '@/constants/regexp.constants';
-import { IRegisterForm } from '@/interfaces/auth.interface';
+import { RegisterForm } from '@/interfaces/auth.interface';
 
 export const getRegisterSchema = (
 	messages: IntlMessages['validation'],
-): Yup.ObjectSchema<IRegisterForm> => {
+): Yup.ObjectSchema<RegisterForm> => {
 	return Yup.object().shape({
 		name: Yup.string().required(messages.name),
 

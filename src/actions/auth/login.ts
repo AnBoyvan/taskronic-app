@@ -1,9 +1,9 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { ILoginForm } from '@/interfaces/auth.interface';
+import { LoginForm } from '@/interfaces/auth.interface';
 
-export const login = async (data: ILoginForm) => {
+export const login = async (data: LoginForm) => {
 	try {
 		await signIn('credentials', { ...data, redirect: false });
 		return;

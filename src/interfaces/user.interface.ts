@@ -9,7 +9,7 @@ export interface IUser {
 	noteGroups: string[];
 }
 
-export interface IUserUpd {
+export interface UserUpd {
 	name: string;
 	avatarColor: ColorVariant;
 	noteGroups: string[];

@@ -6,10 +6,11 @@ import { Button, Card, Popover, PopoverContent, PopoverTrigger, User } from '@ne
 
 import { Icon } from '@/components/ui/Icon';
 import { useContacts } from '@/hooks/useContacts';
-import { IMember } from '@/interfaces/root.interface';
+import { Member } from '@/interfaces/root.interface';
+import { colorVariants } from '@/styles/colorVariants';
 
 type ContactProps = {
-	contact: IMember;
+	contact: Member;
 };
 
 export const Contact: React.FC<ContactProps> = ({ contact }) => {
@@ -33,7 +34,7 @@ export const Contact: React.FC<ContactProps> = ({ contact }) => {
 					size: 'sm',
 					name: contact.avatarName,
 					classNames: {
-						base: `${contact?.avatarColor}`,
+						base: `${colorVariants[contact.avatarColor]}`,
 					},
 				}}
 			/>

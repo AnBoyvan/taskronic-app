@@ -1,6 +1,6 @@
 import { IUser } from './user.interface';
 
-export interface IRegisterForm {
+export interface RegisterForm {
 	name: string;
 	email: string;
 	avatarColor?: string;
@@ -8,7 +8,7 @@ export interface IRegisterForm {
 	confirmPassword: string;
 }
 
-export interface ILoginForm {
+export interface LoginForm {
 	email: string;
 	password: string;
 }
@@ -18,14 +18,14 @@ export interface GoogleAuth {
 	name: string;
 	email: string;
 }
-export interface ITokens {
+export interface Tokens {
 	accessToken: string;
 }
 export interface jwtPayload extends IUser {
 	iat: number;
 }
 
-export interface IAccessToken {
+export interface AccessToken {
 	header: {
 		alg: string;
 		typ: string;
@@ -33,18 +33,18 @@ export interface IAccessToken {
 	payload: jwtPayload;
 }
 
-export interface IChangePassForm {
+export interface ChangePassForm {
 	password: string;
 	newPassword: string;
 	confirmNewPassword: string;
 }
 
-export interface IForgotPassRequest {
+export interface ForgotPassRequest {
 	email: string;
 	lang: string;
 }
 
-export interface IResetPassForm {
+export interface ResetPassForm {
 	token: string;
 	password: string;
 	confirmPassword: string;

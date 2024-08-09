@@ -1,4 +1,4 @@
-import { IMember } from '@/interfaces/root.interface';
+import { Member } from '@/interfaces/root.interface';
 
 export interface Filter {
 	search?: string;
@@ -6,11 +6,11 @@ export interface Filter {
 }
 
 interface FilterUser {
-	(users: IMember[], admins: string[], members: string[], filter: Filter): IMember[];
+	(users: Member[], admins: string[], members: string[], filter: Filter): Member[];
 }
 
 export const filterUsers: FilterUser = (users, admins, members, { search, role }) => {
-	let filtered: IMember[] = users;
+	let filtered: Member[] = users;
 
 	if (search) {
 		filtered = filtered.filter(m => m.name.toLowerCase().includes(search.toLowerCase()));

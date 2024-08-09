@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 
-import { useWorkspaces } from '@/hooks/useWorkspaces';
+import { useWorkspaceMembers } from '@/hooks/useWorkspaceMembers';
 
 type SetWorkspaceAdminProps = {
 	userId: string;
@@ -26,7 +26,7 @@ export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
 	isCurrentUserAmin,
 }) => {
 	const t = useTranslations();
-	const { addAdmin, removeAdmin } = useWorkspaces();
+	const { addAdmin, removeAdmin } = useWorkspaceMembers();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [admin, setAdmin] = useState<boolean>(false);
 
@@ -60,7 +60,7 @@ export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
 			<PopoverTrigger>
 				<Button
 					isDisabled={!isCurrentUserAmin || isGuest}
-					variant="solid"
+					variant="ghost"
 					color={admin ? 'warning' : 'default'}
 					size="sm"
 					className="w-20"

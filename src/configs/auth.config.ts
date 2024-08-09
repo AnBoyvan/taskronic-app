@@ -2,7 +2,7 @@ import { AuthError, NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import Google from 'next-auth/providers/google';
 
-import { ILoginForm } from '@/interfaces/auth.interface';
+import { LoginForm } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
 
 class customError extends AuthError {
@@ -33,7 +33,7 @@ export default {
 			},
 			async authorize(credentials) {
 				try {
-					const isILoginForm = (obj: any): obj is ILoginForm => {
+					const isILoginForm = (obj: any): obj is LoginForm => {
 						return obj && typeof obj.email === 'string' && typeof obj.password === 'string';
 					};
 

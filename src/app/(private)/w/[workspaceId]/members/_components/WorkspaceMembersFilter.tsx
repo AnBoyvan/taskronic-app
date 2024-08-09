@@ -6,8 +6,6 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { Input, Select, SelectItem, Tab, Tabs } from '@nextui-org/react';
 
-import { useMediaQuery } from 'usehooks-ts';
-
 import { Icon } from '@/components/ui/Icon';
 import { Filter } from '@/utils/helpers/filterUsers';
 
@@ -33,7 +31,6 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 	count,
 }) => {
 	const t = useTranslations();
-	const isDesktop = useMediaQuery('(min-width:1024px)');
 
 	const onSearchChange = (value: string) => {
 		setFilter({
@@ -78,11 +75,9 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 
 			<Tabs
 				variant="bordered"
-				size={isDesktop ? 'lg' : 'md'}
-				isVertical={isDesktop}
 				classNames={{
 					wrapper: 'lg:w-full',
-					tabList: 'h-10 lg:h-fit lg:w-full lg:p-2',
+					tabList: 'lg:flex-col h-10 lg:h-fit lg:w-full lg:p-2',
 				}}
 				className="hidden md:flex lg:w-full"
 				selectedKey={filter.role}

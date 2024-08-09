@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { Button, User } from '@nextui-org/react';
 
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { IBoardWorkspaceField } from '@/interfaces/board.interface';
-import { IMember } from '@/interfaces/root.interface';
+import { BoardWorkspaceField } from '@/interfaces/board.interface';
+import { Member } from '@/interfaces/root.interface';
 import { colorVariants } from '@/styles/colorVariants';
 
 import { MemberBoards } from './MemberBoards';
@@ -14,10 +14,10 @@ import { RemoveWorkspaceMember } from './RemoveWorkspaceMember';
 import { SetWorkspaceAdmin } from './SetWorkspaceAdmin';
 
 type WorkspaceMemberItemProps = {
-	member: IMember;
+	member: Member;
 	membersIds: string[];
 	admins: string[];
-	userBoards: IBoardWorkspaceField[];
+	userBoards: BoardWorkspaceField[];
 	workspaceId: string;
 	canInvite: boolean;
 };
@@ -69,7 +69,7 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 				/>
 				{isGuest ? (
 					<Button
-						variant="solid"
+						variant="ghost"
 						color="primary"
 						size="sm"
 						isDisabled={!isCurrentUserAmin && !canInvite}
@@ -87,6 +87,7 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 						isCurrentUserAmin={isCurrentUserAmin}
 						userId={member._id}
 						userName={name}
+						currentUserId={user?.sub!}
 					/>
 				)}
 			</div>

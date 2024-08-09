@@ -15,7 +15,7 @@ import { register } from '@/actions/auth/register';
 import { FormInput } from '@/components/ui/FormInput';
 import { AUTH_REDIRECT, ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { IRegisterForm } from '@/interfaces/auth.interface';
+import { RegisterForm } from '@/interfaces/auth.interface';
 
 export const Register: React.FC = () => {
 	const t = useTranslations();
@@ -25,7 +25,7 @@ export const Register: React.FC = () => {
 	const params = useSearchParams();
 	const callbackUrl = params.get('callbackUrl');
 
-	const { control, handleSubmit, reset } = useForm<IRegisterForm>({
+	const { control, handleSubmit, reset } = useForm<RegisterForm>({
 		mode: 'onBlur',
 		defaultValues: {
 			name: '',
@@ -36,7 +36,7 @@ export const Register: React.FC = () => {
 		resolver: yupResolver(registerSchema),
 	});
 
-	const onSubmit: SubmitHandler<IRegisterForm> = async data => {
+	const onSubmit: SubmitHandler<RegisterForm> = async data => {
 		startTransition(async () => {
 			const result = await register(data);
 			if (result) {
