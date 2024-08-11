@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { Button, Card, Popover, PopoverContent, PopoverTrigger, User } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
+import { colorVariants } from '@/constants/color-variants.constants';
 import { useContacts } from '@/hooks/useContacts';
 import { Member } from '@/interfaces/root.interface';
-import { colorVariants } from '@/styles/colorVariants';
 
 type ContactProps = {
 	contact: Member;

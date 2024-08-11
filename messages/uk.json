@@ -15,7 +15,7 @@
 	"nav": {
 		"navigation": "Навігація",
 		"boards": "Дошки",
-		"tasks": "Завдання",
+		"tasks": "Картки",
 		"notes": "Нотатки",
 		"calendar": "Календар",
 		"workspace": "Робочий простір"
@@ -91,8 +91,11 @@
 		"set_closed": "Дошку закрито",
 		"set_opened": "Дошка активна",
 		"removed": "Дошку видалено",
+		"starred": "Обрані дошки",
 		"starred_add": "Дошку додано до обраних",
-		"starred_remove": "Дошку вилучено із обраних"
+		"starred_remove": "Дошку вилучено із обраних",
+		"open_admin": "Тільки адміністратори можуть знову відкрити дошку",
+		"create": "Створити нову дошку"
 	},
 	"task": {
 		"task_not_found": "Картка не знайдена",
@@ -125,12 +128,19 @@
 		"updated": "Оновлено",
 		"leave": "Покинути",
 		"user_not_found": "Користувача не знайдено",
-		"warning": "Попередження"
+		"warning": "Попередження",
+		"show": "Показати",
+		"hide": "Приховати"
 	},
 	"sort": {
 		"by_name": "за ім’ям",
 		"by_title": "за назвою",
-		"by_newest": "за найновішими"
+		"by_newest": "за найновішими",
+		"by_title_asc": "За алфавітом А-Я",
+		"by_title_desc": "За алфавітом Я-А",
+		"by_created_asc": "Від найстаріших",
+		"by_created_desc": "Від найновіших",
+		"by_active": "Останні активні"
 	},
 	"roles": {
 		"all": "Всі",
@@ -152,13 +162,16 @@
 		"confirm_pass": "Підтвердьте пароль",
 		"new_pass": "Новий пароль",
 		"title": "Назва",
-		"sort": "Сортувати"
+		"sort": "Сортувати",
+		"search": "Пошук",
+		"closed": "Закриті"
 	},
 	"placeholder": {
 		"name": "John Doe",
 		"email": "john.doe@example.com",
 		"pass": "******",
 		"search": "Пошук",
+		"search_boards": "Пошук дощок",
 		"select": "Оберіть..."
 	},
 	"validation": {

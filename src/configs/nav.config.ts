@@ -8,7 +8,7 @@ export const dashboardNav: NavItemConfig[] = [
 	{
 		label: 'nav.boards',
 		value: ROUTES.BOARDS,
-		icon: 'Kanban',
+		icon: 'Trello',
 	},
 	{
 		label: 'nav.tasks',
@@ -31,7 +31,7 @@ export const workspaceNav = (_id: string): NavItemConfig[] => [
 	{
 		label: 'nav.boards',
 		value: `${ROUTES.WORKSPACE}/${_id}`,
-		icon: 'Kanban',
+		icon: 'Trello',
 	},
 	{
 		label: 'common.members',

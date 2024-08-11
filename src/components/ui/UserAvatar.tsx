@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef } from 'react';
 
 import { Avatar, AvatarProps } from '@nextui-org/react';
 
-import { ColorVariant, colorVariants } from '@/styles/colorVariants';
+import { ColorVariant, colorVariants } from '@/constants/color-variants.constants';
 
 interface UserAvatarProps extends AvatarProps {
 	avatarName: string;

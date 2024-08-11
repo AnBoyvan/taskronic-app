@@ -1,4 +1,4 @@
-import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { API_ROUTES } from '@/configs/api-routes.config';
 import { Note, NoteCreate, NoteUpdate } from '@/interfaces/note.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 

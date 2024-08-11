@@ -1,4 +1,4 @@
-import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { API_ROUTES } from '@/configs/api-routes.config';
 import { Activity } from '@/interfaces/activity.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 

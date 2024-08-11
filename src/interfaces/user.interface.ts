@@ -1,4 +1,4 @@
-import { ColorVariant } from '@/styles/colorVariants';
+import { ColorVariant } from '@/constants/color-variants.constants';
 
 export interface IUser {
 	sub: string;

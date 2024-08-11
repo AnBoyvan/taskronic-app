@@ -1,4 +1,4 @@
-import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { API_ROUTES } from '@/configs/api-routes.config';
 import { MemberDto } from '@/interfaces/root.interface';
 import {
 	Subtask,

@@ -1,4 +1,4 @@
-import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { API_ROUTES } from '@/configs/api-routes.config';
 import {
 	ChangePassForm,
 	ForgotPassRequest,

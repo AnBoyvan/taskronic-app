@@ -1,3 +1,5 @@
+import { BoardColor } from '@/constants/board-colors.constants';
+
 import { Base, Member } from './root.interface';
 import { TaskBoardField, TaskWorkspaceField } from './tasks.interface';
 
@@ -23,7 +25,7 @@ export interface BoardBase extends Base {
 	description?: string;
 	thumbImage?: string;
 	bgImage?: string;
-	bgColor: string;
+	bgColor: BoardColor;
 	workspace?: string;
 	admins: string[];
 	settings: BoardSettings;
@@ -52,29 +54,10 @@ export interface BoardCompose {
 	description?: string;
 	thumbImage?: string;
 	bgImage?: string;
-	bgColor?: string;
+	bgColor?: BoardColor;
 	private: boolean;
 }
 
 export interface BoardOpen {
 	workspaceId: string;
 }
-
-// interface Board {
-// 	_id: string;
-// 	createdAt: string;
-// 	updatedAt: string;
-// 	title: string;
-// 	description?: string;
-// 	thumbImage?: string;
-// 	bgImage?: string;
-// 	bgColor: string;
-// 	workspace?: string;
-// 	admins: string[];
-// 	settings: BoardSettings;
-// 	lists: List[];
-// 	starred: string[];
-// 	closed: boolean;
-// 	members: Member[];
-// 	tasks: ITaskWorkspaceField[];
-// }

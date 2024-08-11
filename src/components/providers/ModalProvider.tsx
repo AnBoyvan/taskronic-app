@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 
 import { ContactsModal } from '@/components/modals/ContactsModal';
 
+import { CreateModal } from '../modals/CreateModal';
+
 export const ModalProvider = () => {
 	const [mounted, setMounted] = useState(false);
 
@@ -18,6 +20,7 @@ export const ModalProvider = () => {
 	return (
 		<>
 			<ContactsModal />
+			<CreateModal />
 		</>
 	);
 };

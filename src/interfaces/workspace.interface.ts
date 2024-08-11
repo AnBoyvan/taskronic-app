@@ -1,6 +1,6 @@
-import { IconName } from '@/components/ui/Icon';
 import { Locale } from '@/configs/i18n.config';
-import { ColorVariant } from '@/styles/colorVariants';
+import { ColorVariant } from '@/constants/color-variants.constants';
+import { WorkspaceIcon } from '@/constants/workspace-icons.constants';
 
 import { BoardWorkspaceField } from './board.interface';
 import { Base, Member } from './root.interface';
@@ -16,7 +16,7 @@ export interface WorkspaceBase extends Base {
 	name: string;
 	description: string;
 	avatarColor: ColorVariant;
-	avatarIcon: IconName;
+	avatarIcon: WorkspaceIcon;
 	admins: string[];
 	settings: WorkspaceSettings;
 }
@@ -34,7 +34,7 @@ export interface WorkspaceField extends WorkspaceBase {
 export interface WorkspaceCompose {
 	name: string;
 	description?: string;
-	avatarIcon: string;
+	avatarIcon: WorkspaceIcon;
 	avatarColor: ColorVariant;
 }
 

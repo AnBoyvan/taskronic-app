@@ -3,13 +3,14 @@ import { ForwardedRef, forwardRef } from 'react';
 
 import { Avatar, AvatarProps } from '@nextui-org/react';
 
-import { ColorVariant, colorVariants } from '@/styles/colorVariants';
+import { ColorVariant, colorVariants } from '@/constants/color-variants.constants';
+import { WorkspaceIcon } from '@/constants/workspace-icons.constants';
 
-import { Icon, IconName } from './Icon';
+import { Icon } from './Icon';
 
 interface WorkspaceBadgeProps {
 	name: string;
-	avatarIcon: IconName;
+	avatarIcon: WorkspaceIcon;
 	avatarColor: ColorVariant;
 	medium?: boolean;
 	large?: boolean;

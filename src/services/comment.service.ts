@@ -1,4 +1,4 @@
-import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { API_ROUTES } from '@/configs/api-routes.config';
 import { Comment, CommentCreate, CommentUpdate } from '@/interfaces/comment.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 

@@ -4,10 +4,10 @@ import { useTranslations } from 'next-intl';
 
 import { Button, User } from '@nextui-org/react';
 
+import { colorVariants } from '@/constants/color-variants.constants';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { BoardWorkspaceField } from '@/interfaces/board.interface';
 import { Member } from '@/interfaces/root.interface';
-import { colorVariants } from '@/styles/colorVariants';
 
 import { MemberBoards } from './MemberBoards';
 import { RemoveWorkspaceMember } from './RemoveWorkspaceMember';

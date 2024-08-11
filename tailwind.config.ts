@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
-import { colorVariants } from './src/styles/colorVariants';
+import { boardColors } from './src/constants/board-colors.constants';
+import { colorVariants } from './src/constants/color-variants.constants';
 import { createStyleSafeList } from './src/utils/helpers/createStyleSafeList';
 
 const { nextui } = require('@nextui-org/react');
@@ -15,11 +16,16 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
 	],
-	safelist: [...createStyleSafeList(colorVariants)],
+	safelist: [...createStyleSafeList(colorVariants), ...createStyleSafeList(boardColors)],
 	darkMode: 'class',
 	plugins: [
 		nextui({
-			addCommonColors: true,
+			// addCommonColors: true,
+			layout: {
+				fontSize: {
+					'10': '0.625rem',
+				},
+			},
 			themes: {
 				light: {
 					colors: {

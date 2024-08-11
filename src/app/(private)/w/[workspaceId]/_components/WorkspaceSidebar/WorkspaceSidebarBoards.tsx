@@ -13,11 +13,10 @@ import {
 	DropdownTrigger,
 	Listbox,
 	ListboxItem,
-	Select,
-	SelectItem,
 } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
+import { SortBy, SortingVariant } from '@/components/ui/SortBy';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
 import { BoardWorkspaceField } from '@/interfaces/board.interface';
@@ -35,9 +34,15 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 	const t = useTranslations();
 	const router = useRouter();
 
-	const [sortBy, setSortBy] = useState<'title' | 'createdAt'>('createdAt');
+	const [sortBy, setSortBy] = useState<SortingVariant>({
+		field: 'createdAt',
+		order: 'desc',
+		label: 'sort.by_created_desc',
+	});
 
-	const sortedBoards = sorter(boards, sortBy, sortBy === 'createdAt' ? 'desc' : 'asc');
+	const onlyActive = boards.filter(board => !board.closed);
+
+	const sortedBoards = sorter(onlyActive, sortBy.field as keyof BoardWorkspaceField, sortBy.order);
 
 	const onBoardSelect = (boardId: string) => {
 		router.push(`${ROUTES.WORKSPACE}/${workspaceId}/${boardId}`);
@@ -55,23 +60,7 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 					</DropdownTrigger>
 					<DropdownMenu>
 						<DropdownItem aria-label={t('label.sort')} closeOnSelect={false} isReadOnly>
-							<Select
-								labelPlacement="outside"
-								label={t('label.sort')}
-								placeholder={t('placeholder.select')}
-								disallowEmptySelection
-								selectedKeys={[sortBy]}
-								selectionMode="single"
-								variant="bordered"
-								onSelectionChange={({ currentKey }) => setSortBy(currentKey as any)}
-							>
-								<SelectItem key="title" textValue={t('sort.by_title')}>
-									{t('sort.by_title')}
-								</SelectItem>
-								<SelectItem key="createdAt" textValue={t('sort.by_newest')}>
-									{t('sort.by_newest')}
-								</SelectItem>
-							</Select>
+							<SortBy current={sortBy} setCurrent={setSortBy} />
 						</DropdownItem>
 					</DropdownMenu>
 				</Dropdown>

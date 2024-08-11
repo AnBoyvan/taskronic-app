@@ -19,9 +19,9 @@ import { Icon } from '@/components/ui/Icon';
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { dashboardNav } from '@/configs/nav.config';
 import { ROUTES } from '@/configs/routes.config';
+import { colorVariants } from '@/constants/color-variants.constants';
 import { useContactsModal } from '@/hooks/useContactsModal';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { colorVariants } from '@/styles/colorVariants';
 
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';

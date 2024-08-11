@@ -15,7 +15,7 @@
 	"nav": {
 		"navigation": "Navigaton",
 		"boards": "Boards",
-		"tasks": "Tasks",
+		"tasks": "Cards",
 		"notes": "Notes",
 		"calendar": "Calendar",
 		"workspace": "Workspace"
@@ -91,8 +91,11 @@
 		"set_closed": "Board closed",
 		"set_opened": "Board is active",
 		"removed": "Board removed",
+		"starred": "Starred boards",
 		"starred_add": "Board added to starred",
-		"starred_remove": "Board removed from starred"
+		"starred_remove": "Board removed from starred",
+		"open_admin": "Only admins can reopen",
+		"create": "Create new board"
 	},
 	"task": {
 		"task_not_found": "Card not found",
@@ -125,12 +128,19 @@
 		"updated": "Updated",
 		"leave": "Leave",
 		"user_not_found": "User not found",
-		"warning": "Warning"
+		"warning": "Warning",
+		"show": "Show",
+		"hide": "Hide"
 	},
 	"sort": {
 		"by_name": "by name",
 		"by_title": "by name",
-		"by_newest": "by newest"
+		"by_newest": "by newest",
+		"by_title_asc": "Alphabetically A-Z",
+		"by_title_desc": "Alphabetically Z-A",
+		"by_created_asc": "Oldest first",
+		"by_created_desc": "Newest first",
+		"by_active": "Last ctive"
 	},
 	"roles": {
 		"all": "All",
@@ -152,13 +162,16 @@
 		"confirm_pass": "Confirm password",
 		"new_pass": "New password",
 		"title": "Name",
-		"sort": "Sort"
+		"sort": "Sort",
+		"search": "Search",
+		"closed": "Closed"
 	},
 	"placeholder": {
 		"name": "John Doe",
 		"email": "john.doe@example.com",
 		"pass": "******",
 		"search": "Search",
+		"search_boards": "Search boards",
 		"select": "Select..."
 	},
 	"validation": {

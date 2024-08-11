@@ -1,4 +1,4 @@
-import { API_ROUTES } from '@/configs/apiRoutes.config';
+import { API_ROUTES } from '@/configs/api-routes.config';
 import { Board, BoardCompose, BoardOpen, BoardSettings, List } from '@/interfaces/board.interface';
 import { MemberDto } from '@/interfaces/root.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
@@ -31,6 +31,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.updGeneral(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -39,6 +40,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.updSettings(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -46,6 +48,7 @@ export const boardService = {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.close(boardId),
+			revalidate: 'board',
 		});
 	},
 
@@ -69,6 +72,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.addMember(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -77,6 +81,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.removeMember(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -85,13 +90,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.addAdmin(boardId),
 			data: dto,
-		});
-	},
-
-	async leave(boardId: string): Promise<Board> {
-		return await apiRequest({
-			method: 'PATCH',
-			url: API_ROUTES.boards.leave(boardId),
+			revalidate: 'board',
 		});
 	},
 
@@ -100,6 +99,15 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.removeAdmin(boardId),
 			data: dto,
+			revalidate: 'board',
+		});
+	},
+
+	async leave(boardId: string): Promise<Board> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.boards.leave(boardId),
+			revalidate: 'board',
 		});
 	},
 
@@ -108,6 +116,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.addList(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -116,6 +125,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.updList(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -124,6 +134,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.listsOrder(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 };
