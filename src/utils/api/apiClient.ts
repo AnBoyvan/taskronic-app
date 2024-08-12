@@ -1,7 +1,9 @@
 import axios, { type CreateAxiosDefaults } from 'axios';
 
+import { ENV } from '@/configs/env.config';
+
 const options: CreateAxiosDefaults = {
-	baseURL: process.env.API_URL,
+	baseURL: ENV.apiUrl,
 	headers: {
 		'Content-Type': 'application/json',
 	},

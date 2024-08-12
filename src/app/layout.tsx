@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 
 import { Toaster } from 'sonner';
 
+import { ENV } from '@/configs/env.config';
 import { APP_NAME, SITE_DESCRIPTION } from '@/constants/seo.constants';
 import '@/styles/globals.css';
 
@@ -22,7 +23,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ''),
+	metadataBase: new URL(ENV.baseUrl),
 	icons: {
 		icon: favicon.src,
 	},
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
 		],
 		description: SITE_DESCRIPTION,
 		type: 'website',
-		url: process.env.NEXT_PUBLIC_BASE_URL,
+		url: ENV.baseUrl,
 		siteName: APP_NAME,
 	},
 };
@@ -65,7 +66,7 @@ export default async function RootLayout({
 				<Suspense fallback={<div>Loading...</div>}>
 					<NextIntlClientProvider messages={messages}>
 						<Providers>
-							<div className="h-svh max-h-svh overflow-y-clip flex flex-col">{children}</div>
+							<div className="h-svh max-h-svh overflow-y-hidden flex flex-col">{children}</div>
 							<Toaster
 								position="top-right"
 								expand={true}

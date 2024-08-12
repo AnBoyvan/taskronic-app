@@ -1,4 +1,4 @@
-import { TaskBoardField, TaskWorkspaceField } from '@/interfaces/tasks.interface';
+import { TaskBoardField, TaskWorkspaceField } from '@/types/tasks.interface';
 
 export const getTasksQuantity = (
 	tasks: TaskWorkspaceField[] | TaskBoardField[],

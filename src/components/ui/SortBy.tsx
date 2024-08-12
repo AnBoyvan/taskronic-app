@@ -2,24 +2,12 @@ import { useTranslations } from 'next-intl';
 
 import { Select, SelectItem, SelectProps, SharedSelection } from '@nextui-org/react';
 
-export type SortingVariant = {
-	field: string;
-	order: 'asc' | 'desc';
-	label: TranslationKeys;
-};
+import { SortingVariant, sortingVariants } from '@/configs/sorting-variants.config';
 
 interface SortByProps extends Partial<SelectProps> {
 	current: SortingVariant;
 	setCurrent: (value: SortingVariant) => void;
 }
-
-const sortingVariants: SortingVariant[] = [
-	{ field: 'updatedAt', order: 'desc', label: 'sort.by_active' },
-	{ field: 'title', order: 'asc', label: 'sort.by_title_asc' },
-	{ field: 'title', order: 'desc', label: 'sort.by_title_desc' },
-	{ field: 'createdAt', order: 'desc', label: 'sort.by_created_desc' },
-	{ field: 'createdAt', order: 'asc', label: 'sort.by_created_asc' },
-];
 
 export const SortBy: React.FC<SortByProps> = ({ current, setCurrent, ...props }) => {
 	const t = useTranslations();

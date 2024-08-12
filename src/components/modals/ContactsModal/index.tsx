@@ -9,8 +9,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { Icon } from '@/components/ui/Icon';
 import { useContactsModal } from '@/hooks/useContactsModal';
-import { Member } from '@/interfaces/root.interface';
 import { userService } from '@/services/user.service';
+import { Member } from '@/types/root.interface';
 
 import { Contact } from './Contact';
 import { ContactsSkeleton } from './ContactsSkeleton';

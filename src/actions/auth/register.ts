@@ -1,7 +1,7 @@
 'use server';
 
-import { RegisterForm } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
+import { RegisterForm } from '@/types/auth.interface';
 
 import { login } from './login';
 

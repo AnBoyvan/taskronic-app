@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 import { REGEXP } from '@/constants/regexp.constants';
-import { ResetPassForm } from '@/interfaces/auth.interface';
+import { ResetPassForm } from '@/types/auth.interface';
 
 export const getResetPasswordSchema = (
 	messages: IntlMessages['validation'],

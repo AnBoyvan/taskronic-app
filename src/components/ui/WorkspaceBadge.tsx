@@ -8,14 +8,14 @@ import { WorkspaceIcon } from '@/constants/workspace-icons.constants';
 
 import { Icon } from './Icon';
 
-interface WorkspaceBadgeProps {
+type WorkspaceBadgeProps = {
 	name: string;
 	avatarIcon: WorkspaceIcon;
 	avatarColor: ColorVariant;
 	medium?: boolean;
 	large?: boolean;
 	avatarProps?: AvatarProps;
-}
+};
 
 export const WorkspaceBadge = forwardRef(
 	(

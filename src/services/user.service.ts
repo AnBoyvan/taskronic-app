@@ -1,6 +1,6 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Member } from '@/interfaces/root.interface';
-import { IUser, UserUpd } from '@/interfaces/user.interface';
+import { Member } from '@/types/root.interface';
+import { IUser, UserUpd } from '@/types/user.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const userService = {

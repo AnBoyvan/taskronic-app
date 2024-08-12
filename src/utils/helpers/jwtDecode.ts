@@ -2,11 +2,12 @@ import { JWT } from 'next-auth/jwt';
 
 import jwt from 'jsonwebtoken';
 
-import { Tokens, jwtPayload } from '@/interfaces/auth.interface';
+import { ENV } from '@/configs/env.config';
+import { Token, jwtPayload } from '@/types/auth.interface';
 
-const JWT_SECRET = process.env.AUTH_SECRET || '';
+const JWT_SECRET = ENV.authSecret;
 
-export const jwtDecode = (tokens: Tokens): JWT => {
+export const jwtDecode = (tokens: Token): JWT => {
 	const { iat, ...rest } = jwt.verify(tokens.accessToken, JWT_SECRET) as jwtPayload;
 
 	return {

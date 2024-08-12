@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache';
 
-import { Board } from '@/interfaces/board.interface';
-import { Task } from '@/interfaces/tasks.interface';
+import { Board } from '@/types/board.interface';
+import { Task } from '@/types/tasks.interface';
 
 import { apiClient } from './apiClient';
 import { apiErrorTranslate } from './apiErrorTranslate';

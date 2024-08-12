@@ -1,7 +1,7 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { LoginForm } from '@/interfaces/auth.interface';
+import { LoginForm } from '@/types/auth.interface';
 
 export const login = async (data: LoginForm) => {
 	try {

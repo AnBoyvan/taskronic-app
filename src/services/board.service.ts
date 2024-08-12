@@ -1,6 +1,6 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Board, BoardCompose, BoardOpen, BoardSettings, List } from '@/interfaces/board.interface';
-import { MemberDto } from '@/interfaces/root.interface';
+import { Board, BoardCompose, BoardOpen, BoardSettings, List } from '@/types/board.interface';
+import { MemberDto } from '@/types/root.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const boardService = {

@@ -2,16 +2,18 @@
 
 import axios, { type CreateAxiosDefaults } from 'axios';
 
-import { apiErrorTranslate } from './apiErrorTranslate';
+import { ENV } from '@/configs/env.config';
 
-const options: CreateAxiosDefaults = {
-	baseURL: process.env.API_URL,
-};
+import { apiErrorTranslate } from './apiErrorTranslate';
 
 type RequestConfig = {
 	method: 'GET' | 'POST' | 'PATCH' | 'DELETE';
 	url: string;
 	data?: any;
+};
+
+const options: CreateAxiosDefaults = {
+	baseURL: ENV.apiUrl,
 };
 
 const apiClientAuth = axios.create(options);

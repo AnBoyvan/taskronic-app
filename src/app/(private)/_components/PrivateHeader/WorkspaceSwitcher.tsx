@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
@@ -9,8 +9,8 @@ import { Select, SelectedItems, Selection, SelectItem, Skeleton } from '@nextui-
 
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { ROUTES } from '@/configs/routes.config';
-import { useFetchWorkspaces } from '@/hooks/useFetchWorkspaces';
-import { Workspace } from '@/interfaces/workspace.interface';
+import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { Workspace } from '@/types/workspace.interface';
 
 interface WorkspaceSwitcherProps {
 	onChange: Dispatch<SetStateAction<boolean>>;
@@ -19,10 +19,8 @@ interface WorkspaceSwitcherProps {
 export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({ onChange }) => {
 	const t = useTranslations();
 	const router = useRouter();
-	const { workspaceId } = useParams<{ workspaceId: string }>();
+	const { workspaces, current, isLoading } = useWorkspacesList();
 	const [selected, setSelected] = useState<string>('');
-
-	const { data } = useFetchWorkspaces();
 
 	const onWorkspaceSelect = (keys: Selection) => {
 		const selected = Array.from(keys).join(', ');
@@ -31,16 +29,16 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({ onChange }
 	};
 
 	useEffect(() => {
-		if (workspaceId) {
-			setSelected(workspaceId);
+		if (current) {
+			setSelected(current._id);
 		}
-	}, [workspaceId]);
+	}, [current]);
 
 	return (
 		<>
-			{data ? (
+			{!isLoading ? (
 				<Select
-					items={data}
+					items={workspaces}
 					aria-label="workspace"
 					variant="flat"
 					selectedKeys={[selected]}

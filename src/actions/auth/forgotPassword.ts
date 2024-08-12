@@ -1,7 +1,7 @@
 'use server';
 
-import { ForgotPassRequest } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
+import { ForgotPassRequest } from '@/types/auth.interface';
 
 export const forgotPassword = async (data: ForgotPassRequest) => {
 	try {

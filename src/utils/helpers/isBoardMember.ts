@@ -1,4 +1,4 @@
-import { Board, BoardWorkspaceField } from '@/interfaces/board.interface';
+import { Board, BoardWorkspaceField } from '@/types/board.interface';
 
 interface IsBoardMember {
 	(board: BoardWorkspaceField | Board, userId: string): boolean;

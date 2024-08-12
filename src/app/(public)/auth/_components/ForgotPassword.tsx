@@ -13,7 +13,7 @@ import { FormInput } from '@/components/ui/FormInput';
 import { Icon } from '@/components/ui/Icon';
 import { ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { ForgotPassRequest } from '@/interfaces/auth.interface';
+import { ForgotPassRequest } from '@/types/auth.interface';
 
 export const ForgotPassword: React.FC = () => {
 	const t = useTranslations();

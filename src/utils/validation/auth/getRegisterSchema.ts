@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 import { REGEXP } from '@/constants/regexp.constants';
-import { RegisterForm } from '@/interfaces/auth.interface';
+import { RegisterForm } from '@/types/auth.interface';
 
 export const getRegisterSchema = (
 	messages: IntlMessages['validation'],

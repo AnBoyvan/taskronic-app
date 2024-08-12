@@ -7,7 +7,7 @@ import { Button, Card, Popover, PopoverContent, PopoverTrigger, User } from '@ne
 import { Icon } from '@/components/ui/Icon';
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useContacts } from '@/hooks/useContacts';
-import { Member } from '@/interfaces/root.interface';
+import { Member } from '@/types/root.interface';
 
 type ContactProps = {
 	contact: Member;

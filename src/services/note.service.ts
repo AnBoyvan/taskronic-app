@@ -1,5 +1,5 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Note, NoteCreate, NoteUpdate } from '@/interfaces/note.interface';
+import { Note, NoteCreate, NoteUpdate } from '@/types/note.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const noteService = {

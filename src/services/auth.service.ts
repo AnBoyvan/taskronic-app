@@ -6,8 +6,8 @@ import {
 	LoginForm,
 	RegisterForm,
 	ResetPassForm,
-	Tokens,
-} from '@/interfaces/auth.interface';
+	Token,
+} from '@/types/auth.interface';
 import { apiRequestAuth } from '@/utils/api/apiRequesAuth';
 import { apiRequest } from '@/utils/api/apiRequest';
 
@@ -20,7 +20,7 @@ export const authService = {
 		});
 	},
 
-	async login(dto: LoginForm): Promise<Tokens> {
+	async login(dto: LoginForm): Promise<Token> {
 		return await apiRequestAuth({
 			method: 'POST',
 			url: API_ROUTES.auth.login,
@@ -28,7 +28,7 @@ export const authService = {
 		});
 	},
 
-	async google(dto: GoogleAuth): Promise<Tokens> {
+	async google(dto: GoogleAuth): Promise<Token> {
 		return await apiRequestAuth({
 			method: 'POST',
 			url: API_ROUTES.auth.google,

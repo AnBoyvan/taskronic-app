@@ -7,7 +7,7 @@ import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { workspaceNav } from '@/configs/nav.config';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { Workspace } from '@/interfaces/workspace.interface';
+import { Workspace } from '@/types/workspace.interface';
 
 type WorkspacesListProps = {
 	workspaces: Workspace[];

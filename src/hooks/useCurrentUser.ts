@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
-import { UserUpd } from '@/interfaces/user.interface';
 import { userService } from '@/services/user.service';
+import { UserUpd } from '@/types/user.interface';
 
 export const useCurrentUser = () => {
 	const { data, update: updSession } = useSession();

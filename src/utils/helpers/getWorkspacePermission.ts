@@ -1,4 +1,4 @@
-import { Workspace, WorkspacePermissions } from '@/interfaces/workspace.interface';
+import { Workspace, WorkspacePermissions } from '@/types/workspace.interface';
 
 type GetWorkspacePermissions = {
 	(workspace: Workspace, userId: string): WorkspacePermissions;

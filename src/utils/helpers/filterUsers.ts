@@ -1,12 +1,12 @@
-import { Member } from '@/interfaces/root.interface';
+import { Member } from '@/types/root.interface';
 
-export interface Filter {
+export type UsersFilter = {
 	search?: string;
 	role: 'all' | 'members' | 'admins' | 'guests';
-}
+};
 
 interface FilterUser {
-	(users: Member[], admins: string[], members: string[], filter: Filter): Member[];
+	(users: Member[], admins: string[], members: string[], filter: UsersFilter): Member[];
 }
 
 export const filterUsers: FilterUser = (users, admins, members, { search, role }) => {

@@ -15,7 +15,7 @@ import { register } from '@/actions/auth/register';
 import { FormInput } from '@/components/ui/FormInput';
 import { AUTH_REDIRECT, ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { RegisterForm } from '@/interfaces/auth.interface';
+import { RegisterForm } from '@/types/auth.interface';
 
 export const Register: React.FC = () => {
 	const t = useTranslations();

@@ -1,4 +1,4 @@
-import { IImage } from '@/interfaces/image.interface';
+import { IImage } from '@/types/image.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const imageService = {

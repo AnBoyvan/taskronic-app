@@ -1,11 +1,11 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { MemberDto } from '@/interfaces/root.interface';
+import { MemberDto } from '@/types/root.interface';
 import {
 	Workspace,
 	WorkspaceCompose,
 	WorkspaceInvite,
 	WorkspaceSettings,
-} from '@/interfaces/workspace.interface';
+} from '@/types/workspace.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const workspaceService = {

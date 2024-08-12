@@ -1,6 +1,6 @@
 import 'next-auth/jwt';
 
-import { IUser } from '@/interfaces/user.interface';
+import { IUser } from '@/types/user.interface';
 
 declare module 'next-auth' {
 	interface User {

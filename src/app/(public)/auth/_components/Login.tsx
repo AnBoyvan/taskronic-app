@@ -15,7 +15,7 @@ import { login } from '@/actions/auth/login';
 import { FormInput } from '@/components/ui/FormInput';
 import { AUTH_REDIRECT, ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { LoginForm } from '@/interfaces/auth.interface';
+import { LoginForm } from '@/types/auth.interface';
 
 export const Login: React.FC = () => {
 	const t = useTranslations();

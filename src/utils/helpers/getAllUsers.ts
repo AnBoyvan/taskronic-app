@@ -1,5 +1,5 @@
-import { Member } from '@/interfaces/root.interface';
-import { Workspace } from '@/interfaces/workspace.interface';
+import { Member } from '@/types/root.interface';
+import { Workspace } from '@/types/workspace.interface';
 
 type GetAllUsers = {
 	(workspace: Workspace): { users: Member[]; membersIds: string[] };

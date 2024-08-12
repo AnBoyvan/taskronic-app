@@ -1,5 +1,5 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Activity } from '@/interfaces/activity.interface';
+import { Activity } from '@/types/activity.type';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const activityService = {

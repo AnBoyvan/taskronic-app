@@ -19,7 +19,7 @@ import { Icon } from '@/components/ui/Icon';
 import { SortBy, SortingVariant } from '@/components/ui/SortBy';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
-import { BoardWorkspaceField } from '@/interfaces/board.interface';
+import { BoardWorkspaceField } from '@/types/board.interface';
 import { sorter } from '@/utils/helpers/sorter';
 
 type WorkspaceSidebarBoardsProps = {

@@ -14,7 +14,7 @@ import { FormInput } from '@/components/ui/FormInput';
 import { Icon } from '@/components/ui/Icon';
 import { ROUTES } from '@/configs/routes.config';
 import { useValidation } from '@/hooks/useValidation';
-import { ResetPassForm } from '@/interfaces/auth.interface';
+import { ResetPassForm } from '@/types/auth.interface';
 
 export const ResetPassword: React.FC = () => {
 	const t = useTranslations();

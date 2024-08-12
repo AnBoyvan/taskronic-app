@@ -2,8 +2,10 @@ import { AuthError, NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import Google from 'next-auth/providers/google';
 
-import { LoginForm } from '@/interfaces/auth.interface';
 import { authService } from '@/services/auth.service';
+import { LoginForm } from '@/types/auth.interface';
+
+import { ENV } from './env.config';
 
 class customError extends AuthError {
 	constructor(message: string) {
@@ -15,8 +17,8 @@ class customError extends AuthError {
 export default {
 	providers: [
 		Google({
-			clientId: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			clientId: ENV.googleClientId,
+			clientSecret: ENV.googleClientSecret,
 		}),
 		Credentials({
 			credentials: {

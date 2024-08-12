@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 import { REGEXP } from '@/constants/regexp.constants';
-import type { LoginForm } from '@/interfaces/auth.interface';
+import type { LoginForm } from '@/types/auth.interface';
 
 export const getLoginSchema = (
 	messages: IntlMessages['validation'],

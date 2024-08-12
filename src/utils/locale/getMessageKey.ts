@@ -1,6 +1,10 @@
 import { AbstractIntlMessages } from 'next-intl';
 
-export const getMessageKey = (msg: string, messages: AbstractIntlMessages): string | null => {
+type GetMessageKey = {
+	(msg: string, messages: AbstractIntlMessages): string | null;
+};
+
+export const getMessageKey: GetMessageKey = (msg, messages) => {
 	for (const key in messages) {
 		if (typeof messages[key] === 'object') {
 			const result = getMessageKey(msg, messages[key]);

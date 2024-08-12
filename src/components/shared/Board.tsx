@@ -10,7 +10,7 @@ import { Card, CardBody, CardFooter, CardProps, Chip, Tooltip } from '@nextui-or
 import { ROUTES } from '@/configs/routes.config';
 import { boardColors } from '@/constants/board-colors.constants';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { Board as BoardType, BoardWorkspaceField } from '@/interfaces/board.interface';
+import { Board as BoardType, BoardWorkspaceField } from '@/types/board.interface';
 
 import { StarredSwitcher } from '../ui/StarredSwitcher';
 

@@ -5,8 +5,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { ROUTES } from '@/configs/routes.config';
-import { WorkspaceCompose, WorkspaceSettings } from '@/interfaces/workspace.interface';
 import { workspaceService } from '@/services/workspace.service';
+import { WorkspaceCompose, WorkspaceSettings } from '@/types/workspace.interface';
 
 export const useWorkspaceEdit = () => {
 	const queryClient = useQueryClient();

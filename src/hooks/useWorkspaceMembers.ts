@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
-import { MemberDto } from '@/interfaces/root.interface';
-import { WorkspaceInvite } from '@/interfaces/workspace.interface';
 import { workspaceService } from '@/services/workspace.service';
+import { MemberDto } from '@/types/root.interface';
+import { WorkspaceInvite } from '@/types/workspace.interface';
 
 type MemberServiceProps = {
 	workspaceId: string;

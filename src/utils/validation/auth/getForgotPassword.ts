@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 import { REGEXP } from '@/constants/regexp.constants';
-import type { ForgotPassRequest } from '@/interfaces/auth.interface';
+import type { ForgotPassRequest } from '@/types/auth.interface';
 
 export const getForgotPasswordSchema = (
 	messages: IntlMessages['validation'],

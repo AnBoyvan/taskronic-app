@@ -1,5 +1,5 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Invite } from '@/interfaces/workspace.interface';
+import { Invite } from '@/types/workspace.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const inviteService = {

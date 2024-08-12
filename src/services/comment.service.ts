@@ -1,5 +1,5 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Comment, CommentCreate, CommentUpdate } from '@/interfaces/comment.interface';
+import { Comment, CommentCreate, CommentUpdate } from '@/types/comment.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const commentService = {
