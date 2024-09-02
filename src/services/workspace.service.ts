@@ -36,6 +36,8 @@ export const workspaceService = {
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.updGeneral(workspaceId),
 			data: dto,
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
@@ -44,6 +46,8 @@ export const workspaceService = {
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.updSettings(workspaceId),
 			data: dto,
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
@@ -57,11 +61,44 @@ export const workspaceService = {
 		});
 	},
 
+	async addRequest(workspaceId: string): Promise<Workspace> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.workspaces.addRequest(workspaceId),
+		});
+	},
+
+	async acceptRequest(workspaceId: string, userId: string): Promise<Workspace> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.workspaces.acceptRequest(workspaceId),
+			data: {
+				userId,
+			},
+			revalidate: 'workspace',
+			workspaceId,
+		});
+	},
+
+	async declineRequest(workspaceId: string, userId: string): Promise<Workspace> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.workspaces.declineRequest(workspaceId),
+			data: {
+				userId,
+			},
+			revalidate: 'workspace',
+			workspaceId,
+		});
+	},
+
 	async removeMember(workspaceId: string, dto: MemberDto): Promise<Workspace> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.removeMember(workspaceId),
 			data: dto,
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
@@ -70,6 +107,8 @@ export const workspaceService = {
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.addAdmin(workspaceId),
 			data: dto,
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
@@ -78,6 +117,8 @@ export const workspaceService = {
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.removeAdmin(workspaceId),
 			data: dto,
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
@@ -85,6 +126,8 @@ export const workspaceService = {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.workspaces.leave(workspaceId),
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 

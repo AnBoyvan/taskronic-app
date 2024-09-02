@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-
 import { Link, Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react';
 
 import { Logo } from '@/components/svg/Logo';
@@ -8,9 +6,9 @@ import { AUTH_REDIRECT } from '@/configs/routes.config';
 
 import { Account } from './Account';
 import { CreateButton } from './CreateButton';
+import { Notifications } from './Notifications';
 
 export const PrivateHeader: React.FC = () => {
-	const t = useTranslations();
 	return (
 		<Navbar
 			isBlurred
@@ -36,6 +34,7 @@ export const PrivateHeader: React.FC = () => {
 			</NavbarContent>
 
 			<NavbarContent justify="end" className="gap-2">
+				<Notifications />
 				<Account />
 			</NavbarContent>
 		</Navbar>

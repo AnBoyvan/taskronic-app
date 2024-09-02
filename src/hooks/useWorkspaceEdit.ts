@@ -12,7 +12,7 @@ export const useWorkspaceEdit = () => {
 	const queryClient = useQueryClient();
 	const router = useRouter();
 
-	const { mutate: create } = useMutation({
+	const create = useMutation({
 		mutationFn: (dto: WorkspaceCompose) => workspaceService.create(dto),
 		mutationKey: ['workspaces-create'],
 		onSuccess: () => {
@@ -23,7 +23,7 @@ export const useWorkspaceEdit = () => {
 		},
 	});
 
-	const { mutate: updGeneral } = useMutation({
+	const updGeneral = useMutation({
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceCompose }) =>
 			workspaceService.updGeneral(workspaceId, dto),
 		mutationKey: ['workspaces-update-general'],
@@ -35,7 +35,7 @@ export const useWorkspaceEdit = () => {
 		},
 	});
 
-	const { mutate: updSettings } = useMutation({
+	const updSettings = useMutation({
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceSettings }) =>
 			workspaceService.updSettings(workspaceId, dto),
 		mutationKey: ['workspaces-settings'],
@@ -48,7 +48,7 @@ export const useWorkspaceEdit = () => {
 		},
 	});
 
-	const { mutate: remove } = useMutation({
+	const remove = useMutation({
 		mutationFn: (workspaceId: string) => workspaceService.delete(workspaceId),
 		mutationKey: ['workspaces-remove'],
 		onSettled: () => {

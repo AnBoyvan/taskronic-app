@@ -31,11 +31,11 @@ export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
 	const adminToggle = async () => {
 		const dto = { _id: userId, name: userName };
 		if (admin) {
-			await removeAdmin({ workspaceId, dto });
+			await removeAdmin.mutate({ workspaceId, dto });
 		}
 
 		if (!admin) {
-			await addAdmin({ workspaceId, dto });
+			await addAdmin.mutate({ workspaceId, dto });
 		}
 
 		setAdmin(!admin);

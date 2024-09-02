@@ -7,6 +7,7 @@ import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { workspaceNav } from '@/configs/nav.config';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useInviteModal } from '@/hooks/useInviteModal';
 import { Workspace } from '@/types/workspace.interface';
 
 type WorkspacesListProps = {
@@ -17,13 +18,14 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 	const router = useRouter();
 	const t = useTranslations();
 	const { user } = useCurrentUser();
+	const modal = useInviteModal();
 
 	return (
 		<Accordion
 			variant="light"
 			isCompact
 			showDivider={false}
-			className="px-0 overflow-y-scroll overflow-x-hidden w-full h-full"
+			className="px-0 overflow-y-auto overflow-x-hidden w-full h-full"
 			itemClasses={{
 				content: 'p-0',
 			}}
@@ -70,8 +72,7 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 											className="h-7"
 											isIconOnly
 											onPress={() => {
-												// TODO:
-												console.log('ADD MEMBER');
+												modal.onOpen(w);
 											}}
 										>
 											<Icon name="Plus" size={16} />

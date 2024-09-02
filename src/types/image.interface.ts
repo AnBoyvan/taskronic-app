@@ -7,3 +7,11 @@ export interface BackgroundImage extends Base {
 	thumb: string;
 	full: string;
 }
+
+export interface ImageDto {
+	usplashId: string;
+	author: string;
+	link: string;
+	thumb: string;
+	full: string;
+}

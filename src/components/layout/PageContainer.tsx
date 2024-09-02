@@ -5,6 +5,7 @@ interface PageContainerProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	smallPadding?: boolean;
 	scroll?: boolean;
+	title?: string;
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({
@@ -12,6 +13,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 	className,
 	smallPadding,
 	scroll,
+	title,
 	...props
 }) => {
 	return (
@@ -19,11 +21,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 			className={clsx(
 				'w-full flex flex-col ',
 				className ? className : '',
-				scroll ? 'overflow-scroll' : '',
-				smallPadding ? 'p-2' : 'px-4 lg:px-8',
+				scroll ? 'overflow-auto' : '',
+				smallPadding ? 'p-2' : 'p-4 lg:p-8',
 			)}
 			{...props}
 		>
+			{title && <h1 className="self-start text-xl font-medium">{title}</h1>}
 			{children}
 		</div>
 	);

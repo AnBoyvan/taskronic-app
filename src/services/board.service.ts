@@ -1,5 +1,12 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
-import { Board, BoardCompose, BoardOpen, BoardSettings, List } from '@/types/board.interface';
+import {
+	Board,
+	BoardCompose,
+	BoardOpen,
+	BoardSettings,
+	CreateListDto,
+	List,
+} from '@/types/board.interface';
 import { MemberDto } from '@/types/root.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
@@ -111,7 +118,7 @@ export const boardService = {
 		});
 	},
 
-	async addList(boardId: string, dto: List): Promise<Board> {
+	async addList(boardId: string, dto: CreateListDto): Promise<Board> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.addList(boardId),
@@ -135,6 +142,15 @@ export const boardService = {
 			url: API_ROUTES.boards.listsOrder(boardId),
 			data: dto,
 			revalidate: 'board',
+		});
+	},
+
+	async deleteBoard(boardId: string, workspaceId?: string): Promise<{ message: string }> {
+		return await apiRequest({
+			method: 'DELETE',
+			url: API_ROUTES.boards.delete(boardId),
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 };

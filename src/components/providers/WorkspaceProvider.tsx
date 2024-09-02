@@ -12,7 +12,6 @@ import { defaultWorkspacePermissions, useWorkspacesList } from '@/hooks/useWorks
 import { workspaceService } from '@/services/workspace.service';
 import { IUser } from '@/types/user.interface';
 import { Workspace } from '@/types/workspace.interface';
-import { getWorkspacePermissions } from '@/utils/helpers/getWorkspacePermission';
 
 type WorkspaceProviderProps = {
 	initial?: Workspace[];
@@ -21,13 +20,12 @@ type WorkspaceProviderProps = {
 
 export const WorkspaceProvider: React.FC<WorkspaceProviderProps> = ({ initial, user }) => {
 	const { workspaceId } = useParams<{ workspaceId: string }>();
-	const { workspaces, setIsLoading, setWorkspaces, setCurrent } = useWorkspacesList();
+	const { current, setIsLoading, setWorkspaces, setCurrent } = useWorkspacesList();
 
 	const { data, isFetching, error } = useQuery({
 		queryKey: ['workspaces'],
 		queryFn: workspaceService.findAll,
 		initialData: initial,
-
 		staleTime: 1000 * 60,
 	});
 
@@ -44,17 +42,10 @@ export const WorkspaceProvider: React.FC<WorkspaceProviderProps> = ({ initial, u
 			setWorkspaces(data);
 		}
 
-		if (workspaceId && user) {
-			const current = data?.find(({ _id }) => _id === workspaceId);
-
-			if (current) {
-				const permissions = getWorkspacePermissions(current, user.sub);
-				setCurrent(current, permissions);
-			} else {
-				setCurrent(null, defaultWorkspacePermissions);
-			}
+		if (current && !workspaceId) {
+			setCurrent(null, defaultWorkspacePermissions);
 		}
-	}, [data, isFetching, workspaceId, user, setIsLoading, setWorkspaces, setCurrent]);
+	}, [data, isFetching, workspaceId, user, setIsLoading, setWorkspaces, setCurrent, current]);
 
 	return null;
 };

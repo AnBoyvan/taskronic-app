@@ -5,10 +5,11 @@ import { useTranslations } from 'next-intl';
 import { Button, User } from '@nextui-org/react';
 
 import { colorVariants } from '@/constants/color-variants.constants';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useInviteModal } from '@/hooks/useInviteModal';
 import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { BoardWorkspaceField } from '@/types/board.interface';
 import { Member } from '@/types/root.interface';
-import { getAllUsers } from '@/utils/helpers/getAllUsers';
+import { WorkspacePermissions } from '@/types/workspace.interface';
 import { isBoardMember } from '@/utils/helpers/isBoardMember';
 
 import { MemberBoards } from './MemberBoards';
@@ -18,23 +19,30 @@ import { SetWorkspaceAdmin } from './SetWorkspaceAdmin';
 type WorkspaceMemberItemProps = {
 	member: Member;
 	admins: string[];
+	membersIds: string[];
+	boards: BoardWorkspaceField[];
+	permissions: WorkspacePermissions;
+	workspaceId: string;
+	currentUserId?: string;
 };
 
-export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({ member, admins }) => {
+export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
+	member,
+	admins,
+	membersIds,
+	boards,
+	permissions,
+	workspaceId,
+	currentUserId,
+}) => {
 	const t = useTranslations();
-	const {
-		current,
-		permissions: { invite, isAdmin },
-	} = useWorkspacesList();
-	const { user } = useCurrentUser();
+	const modal = useInviteModal();
+	const { current } = useWorkspacesList();
 
 	const { _id, name, email, avatarName, avatarColor } = member;
+	const { invite, isAdmin } = permissions;
 
-	if (!current) return null;
-
-	const { membersIds } = getAllUsers(current);
-
-	const memberBoards = current.boards.filter(board => isBoardMember(board, member._id));
+	const memberBoards = boards.filter(board => isBoardMember(board, member._id));
 	const isMemberAdmin = Boolean(admins.includes(member._id));
 	const isGuest = Boolean(!membersIds.includes(member._id));
 
@@ -53,13 +61,13 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({ member
 			/>
 			<div className="flex flex-row gap-4 justify-between items-center">
 				<MemberBoards
-					workspaceId={current._id}
+					workspaceId={workspaceId}
 					userId={member._id}
 					userBoards={memberBoards}
 					isAdmin={isAdmin}
 				/>
 				<SetWorkspaceAdmin
-					workspaceId={current._id}
+					workspaceId={workspaceId}
 					isAdmin={isAdmin}
 					userId={_id}
 					userName={name}
@@ -73,19 +81,20 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({ member
 						isDisabled={!invite}
 						className="w-20"
 						onPress={() => {
-							// TODO:
-							console.log('INVITE');
+							if (current) {
+								modal.onOpen(current, [email]);
+							}
 						}}
 					>
 						{t('workspace.invite')}
 					</Button>
 				) : (
 					<RemoveWorkspaceMember
-						workspaceId={current._id}
+						workspaceId={workspaceId}
 						isAdmin={isAdmin}
 						userId={_id}
 						userName={name}
-						currentUserId={user?.sub!}
+						currentUserId={currentUserId}
 					/>
 				)}
 			</div>

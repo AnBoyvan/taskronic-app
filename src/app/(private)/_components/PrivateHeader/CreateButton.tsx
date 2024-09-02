@@ -9,19 +9,25 @@ import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@
 import { useMediaQuery } from 'usehooks-ts';
 
 import { Icon } from '@/components/ui/Icon';
+import { createButtonConfig } from '@/configs/create-button.config';
+import { CreateVariant, useCreateModal } from '@/hooks/useCreateModal';
 
 export const CreateButton: React.FC = () => {
 	const t = useTranslations();
 	const isMobile = useMediaQuery('(max-width:640px)');
 	const [isMounted, setIsMounted] = useState<boolean>(false);
 
+	const modal = useCreateModal();
+
+	const createNew = (variant: CreateVariant) => {
+		modal.onOpen(variant);
+	};
+
 	useEffect(() => {
 		setIsMounted(true);
 	});
 
 	if (!isMounted) return null;
-
-	// TODO:
 
 	return (
 		<Dropdown>
@@ -38,8 +44,14 @@ export const CreateButton: React.FC = () => {
 			</DropdownTrigger>
 
 			<DropdownMenu aria-label={t('common.create')}>
-				<DropdownItem key="1">1</DropdownItem>
-				<DropdownItem key="2">2</DropdownItem>
+				{createButtonConfig.map(({ variant, label, icon }) => (
+					<DropdownItem
+						key={variant}
+						title={t(label)}
+						startContent={<Icon name={icon} />}
+						onPress={() => createNew(variant)}
+					/>
+				))}
 			</DropdownMenu>
 		</Dropdown>
 	);

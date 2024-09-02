@@ -16,9 +16,10 @@ import {
 } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
-import { SortBy, SortingVariant } from '@/components/ui/SortBy';
+import { SortBy } from '@/components/ui/SortBy';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
+import { SortingVariant } from '@/configs/sorting-variants.config';
 import { BoardWorkspaceField } from '@/types/board.interface';
 import { sorter } from '@/utils/helpers/sorter';
 
@@ -66,7 +67,7 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 				</Dropdown>
 			</div>
 			<Listbox
-				className="flex flex-col overflow-y-scroll gap-2"
+				className="flex flex-col overflow-y-auto gap-2"
 				emptyContent={t('workspace.no_boards')}
 				aria-label={t('nav.boards')}
 			>

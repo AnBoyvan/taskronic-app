@@ -24,11 +24,13 @@ export interface WorkspaceBase extends Base {
 export interface Workspace extends WorkspaceBase {
 	members: Member[];
 	boards: BoardWorkspaceField[];
+	requests: Member[];
 }
 
 export interface WorkspaceField extends WorkspaceBase {
 	members: string[];
 	boards: string[];
+	requests: string[];
 }
 
 export type WorkspaceCompose = {
@@ -38,13 +40,12 @@ export type WorkspaceCompose = {
 	avatarColor: ColorVariant;
 };
 
-export interface Invite {
+export interface Invite extends Base {
 	email: string;
 	workspaceId: string;
 	workspaceName: string;
 	authorId: string;
 	authorName: string;
-	addToContacts: boolean;
 	invitation?: string;
 }
 
@@ -52,7 +53,7 @@ export type WorkspaceInvite = {
 	email: string;
 	invitation?: string;
 	lang: Locale;
-	addToContacts: boolean;
+	link?: string;
 };
 
 export interface WorkspacePermissions extends WorkspaceSettings {

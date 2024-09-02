@@ -29,6 +29,7 @@ export const API_ROUTES = {
 		addList: (boardId: string) => `/boards/lists/add/${boardId}`,
 		updList: (boardId: string) => `/boards/lists/update/${boardId}`,
 		listsOrder: (boardId: string) => `/boards/lists/order/${boardId}`,
+		delete: (boardId: string) => `/boards/delete/${boardId}`,
 	},
 	comments: {
 		create: '/comments/create',
@@ -64,6 +65,7 @@ export const API_ROUTES = {
 		addSubtask: (taskId: string) => `/subtasks/add/${taskId}`,
 		updSubtask: (taskId: string) => `/subtasks/update/${taskId}`,
 		delSubtask: (taskId: string) => `/subtasks/delete/${taskId}`,
+		delete: (taskId: string) => `/tasks/delete/${taskId}`,
 	},
 	users: {
 		updGeneral: 'users/update/general',
@@ -80,6 +82,9 @@ export const API_ROUTES = {
 		updSettings: (workspaceId: string) => `/workspaces/update/settings/${workspaceId}`,
 		invite: (workspaceId: string) => `/workspaces/members/invite/${workspaceId}`,
 		removeMember: (workspaceId: string) => `/workspaces/members/remove/${workspaceId}`,
+		addRequest: (workspaceId: string) => `/workspaces/request/add/${workspaceId}`,
+		acceptRequest: (workspaceId: string) => `/workspaces/request/accept/${workspaceId}`,
+		declineRequest: (workspaceId: string) => `/workspaces/request/decline/${workspaceId}`,
 		addAdmin: (workspaceId: string) => `/workspaces/admins/add/${workspaceId}`,
 		removeAdmin: (workspaceId: string) => `/workspaces/admins/remove/${workspaceId}`,
 		leave: (workspaceId: string) => `/workspaces/leave/${workspaceId}`,

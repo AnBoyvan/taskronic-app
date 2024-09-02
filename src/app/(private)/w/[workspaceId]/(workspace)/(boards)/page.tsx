@@ -1,74 +1,25 @@
-'use client';
+import { notFound } from 'next/navigation';
 
-import { useTranslations } from 'next-intl';
+import { workspaceService } from '@/services/workspace.service';
+import { Workspace } from '@/types/workspace.interface';
+import { fetcher } from '@/utils/helpers/fetcher';
 
-import { useMemo, useState } from 'react';
+import { WorkspaceTitle } from '../../_components/WorkspaceTitle';
+import { WorkspaceBoards } from './_components/WorkspaceBoards';
 
-import { PageContainer } from '@/components/layout/PageContainer';
-import { Section } from '@/components/layout/Section';
-import { Board } from '@/components/shared/Board';
-import { BoardListWrapper } from '@/components/shared/BoardListWrapper';
-import { CreateBoardButton } from '@/components/shared/CreateBoardButton';
-import { useCreateModal } from '@/hooks/useCreateModal';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
-import { BoardWorkspaceField } from '@/types/board.interface';
-import { sorter } from '@/utils/helpers/sorter';
+export default async function WorkspaceBoardsPage({
+	params,
+}: Readonly<{
+	params: { workspaceId: string };
+}>) {
+	const { data } = await fetcher<Workspace>(workspaceService.findById(params.workspaceId));
 
-import { WorkspaceBoardsFilter } from './_components/WorkspaceBoardsFilter';
-
-export default function WorkspaceBoardsPage() {
-	const t = useTranslations();
-	const modal = useCreateModal();
-
-	const [filter, setFilter] = useState<WorkspaceBoardsFilter>({
-		sortBy: {
-			field: 'createdAt',
-			order: 'desc',
-			label: 'sort.by_created_desc',
-		},
-		search: '',
-		closed: 'hide',
-	});
-
-	const { current, permissions } = useWorkspacesList();
-
-	const filteredBoards = useMemo(() => {
-		if (!current) return [];
-
-		const sortedBoards = sorter(
-			current.boards,
-			filter.sortBy.field as keyof BoardWorkspaceField,
-			filter.sortBy.order,
-		);
-
-		const showHidden = sortedBoards.filter(({ closed }) =>
-			filter.closed === 'hide' ? !closed : true,
-		);
-
-		const searched = showHidden.filter(({ title }) =>
-			title.toLowerCase().includes(filter.search.toLowerCase()),
-		);
-
-		return searched;
-	}, [current?.boards, filter]);
-
-	const createNewBoard = () => {
-		modal.onOpen('board', current?._id);
-	};
+	if (!data) return notFound();
 
 	return (
-		<PageContainer scroll>
-			<Section title={t('nav.boards')}>
-				<WorkspaceBoardsFilter filter={filter} setFilter={setFilter} />
-			</Section>
-			<Section>
-				<BoardListWrapper>
-					<CreateBoardButton isDisabled={!permissions.createBoard} onPress={createNewBoard} />
-					{filteredBoards.map(board => (
-						<Board key={board._id} board={board} isWorkspaceAdmin={permissions.isAdmin} />
-					))}
-				</BoardListWrapper>
-			</Section>
-		</PageContainer>
+		<div className="w-full overflow-x-hidden">
+			<WorkspaceTitle workspace={data} />
+			<WorkspaceBoards workspace={data} />
+		</div>
 	);
 }

@@ -2,14 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useState } from 'react';
-
-import { Modal, ModalContent } from '@nextui-org/react';
+import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
 
 import { useCreateModal } from '@/hooks/useCreateModal';
 
-import { CreateBoard } from './CreateBoard';
-import { CreateWorkspace } from './CreateWorkspace';
+import { CreateBoardModal } from './components/CreateBoard';
+import { CreateWorkspaceModal } from './components/CreateWorkspace';
 
 export const CreateModal: React.FC = () => {
 	const t = useTranslations();
@@ -19,13 +17,26 @@ export const CreateModal: React.FC = () => {
 		onClose: state.onClose,
 	}));
 
-	const [search, setSearch] = useState<string>('');
-
 	return (
-		<Modal isOpen={isOpen} onOpenChange={onClose} placement="center" closeButton>
-			<ModalContent className="flex-col justify-start p-4 gap-4 h-96">
-				{variant === 'workspace' && <CreateWorkspace />}
-				{variant === 'board' && <CreateBoard />}
+		<Modal
+			size="sm"
+			isOpen={isOpen}
+			onOpenChange={onClose}
+			placement="center"
+			closeButton
+			backdrop="blur"
+		>
+			<ModalContent className="flex-col justify-start p-2 gap-4">
+				<ModalHeader className="justify-center py-0 px-6 text-center">
+					{variant === 'workspace' && t('workspace.new')}
+					{variant === 'workspace-edit' && t('workspace.editing')}
+					{variant === 'board' && t('board.new')}
+				</ModalHeader>
+				<ModalBody className="p-0">
+					{variant === 'workspace' && <CreateWorkspaceModal />}
+					{variant === 'workspace-edit' && <CreateWorkspaceModal isEditing />}
+					{variant === 'board' && <CreateBoardModal />}
+				</ModalBody>
 			</ModalContent>
 		</Modal>
 	);

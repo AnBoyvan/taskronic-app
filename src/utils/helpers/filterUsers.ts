@@ -13,7 +13,11 @@ export const filterUsers: FilterUser = (users, admins, members, { search, role }
 	let filtered: Member[] = users;
 
 	if (search) {
-		filtered = filtered.filter(m => m.name.toLowerCase().includes(search.toLowerCase()));
+		filtered = filtered.filter(
+			m =>
+				m.name.toLowerCase().includes(search.toLowerCase()) ||
+				m.email.toLowerCase().includes(search.toLowerCase()),
+		);
 	}
 
 	if (role === 'members') {

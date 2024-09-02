@@ -16,7 +16,14 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
 	],
-	safelist: [...createStyleSafeList(colorVariants), ...createStyleSafeList(boardColors)],
+	safelist: [
+		...createStyleSafeList(colorVariants),
+		...createStyleSafeList(boardColors),
+		'text-[#3f3f46]',
+		'text-[#e4e4e7]',
+		'text-[#fafafa]',
+		'text-[#27272A]',
+	],
 	darkMode: 'class',
 	plugins: [
 		nextui({

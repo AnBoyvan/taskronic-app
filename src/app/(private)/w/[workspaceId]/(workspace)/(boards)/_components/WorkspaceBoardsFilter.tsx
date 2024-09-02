@@ -51,7 +51,7 @@ export const WorkspaceBoardsFilter: React.FC<WorkspaceMembersFilterProps> = ({
 	};
 
 	return (
-		<div className="flex w-full flex-col md:flex-row gap-4 justify-between items-start md:items-center mt-2 lg:mt-4">
+		<div className="flex w-full flex-col md:flex-row gap-4 justify-between items-start md:items-center">
 			<div className="flex w-full flex-col md:flex-row gap-4 items-start md:items-center">
 				<SortBy
 					current={filter.sortBy}

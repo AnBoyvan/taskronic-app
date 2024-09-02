@@ -4,10 +4,12 @@ import { useTranslations } from 'next-intl';
 
 import { Dispatch, SetStateAction } from 'react';
 
-import { Input, Select, SelectItem, Tab, Tabs } from '@nextui-org/react';
+import { Select, SelectItem, Tab, Tabs } from '@nextui-org/react';
 
-import { Icon } from '@/components/ui/Icon';
+import { Member } from '@/types/root.interface';
 import { UsersFilter } from '@/utils/helpers/filterUsers';
+
+import { WorkspaceMembersRequests } from './WorkspaceMembersRequests';
 
 type WorkspaceMembersFilterProps = {
 	filter: UsersFilter;
@@ -17,6 +19,8 @@ type WorkspaceMembersFilterProps = {
 		members: number;
 		guests: number;
 	};
+	requests: Member[];
+	workspaceId: string;
 };
 
 const roles: { value: 'all' | 'members' | 'guests'; label: TranslationKeys }[] = [
@@ -29,15 +33,10 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 	filter,
 	setFilter,
 	count,
+	requests,
+	workspaceId,
 }) => {
 	const t = useTranslations();
-
-	const onSearchChange = (value: string) => {
-		setFilter({
-			...filter,
-			search: value,
-		});
-	};
 
 	const onRoleChange = (value: UsersFilter['role']) => {
 		setFilter({
@@ -47,7 +46,7 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 	};
 
 	return (
-		<div className="flex w-full lg:w-72 flex-row lg:flex-col gap-8 justify-between lg:justify-start items-center p-4 lg:p-8 lg:pr-0">
+		<div className="flex w-full lg:w-72 flex-row lg:flex-col gap-8 justify-between lg:justify-start items-center">
 			<Select
 				aria-label="roles"
 				variant="bordered"
@@ -92,16 +91,8 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 					/>
 				))}
 			</Tabs>
-			<Input
-				variant="bordered"
-				size="md"
-				placeholder={t('placeholder.search')}
-				startContent={<Icon name="Search" size={16} />}
-				type="search"
-				value={filter.search}
-				onValueChange={onSearchChange}
-				className="max-w-52 lg:max-w-full"
-			/>
+
+			<WorkspaceMembersRequests requests={requests} workspaceId={workspaceId} />
 		</div>
 	);
 };

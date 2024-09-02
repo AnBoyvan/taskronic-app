@@ -13,7 +13,7 @@ type RemoveWorkspaceMemberProps = {
 	userName: string;
 	workspaceId: string;
 	isAdmin: boolean;
-	currentUserId: string;
+	currentUserId?: string;
 };
 
 export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
@@ -25,20 +25,21 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 }) => {
 	const t = useTranslations();
 	const { removeMember, leave } = useWorkspaceMembers();
+
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	const isCurrentUser = userId === currentUserId;
 
-	const remove = async () => {
+	const remove = () => {
 		const dto = { _id: userId, name: userName };
 
-		await removeMember({ workspaceId, dto });
+		removeMember.mutate({ workspaceId, dto });
 
 		setIsOpen(false);
 	};
 
-	const leaveWorkspace = async () => {
-		await leave(workspaceId);
+	const leaveWorkspace = () => {
+		leave.mutate(workspaceId);
 
 		setIsOpen(false);
 	};

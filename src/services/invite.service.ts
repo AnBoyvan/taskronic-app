@@ -3,17 +3,21 @@ import { Invite } from '@/types/workspace.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const inviteService = {
-	async accept(inviteId: string): Promise<void> {
+	async accept(inviteId: string, workspaceId: string): Promise<void> {
 		return await apiRequest({
 			method: 'POST',
 			url: API_ROUTES.invites.accept(inviteId),
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
-	async reject(inviteId: string): Promise<void> {
+	async reject(inviteId: string, workspaceId: string): Promise<void> {
 		return await apiRequest({
 			method: 'DELETE',
 			url: API_ROUTES.invites.reject(inviteId),
+			revalidate: 'workspace',
+			workspaceId,
 		});
 	},
 
@@ -24,7 +28,7 @@ export const inviteService = {
 		});
 	},
 
-	async findById(inviteId: string): Promise<Invite[]> {
+	async findById(inviteId: string): Promise<Invite> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.invites.findById(inviteId),

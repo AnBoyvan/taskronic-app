@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 
 import { Switch } from '@nextui-org/react';
 
@@ -26,7 +26,6 @@ export const WorkspaceSettingsItem: React.FC<WorkspaceSettingsItemProps> = ({
 }) => {
 	const t = useTranslations();
 	const [isSelected, setIsSelected] = useState<boolean>(settings[value]);
-	const [isPending, startTransition] = useTransition();
 
 	const { updSettings } = useWorkspaceEdit();
 
@@ -36,9 +35,7 @@ export const WorkspaceSettingsItem: React.FC<WorkspaceSettingsItemProps> = ({
 			[value]: !isSelected,
 		};
 
-		startTransition(async () => {
-			updSettings({ workspaceId, dto: data });
-		});
+		updSettings.mutate({ workspaceId, dto: data });
 
 		setIsSelected(!isSelected);
 	};
@@ -49,7 +46,7 @@ export const WorkspaceSettingsItem: React.FC<WorkspaceSettingsItemProps> = ({
 			<Switch
 				color="success"
 				isSelected={isSelected}
-				isDisabled={isDisabled || isPending}
+				isDisabled={isDisabled || updSettings.isPending}
 				onValueChange={onChange}
 			/>
 		</li>

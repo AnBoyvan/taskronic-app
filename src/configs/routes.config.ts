@@ -6,7 +6,6 @@ const withouthAuth = {
 };
 
 const withAuth = {
-	INVITE: '/invite',
 	PROFILE: '/profile',
 	BOARDS: '/boards',
 	TASKS: '/tasks',

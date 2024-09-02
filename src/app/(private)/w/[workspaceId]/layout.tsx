@@ -23,9 +23,13 @@ export default async function WorkspaceLayout({
 	children: React.ReactNode;
 	params: { workspaceId: string };
 }>) {
+	const { data } = await fetcher<Workspace>(workspaceService.findById(params.workspaceId));
+
+	if (!data) return notFound();
+
 	return (
 		<>
-			<WorkspaceSidebar workspaceId={params.workspaceId} />
+			<WorkspaceSidebar workspace={data} />
 			{children}
 		</>
 	);

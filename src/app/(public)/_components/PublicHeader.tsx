@@ -4,9 +4,8 @@ import { Button, Link, Navbar, NavbarBrand, NavbarContent } from '@nextui-org/re
 
 import { Logo } from '@/components/svg/Logo';
 import { Name } from '@/components/svg/Name';
+import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher';
 import { ROUTES } from '@/configs/routes.config';
-
-import { LocaleSwitcher } from '../../../components/ui/LocaleSwitcher';
 
 export const PublicHeader: React.FC = () => {
 	const t = useTranslations();

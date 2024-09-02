@@ -15,6 +15,7 @@ import {
 	User,
 } from '@nextui-org/react';
 
+import { WorkspaceSwitcher } from '@/components/shared/WorkspaceSwitcher';
 import { Icon } from '@/components/ui/Icon';
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { dashboardNav } from '@/configs/nav.config';
@@ -25,7 +26,6 @@ import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
-import { WorkspaceSwitcher } from './WorkspaceSwitcher';
 
 export const Account: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -36,6 +36,11 @@ export const Account: React.FC = () => {
 	const { onOpen } = useContactsModal();
 
 	if (!user) return null;
+
+	const onWorkspaceSelect = (workspaceId: string) => {
+		router.push(`${ROUTES.WORKSPACE}/${workspaceId}`);
+		setIsOpen(false);
+	};
 
 	return (
 		<Dropdown
@@ -85,7 +90,18 @@ export const Account: React.FC = () => {
 
 				<DropdownSection showDivider>
 					<DropdownItem aria-label={t('account.theme')} isReadOnly className="p-0">
-						<WorkspaceSwitcher onChange={setIsOpen} />
+						<WorkspaceSwitcher
+							variant="flat"
+							classNames={{
+								trigger: 'pl-2 pr-6 bg-transparent',
+								innerWrapper: 'w-full',
+								selectorIcon: 'right-2',
+								label: 'px-2',
+								popoverContent: 'p-0',
+								listbox: 'p-0',
+							}}
+							onWorkspaceChange={workspaceId => onWorkspaceSelect(workspaceId)}
+						/>
 					</DropdownItem>
 				</DropdownSection>
 

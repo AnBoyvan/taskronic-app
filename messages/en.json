@@ -57,6 +57,8 @@
 		"contacts": "Contacts",
 		"logout": "Log Out",
 		"no_contacts": "Your contacts list is empty",
+		"add_contact": "Add to contacts",
+		"contact_added": "Contact added",
 		"remove_contact": "Remove contact?",
 		"updated": "Profile updated"
 	},
@@ -83,7 +85,16 @@
 		"remove_label": "Enter the workspace name",
 		"remove_undone": "The workspace cannot be restored",
 		"remove_boards": "All boards will be closed (only board admins can reopen them)",
-		"removed": "Workspace removed"
+		"removed": "Workspace removed",
+		"new": "New workspace",
+		"editing": "Workspace editing",
+		"change_color": "Change color",
+		"change_icon": "Change icon",
+		"invite_title": "Invite to workspace",
+		"request_exist": "Request is already sent",
+		"invite_user": "invited you to join the workspace",
+		"request_notification": "wants to join the workspace",
+		"join_requests": "Join requests"
 	},
 	"board": {
 		"board_not_found": "Board not found",
@@ -95,7 +106,29 @@
 		"starred_add": "Board added to starred",
 		"starred_remove": "Board removed from starred",
 		"open_admin": "Only admins can reopen",
-		"create": "Create new board"
+		"create": "Create new board",
+		"private": "Private board",
+		"private_descr": "Only board members and workspace admins can see this board",
+		"public": "Public board",
+		"public_descr": "Anyone can see this board. Only board members can edit",
+		"new": "New board",
+		"view_member_activity": "View member's activity",
+		"change_background": "Change background",
+		"leave_board": "Leave board",
+		"settings_update": "Any board member can change information about the board (name, description and background)",
+		"settings_member": "Any board member can add new member",
+		"settings_lists": "Any board member can add and edit lists",
+		"settings_create_task": "Any board member can add and edit cards",
+		"settings_task_order": "Any board member can move cards",
+		"settings_task_members": "Any board member can add and remove card members",
+		"settings_close_task": "Any board member can can change the execution status of the card",
+		"settings_archive_task": "Any board member can archive cards",
+		"settings_delete_task": "Any board member can delete cards",
+		"denied": "You do not have permission to change",
+		"remove_member": "Remove member from board",
+		"add_members": "Add members",
+		"close": "Close board",
+		"add_list": "Add new list"
 	},
 	"task": {
 		"task_not_found": "Card not found",
@@ -115,6 +148,7 @@
 		"decline": "Decline",
 		"add": "Add",
 		"create": "Create",
+		"update": "Update",
 		"edit": "Edit",
 		"remove": "Remove",
 		"yes": "Yes",
@@ -122,6 +156,8 @@
 		"select": "Select...",
 		"settings": "Settings",
 		"members": "Members",
+		"member": "Member",
+		"close": "Close",
 		"closed": "Closed",
 		"archived": "Archived",
 		"created": "Created",
@@ -130,7 +166,22 @@
 		"user_not_found": "User not found",
 		"warning": "Warning",
 		"show": "Show",
-		"hide": "Hide"
+		"hide": "Hide",
+		"workspace": "Workspace",
+		"board": "Board",
+		"list": "List",
+		"task": "Card",
+		"subtask": "Checklist",
+		"note": "Note",
+		"photos": "Photos",
+		"colors": "Colors",
+		"menu": "Menu",
+		"activity": "Activity",
+		"comments": "Comments",
+		"info": "Info",
+		"back": "Back",
+		"join": "Join",
+		"send_request": "Send request"
 	},
 	"sort": {
 		"by_name": "by name",
@@ -164,7 +215,10 @@
 		"title": "Name",
 		"sort": "Sort",
 		"search": "Search",
-		"closed": "Closed"
+		"closed": "Closed",
+		"visibility": "Visibility",
+		"description": "Description",
+		"invite_lang": "Select invitaton language"
 	},
 	"placeholder": {
 		"name": "John Doe",
@@ -172,14 +226,22 @@
 		"pass": "******",
 		"search": "Search",
 		"search_boards": "Search boards",
-		"select": "Select..."
+		"select": "Select...",
+		"new_board": "New board",
+		"new_workspace": "New workspace",
+		"board_descr": "Add description to board",
+		"workspace_descr": "Add description to workspace",
+		"list_title": "Enter list title",
+		"invite_message": "Invitation text..."
 	},
 	"validation": {
 		"name": "Name is required",
 		"email_req": "Email is required",
 		"email_valid": "Invalid email address",
 		"pass": "Password must be 6+ characters, with at least one digit",
-		"passDoNotMatch": "Passwords do not match"
+		"passDoNotMatch": "Passwords do not match",
+		"title": "Enter a name of at least 3 characters",
+		"already_added": "Already added"
 	},
 	"api_err": {
 		"bad_request": "Bad Request",

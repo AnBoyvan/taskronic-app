@@ -1,8 +1,8 @@
-import { IImage } from '@/types/image.interface';
+import { BackgroundImage } from '@/types/image.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const imageService = {
-	async findImages(page: number, limit: number): Promise<IImage[]> {
+	async findImages(page: number, limit: number): Promise<BackgroundImage[]> {
 		const pageQuery = page && `page=${page}`;
 		const limitQuery = limit && `page=${limit}`;
 

@@ -68,7 +68,7 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 			<PopoverContent className="p-0">
 				<span className="text-center pt-2">{t('workspace.ws_boards')}</span>
 				<Listbox
-					className="w-64 flex flex-col overflow-y-scroll gap-2 p-2"
+					className="w-64 flex flex-col overflow-y-auto gap-2 p-2"
 					emptyContent={t('workspace.no_boards')}
 					aria-label={t('nav.boards')}
 				>

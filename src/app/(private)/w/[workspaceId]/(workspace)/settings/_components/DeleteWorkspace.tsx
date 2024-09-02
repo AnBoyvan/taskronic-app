@@ -25,7 +25,7 @@ export const DeleteWorkspace: React.FC<DeleteWorkspaceProps> = ({ workspaceId, w
 
 	const removeWorkspace = async () => {
 		router.push(ROUTES.BOARDS);
-		await remove(workspaceId);
+		await remove.mutate(workspaceId);
 	};
 
 	const confirmed = workspaceName === checkName;
@@ -65,7 +65,7 @@ export const DeleteWorkspace: React.FC<DeleteWorkspaceProps> = ({ workspaceId, w
 					<Button
 						variant="solid"
 						color={confirmed ? 'danger' : 'default'}
-						isDisabled={!confirmed}
+						isDisabled={!confirmed || remove.isPending}
 						size="md"
 						radius="sm"
 						onPress={removeWorkspace}

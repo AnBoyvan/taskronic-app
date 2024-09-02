@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ForwardedRef, forwardRef } from 'react';
+import { DetailedHTMLProps, ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 
 import { Avatar, AvatarProps } from '@nextui-org/react';
 
@@ -8,42 +8,61 @@ import { WorkspaceIcon } from '@/constants/workspace-icons.constants';
 
 import { Icon } from './Icon';
 
-type WorkspaceBadgeProps = {
+interface WorkspaceBadgeProps
+	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	name: string;
 	avatarIcon: WorkspaceIcon;
 	avatarColor: ColorVariant;
-	medium?: boolean;
-	large?: boolean;
+	mediumText?: boolean;
+	largeText?: boolean;
+	mediumIcon?: boolean;
+	largeIcon?: boolean;
 	avatarProps?: AvatarProps;
-};
+}
 
 export const WorkspaceBadge = forwardRef(
 	(
-		{ name, avatarIcon, avatarColor, avatarProps, medium, large, ...props }: WorkspaceBadgeProps,
+		{
+			name,
+			avatarIcon,
+			avatarColor,
+			avatarProps,
+			mediumText,
+			largeText,
+			mediumIcon,
+			largeIcon,
+			className,
+			...props
+		}: WorkspaceBadgeProps,
 		ref: ForwardedRef<HTMLDivElement>,
 	) => {
+		const iconSize = !mediumIcon && !largeIcon ? 16 : largeIcon ? 24 : 20;
+
 		return (
-			<div {...props} className="flex flex-row items-center gap-2 rounded-sm">
+			<div
+				{...props}
+				className={clsx('flex flex-row items-center gap-2 rounded-sm', className && className)}
+			>
 				<div>
 					<Avatar
 						{...avatarProps}
 						radius="sm"
-						icon={<Icon name={avatarIcon} size={large ? 24 : 16} />}
+						icon={<Icon name={avatarIcon} size={iconSize} />}
 						classNames={{
 							base: clsx(
 								`${colorVariants[avatarColor]}`,
-								!medium && !large && 'w-6 h-6',
-								medium && 'w-8 h-8',
-								large && 'w-10 h-10',
+								!mediumIcon && !largeIcon && 'w-6 h-6',
+								mediumIcon && 'w-8 h-8',
+								largeIcon && 'w-10 h-10',
 							),
 						}}
 					/>
 				</div>
 				<span
 					className={clsx(
-						!medium && !large && 'truncate text-tiny',
-						medium && 'text-sm ',
-						large && 'text-base',
+						!mediumText && !largeText && 'truncate text-tiny',
+						mediumText && 'text-sm ',
+						largeText && 'text-base',
 					)}
 				>
 					{name}

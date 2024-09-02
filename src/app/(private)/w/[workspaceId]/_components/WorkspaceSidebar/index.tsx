@@ -1,33 +1,38 @@
 'use client';
 
+import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
 
 import { Button, Divider } from '@nextui-org/react';
-import { useQuery } from '@tanstack/react-query';
 
 import { useLocalStorage, useMediaQuery } from 'usehooks-ts';
 
 import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
-import { workspaceService } from '@/services/workspace.service';
+import { ROUTES } from '@/configs/routes.config';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { Workspace } from '@/types/workspace.interface';
+import { getWorkspacePermissions } from '@/utils/helpers/getWorkspacePermissions';
 
 import { WorkspaceSidebarBoards } from './WorkspaceSidebarBoards';
 import { WorkspaceSidebarNav } from './WorkspaceSidebarNav';
 import { WorkspaceSidebarSkeleton } from './WorkspaceSidebarSeleton';
 
 type WorkspaceSidebarProps = {
-	workspaceId: string;
+	workspace: Workspace;
 };
 
-export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId }) => {
+export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspace }) => {
 	const isMobile = useMediaQuery('(max-width:640px)');
 	const [isOpen, setOpen] = useState<boolean>(false);
 	const [isCollapsed, setCollapsed] = useLocalStorage<boolean | undefined>('ws-sidebar', undefined);
+	const { user } = useCurrentUser();
 
-	const { data: workspace } = useQuery({
-		queryKey: ['workspaces', workspaceId],
-		queryFn: () => workspaceService.findById(workspaceId),
-	});
+	const { setCurrent } = useWorkspacesList();
+
+	const permissions = getWorkspacePermissions(workspace, user?.sub!);
 
 	useEffect(() => {
 		if (isCollapsed === undefined) {
@@ -38,6 +43,10 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId 
 		setOpen(isCollapsed);
 	}, [isCollapsed, isMobile]);
 
+	useEffect(() => {
+		setCurrent(workspace, permissions);
+	}, [workspace]);
+
 	return (
 		<div className={`relative flex h-full ${!isOpen ? 'mr-4' : 'mr-4 md:mr-0'}`}>
 			<div
@@ -47,12 +56,18 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId 
 					(workspace ? (
 						<div className="flex flex-col w-64 h-full px-2 border-r border-divider">
 							<div className="flex flex-row items-center justify-between py-2">
-								<WorkspaceBadge
-									name={workspace.name}
-									avatarColor={workspace.avatarColor}
-									avatarIcon={workspace.avatarIcon}
-									medium={true}
-								/>
+								<Link
+									href={`${ROUTES.WORKSPACE}/${workspace._id}`}
+									className="hover:text-primary transition-colors"
+								>
+									<WorkspaceBadge
+										name={workspace.name}
+										avatarColor={workspace.avatarColor}
+										avatarIcon={workspace.avatarIcon}
+										mediumIcon
+										mediumText
+									/>
+								</Link>
 								<Button
 									variant="flat"
 									isIconOnly
@@ -65,10 +80,11 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId 
 							</div>
 							<Divider />
 							<WorkspaceSidebarNav
-								_id={workspace._id}
+								workspace={workspace}
 								name={workspace.name}
 								admins={workspace.admins}
-								canInvite={workspace.settings.invite}
+								canInvite={permissions.invite}
+								requests={workspace.requests}
 							/>
 							<Divider />
 							<WorkspaceSidebarBoards boards={workspace.boards} workspaceId={workspace._id} />
@@ -78,9 +94,9 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspaceId 
 					))}
 			</div>
 			<div
-				className={`z-50 md:z-auto transition-opacity duration-300 ${!isOpen ? 'opacity-100' : 'opacity-0'} ${
-					!isOpen ? 'w-4' : 'w-0'
-				} h-full absolute left-0 top-0flex items-center justify-center`}
+				className={`z-50 transition-opacity duration-300 ${!isOpen ? 'opacity-100' : 'opacity-0'} ${
+					!isOpen ? 'w-4' : 'w-0 hidden'
+				} h-full absolute left-0 top-0 flex items-center justify-center`}
 			>
 				<Button
 					className="relative min-w-4 w-4 p-0 rounded-none h-full overflow-visible"

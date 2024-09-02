@@ -102,4 +102,11 @@ export const taskService = {
 			data: dto,
 		});
 	},
+
+	async deleteTask(taskId: string): Promise<{ message: string }> {
+		return await apiRequest({
+			method: 'DELETE',
+			url: API_ROUTES.tasks.delete(taskId),
+		});
+	},
 };

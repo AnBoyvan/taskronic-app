@@ -3,34 +3,37 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 interface SectionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
 	title?: string;
-	rowDirection?: boolean;
-	flexItems?: 'start' | 'end' | 'center';
-	flexJustify?: 'start' | 'end' | 'between' | 'center';
-	fullWidth?: boolean;
-	gap?: number;
+	// rowDirection?: boolean;
+	// flexItems?: 'start' | 'end' | 'center';
+	// flexJustify?: 'start' | 'end' | 'between' | 'center';
+	// fullWidth?: boolean;
+	// gap?: number;
+	noTopMargin?: boolean;
 }
 
 export const Section: React.FC<SectionProps> = ({
 	children,
 	className,
 	title,
-	flexJustify,
-	flexItems,
-	rowDirection,
-	fullWidth,
-	gap,
+	// flexJustify,
+	// flexItems,
+	// rowDirection,
+	// fullWidth,
+	// gap,
+	noTopMargin,
 	...props
 }) => {
 	return (
 		<section
 			className={clsx(
-				'flex  mt-4 lg:mt-8',
+				'flex',
 				className ? className : '',
-				rowDirection ? 'flex-row' : 'flex-col',
-				flexJustify ? `justify-${flexJustify}` : '',
-				flexItems ? `items-${flexItems}` : '',
-				fullWidth ? 'w-full' : '',
-				gap ? `gap-${gap}` : '',
+				noTopMargin ? '' : 'mt-4 lg:mt-8',
+				// rowDirection ? 'flex-row' : 'flex-col',
+				// flexJustify ? `justify-${flexJustify}` : '',
+				// flexItems ? `items-${flexItems}` : '',
+				// fullWidth ? 'w-full' : '',
+				// gap ? `gap-${gap}` : '',
 			)}
 			{...props}
 		>

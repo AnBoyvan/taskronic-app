@@ -27,8 +27,8 @@ export const ContactsModal: React.FC = () => {
 
 	const { data, isFetching } = useQuery<Member[]>({
 		queryKey: ['contacts'],
-		queryFn: async () => await userService.findContacts(),
-		enabled: true,
+		queryFn: () => userService.findContacts(),
+		enabled: isOpen,
 	});
 
 	const onSearchChange = (value: string) => {
@@ -46,10 +46,10 @@ export const ContactsModal: React.FC = () => {
 		contacts.filter(contact => contact.name.toLowerCase().includes(search.toLowerCase()));
 
 	return (
-		<Modal isOpen={isOpen} onOpenChange={onClose} placement="center">
-			<ModalContent className="flex-col justify-start p-4 gap-4 h-96">
-				<ModalHeader className="justify-center p-0">{t('account.contacts')}</ModalHeader>
-				<ModalBody className="p-0 flex-grow h-full justify-start">
+		<Modal size="sm" isOpen={isOpen} onOpenChange={onClose} placement="center" backdrop="blur">
+			<ModalContent className="flex-col justify-start p-4 gap-2 h-[500px] ">
+				<ModalHeader className="flex-col justify-center p-0 gap-2">
+					<p className="text-center">{t('account.contacts')}</p>
 					<Input
 						variant="bordered"
 						size="md"
@@ -60,6 +60,8 @@ export const ContactsModal: React.FC = () => {
 						onValueChange={onSearchChange}
 						className="max-w-52"
 					/>
+				</ModalHeader>
+				<ModalBody className="p-0 flex-grow justify-start bg-transparent  overflow-y-auto">
 					{filtered ? (
 						filtered.map(contact => <Contact key={contact._id} contact={contact} />)
 					) : isFetching ? (

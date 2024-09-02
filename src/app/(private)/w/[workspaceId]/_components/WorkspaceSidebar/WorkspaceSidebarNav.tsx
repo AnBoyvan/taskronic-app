@@ -6,24 +6,30 @@ import { Button, Listbox, ListboxItem } from '@nextui-org/react';
 import { Icon } from '@/components/ui/Icon';
 import { workspaceNav } from '@/configs/nav.config';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useInviteModal } from '@/hooks/useInviteModal';
+import { Member } from '@/types/root.interface';
+import { Workspace } from '@/types/workspace.interface';
 
 type DWorkspaceSidebarNavProps = {
-	_id: string;
+	workspace: Workspace;
 	name: string;
 	admins: string[];
 	canInvite: boolean;
+	requests: Member[];
 };
 
 export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
-	_id,
+	workspace,
 	name,
 	admins,
 	canInvite,
+	requests,
 }) => {
 	const t = useTranslations();
 	const router = useRouter();
 	const pathname = usePathname();
 	const { user } = useCurrentUser();
+	const inviteModal = useInviteModal();
 
 	return (
 		<Listbox
@@ -32,11 +38,10 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 				router.push(key.toString());
 			}}
 		>
-			{workspaceNav(_id).map(({ label, value, icon }) => (
+			{workspaceNav(workspace._id).map(({ label, value, icon }) => (
 				<ListboxItem
 					aria-label={t(label)}
 					key={value}
-					title={t(label)}
 					startContent={<Icon name={icon} size={16} />}
 					isReadOnly={Boolean(pathname === value)}
 					className="h-10"
@@ -52,15 +57,21 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 								size="sm"
 								isIconOnly
 								onPress={() => {
-									// TODO:
-									console.log('ADD MEMBER');
+									inviteModal.onOpen(workspace);
 								}}
 							>
 								<Icon name="Plus" size={16} />
 							</Button>
 						) : null
 					}
-				/>
+				>
+					<span className="flex flex-row gap-2 items-center">
+						{t(label)}
+						{label === 'common.members' && requests.length > 0 && (
+							<Icon name="CircleAlert" size={16} className="text-success" />
+						)}
+					</span>
+				</ListboxItem>
 			))}
 		</Listbox>
 	);

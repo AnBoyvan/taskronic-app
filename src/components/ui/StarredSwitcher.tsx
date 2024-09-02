@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
-import { useBoards } from '@/hooks/useBoards';
+import { useBoardsEdit } from '@/hooks/useBoardsEdit';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 type StarredSwitcherProps = {
@@ -15,12 +15,12 @@ type StarredSwitcherProps = {
 
 export const StarredSwitcher: React.FC<StarredSwitcherProps> = ({ boardStarred, boardId }) => {
 	const { user } = useCurrentUser();
-	const { starred } = useBoards();
+	const { starred } = useBoardsEdit();
 
 	const [isStarred, setIsStarred] = useState<boolean>(false);
 
 	const starredToggle = async () => {
-		await starred(boardId);
+		await starred.mutate(boardId);
 		setIsStarred(!isStarred);
 	};
 
@@ -30,7 +30,14 @@ export const StarredSwitcher: React.FC<StarredSwitcherProps> = ({ boardStarred, 
 	}, [boardStarred]);
 
 	return (
-		<Button color="success" isIconOnly variant="light" size="sm" onClick={starredToggle}>
+		<Button
+			color="success"
+			radius="full"
+			isIconOnly
+			variant="light"
+			size="sm"
+			onClick={starredToggle}
+		>
 			<Icon
 				name="Star"
 				size={16}
