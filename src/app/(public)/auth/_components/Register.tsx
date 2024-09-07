@@ -58,7 +58,7 @@ export const Register: React.FC = () => {
 				label={t('label.name')}
 				placeholder={t('placeholder.name')}
 				isRequired
-				disabled={isPending}
+				isDisabled={isPending}
 			/>
 			<FormInput
 				control={control}
@@ -68,7 +68,7 @@ export const Register: React.FC = () => {
 				label={t('label.email')}
 				placeholder={t('placeholder.email')}
 				isRequired
-				disabled={isPending}
+				isDisabled={isPending}
 			/>
 			<FormInput
 				control={control}
@@ -79,7 +79,7 @@ export const Register: React.FC = () => {
 				placeholder={t('placeholder.pass')}
 				isRequired
 				type="password"
-				disabled={isPending}
+				isDisabled={isPending}
 			/>
 			<FormInput
 				control={control}
@@ -90,14 +90,14 @@ export const Register: React.FC = () => {
 				placeholder={t('placeholder.pass')}
 				isRequired
 				type="password"
-				disabled={isPending}
+				isDisabled={isPending}
 			/>
 			<Button
 				fullWidth={true}
 				color="primary"
 				variant="solid"
 				type="submit"
-				disabled={isPending}
+				isDisabled={isPending}
 				isLoading={isPending}
 				spinnerPlacement="end"
 			>

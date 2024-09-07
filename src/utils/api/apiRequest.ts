@@ -14,9 +14,17 @@ type RequestConfig = {
 	data?: any;
 	revalidate?: 'board' | 'task' | 'workspace';
 	workspaceId?: string;
+	boardId?: string;
 };
 
-export const apiRequest = async ({ method, url, data, revalidate, workspaceId }: RequestConfig) => {
+export const apiRequest = async ({
+	method,
+	url,
+	data,
+	revalidate,
+	workspaceId,
+	boardId,
+}: RequestConfig) => {
 	try {
 		const response = await apiClient({
 			method,
@@ -27,6 +35,10 @@ export const apiRequest = async ({ method, url, data, revalidate, workspaceId }:
 			if (revalidate === 'board' && response.data.workspace) {
 				const { workspace, _id } = response.data as Board;
 				revalidatePath(`/w/${workspace}/${_id}`);
+			}
+
+			if (revalidate === 'board' && boardId && workspaceId) {
+				revalidatePath(`/w/${workspaceId}/${boardId}`);
 			}
 
 			if (revalidate === 'task') {

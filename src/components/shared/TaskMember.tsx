@@ -17,26 +17,19 @@ import {
 
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { colorVariants } from '@/constants/color-variants.constants';
-import { useContacts } from '@/hooks/useContacts';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useTaskMembers } from '@/hooks/useTaskMembers';
 import { Member } from '@/types/root.interface';
 
-interface BoardMemberProps
+interface TaskMemberProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	member: Member;
-	userContacts?: Member[];
-	isMemberAdmin: boolean;
+	taskId: string;
+	canRemove: boolean;
 }
 
-export const BoardMember: React.FC<BoardMemberProps> = ({
-	member,
-	userContacts,
-	className,
-	isMemberAdmin,
-}) => {
+export const TaskMember: React.FC<TaskMemberProps> = ({ member, taskId, className, canRemove }) => {
 	const t = useTranslations();
-	const { add } = useContacts();
-	const { user } = useCurrentUser();
+	const { removeMember } = useTaskMembers();
 
 	const { _id, name, email, avatarColor, avatarName } = member;
 
@@ -48,14 +41,15 @@ export const BoardMember: React.FC<BoardMemberProps> = ({
 		console.log('OPEN ACTIVITY MODAL');
 	};
 
-	const addToContacts = () => {
-		if (add.isPending) {
-			return;
-		}
-		add.mutate(_id);
+	const removeTaskMember = () => {
+		removeMember.mutate({
+			taskId,
+			data: {
+				_id,
+				name,
+			},
+		});
 	};
-
-	const disabled = userContacts?.some(i => i._id === _id) || _id === user?.sub;
 
 	return (
 		<div className={clsx(className && className)}>
@@ -70,11 +64,10 @@ export const BoardMember: React.FC<BoardMemberProps> = ({
 			>
 				<PopoverTrigger>
 					<UserAvatar
-						size="sm"
+						small
 						name={name}
 						avatarColor={avatarColor}
 						avatarName={avatarName}
-						isAdmin={isMemberAdmin}
 						className="hover:opacity-70 cursor-pointer transition-opacity"
 					/>
 				</PopoverTrigger>
@@ -96,10 +89,10 @@ export const BoardMember: React.FC<BoardMemberProps> = ({
 						</ListboxItem>
 						<ListboxItem
 							key="contact"
-							onPress={addToContacts}
-							className={clsx(disabled && 'hidden')}
+							onPress={removeTaskMember}
+							className={clsx(!canRemove && 'hidden')}
 						>
-							{t('account.add_contact')}
+							{t('task.remove_member')}
 						</ListboxItem>
 					</Listbox>
 				</PopoverContent>

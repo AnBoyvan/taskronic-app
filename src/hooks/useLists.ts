@@ -21,7 +21,7 @@ export const useLists = () => {
 		},
 	});
 
-	const listsOrder = useMutation({
+	const updListsOrder = useMutation({
 		mutationFn: ({ boardId, data }: { boardId: string; data: List[] }) =>
 			boardService.listsOrder(boardId, data),
 		mutationKey: ['boards-lists-order'],
@@ -45,5 +45,5 @@ export const useLists = () => {
 		},
 	});
 
-	return { addList, listsOrder, updList };
+	return { addList, updListsOrder, updList };
 };

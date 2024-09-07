@@ -55,7 +55,7 @@ export interface BoardWorkspaceField extends BoardBase {
 
 export interface BoardTaskField extends BoardBase {
 	members: string[];
-	tasks: string[];
+	tasks: TaskBoardField[];
 }
 
 export type BoardCompose = {

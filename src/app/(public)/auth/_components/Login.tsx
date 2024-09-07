@@ -56,7 +56,7 @@ export const Login: React.FC = () => {
 				label={t('label.email')}
 				placeholder={t('placeholder.email')}
 				isRequired
-				disabled={isPending}
+				isDisabled={isPending}
 			/>
 			<FormInput
 				control={control}
@@ -67,13 +67,13 @@ export const Login: React.FC = () => {
 				placeholder={t('placeholder.pass')}
 				isRequired
 				type="password"
-				disabled={isPending}
+				isDisabled={isPending}
 			/>
 			<Link href={`${ROUTES.PASS}`} size="sm" underline="hover" color="primary">
 				{t('auth.forgot_pass')}
 			</Link>
 			<Button
-				disabled={isPending}
+				isDisabled={isPending}
 				fullWidth={true}
 				color="primary"
 				variant="solid"

@@ -7,7 +7,7 @@ export const getBoardComposeSchema = (
 	messages: IntlMessages['validation'],
 ): Yup.ObjectSchema<BoardCompose> => {
 	return Yup.object().shape({
-		title: Yup.string().required(messages.title).min(3, messages.title),
+		title: Yup.string().required(messages.title),
 		description: Yup.string(),
 		thumbImage: Yup.string(),
 		bgImage: Yup.string(),

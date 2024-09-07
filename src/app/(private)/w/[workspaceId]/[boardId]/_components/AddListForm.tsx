@@ -12,18 +12,16 @@ import { useEventListener, useOnClickOutside } from 'usehooks-ts';
 
 import { FormInput } from '@/components/ui/FormInput';
 import { Icon } from '@/components/ui/Icon';
-import { listColors } from '@/constants/list-colors.constants';
 import { useLists } from '@/hooks/useLists';
 import { useValidation } from '@/hooks/useValidation';
-import { CreateListDto } from '@/types/board.interface';
 
-type ListProps = {
+type AddListProps = {
 	boardId: string;
 	isOpen: boolean;
 	onClose: () => void;
 };
 
-export const AddList: React.FC<ListProps> = ({ boardId, isOpen, onClose }) => {
+export const AddListForm: React.FC<AddListProps> = ({ boardId, isOpen, onClose }) => {
 	const t = useTranslations();
 	const { createlistSchema } = useValidation();
 	const { addList } = useLists();
@@ -31,19 +29,29 @@ export const AddList: React.FC<ListProps> = ({ boardId, isOpen, onClose }) => {
 	const formRef = useRef<ElementRef<'form'>>(null);
 	const inputRef = useRef<ElementRef<'input'>>(null);
 
-	const { control, handleSubmit, reset } = useForm<CreateListDto>({
+	const {
+		control,
+		handleSubmit,
+		reset,
+		formState: { isDirty, isValid },
+	} = useForm<{ label: string }>({
 		mode: 'onBlur',
 		defaultValues: {
 			label: '',
-			bgColor: listColors.default.color,
-			textColor: listColors.default.text,
 		},
 
 		resolver: yupResolver(createlistSchema),
 	});
 
-	const onSubmit: SubmitHandler<CreateListDto> = data => {
-		addList.mutate({ boardId, data });
+	const onSubmit: SubmitHandler<{ label: string }> = ({ label }) => {
+		addList.mutate({
+			boardId,
+			data: {
+				label,
+				bgColor: 'bg-background',
+				textColor: 'text-foreground',
+			},
+		});
 	};
 
 	const disableEditing = () => {
@@ -87,10 +95,16 @@ export const AddList: React.FC<ListProps> = ({ boardId, isOpen, onClose }) => {
 				name="label"
 				ref={inputRef}
 				placeholder={t('placeholder.list_title')}
-				disabled={addList.isPending}
+				isDisabled={addList.isPending}
 			/>
 			<div className="flex items-center gap-2">
-				<Button type="submit" size="sm" variant="solid" color="primary">
+				<Button
+					isDisabled={addList.isPending || !isDirty || !isValid}
+					type="submit"
+					size="sm"
+					variant="solid"
+					color="primary"
+				>
 					{t('common.add')}
 				</Button>
 				<Button type="button" isIconOnly variant="light" size="sm" onPress={disableEditing}>

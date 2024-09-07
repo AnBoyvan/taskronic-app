@@ -22,7 +22,7 @@ export const ThemeSwitcher: React.FC = () => {
 
 	return (
 		<>
-			<Popover placement="left-start" offset={25} triggerType="menu">
+			<Popover placement="left-start" offset={18} triggerType="menu">
 				<PopoverTrigger>{t('account.theme')}</PopoverTrigger>
 				<PopoverContent>
 					<Listbox

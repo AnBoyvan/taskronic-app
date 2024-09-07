@@ -71,7 +71,7 @@ export const ResetPassword: React.FC = () => {
 							placeholder={t('placeholder.pass')}
 							isRequired
 							type="password"
-							disabled={isPending}
+							isDisabled={isPending}
 						/>
 						<FormInput
 							control={control}
@@ -82,10 +82,10 @@ export const ResetPassword: React.FC = () => {
 							placeholder={t('placeholder.pass')}
 							isRequired
 							type="password"
-							disabled={isPending}
+							isDisabled={isPending}
 						/>
 						<Button
-							disabled={isPending}
+							isDisabled={isPending}
 							fullWidth={true}
 							color="primary"
 							variant="solid"

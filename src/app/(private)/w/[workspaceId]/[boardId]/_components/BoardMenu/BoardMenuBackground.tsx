@@ -60,7 +60,7 @@ export const BoardMenuBackground: React.FC<BoardMenuBackgroundProps> = ({ board,
 			return;
 		}
 
-		const textColor = getTextColor({ variant: selected });
+		const textColor = getTextColor({ boardColor: selected });
 
 		updGeneral.mutate({
 			boardId: _id,

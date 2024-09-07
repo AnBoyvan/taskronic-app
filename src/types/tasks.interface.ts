@@ -52,13 +52,7 @@ export interface TaskBoardField extends TaskBase {
 
 export type TaskCreate = {
 	title: string;
-	description?: string;
-	priority: TaskPriority;
-	subtasks: Subtask[];
 	list: string;
-	dueDate?: Date;
-	order: number;
-	members: string[];
 };
 
 export type TaskUpdGeneral = {

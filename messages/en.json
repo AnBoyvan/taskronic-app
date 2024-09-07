@@ -128,12 +128,21 @@
 		"remove_member": "Remove member from board",
 		"add_members": "Add members",
 		"close": "Close board",
-		"add_list": "Add new list"
+		"add_list": "Add new list",
+		"list_actions": "List actions",
+		"list_move": "Move list",
+		"list_move_tasks": "Move all cards in list",
+		"list_color": "Change list color",
+		"list_archive": "Archive list",
+		"list_select": "Select list"
 	},
 	"task": {
 		"task_not_found": "Card not found",
 		"subtask_not_found": "Checklist not found",
-		"removed": "Card removed"
+		"removed": "Card removed",
+		"add": "Add a card",
+		"remove_member": "Remove from card",
+		"leave_board": "Leave board"
 	},
 	"comment": {
 		"not_found": "Comment not found",
@@ -232,7 +241,8 @@
 		"board_descr": "Add description to board",
 		"workspace_descr": "Add description to workspace",
 		"list_title": "Enter list title",
-		"invite_message": "Invitation text..."
+		"invite_message": "Invitation text...",
+		"task_title": "Enter card title"
 	},
 	"validation": {
 		"name": "Name is required",
@@ -240,7 +250,7 @@
 		"email_valid": "Invalid email address",
 		"pass": "Password must be 6+ characters, with at least one digit",
 		"passDoNotMatch": "Passwords do not match",
-		"title": "Enter a name of at least 3 characters",
+		"title": "Enter a name",
 		"already_added": "Already added"
 	},
 	"api_err": {

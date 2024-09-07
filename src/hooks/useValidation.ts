@@ -5,10 +5,9 @@ import { getLoginSchema } from '@/utils/validation/auth/getLoginSchema';
 import { getRegisterSchema } from '@/utils/validation/auth/getRegisterSchema';
 import { getResetPasswordSchema } from '@/utils/validation/auth/getResetPasswordSchema';
 import { getBoardComposeSchema } from '@/utils/validation/board/getBoardComposeSchema';
-import {
-	getCreateListSchema,
-	getUpdateListSchema,
-} from '@/utils/validation/board/getListComposeSchema';
+import { getCreateListSchema } from '@/utils/validation/board/getCreateListSchema';
+import { getUpdateListSchema } from '@/utils/validation/board/getUpdateListSchema';
+import { getTaskCreateSchema } from '@/utils/validation/task/getTaskCreateSchema';
 import { getInviteSchema } from '@/utils/validation/workspace/getInviteSchema';
 import { getWorkspaceComposeSchema } from '@/utils/validation/workspace/getWorkspaceComposeSchema';
 
@@ -20,22 +19,25 @@ export const useValidation = () => {
 	const forgotPasswordSchema = getForgotPasswordSchema(validation);
 	const resetPasswordSchema = getResetPasswordSchema(validation);
 
+	const workspaceComposeSchema = getWorkspaceComposeSchema(validation);
+	const inviteSchema = getInviteSchema(validation);
+
 	const boardComposeSchema = getBoardComposeSchema(validation);
 	const createlistSchema = getCreateListSchema(validation);
 	const updatelistSchema = getUpdateListSchema(validation);
 
-	const workspaceComposeSchema = getWorkspaceComposeSchema(validation);
-	const inviteSchema = getInviteSchema(validation);
+	const taskCreateSchema = getTaskCreateSchema(validation);
 
 	return {
 		registerSchema,
 		loginSchema,
 		forgotPasswordSchema,
 		resetPasswordSchema,
+		workspaceComposeSchema,
+		inviteSchema,
 		boardComposeSchema,
 		createlistSchema,
 		updatelistSchema,
-		workspaceComposeSchema,
-		inviteSchema,
+		taskCreateSchema,
 	};
 };

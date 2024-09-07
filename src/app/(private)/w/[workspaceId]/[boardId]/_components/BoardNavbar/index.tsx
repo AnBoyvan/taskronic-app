@@ -22,7 +22,7 @@ type BoardNavbarProps = {
 export const BoardNavbar: React.FC<BoardNavbarProps> = ({ board }) => {
 	const { user } = useCurrentUser();
 	const { onOpen } = useBoardMenu();
-	const { _id, title, starred, members, admins, settings } = board;
+	const { _id, title, starred, members, admins } = board;
 
 	const { data } = useQuery<Member[]>({
 		queryKey: ['contacts'],

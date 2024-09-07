@@ -69,10 +69,10 @@ export const ForgotPassword: React.FC = () => {
 							label={t('label.email')}
 							placeholder={t('placeholder.email')}
 							isRequired
-							disabled={isPending}
+							isDisabled={isPending}
 						/>
 						<Button
-							disabled={isPending}
+							isDisabled={isPending}
 							fullWidth={true}
 							color="primary"
 							variant="solid"
