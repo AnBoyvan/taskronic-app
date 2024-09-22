@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 
 import { BoardPermissions, List } from '@/types/board.interface';
-import { TaskBoardField } from '@/types/tasks.interface';
+import { Task } from '@/types/tasks.interface';
 
 import { AddTaskButton } from './AddTaskButton';
 import { ListHeader } from './ListHeader';
@@ -14,14 +14,13 @@ import { TaskCard } from './TaskCard';
 
 type ListItemProps = {
 	list: List;
-	tasks: TaskBoardField[];
+	tasks: Task[];
 	index: number;
 	permissions: BoardPermissions;
 	boardId: string;
 	boardLists: List[];
 	onTasksMove: (sourceList: string, destList: string) => void;
 	onListMove: (sourceIndex: number, destIndex: number) => void;
-	onTaskOpen: (taskId: string) => void;
 };
 
 export const ListItem: React.FC<ListItemProps> = ({
@@ -33,7 +32,6 @@ export const ListItem: React.FC<ListItemProps> = ({
 	boardLists,
 	onTasksMove,
 	onListMove,
-	onTaskOpen,
 }) => {
 	const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -70,13 +68,7 @@ export const ListItem: React.FC<ListItemProps> = ({
 									className={clsx('mx-2 py-0.5 flex flex-col')}
 								>
 									{tasks.map((task, idx) => (
-										<TaskCard
-											key={task._id}
-											index={idx}
-											task={task}
-											permissions={permissions}
-											onTaskOpen={onTaskOpen}
-										/>
+										<TaskCard key={task._id} index={idx} task={task} permissions={permissions} />
 									))}
 									{provided.placeholder}
 								</ol>

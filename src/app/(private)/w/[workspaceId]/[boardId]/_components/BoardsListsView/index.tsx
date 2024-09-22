@@ -6,9 +6,8 @@ import { DragDropContext, Droppable, DropResult } from '@hello-pangea/dnd';
 
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useReorder } from '@/hooks/useReorder';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
 import { Board, List } from '@/types/board.interface';
-import { TaskBoardField } from '@/types/tasks.interface';
+import { Task } from '@/types/tasks.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
 import { AddListButton } from './AddListButton';
@@ -20,19 +19,15 @@ type BoardsListsViewProps = {
 
 export const BoardsListsView: React.FC<BoardsListsViewProps> = ({ board }) => {
 	const { user } = useCurrentUser();
-	const { current } = useWorkspacesList();
 	const { listsReorder, tasksReorder, moveTasksToList } = useReorder(board);
 
 	const { _id, lists, tasks } = board;
 
 	const [osrderedLists, setOrderedLists] = useState<List[]>(lists);
 
-	const [boardTasks, setBoardTasks] = useState<TaskBoardField[]>(tasks);
+	const [boardTasks, setBoardTasks] = useState<Task[]>(tasks);
 
-	const openTaskModal = (taskId: string) => {
-		// TODO:
-		console.log(taskId);
-	};
+	const permissions = getBoardPermissions(board, user?.sub);
 
 	const moveTasks = (sourceList: string, destList: string) => {
 		const data = moveTasksToList(sourceList, destList);
@@ -71,8 +66,6 @@ export const BoardsListsView: React.FC<BoardsListsViewProps> = ({ board }) => {
 		}
 	};
 
-	const permissions = getBoardPermissions(board, user?.sub, current?.admins.includes(user?.sub!));
-
 	useEffect(() => {
 		setOrderedLists(lists);
 	}, [lists]);
@@ -102,7 +95,6 @@ export const BoardsListsView: React.FC<BoardsListsViewProps> = ({ board }) => {
 									boardLists={osrderedLists}
 									onTasksMove={moveTasks}
 									onListMove={moveList}
-									onTaskOpen={openTaskModal}
 								/>
 							);
 						})}

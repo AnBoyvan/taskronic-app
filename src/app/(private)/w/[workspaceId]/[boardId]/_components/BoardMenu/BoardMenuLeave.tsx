@@ -9,10 +9,9 @@ import { useBoardMenu } from '@/hooks/useBoardMenu';
 
 type BoardMenuLeaveProps = {
 	boardId: string;
-	workspaceId?: string;
 };
 
-export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({ boardId, workspaceId }) => {
+export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({ boardId }) => {
 	const t = useTranslations();
 	const { leave } = useBoardMembers();
 	const { onClose, onOpen } = useBoardMenu();

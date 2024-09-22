@@ -19,6 +19,14 @@ export type MemberDto = {
 	name: string;
 };
 
+export enum Priority {
+	NO = 1,
+	LOW = 2,
+	MEDIUM = 3,
+	HIGH = 4,
+	CRITICAL = 5,
+}
+
 // export interface TableColumn {
 // 	key: string;
 // 	label: TranslationKeys;

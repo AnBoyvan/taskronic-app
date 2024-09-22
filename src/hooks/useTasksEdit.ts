@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -6,15 +6,11 @@ import { taskService } from '@/services/task.service';
 import { TaskCreate, TaskUpdGeneral, TaskUpdOrder } from '@/types/tasks.interface';
 
 export const useTasksEdit = () => {
-	const queryClient = useQueryClient();
-
 	const create = useMutation({
 		mutationFn: ({ boardId, data }: { boardId: string; data: TaskCreate }) =>
 			taskService.create(boardId, data),
 		mutationKey: ['tasks-create'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
-		},
+
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -24,8 +20,8 @@ export const useTasksEdit = () => {
 		mutationFn: ({ taskId, data }: { taskId: string; data: TaskUpdGeneral }) =>
 			taskService.updGeneral(taskId, data),
 		mutationKey: ['tasks-update-general'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
+		onSuccess: task => {
+			return task;
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
@@ -43,8 +39,16 @@ export const useTasksEdit = () => {
 			data: TaskUpdOrder[];
 		}) => taskService.updOrder(workspaceId, boardId, data),
 		mutationKey: ['tasks-update-order'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
+		onError: err => {
+			toast.error(err.message, { closeButton: false });
+		},
+	});
+
+	const resetDueDate = useMutation({
+		mutationFn: (taskId: string) => taskService.resetDueDate(taskId),
+		mutationKey: ['tasks-reset'],
+		onSuccess: task => {
+			return task;
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
@@ -54,8 +58,8 @@ export const useTasksEdit = () => {
 	const complete = useMutation({
 		mutationFn: (taskId: string) => taskService.complete(taskId),
 		mutationKey: ['tasks-complete'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
+		onSuccess: task => {
+			return task;
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
@@ -65,9 +69,6 @@ export const useTasksEdit = () => {
 	const archive = useMutation({
 		mutationFn: (taskId: string) => taskService.archive(taskId),
 		mutationKey: ['tasks-archive'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -83,9 +84,8 @@ export const useTasksEdit = () => {
 			boardId: string;
 			workspaceId: string;
 		}) => taskService.deleteTask(taskId, boardId, workspaceId),
-		mutationKey: ['tasks-close'],
+		mutationKey: ['tasks-delete'],
 		onSuccess: ({ message }) => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
 			toast.success(message, { closeButton: false });
 		},
 		onError: err => {
@@ -93,5 +93,5 @@ export const useTasksEdit = () => {
 		},
 	});
 
-	return { create, updGeneral, updOrder, complete, archive, deleteTask };
+	return { create, updGeneral, updOrder, resetDueDate, complete, archive, deleteTask };
 };

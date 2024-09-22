@@ -35,7 +35,7 @@ export const WorkspaceMembers: React.FC<WorkspaceMembersProps> = ({ workspace })
 	const [show, setShow] = useState<Member[]>(workspace.members);
 
 	const { users, membersIds } = getAllUsers(workspace);
-	const permissions = getWorkspacePermissions(workspace, user?.sub!);
+	const permissions = getWorkspacePermissions(workspace, user?.sub);
 
 	const onSearchChange = (value: string) => {
 		setFilter({

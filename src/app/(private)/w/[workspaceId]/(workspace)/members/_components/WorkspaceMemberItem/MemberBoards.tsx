@@ -13,11 +13,11 @@ import {
 } from '@nextui-org/react';
 
 import { ROUTES } from '@/configs/routes.config';
-import { BoardWorkspaceField } from '@/types/board.interface';
+import { BoardBasic } from '@/types/board.interface';
 
 type WorkspaceMemberItemProps = {
 	userId: string;
-	userBoards: BoardWorkspaceField[];
+	userBoards: BoardBasic[];
 	workspaceId: string;
 	isAdmin: boolean;
 };
@@ -40,7 +40,7 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 		console.log('REMOVE MEMBER');
 	};
 
-	const canRemove = (board: BoardWorkspaceField) => {
+	const canRemove = (board: BoardBasic) => {
 		const isBoardAdmin = board.admins.includes(userId);
 		const isOnlyAdmin = board.admins.length < 2;
 

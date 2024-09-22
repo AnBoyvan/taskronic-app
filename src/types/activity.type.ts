@@ -1,4 +1,8 @@
+import { ColorVariant } from '@/constants/color-variants.constants';
+
+import { List } from './board.interface';
 import { Base, Member } from './root.interface';
+import { Subtask } from './tasks.interface';
 
 export enum ActivityAction {
 	ADD = 'added',
@@ -23,11 +27,28 @@ export enum EntityType {
 }
 
 export interface Activity extends Base {
-	board: string;
-	task?: string;
+	board: {
+		_id: string;
+		title: string;
+		lists: List[];
+	};
+	task?: {
+		_id: string;
+		title: string;
+		list: string;
+		subtasks: Subtask[];
+	};
+	user: {
+		_id: string;
+		name?: string;
+		email?: string;
+		avatarName?: string;
+		avatarColor?: ColorVariant;
+	};
 	author: Member;
 	action: ActivityAction;
 	entityId: string;
+	entityTitle: string;
 	entityType: EntityType;
 	from?: string;
 	to?: string;

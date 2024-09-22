@@ -1,15 +1,11 @@
-import { BoardTaskField } from './board.interface';
-import { CommentField } from './comment.interface';
-import { Base, Member } from './root.interface';
-import { WorkspaceField } from './workspace.interface';
+import { BoardBasic } from './board.interface';
+import { Comment } from './comment.interface';
+import { Base, Member, Priority } from './root.interface';
+import { WorkspaceBasic } from './workspace.interface';
 
-export enum TaskPriority {
-	NO = 1,
-	LOW = 2,
-	MEDIUM = 3,
-	HIGH = 4,
-	CRITICAL = 5,
-}
+export type CreateSubtask = {
+	label: string;
+};
 
 export type Subtask = {
 	_id: string;
@@ -20,34 +16,27 @@ export type Subtask = {
 export interface TaskBase extends Base {
 	title: string;
 	description?: string;
-	priority: TaskPriority;
+	priority: Priority;
 	subtasks: Subtask[];
 	list: string;
-	dueDate?: Date;
+	dueDate: string | null;
 	order: number;
 	completed: boolean;
 	archived: boolean;
 }
 
 export interface Task extends TaskBase {
-	members?: Member[];
-	workspace: WorkspaceField;
-	board: BoardTaskField;
-	comments?: CommentField[];
+	members: Member[];
+	workspace: WorkspaceBasic;
+	board: BoardBasic;
+	comments: Comment[];
 }
 
-export interface TaskWorkspaceField extends TaskBase {
-	members?: string[];
+export interface TaskBasic extends TaskBase {
+	members: string[];
 	workspace: string;
 	board: string;
-	comments?: string[];
-}
-
-export interface TaskBoardField extends TaskBase {
-	members?: Member[];
-	workspace: string;
-	board: string;
-	comments?: CommentField[];
+	comments: string[];
 }
 
 export type TaskCreate = {
@@ -56,10 +45,10 @@ export type TaskCreate = {
 };
 
 export type TaskUpdGeneral = {
-	title: string;
+	title?: string;
 	description?: string;
-	priority: TaskPriority;
-	order: number;
+	priority?: Priority;
+	dueDate?: string;
 };
 
 export type TaskUpdOrder = {

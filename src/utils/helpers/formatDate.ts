@@ -5,7 +5,7 @@ import { enUS, uk } from 'date-fns/locale';
 import { Locale } from '@/configs/i18n.config';
 
 type FormatDate = {
-	(date: string | Date, lang: Locale, variant: 'short' | 'full' | 'date' | string): string;
+	(date: string, lang: Locale, variant: 'short' | 'full' | 'date' | string): string;
 };
 
 const locales = {

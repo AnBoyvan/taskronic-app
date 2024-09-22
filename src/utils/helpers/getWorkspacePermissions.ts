@@ -1,11 +1,11 @@
 import { Workspace, WorkspacePermissions } from '@/types/workspace.interface';
 
 type GetWorkspacePermissions = {
-	(workspace: Workspace, userId: string): WorkspacePermissions;
+	(workspace: Workspace, userId?: string): WorkspacePermissions;
 };
 
 export const getWorkspacePermissions: GetWorkspacePermissions = (workspace, userId) => {
-	const isAdmin = workspace.admins.includes(userId);
+	const isAdmin = Boolean(userId && workspace.admins.includes(userId));
 	const isMember = workspace.members.some(({ _id }) => _id === userId);
 
 	if (!isMember) {

@@ -5,7 +5,8 @@
 		"en": "EN",
 		"label": "Language",
 		"uk_full": "Ukrainian",
-		"en_full": "English"
+		"en_full": "English",
+		"locale": "enUS"
 	},
 	"site": {
 		"slogan": "Boost your productivity",
@@ -126,7 +127,6 @@
 		"settings_delete_task": "Any board member can delete cards",
 		"denied": "You do not have permission to change",
 		"remove_member": "Remove member from board",
-		"add_members": "Add members",
 		"close": "Close board",
 		"add_list": "Add new list",
 		"list_actions": "List actions",
@@ -134,7 +134,8 @@
 		"list_move_tasks": "Move all cards in list",
 		"list_color": "Change list color",
 		"list_archive": "Archive list",
-		"list_select": "Select list"
+		"list_select": "Select list",
+		"members": "Board members"
 	},
 	"task": {
 		"task_not_found": "Card not found",
@@ -142,11 +143,26 @@
 		"removed": "Card removed",
 		"add": "Add a card",
 		"remove_member": "Remove from card",
-		"leave_board": "Leave board"
+		"leave_task": "Leave card",
+		"in_list": "in list",
+		"move_task": "Move card",
+		"due_date": "Due date",
+		"archive": "Archive card",
+		"restore": "Restore card",
+		"subtask_hide": "Hide checked",
+		"subtask_show": "Show checked",
+		"activity_hide": "Hide details",
+		"activity_show": "Show details",
+		"comments_hide": "Hide comments",
+		"comments_show": "Show comments",
+		"remove_task": "Remove card",
+		"remove_warn": "Card deletion is permanent. You won't be able to restore it."
 	},
 	"comment": {
 		"not_found": "Comment not found",
-		"removed": "Comment removed"
+		"removed": "Comment removed",
+		"write": "Write a comment",
+		"delete": "Delete comment"
 	},
 	"note": {
 		"not_found": "Note not found",
@@ -190,7 +206,19 @@
 		"info": "Info",
 		"back": "Back",
 		"join": "Join",
-		"send_request": "Send request"
+		"send_request": "Send request",
+		"position": "Position",
+		"current": "current",
+		"move": "Move",
+		"add_members": "Add members",
+		"priority": "Priority",
+		"description": "Description",
+		"archive": "Archive",
+		"restore": "Restore",
+		"save": "Save",
+		"cancel": "Cancel",
+		"edited": "(edited)",
+		"load_more": "Load more"
 	},
 	"sort": {
 		"by_name": "by name",
@@ -240,6 +268,7 @@
 		"new_workspace": "New workspace",
 		"board_descr": "Add description to board",
 		"workspace_descr": "Add description to workspace",
+		"task_descr": "Add more detailed description",
 		"list_title": "Enter list title",
 		"invite_message": "Invitation text...",
 		"task_title": "Enter card title"
@@ -252,6 +281,53 @@
 		"passDoNotMatch": "Passwords do not match",
 		"title": "Enter a name",
 		"already_added": "Already added"
+	},
+	"priority": {
+		"1": "No priority",
+		"2": "Low",
+		"3": "Medium",
+		"4": "High",
+		"5": "Critical"
+	},
+	"activity": {
+		"added": "added",
+		"join": "joined",
+		"removed": "removed",
+		"marked": "marked",
+		"moved": "moved",
+		"changed": "changed",
+		"left": "left",
+		"archived": "archived",
+		"restored": "restored",
+		"closed": "closed",
+		"opened": "opened",
+		"set": "set",
+		"renamed": "renamed",
+		"made": "made",
+		"admin": "an admin",
+		"normal": "a normal member",
+		"board": "board",
+		"this_board": "this board",
+		"of_board": "of this board",
+		"list": "list",
+		"to_list": "to list",
+		"task": "card",
+		"of_task": "of card",
+		"on_task": "card",
+		"this_task": "this card",
+		"to_this_task": "to this card",
+		"of_this_task": "of this card",
+		"on_this_task": "this card",
+		"from_this_task": "this card",
+		"completed": "completed",
+		"incompleted": "incompleted",
+		"due": "the due date",
+		"priority": "priority",
+		"to": "to",
+		"bg": "background of",
+		"from": "from",
+		"onto": "to",
+		"on": "on"
 	},
 	"api_err": {
 		"bad_request": "Bad Request",

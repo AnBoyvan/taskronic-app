@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Icon } from '@/components/ui/Icon';
 import { useBoardMenu } from '@/hooks/useBoardMenu';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
 import { Board } from '@/types/board.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
@@ -40,15 +39,10 @@ export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
 	const t = useTranslations();
 	const { user } = useCurrentUser();
 	const { isOpen, section, onOpen, onClose } = useBoardMenu();
-	const { current } = useWorkspacesList();
 
 	const { _id, description } = board;
 
-	const { updateBoard, isAdmin, addMember } = getBoardPermissions(
-		board,
-		user?.sub,
-		current?.admins.includes(user?.sub!),
-	);
+	const { updateBoard, isAdmin, addMember } = getBoardPermissions(board, user?.sub);
 
 	return (
 		<div
@@ -104,7 +98,7 @@ export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
 					{section === 'addMembers' && <BoardMenuAddMembers board={board} />}
 					{section === 'settings' && <BoardMenuSettings board={board} canUpdate={isAdmin} />}
 					{section === 'close' && <BoardMenuClose boardId={_id} />}
-					{section === 'leave' && <BoardMenuLeave boardId={_id} workspaceId={board.workspace} />}
+					{section === 'leave' && <BoardMenuLeave boardId={_id} />}
 				</motion.div>
 			</AnimatePresence>
 		</div>

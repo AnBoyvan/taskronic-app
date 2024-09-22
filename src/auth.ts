@@ -7,6 +7,7 @@ import { jwtDecode } from '@/utils/helpers/jwtDecode';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
 	...authConfig,
+	trustHost: true,
 	session: { strategy: 'jwt' },
 	callbacks: {
 		async jwt({ token, user, trigger, session, account, profile }) {

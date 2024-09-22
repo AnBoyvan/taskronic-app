@@ -2,11 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useEffect, useState } from 'react';
-
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
-
-import { useMediaQuery } from 'usehooks-ts';
 
 import { Icon } from '@/components/ui/Icon';
 import { createButtonConfig } from '@/configs/create-button.config';
@@ -14,8 +10,6 @@ import { CreateVariant, useCreateModal } from '@/hooks/useCreateModal';
 
 export const CreateButton: React.FC = () => {
 	const t = useTranslations();
-	const isMobile = useMediaQuery('(max-width:640px)');
-	const [isMounted, setIsMounted] = useState<boolean>(false);
 
 	const modal = useCreateModal();
 
@@ -23,23 +17,17 @@ export const CreateButton: React.FC = () => {
 		modal.onOpen(variant);
 	};
 
-	useEffect(() => {
-		setIsMounted(true);
-	});
-
-	if (!isMounted) return null;
-
 	return (
 		<Dropdown>
 			<DropdownTrigger>
 				<Button
-					startContent={<Icon name="Plus" size={20} className="sm:hidden" />}
-					isIconOnly={isMobile}
 					color="primary"
 					variant="solid"
 					size="sm"
+					className="flex flex-row gap-2 min-w-8 md:min-w-16 p-0 md:px-3"
 				>
-					<span className="hidden sm:block">{t('common.create')}</span>
+					<Icon name="Plus" size={20} className="flex md:hidden" />
+					<span className="hidden md:flex">{t('common.create')}</span>
 				</Button>
 			</DropdownTrigger>
 

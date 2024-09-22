@@ -7,7 +7,7 @@ import { Button, User } from '@nextui-org/react';
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useInviteModal } from '@/hooks/useInviteModal';
 import { useWorkspacesList } from '@/hooks/useWorkspacesList';
-import { BoardWorkspaceField } from '@/types/board.interface';
+import { BoardBasic } from '@/types/board.interface';
 import { Member } from '@/types/root.interface';
 import { WorkspacePermissions } from '@/types/workspace.interface';
 import { isBoardMember } from '@/utils/helpers/isBoardMember';
@@ -20,7 +20,7 @@ type WorkspaceMemberItemProps = {
 	member: Member;
 	admins: string[];
 	membersIds: string[];
-	boards: BoardWorkspaceField[];
+	boards: BoardBasic[];
 	permissions: WorkspacePermissions;
 	workspaceId: string;
 	currentUserId?: string;

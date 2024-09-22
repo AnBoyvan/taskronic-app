@@ -33,6 +33,13 @@ export const noteService = {
 		});
 	},
 
+	async resetDueDate(noteId: string): Promise<Note> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.notes.resetDueDate(noteId),
+		});
+	},
+
 	async delete(noteId: string): Promise<{ message: string }> {
 		return await apiRequest({
 			method: 'DELETE',

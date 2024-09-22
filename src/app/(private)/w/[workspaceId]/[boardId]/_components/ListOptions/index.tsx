@@ -69,7 +69,7 @@ export const ListOptions: React.FC<ListOptionsProps> = ({
 					variant="light"
 					size="sm"
 					onPress={() => setIsOpen(false)}
-					className="absolute top-2 right-2 z-10"
+					className="absolute top-2 right-2"
 				>
 					<Icon name="X" size={16} />
 				</Button>

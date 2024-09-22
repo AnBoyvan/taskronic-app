@@ -11,17 +11,17 @@ export const commentService = {
 		});
 	},
 
-	async findByTask(taskId: string): Promise<Comment[]> {
+	async findByTask(taskId: string, query?: string): Promise<Comment[]> {
 		return await apiRequest({
 			method: 'GET',
-			url: API_ROUTES.comments.findByTask(taskId),
+			url: API_ROUTES.comments.findByTask(taskId, query),
 		});
 	},
 
-	async findByBoard(boardId: string): Promise<Comment[]> {
+	async findByBoard(boardId: string, query?: string): Promise<Comment[]> {
 		return await apiRequest({
 			method: 'GET',
-			url: API_ROUTES.comments.findByBoard(boardId),
+			url: API_ROUTES.comments.findByBoard(boardId, query),
 		});
 	},
 
@@ -33,11 +33,10 @@ export const commentService = {
 		});
 	},
 
-	async delete(commentId: string, dto: CommentUpdate): Promise<{ message: string }> {
+	async delete(commentId: string): Promise<{ message: string }> {
 		return await apiRequest({
-			method: 'PATCH',
+			method: 'DELETE',
 			url: API_ROUTES.comments.delete(commentId),
-			data: dto,
 		});
 	},
 };

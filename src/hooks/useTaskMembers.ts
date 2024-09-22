@@ -16,9 +16,6 @@ export const useTaskMembers = () => {
 	const addMember = useMutation({
 		mutationFn: ({ taskId, data }: MemberServiceProps) => taskService.addMember(taskId, data),
 		mutationKey: ['tasks-add-member'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -27,9 +24,6 @@ export const useTaskMembers = () => {
 	const removeMember = useMutation({
 		mutationFn: ({ taskId, data }: MemberServiceProps) => taskService.removeMember(taskId, data),
 		mutationKey: ['tasks-remove-member'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -38,9 +32,6 @@ export const useTaskMembers = () => {
 	const leave = useMutation({
 		mutationFn: (taskId: string) => taskService.leave(taskId),
 		mutationKey: ['tasks-leave'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['tasks', 'boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},

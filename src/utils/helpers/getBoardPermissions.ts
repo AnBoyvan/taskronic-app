@@ -1,11 +1,12 @@
-import { Board, BoardPermissions } from '@/types/board.interface';
+import { Board, BoardBasic, BoardPermissions } from '@/types/board.interface';
 
 type GetBoardPermissions = {
-	(board: Board, userId?: string, isWorkspaceAdmin?: boolean): BoardPermissions;
+	(board: Board | BoardBasic, userId?: string): BoardPermissions;
 };
 
-export const getBoardPermissions: GetBoardPermissions = (board, userId, isWorkspaceAdmin) => {
-	const isAdmin = board.admins.includes(userId!) || Boolean(isWorkspaceAdmin);
+export const getBoardPermissions: GetBoardPermissions = (board, userId) => {
+	const isWorkspaceAdmin = Boolean(userId && board.workspace?.admins?.includes(userId));
+	const isAdmin = (userId && board.admins.includes(userId)) || Boolean(isWorkspaceAdmin);
 	const isMember = board.members.some(({ _id }) => _id === userId);
 
 	if (isAdmin) {

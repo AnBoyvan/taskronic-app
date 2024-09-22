@@ -2,7 +2,7 @@ export type ListColor = { color: string; text: string };
 
 export const listColors: ListColor[] = [
 	{
-		color: 'bg-background',
+		color: 'bg-default-200',
 		text: 'text-foreground',
 	},
 	{

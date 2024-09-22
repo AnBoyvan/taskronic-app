@@ -56,7 +56,7 @@ export const BoardMenuAddMembers: React.FC<BoardMenuAddMembersProps> = ({ board 
 	return (
 		<div className="flex flex-col h-full overflow-hidden">
 			<div className="h-10 flex items-center justify-center font-medium">
-				{t('board.add_members')}?
+				{t('common.add_members')}?
 			</div>
 			<Divider className="my-2" />
 			<Tabs

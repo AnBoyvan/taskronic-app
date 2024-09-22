@@ -1,12 +1,4 @@
-import { Base } from './root.interface';
-
-export enum NotePriority {
-	NO = 1,
-	LOW = 2,
-	MEDIUM = 3,
-	HIGH = 4,
-	CRITICAL = 5,
-}
+import { Base, Priority } from './root.interface';
 
 export type ToDo = {
 	_id: string;
@@ -20,8 +12,8 @@ export interface Note extends Base {
 	content: string;
 	todos: ToDo[];
 	group?: string;
-	priority: NotePriority;
-	dueDate?: Date;
+	priority: Priority;
+	dueDate: string | null;
 	closed: boolean;
 	archived: boolean;
 }
@@ -31,8 +23,8 @@ export interface NoteCreate {
 	content?: string;
 	todos?: ToDo[];
 	group?: string;
-	priority: NotePriority;
-	dueDate?: Date;
+	priority: Priority;
+	dueDate?: string;
 }
 
 export interface NoteUpdate extends NoteCreate {

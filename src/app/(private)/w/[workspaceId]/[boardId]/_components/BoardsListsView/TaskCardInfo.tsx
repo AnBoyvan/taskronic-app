@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 
 import clsx from 'clsx';
 
@@ -9,16 +9,15 @@ import { Button } from '@nextui-org/react';
 import { Icon } from '@/components/ui/Icon';
 import { Locale } from '@/configs/i18n.config';
 import { useTasksEdit } from '@/hooks/useTasksEdit';
-import { Task, TaskBoardField } from '@/types/tasks.interface';
+import { Task } from '@/types/tasks.interface';
 import { formatDate } from '@/utils/helpers/formatDate';
 
 type TaskCardInfoProps = {
-	task: Task | TaskBoardField;
+	task: Task;
 	canClose?: boolean;
 };
 
 export const TaskCardInfo: React.FC<TaskCardInfoProps> = ({ task, canClose }) => {
-	const t = useTranslations();
 	const locale = useLocale() as Locale;
 	const { complete } = useTasksEdit();
 
@@ -36,7 +35,7 @@ export const TaskCardInfo: React.FC<TaskCardInfoProps> = ({ task, canClose }) =>
 	const completedSubtasks = subtasks.filter(sub => sub.completed);
 
 	return (
-		<div className="flex flex-row gap-3 px-2 items-center h-6">
+		<div className="flex flex-row gap-2 px-2 items-center h-6">
 			{dueDate && (
 				<Button
 					className={clsx(
@@ -46,11 +45,11 @@ export const TaskCardInfo: React.FC<TaskCardInfoProps> = ({ task, canClose }) =>
 					)}
 					onClick={comletedSwitcher}
 				>
-					<Icon name="CalendarClock" size={12} className="group-hover:hidden" />
+					<Icon name="CalendarClock" size={12} className="group-hover:hidden w-4 h-4" />
 					<Icon
 						name={completed ? 'SquareCheckBig' : 'Square'}
 						size={12}
-						className="hidden group-hover:block"
+						className="hidden group-hover:block w-4 h-4"
 					/>
 					<span>{formatDate(dueDate, locale, 'short')}</span>
 				</Button>

@@ -3,10 +3,9 @@ import { DetailedHTMLProps, ForwardedRef, forwardRef, HTMLAttributes } from 'rea
 
 import { Avatar, AvatarProps } from '@nextui-org/react';
 
+import { Icon } from '@/components/ui/Icon';
 import { ColorVariant, colorVariants } from '@/constants/color-variants.constants';
 import { WorkspaceIcon } from '@/constants/workspace-icons.constants';
-
-import { Icon } from './Icon';
 
 interface WorkspaceBadgeProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

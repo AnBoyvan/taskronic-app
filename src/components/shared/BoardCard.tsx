@@ -11,25 +11,25 @@ import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
 import { boardColors } from '@/constants/board-colors.constants';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { Board as BoardType, BoardWorkspaceField } from '@/types/board.interface';
+import { BoardBasic, Board as BoardType } from '@/types/board.interface';
+import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
 interface BoardProps extends Partial<CardProps> {
-	board: BoardType | BoardWorkspaceField;
-	isWorkspaceAdmin?: boolean;
+	board: BoardType | BoardBasic;
 }
 
-export const BoardCard: React.FC<BoardProps> = ({ board, isWorkspaceAdmin, ...props }) => {
+export const BoardCard: React.FC<BoardProps> = ({ board, ...props }) => {
 	const t = useTranslations();
 	const router = useRouter();
 	const { user } = useCurrentUser();
 
 	const { _id, title, thumbImage, textColor, bgColor, starred, closed, admins, workspace } = board;
 
-	const isAdmin = (user && admins.includes(user.sub)) || isWorkspaceAdmin;
+	const { isAdmin } = getBoardPermissions(board, user?.sub);
 
 	const goToBoard = () => {
 		if (workspace) {
-			router.push(`${ROUTES.WORKSPACE}/${workspace}/${_id}`);
+			router.push(`${ROUTES.WORKSPACE}/${workspace._id}/${_id}`);
 		}
 	};
 

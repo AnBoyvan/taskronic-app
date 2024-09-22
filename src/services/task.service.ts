@@ -1,6 +1,13 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
 import { MemberDto } from '@/types/root.interface';
-import { Subtask, Task, TaskCreate, TaskUpdGeneral, TaskUpdOrder } from '@/types/tasks.interface';
+import {
+	CreateSubtask,
+	Subtask,
+	Task,
+	TaskCreate,
+	TaskUpdGeneral,
+	TaskUpdOrder,
+} from '@/types/tasks.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const taskService = {
@@ -47,6 +54,14 @@ export const taskService = {
 		});
 	},
 
+	async resetDueDate(taskId: string): Promise<Task> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.tasks.resetDueDate(taskId),
+			revalidate: 'task',
+		});
+	},
+
 	async complete(taskId: string): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
@@ -89,7 +104,7 @@ export const taskService = {
 		});
 	},
 
-	async addSubtask(taskId: string, data: Subtask): Promise<Task> {
+	async addSubtask(taskId: string, data: CreateSubtask): Promise<Task> {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.tasks.addSubtask(taskId),

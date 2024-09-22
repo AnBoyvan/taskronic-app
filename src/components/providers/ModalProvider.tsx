@@ -6,15 +6,16 @@ import { ContactsModal } from '@/components/modals/ContactsModal';
 
 import { CreateModal } from '../modals/CreateModal';
 import { InviteModal } from '../modals/InviteModal';
+import { TaskModal } from '../modals/TaskModal';
 
 export const ModalProvider = () => {
-	const [mounted, setMounted] = useState(false);
+	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {
-		setMounted(true);
+		setIsMounted(true);
 	}, []);
 
-	if (!mounted) {
+	if (!isMounted) {
 		return null;
 	}
 
@@ -23,6 +24,7 @@ export const ModalProvider = () => {
 			<ContactsModal />
 			<CreateModal />
 			<InviteModal />
+			<TaskModal />
 		</>
 	);
 };

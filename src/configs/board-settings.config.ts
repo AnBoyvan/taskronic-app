@@ -35,6 +35,6 @@ export const boardSettings: { value: keyof BoardSettings; label: TranslationKeys
 	},
 	{
 		value: 'deleteTask',
-		label: 'board.settings_update',
+		label: 'board.settings_delete_task',
 	},
 ];

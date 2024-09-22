@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -14,15 +14,11 @@ type MemberServiceProps = {
 };
 
 export const useBoardMembers = () => {
-	const queryClient = useQueryClient();
 	const router = useRouter();
 
 	const addMember = useMutation({
 		mutationFn: ({ boardId, dto }: MemberServiceProps) => boardService.addMember(boardId, dto),
 		mutationKey: ['boards-add-member'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -31,9 +27,6 @@ export const useBoardMembers = () => {
 	const removeMember = useMutation({
 		mutationFn: ({ boardId, dto }: MemberServiceProps) => boardService.removeMember(boardId, dto),
 		mutationKey: ['boards-remove-member'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -42,9 +35,6 @@ export const useBoardMembers = () => {
 	const addAdmin = useMutation({
 		mutationFn: ({ boardId, dto }: MemberServiceProps) => boardService.addAdmin(boardId, dto),
 		mutationKey: ['boards-add-admin'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -53,9 +43,6 @@ export const useBoardMembers = () => {
 	const removeAdmin = useMutation({
 		mutationFn: ({ boardId, dto }: MemberServiceProps) => boardService.removeAdmin(boardId, dto),
 		mutationKey: ['boards-remove-admin'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},

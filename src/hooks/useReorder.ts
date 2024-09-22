@@ -1,5 +1,5 @@
-import { Board, BoardTaskField, List } from '@/types/board.interface';
-import { TaskBoardField } from '@/types/tasks.interface';
+import { Board, BoardBasic, List } from '@/types/board.interface';
+import { Task, TaskBasic } from '@/types/tasks.interface';
 
 import { useLists } from './useLists';
 import { useTasksEdit } from './useTasksEdit';
@@ -13,11 +13,11 @@ type TasksReorder = (
 	sourceIndex: number,
 	destId: string,
 	destIndex: number,
-) => TaskBoardField[];
+) => (Task | TaskBasic)[];
 
-type MoveTasksToList = (sourceId: string, destId: string) => TaskBoardField[];
+type MoveTasksToList = (sourceId: string, destId: string) => (Task | TaskBasic)[];
 
-export const useReorder = (board: Board | BoardTaskField) => {
+export const useReorder = (board: Board | BoardBasic) => {
 	const { updListsOrder } = useLists();
 	const { updOrder } = useTasksEdit();
 
@@ -76,7 +76,7 @@ export const useReorder = (board: Board | BoardTaskField) => {
 		}));
 
 		updOrder.mutate({
-			workspaceId: board.workspace,
+			workspaceId: board.workspace._id,
 			boardId: board._id,
 			data: updTasksData,
 		});
@@ -108,7 +108,7 @@ export const useReorder = (board: Board | BoardTaskField) => {
 		}));
 
 		updOrder.mutate({
-			workspaceId: board.workspace,
+			workspaceId: board.workspace._id,
 			boardId: board._id,
 			data: updTasksData,
 		});

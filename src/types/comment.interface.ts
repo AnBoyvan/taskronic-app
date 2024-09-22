@@ -1,3 +1,5 @@
+import { ColorVariant } from '@/constants/color-variants.constants';
+
 import { Base, Member } from './root.interface';
 
 export interface CommentBase extends Base {
@@ -11,10 +13,13 @@ export interface Comment extends CommentBase {
 		_id: string;
 		title: string;
 	};
-}
-
-export interface CommentField extends CommentBase {
-	task: string;
+	user: {
+		_id: string;
+		name?: string;
+		email?: string;
+		avatarName?: string;
+		avatarColor?: ColorVariant;
+	};
 }
 
 export type CommentCreate = {

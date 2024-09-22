@@ -29,7 +29,6 @@ export const BoardMenuInfo: React.FC<BoardMenuInfoProps> = ({ board, canUpdate }
 		control,
 		handleSubmit,
 		formState: { isDirty, isValid },
-		setValue,
 	} = useForm<BoardCompose>({
 		mode: 'onChange',
 		defaultValues: {

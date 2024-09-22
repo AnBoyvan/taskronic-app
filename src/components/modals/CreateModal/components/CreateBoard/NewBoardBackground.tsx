@@ -49,7 +49,7 @@ export const NewBoardBackground: React.FC<NewBoardBackgroundProps> = ({ setColor
 	};
 
 	const onColorSelect = (selected: BoardColor) => {
-		const textColor = getTextColor({ variant: selected });
+		const textColor = getTextColor({ boardColor: selected });
 
 		if (!colors.includes(selected)) {
 			setColors([selected, ...colors.slice(1)]);

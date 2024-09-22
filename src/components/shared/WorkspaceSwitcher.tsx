@@ -51,7 +51,7 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 	}, [current]);
 
 	const filtered = workspaces.filter(
-		({ admins, settings }) => settings.createBoard || admins.includes(user?.sub!),
+		({ admins, settings }) => settings.createBoard || (user && admins.includes(user?.sub)),
 	);
 
 	return (
@@ -60,7 +60,7 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 				<Select
 					{...props}
 					items={canCreateBoard ? filtered : workspaces}
-					aria-label="workspace"
+					aria-label={t('nav.workspace')}
 					selectedKeys={[selected]}
 					disabledKeys={[selected]}
 					isDisabled={workspaces.length < 1}

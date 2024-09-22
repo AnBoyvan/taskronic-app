@@ -1,7 +1,7 @@
-import { TaskBoardField, TaskWorkspaceField } from '@/types/tasks.interface';
+import { Task, TaskBasic } from '@/types/tasks.interface';
 
 export const getTasksQuantity = (
-	tasks: TaskWorkspaceField[] | TaskBoardField[],
+	tasks: Task[] | TaskBasic[],
 ): { active: number; completed: number } => {
 	const notArchived = tasks.filter(t => !t.archived);
 	const completed = notArchived.filter(t => t.completed);

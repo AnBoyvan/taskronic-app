@@ -15,9 +15,6 @@ export const useWorkspaceEdit = () => {
 	const create = useMutation({
 		mutationFn: (dto: WorkspaceCompose) => workspaceService.create(dto),
 		mutationKey: ['workspaces-create'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -27,9 +24,6 @@ export const useWorkspaceEdit = () => {
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceCompose }) =>
 			workspaceService.updGeneral(workspaceId, dto),
 		mutationKey: ['workspaces-update-general'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -39,10 +33,6 @@ export const useWorkspaceEdit = () => {
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceSettings }) =>
 			workspaceService.updSettings(workspaceId, dto),
 		mutationKey: ['workspaces-settings'],
-
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},

@@ -11,7 +11,7 @@ import { BoardListWrapper } from '@/components/shared/BoardListWrapper';
 import { CreateBoardButton } from '@/components/shared/CreateBoardButton';
 import { useCreateModal } from '@/hooks/useCreateModal';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { BoardWorkspaceField } from '@/types/board.interface';
+import { BoardBasic } from '@/types/board.interface';
 import { Workspace } from '@/types/workspace.interface';
 import { getWorkspacePermissions } from '@/utils/helpers/getWorkspacePermissions';
 import { sorter } from '@/utils/helpers/sorter';
@@ -37,12 +37,12 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 		closed: 'hide',
 	});
 
-	const permissions = getWorkspacePermissions(workspace, user?.sub!);
+	const permissions = getWorkspacePermissions(workspace, user?.sub);
 
 	const filteredBoards = useMemo(() => {
 		const sortedBoards = sorter(
 			workspace.boards,
-			filter.sortBy.field as keyof BoardWorkspaceField,
+			filter.sortBy.field as keyof BoardBasic,
 			filter.sortBy.order,
 		);
 
@@ -72,7 +72,7 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 						<CreateBoardButton isDisabled={!permissions.createBoard} onPress={createNewBoard} />
 					)}
 					{filteredBoards.map(board => (
-						<BoardCard key={board._id} board={board} isWorkspaceAdmin={permissions.isAdmin} />
+						<BoardCard key={board._id} board={board} />
 					))}
 				</BoardListWrapper>
 			</Section>

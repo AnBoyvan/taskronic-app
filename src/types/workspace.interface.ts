@@ -2,7 +2,7 @@ import { Locale } from '@/configs/i18n.config';
 import { ColorVariant } from '@/constants/color-variants.constants';
 import { WorkspaceIcon } from '@/constants/workspace-icons.constants';
 
-import { BoardWorkspaceField } from './board.interface';
+import { BoardBasic } from './board.interface';
 import { Base, Member } from './root.interface';
 
 export interface WorkspaceSettings {
@@ -23,11 +23,11 @@ export interface WorkspaceBase extends Base {
 
 export interface Workspace extends WorkspaceBase {
 	members: Member[];
-	boards: BoardWorkspaceField[];
+	boards: BoardBasic[];
 	requests: Member[];
 }
 
-export interface WorkspaceField extends WorkspaceBase {
+export interface WorkspaceBasic extends WorkspaceBase {
 	members: string[];
 	boards: string[];
 	requests: string[];

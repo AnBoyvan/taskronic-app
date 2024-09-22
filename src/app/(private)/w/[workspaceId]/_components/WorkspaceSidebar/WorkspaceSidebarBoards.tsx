@@ -20,11 +20,11 @@ import { SortBy } from '@/components/ui/SortBy';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
 import { SortingVariant } from '@/configs/sorting-variants.config';
-import { BoardWorkspaceField } from '@/types/board.interface';
+import { BoardBasic } from '@/types/board.interface';
 import { sorter } from '@/utils/helpers/sorter';
 
 type WorkspaceSidebarBoardsProps = {
-	boards: BoardWorkspaceField[];
+	boards: BoardBasic[];
 	workspaceId: string;
 };
 
@@ -43,7 +43,7 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 
 	const onlyActive = boards.filter(board => !board.closed);
 
-	const sortedBoards = sorter(onlyActive, sortBy.field as keyof BoardWorkspaceField, sortBy.order);
+	const sortedBoards = sorter(onlyActive, sortBy.field as keyof BoardBasic, sortBy.order);
 
 	const onBoardSelect = (boardId: string) => {
 		router.push(`${ROUTES.WORKSPACE}/${workspaceId}/${boardId}`);

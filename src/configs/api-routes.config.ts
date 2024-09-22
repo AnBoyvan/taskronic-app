@@ -1,8 +1,12 @@
 export const API_ROUTES = {
 	activity: {
-		findByBoard: (boardId: string) => `/activity/board/${boardId}`,
-		findByUser: '/activity/user',
-		findByEntity: (entityId: string) => `/activity/entity/${entityId}`,
+		findByBoard: (boardId: string, query?: string) =>
+			`/activity/board/${boardId}${query ? query : ''}`,
+		findByBoardAndUser: (boardId: string, query?: string) => `/activity/board-and-user/${boardId}`,
+		findByTask: (taskId: string, query?: string) => `/activity/task/${taskId}${query ? query : ''}`,
+		findByUser: (query?: string) => `/activity/user${query ? query : ''}`,
+		findByEntity: (entityId: string, query?: string) =>
+			`/activity/entity/${entityId}${query ? query : ''}`,
 	},
 	auth: {
 		register: '/auth/local/register',
@@ -33,8 +37,10 @@ export const API_ROUTES = {
 	},
 	comments: {
 		create: '/comments/create',
-		findByTask: (taskId: string) => `/comments/find/task/${taskId}`,
-		findByBoard: (boardId: string) => `/comments/find/board/${boardId}`,
+		findByTask: (taskId: string, query?: string) =>
+			`/comments/find/task/${taskId}${query ? query : ''}`,
+		findByBoard: (boardId: string, query?: string) =>
+			`/comments/find/board/${boardId}${query ? query : ''}`,
 		update: (commentId: string) => `/comments/update/${commentId}`,
 		delete: (commentId: string) => `/comments/delete/${commentId}`,
 	},
@@ -49,6 +55,7 @@ export const API_ROUTES = {
 		findById: (noteId: string) => `/notes/find/id/${noteId}`,
 		findByOwner: '/notes/find/owner',
 		update: (noteId: string) => `/notes/update/${noteId}`,
+		resetDueDate: (noteId: string) => `/notes/reset/${noteId}`,
 		delete: (noteId: string) => `/notes/delete/${noteId}`,
 	},
 	tasks: {
@@ -57,6 +64,7 @@ export const API_ROUTES = {
 		findByUser: '/tasks/find/user',
 		updGeneral: (taskId: string) => `/tasks/update/general/${taskId}`,
 		updOrder: (boardId: string) => `/tasks/update/order/${boardId}`,
+		resetDueDate: (taskId: string) => `/tasks/update/reset/${taskId}`,
 		complete: (taskId: string) => `/tasks/update/complete/${taskId}`,
 		archive: (taskId: string) => `/tasks/update/archive/${taskId}`,
 		addMember: (taskId: string) => `/tasks/members/add/${taskId}`,

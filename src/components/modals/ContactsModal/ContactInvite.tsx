@@ -32,7 +32,7 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 
 	const canInvite = workspaces.filter(
 		({ members, admins, settings }) =>
-			(admins.includes(user?.sub!) || settings.invite) && !isMember(members),
+			((user && admins.includes(user?.sub)) || settings.invite) && !isMember(members),
 	);
 
 	const inviteContact = (workspace: Workspace) => {

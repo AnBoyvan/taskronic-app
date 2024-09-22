@@ -19,9 +19,6 @@ export const useWorkspaceMembers = () => {
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceInvite[] }) =>
 			workspaceService.invite(workspaceId, dto),
 		mutationKey: ['workspaces-invite-add'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -32,7 +29,6 @@ export const useWorkspaceMembers = () => {
 			inviteService.accept(inviteId, workspaceId),
 		mutationKey: ['workspaces-invite-accept'],
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
 			queryClient.refetchQueries({ queryKey: ['invites'] });
 		},
 		onError: err => {
@@ -45,7 +41,6 @@ export const useWorkspaceMembers = () => {
 			inviteService.reject(inviteId, workspaceId),
 		mutationKey: ['workspaces-invite-reject'],
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
 			queryClient.refetchQueries({ queryKey: ['invites'] });
 		},
 		onError: err => {
@@ -56,9 +51,6 @@ export const useWorkspaceMembers = () => {
 	const addRequest = useMutation({
 		mutationFn: (workspaceId: string) => workspaceService.addRequest(workspaceId),
 		mutationKey: ['workspaces-request-add'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -68,9 +60,6 @@ export const useWorkspaceMembers = () => {
 		mutationFn: ({ workspaceId, userId }: { workspaceId: string; userId: string }) =>
 			workspaceService.acceptRequest(workspaceId, userId),
 		mutationKey: ['workspaces-request-accept'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -80,9 +69,6 @@ export const useWorkspaceMembers = () => {
 		mutationFn: ({ workspaceId, userId }: { workspaceId: string; userId: string }) =>
 			workspaceService.declineRequest(workspaceId, userId),
 		mutationKey: ['workspaces-request-decline'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -92,9 +78,6 @@ export const useWorkspaceMembers = () => {
 		mutationFn: ({ workspaceId, dto }: MemberServiceProps) =>
 			workspaceService.removeMember(workspaceId, dto),
 		mutationKey: ['workspaces-remove-member'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -104,9 +87,6 @@ export const useWorkspaceMembers = () => {
 		mutationFn: ({ workspaceId, dto }: MemberServiceProps) =>
 			workspaceService.addAdmin(workspaceId, dto),
 		mutationKey: ['workspaces-add-admin'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -116,9 +96,6 @@ export const useWorkspaceMembers = () => {
 		mutationFn: ({ workspaceId, dto }: MemberServiceProps) =>
 			workspaceService.removeAdmin(workspaceId, dto),
 		mutationKey: ['workspaces-remove-admin'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -127,9 +104,6 @@ export const useWorkspaceMembers = () => {
 	const leave = useMutation({
 		mutationFn: (workspaceId: string) => workspaceService.leave(workspaceId),
 		mutationKey: ['workspaces-leave'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},

@@ -1,18 +1,15 @@
 import { create } from 'zustand';
 
-import { Board, BoardTaskField } from '@/types/board.interface';
-import { Task, TaskBoardField } from '@/types/tasks.interface';
-
 type TaskModalStore = {
+	taskId?: string;
 	isOpen: boolean;
-	task: Task | TaskBoardField;
-	board: Board | BoardTaskField;
-	onOpen: () => void;
+	onOpen: (taskId: string) => void;
 	onClose: () => void;
 };
 
 export const useTaskModal = create<TaskModalStore>(set => ({
+	taskId: undefined,
 	isOpen: false,
-	onOpen: () => set({ isOpen: true }),
-	onClose: () => set({ isOpen: false }),
+	onOpen: taskId => set({ isOpen: true, taskId }),
+	onClose: () => set({ isOpen: false, taskId: undefined }),
 }));

@@ -3,24 +3,38 @@ import { Activity } from '@/types/activity.type';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const activityService = {
-	async findByBoard(boardId: string): Promise<Activity[]> {
+	async findByBoard(boardId: string, query?: string): Promise<Activity[]> {
 		return await apiRequest({
 			method: 'GET',
-			url: API_ROUTES.activity.findByBoard(boardId),
+			url: API_ROUTES.activity.findByBoard(boardId, query),
 		});
 	},
 
-	async findByUser(boardId: string): Promise<Activity[]> {
+	async findByBoardAndUser(boardId: string, query?: string): Promise<Activity[]> {
 		return await apiRequest({
 			method: 'GET',
-			url: API_ROUTES.activity.findByUser,
+			url: API_ROUTES.activity.findByBoardAndUser(boardId, query),
 		});
 	},
 
-	async findByEntity(entityId: string): Promise<Activity[]> {
+	async findByTask(taskId: string, query?: string): Promise<Activity[]> {
 		return await apiRequest({
 			method: 'GET',
-			url: API_ROUTES.activity.findByEntity(entityId),
+			url: API_ROUTES.activity.findByTask(taskId, query),
+		});
+	},
+
+	async findByUser(query?: string): Promise<Activity[]> {
+		return await apiRequest({
+			method: 'GET',
+			url: API_ROUTES.activity.findByUser(query),
+		});
+	},
+
+	async findByEntity(entityId: string, query?: string): Promise<Activity[]> {
+		return await apiRequest({
+			method: 'GET',
+			url: API_ROUTES.activity.findByEntity(entityId, query),
 		});
 	},
 };

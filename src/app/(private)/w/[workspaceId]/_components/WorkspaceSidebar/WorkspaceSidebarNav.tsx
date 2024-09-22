@@ -50,7 +50,7 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 						title: 'font-medium',
 					}}
 					endContent={
-						(admins.includes(user?.sub!) || canInvite) && label === 'common.members' ? (
+						((user && admins.includes(user?.sub)) || canInvite) && label === 'common.members' ? (
 							<Button
 								variant="light"
 								color="primary"

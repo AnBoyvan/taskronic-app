@@ -8,7 +8,6 @@ import { useQuery } from '@tanstack/react-query';
 import { Icon } from '@/components/ui/Icon';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { BoardMenuSection, useBoardMenu } from '@/hooks/useBoardMenu';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { userService } from '@/services/user.service';
 import { Board } from '@/types/board.interface';
 import { Member } from '@/types/root.interface';
@@ -20,7 +19,6 @@ type BoardNavbarProps = {
 };
 
 export const BoardNavbar: React.FC<BoardNavbarProps> = ({ board }) => {
-	const { user } = useCurrentUser();
 	const { onOpen } = useBoardMenu();
 	const { _id, title, starred, members, admins } = board;
 

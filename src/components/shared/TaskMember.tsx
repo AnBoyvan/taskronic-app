@@ -24,10 +24,21 @@ interface TaskMemberProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	member: Member;
 	taskId: string;
-	canRemove: boolean;
+	canRemove?: boolean;
+	isSmall?: boolean;
+	size?: 'sm' | 'md' | 'lg';
+	onRemove?: (memberId: string) => void;
 }
 
-export const TaskMember: React.FC<TaskMemberProps> = ({ member, taskId, className, canRemove }) => {
+export const TaskMember: React.FC<TaskMemberProps> = ({
+	member,
+	taskId,
+	className,
+	canRemove,
+	isSmall,
+	size,
+	onRemove,
+}) => {
 	const t = useTranslations();
 	const { removeMember } = useTaskMembers();
 
@@ -49,6 +60,9 @@ export const TaskMember: React.FC<TaskMemberProps> = ({ member, taskId, classNam
 				name,
 			},
 		});
+		if (onRemove) {
+			onRemove(_id);
+		}
 	};
 
 	return (
@@ -64,7 +78,8 @@ export const TaskMember: React.FC<TaskMemberProps> = ({ member, taskId, classNam
 			>
 				<PopoverTrigger>
 					<UserAvatar
-						small
+						small={isSmall}
+						size={size}
 						name={name}
 						avatarColor={avatarColor}
 						avatarName={avatarName}

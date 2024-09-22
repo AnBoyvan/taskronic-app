@@ -28,7 +28,7 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 	const { addRequest } = useWorkspaceMembers();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
-	const permissions = getWorkspacePermissions(workspace, user?.sub!);
+	const permissions = getWorkspacePermissions(workspace, user?.sub);
 
 	useEffect(() => {
 		if (isOpen && addRequest.isSuccess) {
@@ -43,12 +43,7 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 	const isRequest = requests.some(({ _id }) => _id === user?.sub);
 
 	return (
-		<Section
-			// fullWidth
-			// gap={4}
-			// flexJustify="between"
-			className="flex flex-col md:flex-row px-4 lg:px-8 pb-4 lg:pb-8 border-b border-divider w-full gap-4 justify-between"
-		>
+		<Section className="flex flex-col md:flex-row px-4 lg:px-8 pb-4 lg:pb-8 border-b border-divider w-full gap-4 justify-between">
 			<div className="flex flex-col gap-2">
 				<div className="flex flex-row gap-2 items-start">
 					<WorkspaceBadge

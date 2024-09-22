@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -9,7 +9,6 @@ import { boardService } from '@/services/board.service';
 import { BoardCompose, BoardOpen, BoardSettings } from '@/types/board.interface';
 
 export const useBoardsEdit = () => {
-	const queryClient = useQueryClient();
 	const router = useRouter();
 
 	const create = useMutation({
@@ -17,7 +16,6 @@ export const useBoardsEdit = () => {
 			boardService.create(workspaceId, data),
 		mutationKey: ['boards-create'],
 		onSuccess: board => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
 			return board;
 		},
 		onError: err => {
@@ -29,9 +27,6 @@ export const useBoardsEdit = () => {
 		mutationFn: ({ boardId, data }: { boardId: string; data: BoardCompose }) =>
 			boardService.updGeneral(boardId, data),
 		mutationKey: ['boards-update-general'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -41,9 +36,6 @@ export const useBoardsEdit = () => {
 		mutationFn: ({ boardId, data }: { boardId: string; data: BoardSettings }) =>
 			boardService.updSettings(boardId, data),
 		mutationKey: ['boards-update-settings'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -53,7 +45,6 @@ export const useBoardsEdit = () => {
 		mutationFn: (boardId: string) => boardService.close(boardId),
 		mutationKey: ['boards-close'],
 		onSuccess: ({ workspace }) => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
 			router.push(`${ROUTES.WORKSPACE}/${workspace}`);
 		},
 		onError: err => {
@@ -65,9 +56,6 @@ export const useBoardsEdit = () => {
 		mutationFn: ({ boardId, data }: { boardId: string; data: BoardOpen }) =>
 			boardService.open(boardId, data),
 		mutationKey: ['boards-open'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -78,7 +66,6 @@ export const useBoardsEdit = () => {
 		mutationKey: ['boards-starred'],
 		onSuccess: ({ message }) => {
 			toast.success(message, { closeButton: false });
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
@@ -89,7 +76,6 @@ export const useBoardsEdit = () => {
 		mutationFn: (boardId: string) => boardService.close(boardId),
 		mutationKey: ['boards-close'],
 		onSuccess: ({ workspace }) => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
 			router.push(`${ROUTES.WORKSPACE}/${workspace}`);
 		},
 		onError: err => {

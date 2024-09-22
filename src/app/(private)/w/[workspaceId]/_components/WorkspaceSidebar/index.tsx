@@ -32,7 +32,7 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspace })
 
 	const { setCurrent } = useWorkspacesList();
 
-	const permissions = getWorkspacePermissions(workspace, user?.sub!);
+	const permissions = getWorkspacePermissions(workspace, user?.sub);
 
 	useEffect(() => {
 		if (isCollapsed === undefined) {

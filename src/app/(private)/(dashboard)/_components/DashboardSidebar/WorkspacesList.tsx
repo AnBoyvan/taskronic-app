@@ -63,7 +63,7 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 								title={t(label)}
 								startContent={<Icon name={icon} size={12} />}
 								endContent={
-									(w.admins.includes(user?.sub!) || w.settings.invite) &&
+									((user && w.admins.includes(user?.sub)) || w.settings.invite) &&
 									label === 'common.members' ? (
 										<Button
 											variant="light"
