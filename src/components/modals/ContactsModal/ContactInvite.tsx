@@ -1,11 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-
 import { useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 
+import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useInviteModal } from '@/hooks/useInviteModal';
@@ -19,7 +18,6 @@ type ContactInviteProps = {
 };
 
 export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contactEmail }) => {
-	const t = useTranslations();
 	const modal = useInviteModal();
 	const { user } = useCurrentUser();
 	const { workspaces } = useWorkspacesList();
@@ -50,8 +48,14 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 					offset={0}
 				>
 					<PopoverTrigger>
-						<Button size="sm" variant="light" color="primary" isDisabled={canInvite.length < 1}>
-							{t('workspace.invite')}
+						<Button
+							size="sm"
+							variant="bordered"
+							color="primary"
+							isIconOnly
+							isDisabled={canInvite.length < 1}
+						>
+							<Icon name="UserPlus" size={16} />
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent className="max-h-80 p-2">

@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { Section } from '@/components/layout/Section';
 import { BoardCard } from '@/components/shared/BoardCard';
-import { BoardListWrapper } from '@/components/shared/BoardListWrapper';
 import { CreateBoardButton } from '@/components/shared/CreateBoardButton';
 import { useCreateModal } from '@/hooks/useCreateModal';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
@@ -88,14 +87,14 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 				<WorkspaceBoardsFilter filter={filter} setFilter={setFilter} />
 			</Section>
 			<Section>
-				<BoardListWrapper>
+				<div className="w-full grid gap-2 grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
 					{permissions.createBoard && (
 						<CreateBoardButton isDisabled={!permissions.createBoard} onPress={createNewBoard} />
 					)}
 					{boardsList.map(board => (
 						<BoardCard key={board._id} board={board} />
 					))}
-				</BoardListWrapper>
+				</div>
 			</Section>
 		</PageContainer>
 	);

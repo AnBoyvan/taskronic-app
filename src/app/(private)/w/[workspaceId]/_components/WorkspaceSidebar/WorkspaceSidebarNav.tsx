@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import { Button, Listbox, ListboxItem } from '@nextui-org/react';
 
@@ -26,24 +26,19 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 	requests,
 }) => {
 	const t = useTranslations();
-	const router = useRouter();
 	const pathname = usePathname();
 	const { user } = useCurrentUser();
 	const inviteModal = useInviteModal();
 
 	return (
-		<Listbox
-			aria-label={name}
-			onAction={key => {
-				router.push(key.toString());
-			}}
-		>
+		<Listbox aria-label={name}>
 			{workspaceNav(workspace._id).map(({ label, value, icon }) => (
 				<ListboxItem
 					aria-label={t(label)}
 					key={value}
 					startContent={<Icon name={icon} size={16} />}
 					isReadOnly={Boolean(pathname === value)}
+					href={value}
 					className="h-10"
 					classNames={{
 						base: pathname === value ? 'text-primary bg-primary-50' : '',

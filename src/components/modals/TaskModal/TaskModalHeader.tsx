@@ -4,14 +4,14 @@ import { useTranslations } from 'next-intl';
 
 import { useState } from 'react';
 
-import { ArchiveTaskPopover } from '@/components/shared/ArchiveTaskPopover';
-import { TaskMovePopover } from '@/components/shared/MoveTaskPopover';
 import { Icon } from '@/components/ui/Icon';
 import { useReorder } from '@/hooks/useReorder';
 import { useTasksEdit } from '@/hooks/useTasksEdit';
 import { BoardPermissions } from '@/types/board.interface';
 import { Task } from '@/types/tasks.interface';
 
+import { ArchiveTaskPopover } from './ArchiveTaskPopover';
+import { TaskMovePopover } from './MoveTaskPopover';
 import { TaskModalSection } from './TaskModalSection';
 import { TaskModalTitle } from './TaskModalTitle';
 

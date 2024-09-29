@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@nextui-org/react';
 
-import { AddTaskMemberPopover } from '@/components/shared/AddTaskMembersPopover';
 import { TaskMember } from '@/components/shared/TaskMember';
 import { Icon } from '@/components/ui/Icon';
 import { useTaskMembers } from '@/hooks/useTaskMembers';
 import { Member } from '@/types/root.interface';
+
+import { AddTaskMemberPopover } from './AddTaskMembersPopover';
 
 type TaskModalMembersProps = {
 	members: Member[];
