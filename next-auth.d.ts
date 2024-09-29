@@ -20,6 +20,7 @@ declare module 'next-auth' {
 		user: IUser;
 		accessToken: string;
 		expires?: string;
+		isSidebarOpen?: boolean;
 	}
 }
 
@@ -27,5 +28,6 @@ declare module 'next-auth/jwt' {
 	interface JWT {
 		user: IUser;
 		accessToken: string;
+		isSidebarOpen?: boolean;
 	}
 }

@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
+import { useState } from 'react';
+
 import {
 	Button,
 	Listbox,
@@ -13,10 +15,12 @@ import {
 } from '@nextui-org/react';
 
 import { ROUTES } from '@/configs/routes.config';
+import { useBoardMembers } from '@/hooks/useBoardMembers';
 import { BoardBasic } from '@/types/board.interface';
 
 type WorkspaceMemberItemProps = {
 	userId: string;
+	userName: string;
 	userBoards: BoardBasic[];
 	workspaceId: string;
 	isAdmin: boolean;
@@ -24,20 +28,30 @@ type WorkspaceMemberItemProps = {
 
 export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 	userId,
+	userName,
 	userBoards,
 	workspaceId,
 	isAdmin,
 }) => {
 	const t = useTranslations();
 	const router = useRouter();
+	const { removeMember } = useBoardMembers();
 
-	const moveToBoard = (boardId: string) => {
+	const [userBoardsList, setUserBoardsList] = useState<BoardBasic[]>(userBoards);
+
+	const goToBoard = (boardId: string) => {
 		router.push(`${ROUTES.WORKSPACE}/${workspaceId}/${boardId}`);
 	};
 
-	const removeMember = (boardId: string) => {
-		// TODO:
-		console.log('REMOVE MEMBER');
+	const handleRemoveMember = (boardId: string) => {
+		removeMember.mutate({
+			boardId,
+			dto: {
+				_id: userId,
+				name: userName,
+			},
+		});
+		setUserBoardsList(userBoardsList.filter(board => board._id !== boardId));
 	};
 
 	const canRemove = (board: BoardBasic) => {
@@ -72,11 +86,11 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 					emptyContent={t('workspace.no_boards')}
 					aria-label={t('nav.boards')}
 				>
-					{userBoards.map(board => (
+					{userBoardsList.map(board => (
 						<ListboxItem
 							key={board._id}
 							textValue={board._id}
-							onPress={() => moveToBoard(board._id)}
+							onPress={() => goToBoard(board._id)}
 							classNames={{
 								title: 'flex flex-row items-center justify-between gap-2 truncate',
 							}}
@@ -88,7 +102,7 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 									variant="solid"
 									color="danger"
 									className="h-6"
-									onPress={() => removeMember(board._id)}
+									onPress={() => handleRemoveMember(board._id)}
 								>
 									{t('common.remove')}
 								</Button>

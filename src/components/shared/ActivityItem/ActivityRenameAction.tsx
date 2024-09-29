@@ -2,12 +2,10 @@ import { useTranslations } from 'next-intl';
 
 import { useCallback } from 'react';
 
-import { Space } from '@/components/ui/Space';
 import { useTaskModal } from '@/hooks/useTaskModal';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityRenameAction: React.FC<ActivityActionProps> = ({ activity, taskId }) => {
 	const t = useTranslations();
@@ -29,9 +27,8 @@ export const ActivityRenameAction: React.FC<ActivityActionProps> = ({ activity, 
 				return (
 					<>
 						{t('activity.board')}
-						<Space />
 						{t('activity.onto')}
-						<ActivitySpan medium>{board.title}</ActivitySpan>
+						<span className="font-medium">{board.title}</span>
 					</>
 				);
 
@@ -39,13 +36,10 @@ export const ActivityRenameAction: React.FC<ActivityActionProps> = ({ activity, 
 				return (
 					<>
 						{t('activity.list')}
-						<Space />
 						{t('activity.from')}
-						<Space />
 						{from}
-						<Space />
 						{t('activity.onto')}
-						<ActivitySpan medium>{entityTitle}</ActivitySpan>
+						<span className="font-medium">{entityTitle}</span>
 					</>
 				);
 
@@ -53,15 +47,16 @@ export const ActivityRenameAction: React.FC<ActivityActionProps> = ({ activity, 
 				return (
 					<>
 						{t(task?._id === taskId ? 'activity.this_task' : 'activity.task')}
-						<Space />
 						{t('activity.onto')}
-						<Space />
 						{task?._id === taskId ? (
-							<ActivitySpan medium>{entityTitle}</ActivitySpan>
+							<span className="font-medium">{entityTitle}</span>
 						) : (
-							<ActivitySpan active onClick={() => openTaskModal(entityId)}>
+							<span
+								className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+								onClick={() => openTaskModal(task?._id)}
+							>
 								{entityTitle}
-							</ActivitySpan>
+							</span>
 						)}
 					</>
 				);
@@ -74,7 +69,6 @@ export const ActivityRenameAction: React.FC<ActivityActionProps> = ({ activity, 
 	return (
 		<>
 			{t('activity.renamed')}
-			<Space />
 			{actionEntityType()}
 		</>
 	);

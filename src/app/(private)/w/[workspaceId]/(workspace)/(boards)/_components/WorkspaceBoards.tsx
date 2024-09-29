@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { PageContainer } from '@/components/layout/PageContainer';
 import { Section } from '@/components/layout/Section';
@@ -36,10 +36,13 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 		search: '',
 		closed: 'hide',
 	});
+	const [boardsList, setBoardsList] = useState<BoardBasic[]>(
+		workspace.boards.filter(({ closed }) => !closed),
+	);
 
 	const permissions = getWorkspacePermissions(workspace, user?.sub);
 
-	const filteredBoards = useMemo(() => {
+	const filteredBoards = () => {
 		const sortedBoards = sorter(
 			workspace.boards,
 			filter.sortBy.field as keyof BoardBasic,
@@ -55,7 +58,25 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 		);
 
 		return searched;
-	}, [workspace.boards, filter]);
+	};
+
+	useEffect(() => {
+		const sortedBoards = sorter(
+			workspace.boards,
+			filter.sortBy.field as keyof BoardBasic,
+			filter.sortBy.order,
+		);
+
+		const showHidden = sortedBoards.filter(({ closed }) =>
+			filter.closed === 'hide' ? !closed : true,
+		);
+
+		const searched = showHidden.filter(({ title }) =>
+			title.toLowerCase().includes(filter.search.toLowerCase()),
+		);
+
+		setBoardsList(searched);
+	}, [filter, workspace]);
 
 	const createNewBoard = () => {
 		modal.onOpen('board');
@@ -71,7 +92,7 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 					{permissions.createBoard && (
 						<CreateBoardButton isDisabled={!permissions.createBoard} onPress={createNewBoard} />
 					)}
-					{filteredBoards.map(board => (
+					{boardsList.map(board => (
 						<BoardCard key={board._id} board={board} />
 					))}
 				</BoardListWrapper>

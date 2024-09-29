@@ -45,7 +45,7 @@ export const useBoardsEdit = () => {
 		mutationFn: (boardId: string) => boardService.close(boardId),
 		mutationKey: ['boards-close'],
 		onSuccess: ({ workspace }) => {
-			router.push(`${ROUTES.WORKSPACE}/${workspace}`);
+			router.push(`${ROUTES.WORKSPACE}/${workspace?._id}`);
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
@@ -56,6 +56,9 @@ export const useBoardsEdit = () => {
 		mutationFn: ({ boardId, data }: { boardId: string; data: BoardOpen }) =>
 			boardService.open(boardId, data),
 		mutationKey: ['boards-open'],
+		onSuccess: board => {
+			return board;
+		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -73,15 +76,15 @@ export const useBoardsEdit = () => {
 	});
 
 	const deleteBoard = useMutation({
-		mutationFn: (boardId: string) => boardService.close(boardId),
-		mutationKey: ['boards-close'],
-		onSuccess: ({ workspace }) => {
-			router.push(`${ROUTES.WORKSPACE}/${workspace}`);
+		mutationFn: (boardId: string) => boardService.deleteBoard(boardId),
+		mutationKey: ['boards-delete'],
+		onSuccess: ({ message }) => {
+			toast.success(message, { closeButton: false });
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
 	});
 
-	return { starred, create, updGeneral, updSettings, close, open };
+	return { starred, create, updGeneral, updSettings, close, open, deleteBoard };
 };

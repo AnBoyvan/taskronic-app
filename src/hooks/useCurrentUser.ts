@@ -26,9 +26,18 @@ export const useCurrentUser = () => {
 		}
 	};
 
+	const changeSidebarState = async (isOpen: boolean) => {
+		await updSession({
+			type: 'sidebar',
+			isSidebarOpen: isOpen,
+		});
+	};
+
 	return {
 		isLoggedIn,
 		user,
 		update,
+		isSidebarOpen: data?.isSidebarOpen,
+		changeSidebarState,
 	};
 };

@@ -10,6 +10,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { CommentForm } from '@/components/shared/CommentForm';
 import { CommentItem } from '@/components/shared/CommentItem';
 import { Icon } from '@/components/ui/Icon';
+import { LIMITS } from '@/constants/limits';
 import { useCommentsEdit } from '@/hooks/useCommentsEdit';
 import { commentService } from '@/services/comment.service';
 import { BoardPermissions } from '@/types/board.interface';
@@ -31,7 +32,6 @@ export const TaskModalComments: React.FC<TaskModalCommentsProps> = ({
 }) => {
 	const t = useTranslations();
 	const { create, update, remove } = useCommentsEdit();
-	const limit = 10;
 
 	const [showComments, setShowComments] = useState<boolean>(false);
 	const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
@@ -42,14 +42,14 @@ export const TaskModalComments: React.FC<TaskModalCommentsProps> = ({
 	>({
 		queryKey: ['comments', task._id],
 		queryFn: async ({ pageParam }) => {
-			const query = `?page=${pageParam}&limit=${limit}`;
+			const query = `?page=${pageParam}&limit=${LIMITS.taskModalComments}`;
 
 			return await commentService.findByTask(task._id, query);
 		},
 		enabled: showComments,
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, pages) => {
-			return lastPage.length < limit ? undefined : pages.length + 1;
+			return lastPage.length < LIMITS.taskModalComments ? undefined : pages.length + 1;
 		},
 	});
 

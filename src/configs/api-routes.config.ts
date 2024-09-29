@@ -1,12 +1,6 @@
 export const API_ROUTES = {
 	activity: {
-		findByBoard: (boardId: string, query?: string) =>
-			`/activity/board/${boardId}${query ? query : ''}`,
-		findByBoardAndUser: (boardId: string, query?: string) => `/activity/board-and-user/${boardId}`,
-		findByTask: (taskId: string, query?: string) => `/activity/task/${taskId}${query ? query : ''}`,
-		findByUser: (query?: string) => `/activity/user${query ? query : ''}`,
-		findByEntity: (entityId: string, query?: string) =>
-			`/activity/entity/${entityId}${query ? query : ''}`,
+		find: (query?: string) => `/activity/find${query ? query : ''}`,
 	},
 	auth: {
 		register: '/auth/local/register',

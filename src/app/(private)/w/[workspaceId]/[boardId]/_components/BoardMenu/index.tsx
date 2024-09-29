@@ -1,7 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-
 import { Button } from '@nextui-org/react';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -14,13 +12,16 @@ import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
 import { BoardMenuActivity } from './BoardMenuActivity';
 import { BoardMenuAddMembers } from './BoardMenuAddMembers';
+import { BoardMenuArchive } from './BoardMenuArchive';
 import { BoardMenuBackground } from './BoardMenuBackground';
 import { BoardMenuClose } from './BoardMenuClose';
 import { BoardMenuComments } from './BoardMenuComments';
+import { BoardMenuDelete } from './BoardMenuDelete';
 import { BoardMenuInfo } from './BoardMenuInfo';
 import { BoardMenuLeave } from './BoardMenuLeave';
 import { BoardMenuMain } from './BoardMenuMain';
 import { BoardMenuMembers } from './BoardMenuMembers';
+import { BoardMenuReopen } from './BoardMenuReopen';
 import { BoardMenuSettings } from './BoardMenuSettings';
 
 type BoardMenuProps = {
@@ -36,17 +37,16 @@ const variants = {
 };
 
 export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
-	const t = useTranslations();
 	const { user } = useCurrentUser();
 	const { isOpen, section, onOpen, onClose } = useBoardMenu();
 
-	const { _id, description } = board;
+	const { _id, description, closed, workspace, admins } = board;
 
-	const { updateBoard, isAdmin, addMember } = getBoardPermissions(board, user?.sub);
+	const permissions = getBoardPermissions(board, user?.sub);
 
 	return (
 		<div
-			className={`absolute bg-background  z-[60] h-full top-0 right-0 transition-all duration-200 ${!isOpen ? 'w-0' : 'w-80 p-2'} overflow-hidden`}
+			className={`absolute bg-background h-full z-20 top-0 right-0 transition-all duration-200 ${!isOpen ? 'w-0' : 'w-80 p-2'} overflow-hidden`}
 		>
 			<Button
 				isIconOnly
@@ -80,25 +80,40 @@ export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
 					transition={{ duration: 0.2 }}
 					className="w-full h-full"
 				>
-					{section === 'main' && <BoardMenuMain description={description} />}
+					{section === 'main' && <BoardMenuMain description={description} isClosed={closed} />}
 					{section === 'activity' && <BoardMenuActivity boardId={_id} />}
 					{section === 'comments' && <BoardMenuComments boardId={_id} />}
-					{section === 'info' && <BoardMenuInfo board={board} canUpdate={updateBoard} />}
+					{section === 'archive' && <BoardMenuArchive board={board} permissions={permissions} />}
+					{section === 'info' && (
+						<BoardMenuInfo board={board} canUpdate={permissions.updateBoard} />
+					)}
 					{section === 'background' && (
-						<BoardMenuBackground board={board} canUpdate={updateBoard} />
+						<BoardMenuBackground board={board} canUpdate={permissions.updateBoard} />
 					)}
 					{section === 'members' && (
 						<BoardMenuMembers
 							board={board}
-							isAdmin={isAdmin}
-							canAdd={addMember}
+							isAdmin={permissions.isAdmin}
+							canAdd={permissions.addMember}
 							currentUserId={user?.sub}
 						/>
 					)}
 					{section === 'addMembers' && <BoardMenuAddMembers board={board} />}
-					{section === 'settings' && <BoardMenuSettings board={board} canUpdate={isAdmin} />}
+					{section === 'settings' && (
+						<BoardMenuSettings board={board} canUpdate={permissions.isAdmin} />
+					)}
 					{section === 'close' && <BoardMenuClose boardId={_id} />}
-					{section === 'leave' && <BoardMenuLeave boardId={_id} />}
+					{section === 'reopen' && <BoardMenuReopen boardId={_id} workspaceId={workspace?._id} />}
+					{section === 'delete' && (
+						<BoardMenuDelete
+							boardId={_id}
+							isAdmin={permissions.isAdmin}
+							workspaceId={workspace?._id}
+						/>
+					)}
+					{section === 'leave' && (
+						<BoardMenuLeave boardId={_id} isAdmin={permissions.isAdmin} boardAdmins={admins} />
+					)}
 				</motion.div>
 			</AnimatePresence>
 		</div>

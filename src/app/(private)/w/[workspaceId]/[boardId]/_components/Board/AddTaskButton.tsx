@@ -6,7 +6,7 @@ import { Button } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
 
-import { AddTaskForm } from '../AddTaskForm';
+import { AddTaskForm } from './AddTaskForm';
 
 type AddTaskButtonProps = {
 	boardId: string;

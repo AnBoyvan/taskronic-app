@@ -6,6 +6,7 @@ import { ContactsModal } from '@/components/modals/ContactsModal';
 
 import { CreateModal } from '../modals/CreateModal';
 import { InviteModal } from '../modals/InviteModal';
+import { MemberActivityModal } from '../modals/MemberActivityModal';
 import { TaskModal } from '../modals/TaskModal';
 
 export const ModalProvider = () => {
@@ -25,6 +26,7 @@ export const ModalProvider = () => {
 			<CreateModal />
 			<InviteModal />
 			<TaskModal />
+			<MemberActivityModal />
 		</>
 	);
 };

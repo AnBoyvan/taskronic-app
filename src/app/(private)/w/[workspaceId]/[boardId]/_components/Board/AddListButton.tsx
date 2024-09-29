@@ -8,7 +8,7 @@ import { Button } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
 
-import { AddListForm } from '../AddListForm';
+import { AddListForm } from './AddListForm';
 
 type AddListButtonProps = {
 	boardId: string;

@@ -13,7 +13,6 @@ export const useLists = () => {
 			boardService.addList(boardId, data),
 		mutationKey: ['board-lists-create'],
 		onSuccess: board => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
 			return board;
 		},
 		onError: err => {
@@ -25,9 +24,6 @@ export const useLists = () => {
 		mutationFn: ({ boardId, data }: { boardId: string; data: List[] }) =>
 			boardService.listsOrder(boardId, data),
 		mutationKey: ['boards-lists-order'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -37,8 +33,8 @@ export const useLists = () => {
 		mutationFn: ({ boardId, data }: { boardId: string; data: List }) =>
 			boardService.updList(boardId, data),
 		mutationKey: ['boards-lists-update'],
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['boards', 'workspaces'] });
+		onSuccess: list => {
+			return list;
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });

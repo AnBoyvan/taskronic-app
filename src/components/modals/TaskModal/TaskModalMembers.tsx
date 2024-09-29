@@ -15,6 +15,7 @@ import { Member } from '@/types/root.interface';
 type TaskModalMembersProps = {
 	members: Member[];
 	taskId: string;
+	boardId: string;
 	canRemove?: boolean;
 	boardMembers: Member[];
 };
@@ -22,6 +23,7 @@ type TaskModalMembersProps = {
 export const TaskModalMembers: React.FC<TaskModalMembersProps> = ({
 	members,
 	taskId,
+	boardId,
 	canRemove,
 	boardMembers,
 }) => {
@@ -60,6 +62,7 @@ export const TaskModalMembers: React.FC<TaskModalMembersProps> = ({
 						key={member._id}
 						member={member}
 						taskId={taskId}
+						boardId={boardId}
 						canRemove={canRemove}
 						size="sm"
 						onRemove={removeTaskMember}

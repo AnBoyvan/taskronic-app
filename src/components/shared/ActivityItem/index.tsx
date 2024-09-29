@@ -1,6 +1,5 @@
 import { useTranslations } from 'next-intl';
 
-import { Space } from '@/components/ui/Space';
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { Locale } from '@/configs/i18n.config';
 import { Activity, ActivityAction } from '@/types/activity.type';
@@ -10,13 +9,13 @@ import { ActivityAddAction } from './ActivityAddAction';
 import { ActivityAdminAction } from './ActivityAdminAction';
 import { ActivityArchivedAction } from './ActivityArchivedAction';
 import { ActivityBackgroundAction } from './ActivityBackgroundAction';
+import { ActivityCloseAction } from './ActivityCloseAction';
 import { ActivityDateAction } from './ActivityDateAction';
 import { ActivityMarkedAction } from './ActivityMarkedAction';
 import { ActivityMovedAction } from './ActivityMoveAction';
 import { ActivityPriorityAction } from './ActivityPriorityAction';
 import { ActivityRemoveAction } from './ActivityRemoveAction';
 import { ActivityRenameAction } from './ActivityRenameAction';
-import { ActivitySpan } from './ActivitySpan';
 
 export interface ActivityActionProps {
 	activity: Activity;
@@ -48,7 +47,7 @@ export const ActivityItem: React.FC<ActivityActionProps> = ({ activity, taskId, 
 				return <ActivityMarkedAction activity={activity} taskId={taskId} />;
 
 			case ActivityAction.CLOSE:
-				return <ActivityMarkedAction activity={activity} />;
+				return <ActivityCloseAction activity={activity} />;
 
 			case ActivityAction.ARCHIVE:
 				return <ActivityArchivedAction activity={activity} taskId={taskId} />;
@@ -75,13 +74,10 @@ export const ActivityItem: React.FC<ActivityActionProps> = ({ activity, taskId, 
 				avatarColor={activity.user.avatarColor || activity.author.avatarColor}
 			/>
 			<div className="flex flex-col">
-				<div className="inline-flex flex-wrap text-sm">
-					<ActivitySpan>
-						<ActivitySpan medium>{activity.user.name || activity.author.name}</ActivitySpan>
-						<Space />
-						{activityActionType()}
-					</ActivitySpan>
-				</div>
+				<p className="text-wrap text-sm">
+					<span className="font-medium">{activity.user.name || activity.author.name}</span>
+					{activityActionType()}
+				</p>
 				<div className="text-tiny">
 					{formatDate(activity.createdAt, t('LocaleSwitcher.current') as Locale, 'full')}
 				</div>

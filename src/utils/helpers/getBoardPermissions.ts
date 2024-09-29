@@ -9,6 +9,21 @@ export const getBoardPermissions: GetBoardPermissions = (board, userId) => {
 	const isAdmin = (userId && board.admins.includes(userId)) || Boolean(isWorkspaceAdmin);
 	const isMember = board.members.some(({ _id }) => _id === userId);
 
+	if (board.closed) {
+		return {
+			isAdmin,
+			updateBoard: false,
+			addMember: false,
+			lists: false,
+			createTask: false,
+			taskOrder: false,
+			taskMembers: false,
+			closeTask: false,
+			archiveTask: false,
+			deleteTask: false,
+		};
+	}
+
 	if (isAdmin) {
 		return {
 			isAdmin,

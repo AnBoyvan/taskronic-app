@@ -19,17 +19,20 @@ import { UserAvatar } from '@/components/ui/UserAvatar';
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useContacts } from '@/hooks/useContacts';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useMemberActivityModal } from '@/hooks/useMemberActivityModal';
 import { Member } from '@/types/root.interface';
 
 interface BoardMemberProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	member: Member;
+	boardId: string;
 	userContacts?: Member[];
 	isMemberAdmin: boolean;
 }
 
 export const BoardMember: React.FC<BoardMemberProps> = ({
 	member,
+	boardId,
 	userContacts,
 	className,
 	isMemberAdmin,
@@ -37,6 +40,7 @@ export const BoardMember: React.FC<BoardMemberProps> = ({
 	const t = useTranslations();
 	const { add } = useContacts();
 	const { user } = useCurrentUser();
+	const { onOpen } = useMemberActivityModal();
 
 	const { _id, name, email, avatarColor, avatarName } = member;
 
@@ -44,8 +48,7 @@ export const BoardMember: React.FC<BoardMemberProps> = ({
 
 	const openActivityModal = () => {
 		setIsOpen(false);
-		// TODO:
-		console.log('OPEN ACTIVITY MODAL');
+		onOpen(member, boardId);
 	};
 
 	const addToContacts = () => {

@@ -24,6 +24,11 @@ export const boardMenu: BoardMenuConfig = {
 			section: 'comments',
 			icon: 'MessageSquareText',
 		},
+		{
+			label: 'common.archive_items',
+			section: 'archive',
+			icon: 'Archive',
+		},
 	],
 	second: [
 		{
@@ -50,6 +55,16 @@ export const boardMenu: BoardMenuConfig = {
 			label: 'board.close',
 			section: 'close',
 			icon: 'MonitorX',
+		},
+		{
+			label: 'board.reopen',
+			section: 'reopen',
+			icon: 'ExternalLink',
+		},
+		{
+			label: 'board.delete',
+			section: 'delete',
+			icon: 'Trash2',
 		},
 	],
 };

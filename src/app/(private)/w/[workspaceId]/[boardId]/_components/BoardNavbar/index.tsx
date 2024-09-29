@@ -1,7 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
-
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -34,16 +32,12 @@ export const BoardNavbar: React.FC<BoardNavbarProps> = ({ board }) => {
 	const membersList = members.length > 3 ? members.slice(0, 3) : members;
 
 	return (
-		<div
-			className={clsx(
-				'relative w-full h-14 z-[40] bg-background/50 flex justify-between items-center p-2 pl-4 backdrop-blur-md text-foreground',
-			)}
-		>
+		<div className="relative w-full bg-background/50 flex flex-wrap justify-between items-center p-2 pl-4 backdrop-blur-md text-foreground">
 			<div className="flex items-center gap-4">
 				<p className="truncate">{title}</p>
 				<StarredSwitcher boardId={_id} boardStarred={starred} />
 			</div>
-			<div className="flex items-center gap-2">
+			<div className="flex ml-auto items-center gap-2">
 				<div className="flex flex-row items-center pl-2">
 					{membersList.map(member => (
 						<BoardMember
@@ -51,6 +45,7 @@ export const BoardNavbar: React.FC<BoardNavbarProps> = ({ board }) => {
 							member={member}
 							userContacts={data}
 							isMemberAdmin={admins.includes(member._id)}
+							boardId={_id}
 							className="-ml-1"
 						/>
 					))}
@@ -71,6 +66,7 @@ export const BoardNavbar: React.FC<BoardNavbarProps> = ({ board }) => {
 								{members.map(member => (
 									<BoardMember
 										key={member._id}
+										boardId={_id}
 										member={member}
 										userContacts={data}
 										isMemberAdmin={admins.includes(member._id)}

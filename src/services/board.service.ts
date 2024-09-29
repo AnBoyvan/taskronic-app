@@ -64,6 +64,7 @@ export const boardService = {
 			method: 'PATCH',
 			url: API_ROUTES.boards.open(boardId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 

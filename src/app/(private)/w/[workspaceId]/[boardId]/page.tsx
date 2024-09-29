@@ -12,6 +12,7 @@ import { Board as BoardType } from '@/types/board.interface';
 import { fetcher } from '@/utils/helpers/fetcher';
 
 import { Board } from './_components/Board';
+import { BoardInfo } from './_components/Board/BoardInfo';
 import { BoardMenu } from './_components/BoardMenu';
 import { BoardNavbar } from './_components/BoardNavbar';
 
@@ -53,6 +54,7 @@ export default async function BoardPage({ params }: { params: { boardId: string 
 			)}
 		>
 			<BoardNavbar board={data} />
+			<BoardInfo board={data} />
 			<BoardMenu board={data} />
 			<Board board={data} />
 		</div>

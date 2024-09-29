@@ -1,10 +1,9 @@
 import { useTranslations } from 'next-intl';
 
-import { Space } from '@/components/ui/Space';
+import { useTaskModal } from '@/hooks/useTaskModal';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityRemoveAction: React.FC<ActivityActionProps> = ({
 	activity,
@@ -12,7 +11,15 @@ export const ActivityRemoveAction: React.FC<ActivityActionProps> = ({
 	userId,
 }) => {
 	const t = useTranslations();
+	const { onOpen } = useTaskModal();
+
 	const { entityType, entityTitle, entityId, task } = activity;
+
+	const openTaskModal = (id?: string) => {
+		if (id) {
+			onOpen(id);
+		}
+	};
 
 	const actionEntityType = () => {
 		switch (entityType) {
@@ -20,8 +27,7 @@ export const ActivityRemoveAction: React.FC<ActivityActionProps> = ({
 				return (
 					<>
 						{t('activity.task')}
-						<Space />
-						<ActivitySpan medium>{task ? task.title : entityTitle}</ActivitySpan>
+						<span className="font-medium">{task ? task.title : entityTitle}</span>
 					</>
 				);
 
@@ -30,20 +36,23 @@ export const ActivityRemoveAction: React.FC<ActivityActionProps> = ({
 					<>
 						{entityId !== userId && (
 							<>
-								<ActivitySpan medium>{entityTitle}</ActivitySpan>
-								<Space />
+								<span className="font-medium">{entityTitle}</span>
 								{t('activity.from')}
-								<Space />
 							</>
 						)}
 						{Boolean(task) ? (
 							task?._id === taskId ? (
 								t(entityId === userId ? 'activity.this_task' : 'activity.from_this_task')
 							) : (
-								<ActivitySpan medium>{task?.title}</ActivitySpan>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={() => openTaskModal(task?._id)}
+								>
+									{task && task.title}
+								</span>
 							)
 						) : (
-							t('activity.board')
+							<>{t('activity.from_board')}</>
 						)}
 					</>
 				);
@@ -56,7 +65,6 @@ export const ActivityRemoveAction: React.FC<ActivityActionProps> = ({
 	return (
 		<>
 			{t(entityId === userId ? 'activity.left' : 'activity.removed')}
-			<Space />
 			{actionEntityType()}
 		</>
 	);

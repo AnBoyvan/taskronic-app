@@ -1,27 +1,20 @@
 import { useTranslations } from 'next-intl';
 
-import { useCallback } from 'react';
-
-import { Space } from '@/components/ui/Space';
 import { useTaskModal } from '@/hooks/useTaskModal';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityMarkedAction: React.FC<ActivityActionProps> = ({ activity, taskId }) => {
 	const t = useTranslations();
 	const { onOpen } = useTaskModal();
 	const { entityType, entityTitle, entityId, task, completed } = activity;
 
-	const openTaskModal = useCallback(
-		(id?: string) => {
-			if (id) {
-				onOpen(id);
-			}
-		},
-		[onOpen],
-	);
+	const openTaskModal = (id?: string) => {
+		if (id) {
+			onOpen(id);
+		}
+	};
 
 	const subtaskLabel = task?.subtasks.find(sub => sub._id === entityId);
 
@@ -35,41 +28,41 @@ export const ActivityMarkedAction: React.FC<ActivityActionProps> = ({ activity, 
 						) : (
 							<>
 								{t('activity.task')}
-								<Space />
-								<ActivitySpan active onClick={() => openTaskModal(entityId)}>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={() => openTaskModal(task?._id)}
+								>
 									{task ? task.title : entityTitle}
-								</ActivitySpan>
+								</span>
 							</>
 						)}
-						<Space />
-						{t(completed ? 'activity.completed' : 'activity.incompleted')}
-						<Space />
+						<span className={completed ? 'text-success' : 'text-danger'}>
+							&nbsp;&ldquo;{t(completed ? 'activity.completed' : 'activity.incompleted')}&rdquo;
+						</span>
 					</>
 				);
 
 			case EntityType.SUBTASK:
 				return (
 					<>
-						<ActivitySpan medium>{subtaskLabel ? subtaskLabel?.label : entityTitle}</ActivitySpan>
-						<Space />
+						<span className="font-medium">{subtaskLabel ? subtaskLabel?.label : entityTitle}</span>
 						{t('activity.on')}
-						<Space />
 						{task?._id === taskId ? (
 							t('activity.on_this_task')
 						) : (
 							<>
 								{t('activity.on_task')}
-								<Space />
-								<ActivitySpan active onClick={() => openTaskModal(entityId)}>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={() => openTaskModal(task?._id)}
+								>
 									{task && task.title}
-								</ActivitySpan>
+								</span>
 							</>
 						)}
-						<Space />
-						<ActivitySpan className={completed ? 'text-success' : 'text-danger'}>
-							&ldquo;{t(completed ? 'activity.completed' : 'activity.incompleted')}&rdquo;
-						</ActivitySpan>
-						<Space />
+						<span className={completed ? 'text-success' : 'text-danger'}>
+							&nbsp;&ldquo;{t(completed ? 'activity.completed' : 'activity.incompleted')}&rdquo;
+						</span>
 					</>
 				);
 
@@ -81,7 +74,6 @@ export const ActivityMarkedAction: React.FC<ActivityActionProps> = ({ activity, 
 	return (
 		<>
 			{t('activity.marked')}
-			<Space />
 			{actionEntityType()}
 		</>
 	);

@@ -18,7 +18,9 @@ export const BoardMenuClose: React.FC<BoardMenuCloseProps> = ({ boardId }) => {
 
 	return (
 		<div className="flex flex-col">
-			<div className="h-10 flex items-center justify-center font-medium">{t('board.close')}?</div>
+			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
+				{t('board.close')}?
+			</div>
 			<Divider className="my-2" />
 			<div className="flex flex-row gap-4">
 				<Button

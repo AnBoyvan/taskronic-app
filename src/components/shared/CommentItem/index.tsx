@@ -8,6 +8,7 @@ import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/rea
 
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { Locale } from '@/configs/i18n.config';
+import { useTaskModal } from '@/hooks/useTaskModal';
 import { Comment } from '@/types/comment.interface';
 import { formatDate } from '@/utils/helpers/formatDate';
 
@@ -17,31 +18,40 @@ type CommentItemProps = {
 	comment: Comment;
 	userId?: string;
 	isAdmin?: boolean;
-	onEdit: (commentId: string, edited: string) => void;
-	onRemove: (commentId: string) => void;
+	isMenu?: boolean;
+	onEdit?: (commentId: string, edited: string) => void;
+	onRemove?: (commentId: string) => void;
 };
 
 export const CommentItem: React.FC<CommentItemProps> = ({
 	comment,
 	userId,
 	isAdmin,
+	isMenu,
 	onRemove,
 	onEdit,
 }) => {
 	const t = useTranslations();
-	const { _id, content, user, author, createdAt, updatedAt } = comment;
+	const { _id, content, user, author, task, createdAt, updatedAt } = comment;
+	const { onOpen } = useTaskModal();
 
 	const [isEditing, setIsEditing] = useState<boolean>(false);
 
 	const handleEdit = (edited: string) => {
-		if (comment.content !== edited) {
+		if (comment.content !== edited && onEdit) {
 			onEdit(_id, edited);
 		}
 		setIsEditing(false);
 	};
 
 	const handleRemove = () => {
-		onRemove(_id);
+		if (onRemove) {
+			onRemove(_id);
+		}
+	};
+
+	const openTaskModal = () => {
+		onOpen(task._id);
 	};
 
 	const isEdited = new Date(updatedAt) > new Date(createdAt);
@@ -55,7 +65,20 @@ export const CommentItem: React.FC<CommentItemProps> = ({
 			/>
 			<div className="flex w-full flex-col gap-1 text-sm">
 				<div className="flex flex-row flex-wrap gap-1 items-center">
-					<span className="font-medium">{user.name ? user.name : author.name}</span>
+					<p className="text-wrap text-sm">
+						<span className="font-medium">{user.name ? user.name : author.name}</span>
+						{isMenu && (
+							<>
+								<span>{t('activity.on')}</span>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={openTaskModal}
+								>
+									{task.title}
+								</span>
+							</>
+						)}
+					</p>
 					<span className="text-tiny opacity-80">
 						{formatDate(createdAt, t('LocaleSwitcher.current') as Locale, 'short')}
 						&nbsp;
@@ -74,30 +97,32 @@ export const CommentItem: React.FC<CommentItemProps> = ({
 						<span className="text-wrap break-words p-2 bg-default-50 rounded-xl shadow-md">
 							{content}
 						</span>
-						<div className="flex flex-row mt-1 gap-2">
-							{author._id === userId && (
-								<button
-									className="text-foreground hover:text-primary transition-colors text-tiny"
-									onClick={() => setIsEditing(true)}
-								>
-									{t('common.edit')}
-								</button>
-							)}
-							{(isAdmin || author._id === userId) && (
-								<Popover placement="bottom" offset={0}>
-									<PopoverTrigger>
-										<button className="text-foreground hover:text-primary transition-colors text-tiny">
-											{t('common.remove')}
-										</button>
-									</PopoverTrigger>
-									<PopoverContent className="p-2">
-										<Button variant="solid" color="danger" onPress={handleRemove}>
-											{t('comment.delete')}?
-										</Button>
-									</PopoverContent>
-								</Popover>
-							)}
-						</div>
+						{!isMenu && (
+							<div className="flex flex-row mt-1 gap-2">
+								{author._id === userId && (
+									<button
+										className="text-foreground hover:text-primary transition-colors text-tiny"
+										onClick={() => setIsEditing(true)}
+									>
+										{t('common.edit')}
+									</button>
+								)}
+								{(isAdmin || author._id === userId) && (
+									<Popover placement="bottom" offset={0}>
+										<PopoverTrigger>
+											<button className="text-foreground hover:text-primary transition-colors text-tiny">
+												{t('common.remove')}
+											</button>
+										</PopoverTrigger>
+										<PopoverContent className="p-2">
+											<Button variant="solid" color="danger" onPress={handleRemove}>
+												{t('comment.delete')}?
+											</Button>
+										</PopoverContent>
+									</Popover>
+								)}
+							</div>
+						)}
 					</>
 				)}
 			</div>

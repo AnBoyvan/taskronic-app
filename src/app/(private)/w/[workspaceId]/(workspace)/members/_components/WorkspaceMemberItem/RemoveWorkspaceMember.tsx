@@ -6,6 +6,8 @@ import { useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 
+import { toast } from 'sonner';
+
 import { useWorkspaceMembers } from '@/hooks/useWorkspaceMembers';
 
 type RemoveWorkspaceMemberProps = {
@@ -14,6 +16,7 @@ type RemoveWorkspaceMemberProps = {
 	workspaceId: string;
 	isAdmin: boolean;
 	currentUserId?: string;
+	isOnlyAdmin: boolean;
 };
 
 export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
@@ -22,6 +25,7 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 	workspaceId,
 	isAdmin,
 	currentUserId,
+	isOnlyAdmin,
 }) => {
 	const t = useTranslations();
 	const { removeMember, leave } = useWorkspaceMembers();
@@ -33,14 +37,24 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 	const remove = () => {
 		const dto = { _id: userId, name: userName };
 
-		removeMember.mutate({ workspaceId, dto });
+		if (isOnlyAdmin) {
+			toast.error(t('workspace.last_admin'));
+			setIsOpen(false);
+			return;
+		}
 
+		removeMember.mutate({ workspaceId, dto });
 		setIsOpen(false);
 	};
 
 	const leaveWorkspace = () => {
-		leave.mutate(workspaceId);
+		if (isOnlyAdmin) {
+			toast.error(t('workspace.last_admin'));
+			setIsOpen(false);
+			return;
+		}
 
+		leave.mutate(workspaceId);
 		setIsOpen(false);
 	};
 

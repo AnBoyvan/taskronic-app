@@ -74,7 +74,7 @@ export const BoardMenuBackground: React.FC<BoardMenuBackgroundProps> = ({ board,
 	};
 	return (
 		<div className="flex flex-col h-full overflow-hidden">
-			<div className="h-10 flex items-center justify-center font-medium">
+			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
 				{t('board.change_background')}
 			</div>
 			<Divider className="my-2" />

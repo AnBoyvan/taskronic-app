@@ -14,7 +14,7 @@ import { useLists } from '@/hooks/useLists';
 import { useValidation } from '@/hooks/useValidation';
 import { List } from '@/types/board.interface';
 
-import { ListOptions } from '../ListOptions';
+import { ListOptions } from './ListOptions';
 
 type ListHeaderProps = {
 	list: List;

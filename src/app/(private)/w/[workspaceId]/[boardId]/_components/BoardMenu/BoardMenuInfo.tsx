@@ -43,10 +43,15 @@ export const BoardMenuInfo: React.FC<BoardMenuInfoProps> = ({ board, canUpdate }
 	};
 
 	return (
-		<div className="flex flex-col">
-			<div className="h-10 flex items-center justify-center font-medium">{t('common.info')}</div>
+		<div className="flex flex-col h-full overflow-hidden">
+			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
+				{t('common.info')}
+			</div>
 			<Divider className="my-2" />
-			<form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className="w-full flex flex-col gap-4 overflow-y-auto"
+			>
 				<FormInput
 					isReadOnly={!canUpdate || updGeneral.isPending}
 					control={control}
@@ -70,6 +75,7 @@ export const BoardMenuInfo: React.FC<BoardMenuInfoProps> = ({ board, canUpdate }
 					type="submit"
 					isLoading={updGeneral.isPending}
 					spinnerPlacement="end"
+					className="min-h-10"
 				>
 					{t('common.edit')}
 				</Button>

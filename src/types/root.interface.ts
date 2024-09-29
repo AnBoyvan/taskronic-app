@@ -27,10 +27,10 @@ export enum Priority {
 	CRITICAL = 5,
 }
 
-// export interface TableColumn {
-// 	key: string;
-// 	label: TranslationKeys;
-// }
+export interface TableColumn {
+	key: string;
+	label: TranslationKeys;
+}
 
 // export interface Params {
 // 	inviteId: string;

@@ -8,6 +8,7 @@ import { Button, Spinner } from '@nextui-org/react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { ActivityItem } from '@/components/shared/ActivityItem';
+import { LIMITS } from '@/constants/limits';
 import { activityService } from '@/services/activity.service';
 import { Activity } from '@/types/activity.type';
 
@@ -21,7 +22,6 @@ type TaskModalActivityProps = {
 
 export const TaskModalActivity: React.FC<TaskModalActivityProps> = ({ taskId, userId }) => {
 	const t = useTranslations();
-	const limit = 20;
 
 	const [showDetails, setShowDetails] = useState<boolean>(false);
 	const [activities, setActivities] = useState<Activity[]>([]);
@@ -30,14 +30,14 @@ export const TaskModalActivity: React.FC<TaskModalActivityProps> = ({ taskId, us
 		useInfiniteQuery<Activity[]>({
 			queryKey: ['activity', taskId],
 			queryFn: async ({ pageParam }) => {
-				const query = `?page=${pageParam}&limit=${limit}`;
+				const query = `?taskId=${taskId}&page=${pageParam}&limit=${LIMITS.taskModalActivities}`;
 
-				return await activityService.findByTask(taskId, query);
+				return await activityService.find(query);
 			},
 			enabled: showDetails,
 			initialPageParam: 1,
 			getNextPageParam: (lastPage, pages) => {
-				return lastPage.length < limit ? undefined : pages.length + 1;
+				return lastPage.length < LIMITS.taskModalActivities ? undefined : pages.length + 1;
 			},
 		});
 

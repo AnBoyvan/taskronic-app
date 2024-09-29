@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Divider } from '@nextui-org/react';
 
-import { useLocalStorage, useMediaQuery } from 'usehooks-ts';
+import { useMediaQuery } from 'usehooks-ts';
 
 import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
@@ -22,35 +22,44 @@ import { WorkspaceSidebarSkeleton } from './WorkspaceSidebarSeleton';
 
 type WorkspaceSidebarProps = {
 	workspace: Workspace;
+	isCollapsed?: boolean;
+	userId?: string;
 };
 
-export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspace }) => {
+export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({
+	workspace,
+	userId,
+	isCollapsed,
+}) => {
 	const isMobile = useMediaQuery('(max-width:640px)');
-	const [isOpen, setOpen] = useState<boolean>(false);
-	const [isCollapsed, setCollapsed] = useLocalStorage<boolean | undefined>('ws-sidebar', undefined);
-	const { user } = useCurrentUser();
+	const { isSidebarOpen, changeSidebarState } = useCurrentUser();
+	const [isOpen, setOpen] = useState<boolean>(isCollapsed || false);
 
 	const { setCurrent } = useWorkspacesList();
 
-	const permissions = getWorkspacePermissions(workspace, user?.sub);
+	const permissions = getWorkspacePermissions(workspace, userId);
+
+	const changeState = () => {
+		setOpen(!isOpen);
+		changeSidebarState(!isOpen);
+	};
 
 	useEffect(() => {
-		if (isCollapsed === undefined) {
-			setCollapsed(isMobile);
+		if (isSidebarOpen === undefined) {
+			changeSidebarState(isMobile);
+			setOpen(isMobile);
 			return;
 		}
-
-		setOpen(isCollapsed);
-	}, [isCollapsed, isMobile]);
+	}, [isSidebarOpen, isMobile]);
 
 	useEffect(() => {
 		setCurrent(workspace, permissions);
 	}, [workspace]);
 
 	return (
-		<div className={`relative flex h-full ${!isOpen ? 'mr-4' : 'mr-4 md:mr-0'}`}>
+		<div className={`relative flex z-30 h-full ${!isOpen ? 'mr-4' : 'mr-4 md:mr-0'}`}>
 			<div
-				className={`absolute md:relative bg-background z-50 h-full transition-all duration-200 ${!isOpen ? 'w-0' : 'w-64'} overflow-hidden`}
+				className={`absolute md:relative bg-background z-10 h-full transition-all duration-200 ${!isOpen ? 'w-0' : 'w-64'} overflow-hidden`}
 			>
 				{isOpen &&
 					(workspace ? (
@@ -73,7 +82,7 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspace })
 									isIconOnly
 									size="sm"
 									className="text-default-500"
-									onPress={() => setCollapsed(false)}
+									onPress={changeState}
 								>
 									<Icon name="ChevronLeft" size={20} strokeWidth={3} />
 								</Button>
@@ -103,7 +112,7 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspace })
 					disableAnimation
 					variant="solid"
 					color="default"
-					onClick={() => setCollapsed(true)}
+					onClick={changeState}
 				>
 					<div className="absolute flex items-center justify-center w-6 h-6 top-4 -right-2 rounded-full bg-inherit border text-default-500 border-default-500/50">
 						<Icon name="ChevronRight" size={16} />

@@ -17,6 +17,7 @@ import {
 
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { colorVariants } from '@/constants/color-variants.constants';
+import { useMemberActivityModal } from '@/hooks/useMemberActivityModal';
 import { useTaskMembers } from '@/hooks/useTaskMembers';
 import { Member } from '@/types/root.interface';
 
@@ -24,6 +25,7 @@ interface TaskMemberProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	member: Member;
 	taskId: string;
+	boardId: string;
 	canRemove?: boolean;
 	isSmall?: boolean;
 	size?: 'sm' | 'md' | 'lg';
@@ -33,6 +35,7 @@ interface TaskMemberProps
 export const TaskMember: React.FC<TaskMemberProps> = ({
 	member,
 	taskId,
+	boardId,
 	className,
 	canRemove,
 	isSmall,
@@ -41,6 +44,7 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 }) => {
 	const t = useTranslations();
 	const { removeMember } = useTaskMembers();
+	const { isOpen: opened, onOpen, onClose } = useMemberActivityModal();
 
 	const { _id, name, email, avatarColor, avatarName } = member;
 
@@ -48,8 +52,7 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 
 	const openActivityModal = () => {
 		setIsOpen(false);
-		// TODO:
-		console.log('OPEN ACTIVITY MODAL');
+		onOpen(member, boardId);
 	};
 
 	const removeTaskMember = () => {

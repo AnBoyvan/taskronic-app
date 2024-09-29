@@ -10,14 +10,14 @@ import { Board, List } from '@/types/board.interface';
 import { Task } from '@/types/tasks.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
-import { AddListButton } from './AddListButton';
-import { ListItem } from './ListItem';
+import { AddListButton } from '../Board/AddListButton';
+import { ListItem } from '../Board/ListItem';
 
-type BoardsListsViewProps = {
+type BoardListsViewProps = {
 	board: Board;
 };
 
-export const BoardsListsView: React.FC<BoardsListsViewProps> = ({ board }) => {
+export const BoardListsView: React.FC<BoardListsViewProps> = ({ board }) => {
 	const { user } = useCurrentUser();
 	const { listsReorder, tasksReorder, moveTasksToList } = useReorder(board);
 
@@ -31,7 +31,7 @@ export const BoardsListsView: React.FC<BoardsListsViewProps> = ({ board }) => {
 
 	const moveTasks = (sourceList: string, destList: string) => {
 		const data = moveTasksToList(sourceList, destList);
-		setBoardTasks(data);
+		setBoardTasks(data as Task[]);
 	};
 
 	const moveList = (sourceIndex: number, destIndex: number) => {
@@ -62,7 +62,7 @@ export const BoardsListsView: React.FC<BoardsListsViewProps> = ({ board }) => {
 				destination.droppableId,
 				destination.index,
 			);
-			setBoardTasks(data);
+			setBoardTasks(data as Task[]);
 		}
 	};
 

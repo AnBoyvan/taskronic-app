@@ -46,6 +46,8 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 	const isMemberAdmin = Boolean(admins.includes(member._id));
 	const isGuest = Boolean(!membersIds.includes(member._id));
 
+	const isOnlyAdmin = isMemberAdmin && admins.length < 2;
+
 	return (
 		<div className="flex flex-wrap flex-row gap-4 w-full justify-between px-2">
 			<User
@@ -63,6 +65,7 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 				<MemberBoards
 					workspaceId={workspaceId}
 					userId={member._id}
+					userName={member.name}
 					userBoards={memberBoards}
 					isAdmin={isAdmin}
 				/>
@@ -72,6 +75,7 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 					userId={_id}
 					userName={name}
 					isMemberAdmin={isMemberAdmin}
+					isOnlyAdmin={isOnlyAdmin}
 				/>
 				{isGuest ? (
 					<Button
@@ -95,6 +99,7 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 						userId={_id}
 						userName={name}
 						currentUserId={currentUserId}
+						isOnlyAdmin={isOnlyAdmin}
 					/>
 				)}
 			</div>

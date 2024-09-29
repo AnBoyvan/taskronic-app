@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 
 import { Button, Popover, PopoverContent, PopoverTrigger, User } from '@nextui-org/react';
 
+import { toast } from 'sonner';
+
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useBoardMembers } from '@/hooks/useBoardMembers';
 import { Member } from '@/types/root.interface';
@@ -11,6 +13,7 @@ import { Member } from '@/types/root.interface';
 type BoardMenuMemberItemProps = {
 	member: Member;
 	isMemberAdmin: boolean;
+	boardAdmins: string[];
 	canUpdate: boolean;
 	boardId: string;
 	isCurrentUser: boolean;
@@ -19,6 +22,7 @@ type BoardMenuMemberItemProps = {
 export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 	member,
 	isMemberAdmin,
+	boardAdmins,
 	canUpdate,
 	boardId,
 	isCurrentUser,
@@ -28,8 +32,15 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 
 	const { _id, name, email, avatarName, avatarColor } = member;
 
+	const isOnlyAdmin = isMemberAdmin && boardAdmins.length < 2;
+
 	const adminToggle = () => {
 		if (isMemberAdmin) {
+			if (isOnlyAdmin) {
+				toast.error(t('board.last_admin'));
+				return;
+			}
+
 			removeAdmin.mutate({ boardId, dto: { _id, name } });
 		}
 
@@ -39,10 +50,18 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 	};
 
 	const remove = () => {
+		if (isOnlyAdmin) {
+			toast.error(t('board.last_admin'));
+			return;
+		}
 		removeMember.mutate({ boardId, dto: { _id, name } });
 	};
 
 	const leaveBoard = () => {
+		if (isOnlyAdmin) {
+			toast.error(t('board.last_admin'));
+			return;
+		}
 		leave.mutate(boardId);
 	};
 

@@ -40,7 +40,9 @@ export const BoardMenuMembers: React.FC<BoardMenuMembersProps> = ({
 
 	return (
 		<div className="flex flex-col h-full overflow-hidden">
-			<div className="h-10 flex items-center justify-center font-medium">{t('common.members')}</div>
+			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
+				{t('common.members')}
+			</div>
 			<Divider className="my-2" />
 			<div className="flex flex-row gap-4">
 				<Input
@@ -68,6 +70,7 @@ export const BoardMenuMembers: React.FC<BoardMenuMembersProps> = ({
 						key={member._id}
 						member={member}
 						isMemberAdmin={admins.includes(member._id)}
+						boardAdmins={admins}
 						canUpdate={isAdmin}
 						boardId={board._id}
 						isCurrentUser={member._id === currentUserId}

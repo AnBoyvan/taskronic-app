@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 
+import { toast } from 'sonner';
+
 import { useWorkspaceMembers } from '@/hooks/useWorkspaceMembers';
 
 type SetWorkspaceAdminProps = {
@@ -14,6 +16,7 @@ type SetWorkspaceAdminProps = {
 	isMemberAdmin: boolean;
 	workspaceId: string;
 	isAdmin: boolean;
+	isOnlyAdmin: boolean;
 };
 
 export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
@@ -22,20 +25,27 @@ export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
 	isMemberAdmin,
 	workspaceId,
 	isAdmin,
+	isOnlyAdmin,
 }) => {
 	const t = useTranslations();
 	const { addAdmin, removeAdmin } = useWorkspaceMembers();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [admin, setAdmin] = useState<boolean>(false);
 
-	const adminToggle = async () => {
+	const adminToggle = () => {
 		const dto = { _id: userId, name: userName };
 		if (admin) {
-			await removeAdmin.mutate({ workspaceId, dto });
+			if (isOnlyAdmin) {
+				toast.error(t('workspace.last_admin'));
+				setIsOpen(false);
+				return;
+			}
+
+			removeAdmin.mutate({ workspaceId, dto });
 		}
 
 		if (!admin) {
-			await addAdmin.mutate({ workspaceId, dto });
+			addAdmin.mutate({ workspaceId, dto });
 		}
 
 		setAdmin(!admin);

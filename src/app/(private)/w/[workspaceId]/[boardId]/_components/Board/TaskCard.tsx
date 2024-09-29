@@ -56,6 +56,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, index, permissions }) 
 									key={member._id}
 									member={member}
 									taskId={_id}
+									boardId={task.board._id}
 									canRemove={permissions.taskMembers}
 									isSmall
 								/>

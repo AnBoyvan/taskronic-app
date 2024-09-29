@@ -29,6 +29,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 				token.user = session;
 			}
 
+			if (trigger === 'update' && session.type === 'sidebar') {
+				token.isSidebarOpen = session.isSidebarOpen;
+			}
+
 			if (data) {
 				const decodedData = jwtDecode(data);
 				token.user = decodedData.user;
@@ -40,6 +44,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		async session({ token }) {
 			return {
 				user: token.user,
+				isSidebarOpen: token.isSidebarOpen,
 				accessToken: token.accessToken,
 			};
 		},

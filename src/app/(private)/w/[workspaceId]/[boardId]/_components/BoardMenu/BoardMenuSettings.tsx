@@ -40,12 +40,12 @@ export const BoardMenuSettings: React.FC<BoardMenuSettingsProps> = ({ board, can
 	};
 
 	return (
-		<div className="flex flex-col">
-			<div className="h-10 flex items-center justify-center font-medium">
+		<div className="flex flex-col h-full overflow-hidden">
+			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
 				{t('common.settings')}
 			</div>
 			<Divider className="my-2" />
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4 overflow-y-auto">
 				<VisibilitySwitcher
 					classNames={{
 						label: 'text-tiny top-2/3',

@@ -2,12 +2,10 @@ import { useTranslations } from 'next-intl';
 
 import { useCallback } from 'react';
 
-import { Space } from '@/components/ui/Space';
 import { useTaskModal } from '@/hooks/useTaskModal';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityAddAction: React.FC<ActivityActionProps> = ({ activity, taskId, userId }) => {
 	const t = useTranslations();
@@ -30,7 +28,8 @@ export const ActivityAddAction: React.FC<ActivityActionProps> = ({ activity, tas
 			case EntityType.BOARD:
 				return (
 					<>
-						{t('activity.board')} <ActivitySpan medium>{board.title}</ActivitySpan>
+						{t('activity.board')}
+						<span className="font-medium">{board.title}</span>
 					</>
 				);
 
@@ -38,10 +37,9 @@ export const ActivityAddAction: React.FC<ActivityActionProps> = ({ activity, tas
 				return (
 					<>
 						{t('activity.list')}
-						<Space />
-						<ActivitySpan medium>{newList ? newList.label : entityTitle}</ActivitySpan>
-						<Space />
-						{t('activity.to')} {t('activity.this_board')}
+						<span className="font-medium">{newList ? newList.label : entityTitle}</span>
+						{t('activity.to')}
+						{t('activity.this_board')}
 					</>
 				);
 
@@ -53,16 +51,16 @@ export const ActivityAddAction: React.FC<ActivityActionProps> = ({ activity, tas
 						) : (
 							<>
 								{t('activity.task')}
-								<Space />
-								<ActivitySpan active onClick={() => openTaskModal(entityId)}>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={() => openTaskModal(task?._id)}
+								>
 									{task ? task.title : entityTitle}
-								</ActivitySpan>
+								</span>
 							</>
 						)}
-						<Space />
 						{t('activity.to_list')}
-						<Space />
-						{to}
+						<span className="font-medium">{to}</span>
 					</>
 				);
 
@@ -71,19 +69,22 @@ export const ActivityAddAction: React.FC<ActivityActionProps> = ({ activity, tas
 					<>
 						{entityId !== userId && (
 							<>
-								<ActivitySpan medium>{entityTitle}</ActivitySpan>
-								<Space />
+								<span className="font-medium">{entityTitle}</span>
 							</>
 						)}
 						{t('activity.to')}
-						<Space />
 						{Boolean(task) ? (
 							task?._id === taskId ? (
 								t('activity.to_this_task')
 							) : (
-								<ActivitySpan active onClick={() => openTaskModal(task?._id)}>
-									{task?.title}
-								</ActivitySpan>
+								<>
+									<span
+										className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+										onClick={() => openTaskModal(task?._id)}
+									>
+										{task?.title}
+									</span>
+								</>
 							)
 						) : (
 							t('activity.this_board')
@@ -99,7 +100,6 @@ export const ActivityAddAction: React.FC<ActivityActionProps> = ({ activity, tas
 	return (
 		<>
 			{t(entityId === userId ? 'activity.join' : 'activity.added')}
-			<Space />
 			{actionEntityType()}
 		</>
 	);

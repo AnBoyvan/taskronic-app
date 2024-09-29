@@ -7,42 +7,32 @@ import { useEffect } from 'react';
 
 import { Button, Divider } from '@nextui-org/react';
 
-import { toast } from 'sonner';
-
 import { ROUTES } from '@/configs/routes.config';
-import { useBoardMembers } from '@/hooks/useBoardMembers';
 import { useBoardMenu } from '@/hooks/useBoardMenu';
+import { useBoardsEdit } from '@/hooks/useBoardsEdit';
 
-type BoardMenuLeaveProps = {
+type BoardMenuDeleteProps = {
 	boardId: string;
-	workspaceId?: string;
 	isAdmin: boolean;
-	boardAdmins: string[];
+	workspaceId?: string;
 };
 
-export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({
+export const BoardMenuDelete: React.FC<BoardMenuDeleteProps> = ({
 	boardId,
-	workspaceId,
 	isAdmin,
-	boardAdmins,
+	workspaceId,
 }) => {
 	const t = useTranslations();
-	const { leave } = useBoardMembers();
-	const { onClose, onOpen } = useBoardMenu();
 	const router = useRouter();
+	const { onClose, onOpen } = useBoardMenu();
+	const { deleteBoard } = useBoardsEdit();
 
-	const isOnlyAdmin = isAdmin && boardAdmins.length < 2;
-
-	const leaveBoard = () => {
-		if (isOnlyAdmin) {
-			toast.error(t('board.last_admin'));
-			return;
-		}
-		leave.mutate(boardId);
+	const removeBoard = () => {
+		deleteBoard.mutate(boardId);
 	};
 
 	useEffect(() => {
-		if (leave.isSuccess) {
+		if (deleteBoard.isSuccess) {
 			onClose();
 
 			if (workspaceId) {
@@ -53,21 +43,22 @@ export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({
 				router.push(`${ROUTES.BOARDS}`);
 			}
 		}
-	}, [leave.isSuccess]);
+	}, [deleteBoard.isSuccess]);
 
 	return (
 		<div className="flex flex-col">
 			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
-				{t('board.leave_board')}?
+				{t('board.delete')}?
 			</div>
 			<Divider className="my-2" />
+			<p className="text-center">{t('board.remove_warn')}</p>
 			<div className="flex flex-row gap-4">
 				<Button
 					fullWidth
 					variant="bordered"
 					color="default"
 					onPress={() => onOpen('main')}
-					isDisabled={leave.isPending}
+					isDisabled={deleteBoard.isPending}
 				>
 					{t('common.back')}
 				</Button>
@@ -75,12 +66,12 @@ export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({
 					fullWidth
 					variant="solid"
 					color="danger"
-					onPress={leaveBoard}
-					isDisabled={leave.isPending}
+					onPress={removeBoard}
 					spinnerPlacement="end"
-					isLoading={leave.isPending}
+					isLoading={deleteBoard.isPending}
+					isDisabled={deleteBoard.isPending || !isAdmin}
 				>
-					{t('common.leave')}
+					{t('common.remove')}
 				</Button>
 			</div>
 		</div>

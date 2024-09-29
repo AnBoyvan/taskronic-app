@@ -20,6 +20,7 @@ export const TaskModalGeneral: React.FC<TaskModalGeneralProps> = ({ task, permis
 				<TaskModalMembers
 					members={task.members}
 					taskId={task._id}
+					boardId={task.board._id}
 					canRemove={permissions?.taskMembers}
 					boardMembers={task.board.members}
 				/>

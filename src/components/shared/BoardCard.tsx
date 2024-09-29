@@ -7,9 +7,12 @@ import clsx from 'clsx';
 
 import { Card, CardBody, CardFooter, CardProps, Chip, Tooltip } from '@nextui-org/react';
 
+import { toast } from 'sonner';
+
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
 import { boardColors } from '@/constants/board-colors.constants';
+import { useBoardsEdit } from '@/hooks/useBoardsEdit';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { BoardBasic, Board as BoardType } from '@/types/board.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
@@ -22,20 +25,21 @@ export const BoardCard: React.FC<BoardProps> = ({ board, ...props }) => {
 	const t = useTranslations();
 	const router = useRouter();
 	const { user } = useCurrentUser();
+	const { open } = useBoardsEdit();
 
-	const { _id, title, thumbImage, textColor, bgColor, starred, closed, admins, workspace } = board;
+	const { _id, title, thumbImage, textColor, bgColor, starred, closed, workspace } = board;
 
 	const { isAdmin } = getBoardPermissions(board, user?.sub);
 
 	const goToBoard = () => {
+		if (closed && !isAdmin) {
+			toast.error(t('board.open_admin'), { closeButton: false });
+			return;
+		}
+
 		if (workspace) {
 			router.push(`${ROUTES.WORKSPACE}/${workspace._id}/${_id}`);
 		}
-	};
-
-	const openBoard = () => {
-		// TODO:
-		console.log('OPEN BOARD');
 	};
 
 	return (
@@ -43,9 +47,8 @@ export const BoardCard: React.FC<BoardProps> = ({ board, ...props }) => {
 			as="div"
 			shadow="none"
 			radius="md"
-			isPressable={!closed ? true : !isAdmin}
-			isDisabled={closed && !isAdmin}
-			onPress={Boolean(closed && isAdmin) ? openBoard : goToBoard}
+			isPressable
+			onPress={goToBoard}
 			{...props}
 			style={thumbImage ? { backgroundImage: `url(${thumbImage})` } : undefined}
 			classNames={{

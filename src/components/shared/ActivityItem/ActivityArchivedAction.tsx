@@ -2,12 +2,10 @@ import { useTranslations } from 'next-intl';
 
 import { useCallback } from 'react';
 
-import { Space } from '@/components/ui/Space';
 import { useTaskModal } from '@/hooks/useTaskModal';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityArchivedAction: React.FC<ActivityActionProps> = ({ activity, taskId }) => {
 	const t = useTranslations();
@@ -31,8 +29,7 @@ export const ActivityArchivedAction: React.FC<ActivityActionProps> = ({ activity
 				return (
 					<>
 						{t('activity.list')}
-						<Space />
-						<ActivitySpan medium>{archivedList ? archivedList.label : entityTitle}</ActivitySpan>
+						<span className="font-medium">{archivedList ? archivedList.label : entityTitle}</span>
 					</>
 				);
 
@@ -44,10 +41,12 @@ export const ActivityArchivedAction: React.FC<ActivityActionProps> = ({ activity
 						) : (
 							<>
 								{t('activity.task')}
-								<Space />
-								<ActivitySpan active onClick={() => openTaskModal(entityId)}>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={() => openTaskModal(task?._id)}
+								>
 									{task ? task.title : entityTitle}
-								</ActivitySpan>
+								</span>
 							</>
 						)}
 					</>
@@ -61,7 +60,6 @@ export const ActivityArchivedAction: React.FC<ActivityActionProps> = ({ activity
 	return (
 		<>
 			{t(completed ? 'activity.archived' : 'activity.restored')}
-			<Space />
 			{actionEntityType()}
 		</>
 	);

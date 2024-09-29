@@ -4,12 +4,15 @@ export type BoardMenuSection =
 	| 'main'
 	| 'activity'
 	| 'comments'
+	| 'archive'
 	| 'info'
 	| 'members'
 	| 'addMembers'
 	| 'background'
 	| 'settings'
 	| 'close'
+	| 'reopen'
+	| 'delete'
 	| 'leave';
 
 interface BoardMenuStore {

@@ -2,12 +2,10 @@ import { useTranslations } from 'next-intl';
 
 import { useCallback } from 'react';
 
-import { Space } from '@/components/ui/Space';
 import { useTaskModal } from '@/hooks/useTaskModal';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityMovedAction: React.FC<ActivityActionProps> = ({ activity, taskId }) => {
 	const t = useTranslations();
@@ -37,19 +35,17 @@ export const ActivityMovedAction: React.FC<ActivityActionProps> = ({ activity, t
 						) : (
 							<>
 								{t('activity.task')}
-								<Space />
-								<ActivitySpan active onClick={() => openTaskModal(entityId)}>
+								<span
+									className="font-medium text-primary transition-opacity hover:opacity-80 hover:underline  cursor-pointer"
+									onClick={() => openTaskModal(task?._id)}
+								>
 									{task ? task.title : entityTitle}
-								</ActivitySpan>
+								</span>
 							</>
 						)}
-						<Space />
 						{t('activity.from')}
-						<Space />
 						{listFrom?.label}
-						<Space />
 						{t('activity.to')}
-						<Space />
 						{listTo?.label}
 					</>
 				);
@@ -62,7 +58,6 @@ export const ActivityMovedAction: React.FC<ActivityActionProps> = ({ activity, t
 	return (
 		<>
 			{t('activity.moved')}
-			<Space />
 			{actionEntityType()}
 		</>
 	);

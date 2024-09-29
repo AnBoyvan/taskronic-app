@@ -1,6 +1,5 @@
 import { useTranslations } from 'next-intl';
 
-import { Space } from '@/components/ui/Space';
 import { EntityType } from '@/types/activity.type';
 
 import { ActivityActionProps } from '.';
@@ -22,10 +21,7 @@ export const ActivityBackgroundAction: React.FC<ActivityActionProps> = ({ activi
 	return (
 		<>
 			{t('activity.changed')}
-			<Space />
 			{t('activity.bg')}
-			<Space />
-
 			{actionEntityType()}
 		</>
 	);

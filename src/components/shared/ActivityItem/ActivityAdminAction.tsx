@@ -1,9 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import { Space } from '@/components/ui/Space';
-
 import { ActivityActionProps } from '.';
-import { ActivitySpan } from './ActivitySpan';
 
 export const ActivityAdminAction: React.FC<ActivityActionProps> = ({ activity }) => {
 	const t = useTranslations();
@@ -12,11 +9,8 @@ export const ActivityAdminAction: React.FC<ActivityActionProps> = ({ activity })
 	return (
 		<>
 			{t('activity.made')}
-			<Space />
-			<ActivitySpan medium>{entityTitle}</ActivitySpan>
-			<Space />
+			<span className="font-medium">{entityTitle}</span>
 			{t(completed ? 'activity.admin' : 'activity.normal')}
-			<Space />
 			{t('activity.of_board')}
 		</>
 	);

@@ -38,6 +38,7 @@ export const TaskModal: React.FC = () => {
 			onOpenChange={onClose}
 			placement="center"
 			backdrop="blur"
+			className="z-auto"
 			classNames={{
 				base: 'my-12',
 				closeButton: 'right-2 top-2',
