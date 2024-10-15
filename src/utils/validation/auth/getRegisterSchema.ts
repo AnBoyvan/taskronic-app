@@ -11,8 +11,6 @@ export const getRegisterSchema = (
 
 		email: Yup.string().required(messages.email_req).matches(REGEXP.email, messages.email_valid),
 
-		avatarColor: Yup.string(),
-
 		password: Yup.string().required(messages.pass).matches(REGEXP.password, messages.pass),
 
 		confirmPassword: Yup.string()

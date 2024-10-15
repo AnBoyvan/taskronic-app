@@ -1,8 +1,7 @@
-import NextAuth from 'next-auth';
+import NextAuth, { User } from 'next-auth';
 
 import authConfig from '@/configs/auth.config';
 import { authService } from '@/services/auth.service';
-import { Token } from '@/types/auth.interface';
 import { jwtDecode } from '@/utils/helpers/jwtDecode';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -11,14 +10,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	session: { strategy: 'jwt' },
 	callbacks: {
 		async jwt({ token, user, trigger, session, account, profile }) {
-			let data: Token | null = null;
+			let data: User | null = null;
 
 			if (trigger === 'signIn' && account?.provider === 'google') {
-				data = await authService.google({
+				const accessToken = await authService.google({
 					googleId: profile?.sub || '',
 					name: profile?.name || token.name || 'User',
 					email: profile?.email || token.email!,
 				});
+
+				data = { accessToken };
 			}
 
 			if (trigger === 'signIn' && account?.provider === 'credentials') {
@@ -27,10 +28,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 			if (trigger === 'update' && session.sub) {
 				token.user = session;
-			}
-
-			if (trigger === 'update' && session.type === 'sidebar') {
-				token.isSidebarOpen = session.isSidebarOpen;
 			}
 
 			if (data) {
@@ -44,7 +41,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		async session({ token }) {
 			return {
 				user: token.user,
-				isSidebarOpen: token.isSidebarOpen,
 				accessToken: token.accessToken,
 			};
 		},

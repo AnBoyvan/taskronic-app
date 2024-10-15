@@ -35,6 +35,9 @@ export const SortBy: React.FC<SortByProps> = ({ current, setCurrent, ...props })
 			size={props.size || 'md'}
 			selectedKeys={[`${current.field}-${current.order}`]}
 			onSelectionChange={key => changeVariant(key)}
+			popoverProps={{
+				className: 'w-fit',
+			}}
 			{...props}
 		>
 			{sortingVariants.map(variant => (

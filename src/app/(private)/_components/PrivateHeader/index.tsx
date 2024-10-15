@@ -14,7 +14,8 @@ export const PrivateHeader: React.FC = () => {
 			isBlurred
 			height={12}
 			maxWidth="full"
-			className="border-b border-divider h-12"
+			position="static"
+			className="border-b border-divider h-12 min-h-12"
 			classNames={{
 				wrapper: 'px-4 sm:px-6',
 			}}

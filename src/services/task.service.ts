@@ -27,7 +27,7 @@ export const taskService = {
 		});
 	},
 
-	async findByUser(): Promise<Task> {
+	async findByUser(): Promise<Task[]> {
 		return await apiRequest({
 			method: 'GET',
 			url: API_ROUTES.tasks.findByUser,

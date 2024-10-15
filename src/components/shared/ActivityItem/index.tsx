@@ -70,8 +70,8 @@ export const ActivityItem: React.FC<ActivityActionProps> = ({ activity, taskId, 
 		<div className="flex flex-row items-start gap-2 py-2">
 			<UserAvatar
 				size="sm"
-				avatarName={activity.user.avatarName || activity.author.avatarName}
-				avatarColor={activity.user.avatarColor || activity.author.avatarColor}
+				avatarName={activity.user.initials || activity.author.initials}
+				avatarColor={activity.user.avatar || activity.author.avatar}
 			/>
 			<div className="flex flex-col">
 				<p className="text-wrap text-sm">

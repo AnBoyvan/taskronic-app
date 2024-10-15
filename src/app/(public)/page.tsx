@@ -13,7 +13,7 @@ export default function HomePage() {
 	const t = useTranslations();
 
 	return (
-		<div className="flex flex-col lg:flex-row gap-8 self-center items-center px-4">
+		<div className="flex flex-col lg:flex-row overflow-y-auto scro gap-8 overflow-hidden self-center items-center p-4">
 			<div className="flex flex-col gap-3 w-full max-w-[450px]">
 				<h1 className="text-4xl md:text-6xl">{t('site.slogan')}</h1>
 				<p>{t('site.description')}</p>

@@ -16,6 +16,7 @@ interface WorkspaceBadgeProps
 	largeText?: boolean;
 	mediumIcon?: boolean;
 	largeIcon?: boolean;
+	truncateTitle?: boolean;
 	avatarProps?: AvatarProps;
 }
 
@@ -30,6 +31,7 @@ export const WorkspaceBadge = forwardRef(
 			largeText,
 			mediumIcon,
 			largeIcon,
+			truncateTitle,
 			className,
 			...props
 		}: WorkspaceBadgeProps,
@@ -62,6 +64,7 @@ export const WorkspaceBadge = forwardRef(
 						!mediumText && !largeText && 'truncate text-tiny',
 						mediumText && 'text-sm ',
 						largeText && 'text-base',
+						truncateTitle && 'truncate',
 					)}
 				>
 					{name}

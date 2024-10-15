@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
@@ -34,14 +33,9 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 	isAdmin,
 }) => {
 	const t = useTranslations();
-	const router = useRouter();
 	const { removeMember } = useBoardMembers();
 
 	const [userBoardsList, setUserBoardsList] = useState<BoardBasic[]>(userBoards);
-
-	const goToBoard = (boardId: string) => {
-		router.push(`${ROUTES.WORKSPACE}/${workspaceId}/${boardId}`);
-	};
 
 	const handleRemoveMember = (boardId: string) => {
 		removeMember.mutate({
@@ -90,7 +84,7 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 						<ListboxItem
 							key={board._id}
 							textValue={board._id}
-							onPress={() => goToBoard(board._id)}
+							href={`${ROUTES.WORKSPACE}/${workspaceId}/${board._id}`}
 							classNames={{
 								title: 'flex flex-row items-center justify-between gap-2 truncate',
 							}}

@@ -16,6 +16,7 @@ export const boardService = {
 			method: 'POST',
 			url: API_ROUTES.boards.create(workspaceId),
 			data: dto,
+			revalidate: 'board',
 		});
 	},
 
@@ -141,6 +142,15 @@ export const boardService = {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.boards.listsOrder(boardId),
+			data: dto,
+			revalidate: 'board',
+		});
+	},
+
+	async deleteList(boardId: string, dto: List): Promise<Board> {
+		return await apiRequest({
+			method: 'PATCH',
+			url: API_ROUTES.boards.deleteList(boardId),
 			data: dto,
 			revalidate: 'board',
 		});

@@ -35,6 +35,7 @@ export const GoogleBtn: React.FC = () => {
 			disabled={isPending}
 			isLoading={isPending}
 			spinnerPlacement="end"
+			className="min-h-10"
 		>
 			GOOGLE
 		</Button>

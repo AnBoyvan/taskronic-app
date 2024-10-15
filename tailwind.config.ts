@@ -24,15 +24,9 @@ const config: Config = {
 		'text-[#fafafa]',
 		'text-[#27272A]',
 	],
-	darkMode: 'class',
+	darkMode: ['class', 'class'],
 	plugins: [
 		nextui({
-			// addCommonColors: true,
-			layout: {
-				fontSize: {
-					'10': '0.625rem',
-				},
-			},
 			themes: {
 				light: {
 					colors: {
@@ -56,6 +50,7 @@ const config: Config = {
 				},
 			},
 		}),
+		require('tailwindcss-animate'),
 	],
 };
 export default config;

@@ -17,8 +17,8 @@ export interface Comment extends CommentBase {
 		_id: string;
 		name?: string;
 		email?: string;
-		avatarName?: string;
-		avatarColor?: ColorVariant;
+		initials?: string;
+		avatar?: ColorVariant;
 	};
 }
 

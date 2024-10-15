@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 
+import clsx from 'clsx';
 import { useState } from 'react';
 
 import {
@@ -20,6 +20,7 @@ import { SortBy } from '@/components/ui/SortBy';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
 import { SortingVariant } from '@/configs/sorting-variants.config';
+import { boardColors } from '@/constants/board-colors.constants';
 import { BoardBasic } from '@/types/board.interface';
 import { sorter } from '@/utils/helpers/sorter';
 
@@ -33,7 +34,6 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 	workspaceId,
 }) => {
 	const t = useTranslations();
-	const router = useRouter();
 
 	const [sortBy, setSortBy] = useState<SortingVariant>({
 		field: 'createdAt',
@@ -44,10 +44,6 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 	const onlyActive = boards.filter(board => !board.closed);
 
 	const sortedBoards = sorter(onlyActive, sortBy.field as keyof BoardBasic, sortBy.order);
-
-	const onBoardSelect = (boardId: string) => {
-		router.push(`${ROUTES.WORKSPACE}/${workspaceId}/${boardId}`);
-	};
 
 	return (
 		<div className="h-full flex flex-col overflow-hidden py-2">
@@ -74,14 +70,23 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 				{sortedBoards.map(b => (
 					<ListboxItem
 						key={b._id}
-						textValue={b._id}
-						onPress={() => onBoardSelect(b._id)}
+						textValue={b.title}
+						href={`${ROUTES.WORKSPACE}/${workspaceId}/${b._id}`}
 						classNames={{
 							title: 'flex flex-row items-center justify-between gap-2 truncate',
 						}}
 					>
-						<span>{b.title}</span>
-						<StarredSwitcher boardStarred={b.starred} boardId={b._id} />
+						<div className="flex flex-row items-center gap-2 w-full overflow-hidden">
+							<div
+								style={b.thumbImage ? { backgroundImage: `url(${b.thumbImage})` } : undefined}
+								className={clsx(
+									'h-6 w-8 min-w-8 rounded-md shadow-sm truncate',
+									b.bgColor && `${boardColors[b.bgColor]}`,
+								)}
+							></div>
+							<span className="truncate">{b.title}</span>
+						</div>
+						<StarredSwitcher board={b} />
 					</ListboxItem>
 				))}
 			</Listbox>

@@ -12,8 +12,7 @@ import { toast } from 'sonner';
 import { StarredSwitcher } from '@/components/ui/StarredSwitcher';
 import { ROUTES } from '@/configs/routes.config';
 import { boardColors } from '@/constants/board-colors.constants';
-import { useBoardsEdit } from '@/hooks/useBoardsEdit';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useUser } from '@/hooks/useUser';
 import { BoardBasic, Board as BoardType } from '@/types/board.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
@@ -24,12 +23,11 @@ interface BoardProps extends Partial<CardProps> {
 export const BoardCard: React.FC<BoardProps> = ({ board, ...props }) => {
 	const t = useTranslations();
 	const router = useRouter();
-	const { user } = useCurrentUser();
-	const { open } = useBoardsEdit();
+	const user = useUser();
 
-	const { _id, title, thumbImage, textColor, bgColor, starred, closed, workspace } = board;
+	const { _id, title, thumbImage, textColor, bgColor, closed, workspace } = board;
 
-	const { isAdmin } = getBoardPermissions(board, user?.sub);
+	const { isAdmin } = getBoardPermissions(board, user._id);
 
 	const goToBoard = () => {
 		if (closed && !isAdmin) {
@@ -85,7 +83,7 @@ export const BoardCard: React.FC<BoardProps> = ({ board, ...props }) => {
 						</Chip>
 					)}
 				</div>
-				<StarredSwitcher boardId={_id} boardStarred={starred} />
+				<StarredSwitcher board={board} />
 			</CardFooter>
 		</Card>
 	);

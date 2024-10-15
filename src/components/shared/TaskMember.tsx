@@ -30,6 +30,7 @@ interface TaskMemberProps
 	isSmall?: boolean;
 	size?: 'sm' | 'md' | 'lg';
 	onRemove?: (memberId: string) => void;
+	onAction?: () => void;
 }
 
 export const TaskMember: React.FC<TaskMemberProps> = ({
@@ -41,18 +42,22 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 	isSmall,
 	size,
 	onRemove,
+	onAction,
 }) => {
 	const t = useTranslations();
 	const { removeMember } = useTaskMembers();
-	const { isOpen: opened, onOpen, onClose } = useMemberActivityModal();
+	const { onOpen } = useMemberActivityModal();
 
-	const { _id, name, email, avatarColor, avatarName } = member;
+	const { _id, name, email, initials, avatar } = member;
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	const openActivityModal = () => {
 		setIsOpen(false);
 		onOpen(member, boardId);
+		if (onAction) {
+			onAction();
+		}
 	};
 
 	const removeTaskMember = () => {
@@ -65,6 +70,9 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 		});
 		if (onRemove) {
 			onRemove(_id);
+		}
+		if (onAction) {
+			onAction();
 		}
 	};
 
@@ -84,8 +92,8 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 						small={isSmall}
 						size={size}
 						name={name}
-						avatarColor={avatarColor}
-						avatarName={avatarName}
+						avatarColor={avatar}
+						avatarName={initials}
 						className="hover:opacity-70 cursor-pointer transition-opacity"
 					/>
 				</PopoverTrigger>
@@ -94,9 +102,9 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 						name={name}
 						description={email}
 						avatarProps={{
-							name: avatarName,
+							name: initials,
 							classNames: {
-								base: `${colorVariants[avatarColor]}`,
+								base: `${colorVariants[avatar]}`,
 							},
 						}}
 					/>

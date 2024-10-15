@@ -1,16 +1,25 @@
 import { ColorVariant } from '@/constants/color-variants.constants';
 
+import { BoardBasic } from './board.interface';
+import { Member } from './root.interface';
+import { Workspace } from './workspace.interface';
+
 export interface IUser {
-	sub: string;
+	_id: string;
 	name: string;
 	email: string;
-	avatarName: string;
-	avatarColor: ColorVariant;
+	initials: string;
+	avatar: ColorVariant;
+	bio: string;
+	contacts: Member[];
+	workspaces: Workspace[];
+	starred: BoardBasic[];
 	noteGroups: string[];
 }
 
 export type UserUpd = {
-	name: string;
-	avatarColor: ColorVariant;
-	noteGroups: string[];
+	name?: string;
+	avatar?: ColorVariant;
+	bio?: string;
+	noteGroups?: string[];
 };

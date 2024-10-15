@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -16,21 +16,30 @@ import { ROUTES } from '@/configs/routes.config';
 import { BoardColor } from '@/constants/board-colors.constants';
 import { useBoardsEdit } from '@/hooks/useBoardsEdit';
 import { useCreateModal } from '@/hooks/useCreateModal';
+import { useUser } from '@/hooks/useUser';
 import { useValidation } from '@/hooks/useValidation';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
 import { BoardCompose } from '@/types/board.interface';
 
 import { NewBoardBackground } from './NewBoardBackground';
 
-export const CreateBoardModal: React.FC = () => {
+type CreateBoardModalProps = {
+	workspaceId?: string;
+};
+
+export const CreateBoardModal: React.FC<CreateBoardModalProps> = ({ workspaceId }) => {
 	const t = useTranslations();
 	const router = useRouter();
+	const params = useParams<{ workspaceId: string }>();
+	const { workspaces } = useUser();
 	const { onClose } = useCreateModal();
-	const { current } = useWorkspacesList();
 	const { boardComposeSchema } = useValidation();
 	const { create } = useBoardsEdit();
 
-	const [selectedWorkspace, setSelectedWorkspace] = useState<string | undefined>(current?._id);
+	const current = workspaces.find(({ _id }) => _id === params.workspaceId);
+
+	const [selectedWorkspace, setSelectedWorkspace] = useState<string | undefined>(
+		workspaceId || current?._id,
+	);
 
 	const {
 		watch,

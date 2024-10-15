@@ -1,4 +1,4 @@
-import { BoardBasic } from './board.interface';
+import { Board, BoardBasic } from './board.interface';
 import { Comment } from './comment.interface';
 import { Base, Member, Priority } from './root.interface';
 import { WorkspaceBasic } from './workspace.interface';
@@ -28,14 +28,14 @@ export interface TaskBase extends Base {
 export interface Task extends TaskBase {
 	members: Member[];
 	workspace: WorkspaceBasic;
-	board: BoardBasic;
+	board: Board;
 	comments: Comment[];
 }
 
 export interface TaskBasic extends TaskBase {
 	members: string[];
-	workspace: string;
-	board: string;
+	workspace: WorkspaceBasic;
+	board: BoardBasic;
 	comments: string[];
 }
 

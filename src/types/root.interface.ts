@@ -10,8 +10,8 @@ export type Member = {
 	_id: string;
 	name: string;
 	email: string;
-	avatarName: string;
-	avatarColor: ColorVariant;
+	initials: string;
+	avatar: ColorVariant;
 };
 
 export type MemberDto = {

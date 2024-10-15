@@ -28,7 +28,7 @@ export const BoardMenuArchivedLists: React.FC<BoardMenuArchivedListsProps> = ({
 	canDeleteTasks,
 }) => {
 	const t = useTranslations();
-	const { updList } = useLists();
+	const { updList, deleteList } = useLists();
 	const [archivedLists, setArchivedLists] = useState<List[]>(lists);
 
 	const restoreList = (list: List) => {
@@ -42,9 +42,15 @@ export const BoardMenuArchivedLists: React.FC<BoardMenuArchivedListsProps> = ({
 		setArchivedLists(archivedLists.filter(({ _id }) => _id !== list._id));
 	};
 
-	const deleteList = (listId: string) => {
-		// TODO:
-		setArchivedLists(archivedLists.filter(({ _id }) => _id !== listId));
+	const removeList = (list: List) => {
+		deleteList.mutate({
+			boardId,
+			data: {
+				...list,
+				archived: false,
+			},
+		});
+		setArchivedLists(archivedLists.filter(({ _id }) => _id !== list._id));
 	};
 
 	const checkTasksPermission = (listId: string) => {
@@ -88,7 +94,7 @@ export const BoardMenuArchivedLists: React.FC<BoardMenuArchivedListsProps> = ({
 											variant="solid"
 											color="danger"
 											fullWidth
-											onPress={() => deleteList(list._id)}
+											onPress={() => removeList(list)}
 										>
 											{t('board.delete_list')}?
 										</Button>

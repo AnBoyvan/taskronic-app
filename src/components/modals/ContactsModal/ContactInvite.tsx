@@ -6,9 +6,8 @@ import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/rea
 
 import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useInviteModal } from '@/hooks/useInviteModal';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { useUser } from '@/hooks/useUser';
 import { Member } from '@/types/root.interface';
 import { Workspace } from '@/types/workspace.interface';
 
@@ -19,8 +18,7 @@ type ContactInviteProps = {
 
 export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contactEmail }) => {
 	const modal = useInviteModal();
-	const { user } = useCurrentUser();
-	const { workspaces } = useWorkspacesList();
+	const { _id, workspaces } = useUser();
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -30,7 +28,7 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 
 	const canInvite = workspaces.filter(
 		({ members, admins, settings }) =>
-			((user && admins.includes(user?.sub)) || settings.invite) && !isMember(members),
+			(admins.includes(_id) || settings.invite) && !isMember(members),
 	);
 
 	const inviteContact = (workspace: Workspace) => {

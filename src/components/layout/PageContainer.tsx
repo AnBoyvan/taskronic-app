@@ -20,9 +20,9 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 		<div
 			className={clsx(
 				'w-full flex flex-col ',
-				className ? className : '',
 				scroll ? 'overflow-auto' : '',
 				smallPadding ? 'p-2' : 'p-4 lg:p-8',
+				className ? className : '',
 			)}
 			{...props}
 		>

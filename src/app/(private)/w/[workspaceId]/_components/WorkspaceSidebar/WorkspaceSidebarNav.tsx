@@ -5,8 +5,8 @@ import { Button, Listbox, ListboxItem } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
 import { workspaceNav } from '@/configs/nav.config';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useInviteModal } from '@/hooks/useInviteModal';
+import { useUser } from '@/hooks/useUser';
 import { Member } from '@/types/root.interface';
 import { Workspace } from '@/types/workspace.interface';
 
@@ -27,7 +27,7 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 }) => {
 	const t = useTranslations();
 	const pathname = usePathname();
-	const { user } = useCurrentUser();
+	const { _id } = useUser();
 	const inviteModal = useInviteModal();
 
 	return (
@@ -45,7 +45,7 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 						title: 'font-medium',
 					}}
 					endContent={
-						((user && admins.includes(user?.sub)) || canInvite) && label === 'common.members' ? (
+						(admins.includes(_id) || canInvite) && label === 'common.members' ? (
 							<Button
 								variant="light"
 								color="primary"

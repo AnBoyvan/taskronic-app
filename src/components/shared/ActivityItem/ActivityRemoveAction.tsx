@@ -31,6 +31,14 @@ export const ActivityRemoveAction: React.FC<ActivityActionProps> = ({
 					</>
 				);
 
+			case EntityType.LIST:
+				return (
+					<>
+						{t('activity.list')}
+						<span className="font-medium">{entityTitle}</span>
+					</>
+				);
+
 			case EntityType.USER:
 				return (
 					<>

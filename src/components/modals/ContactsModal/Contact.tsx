@@ -11,7 +11,7 @@ type ContactProps = {
 };
 
 export const Contact: React.FC<ContactProps> = ({ contact }) => {
-	const { _id, name, email, avatarColor, avatarName } = contact;
+	const { _id, name, email, initials, avatar } = contact;
 
 	return (
 		<div className="flex flex-row justify-between w-full p-2 border-b-1 border-divider">
@@ -20,9 +20,9 @@ export const Contact: React.FC<ContactProps> = ({ contact }) => {
 				description={email}
 				avatarProps={{
 					size: 'sm',
-					name: avatarName,
+					name: initials,
 					classNames: {
-						base: `${colorVariants[avatarColor]}`,
+						base: `${colorVariants[avatar]}`,
 					},
 				}}
 			/>

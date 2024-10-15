@@ -1,7 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-
 import { ElementRef, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -16,7 +14,6 @@ type TaskModalTitleProps = {
 };
 
 export const TaskModalTitle: React.FC<TaskModalTitleProps> = ({ taskId, title, canEdit }) => {
-	const t = useTranslations();
 	const { updGeneral } = useTasksEdit();
 
 	const [taskTitle, setTaskTitle] = useState<string>(title);

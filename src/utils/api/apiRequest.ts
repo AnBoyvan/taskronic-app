@@ -34,7 +34,7 @@ export const apiRequest = async ({
 		if (response && revalidate) {
 			if (revalidate === 'board' && response.data.workspace) {
 				const { workspace, _id } = response.data as Board;
-				revalidatePath(`/w/${workspace}/${_id}`);
+				revalidatePath(`/w/${workspace?._id}/${_id}`);
 			}
 
 			if (revalidate === 'board' && boardId && workspaceId) {

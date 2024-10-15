@@ -27,12 +27,12 @@ export const boardCategorizer: BoardCategorizer = (boards, userId) => {
 
 	const userWorkspaces = uniqueWorkspacesIds
 		.map(id => {
-			return allWorkspaces.find(({ _id }) => _id === id);
+			return allWorkspaces.find(({ _id, members }) => _id === id && members.includes(userId));
 		})
 		.filter(item => item !== undefined);
 
-	const guestureWorkspacesBoards = open.filter(({ workspace }) =>
-		workspace?.members.includes(userId),
+	const guestureWorkspacesBoards = open.filter(
+		({ workspace }) => !workspace?.members.includes(userId),
 	);
 
 	const starredBoards = open.filter(({ starred }) => starred.includes(userId));

@@ -82,9 +82,9 @@ export const MemberActivityModal: React.FC = () => {
 						description={member?.email}
 						className="min-w-64 justify-start"
 						avatarProps={{
-							name: member?.avatarName,
+							name: member?.initials,
 							classNames: {
-								base: `${colorVariants[member?.avatarColor!]}`,
+								base: `${colorVariants[member?.avatar!]}`,
 							},
 						}}
 					/>

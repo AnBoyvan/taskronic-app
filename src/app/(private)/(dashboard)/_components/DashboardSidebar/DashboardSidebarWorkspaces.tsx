@@ -2,14 +2,14 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { useUser } from '@/hooks/useUser';
 
 import { WorkspaceListSkeleton } from './WorkspaceListSkeleton';
 import { WorkspacesList } from './WorkspacesList';
 
 export const DashboardSidebarWorkspaces = () => {
 	const t = useTranslations();
-	const { workspaces, isLoading } = useWorkspacesList();
+	const { workspaces, isLoading } = useUser();
 
 	return (
 		<div className="flex flex-col h-full shrink overflow-hidden">

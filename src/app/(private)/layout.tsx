@@ -1,10 +1,7 @@
-import { SessionProvider } from 'next-auth/react';
-
-import { auth } from '@/auth';
 import { ModalProvider } from '@/components/providers/ModalProvider';
-import { WorkspaceProvider } from '@/components/providers/WorkspaceProvider';
-import { workspaceService } from '@/services/workspace.service';
-import { Workspace } from '@/types/workspace.interface';
+import { UserProvider } from '@/components/providers/UserProvider';
+import { userService } from '@/services/user.service';
+import { IUser } from '@/types/user.interface';
 import { fetcher } from '@/utils/helpers/fetcher';
 
 import { PrivateHeader } from './_components/PrivateHeader';
@@ -14,16 +11,14 @@ export default async function PrivateLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const session = await auth();
-
-	const { data } = await fetcher<Workspace[]>(workspaceService.findAll());
+	const { data, error } = await fetcher<IUser>(userService.getCurrent());
 
 	return (
-		<SessionProvider session={session}>
+		<>
+			<UserProvider user={data} error={error} />
 			<PrivateHeader />
-			<main className="flex flex-row h-[calc(100%_-_48px)]">{children}</main>
+			<main className="flex flex-row w-full h-[calc(100%_-_48px)]">{children}</main>
 			<ModalProvider />
-			<WorkspaceProvider initial={data} user={session?.user} />
-		</SessionProvider>
+		</>
 	);
 }

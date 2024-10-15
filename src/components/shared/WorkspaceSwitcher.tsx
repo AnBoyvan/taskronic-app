@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
@@ -14,8 +15,7 @@ import {
 } from '@nextui-org/react';
 
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { useUser } from '@/hooks/useUser';
 import { Workspace } from '@/types/workspace.interface';
 
 interface WorkspaceSwitcherProps extends Partial<SelectProps> {
@@ -31,8 +31,8 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 	...props
 }) => {
 	const t = useTranslations();
-	const { user } = useCurrentUser();
-	const { workspaces, current, isLoading } = useWorkspacesList();
+	const { workspaceId } = useParams<{ workspaceId: string }>();
+	const { _id, workspaces, isLoading } = useUser();
 
 	const [selected, setSelected] = useState<string>('');
 
@@ -41,6 +41,8 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 		setSelected(selected);
 		onWorkspaceChange(selected);
 	};
+
+	const current = workspaces.find(({ _id }) => _id === workspaceId);
 
 	const isUserMember = workspaces.some(({ _id }) => _id == current?._id);
 
@@ -51,7 +53,7 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 	}, [current]);
 
 	const filtered = workspaces.filter(
-		({ admins, settings }) => settings.createBoard || (user && admins.includes(user?.sub)),
+		({ admins, settings }) => settings.createBoard || admins.includes(_id),
 	);
 
 	return (

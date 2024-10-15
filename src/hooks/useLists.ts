@@ -41,5 +41,14 @@ export const useLists = () => {
 		},
 	});
 
-	return { addList, updListsOrder, updList };
+	const deleteList = useMutation({
+		mutationFn: ({ boardId, data }: { boardId: string; data: List }) =>
+			boardService.deleteList(boardId, data),
+		mutationKey: ['boards-lists-delete'],
+		onError: err => {
+			toast.error(err.message, { closeButton: false });
+		},
+	});
+
+	return { addList, updListsOrder, updList, deleteList };
 };

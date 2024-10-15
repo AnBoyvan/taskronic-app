@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -8,13 +8,18 @@ import { ROUTES } from '@/configs/routes.config';
 import { workspaceService } from '@/services/workspace.service';
 import { WorkspaceCompose, WorkspaceSettings } from '@/types/workspace.interface';
 
+import { useUser } from './useUser';
+
 export const useWorkspaceEdit = () => {
-	const queryClient = useQueryClient();
+	const { addWorkspace, updWorkspace, removeWorkspace } = useUser();
 	const router = useRouter();
 
 	const create = useMutation({
 		mutationFn: (dto: WorkspaceCompose) => workspaceService.create(dto),
 		mutationKey: ['workspaces-create'],
+		onSuccess: workspace => {
+			addWorkspace(workspace);
+		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -24,6 +29,9 @@ export const useWorkspaceEdit = () => {
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceCompose }) =>
 			workspaceService.updGeneral(workspaceId, dto),
 		mutationKey: ['workspaces-update-general'],
+		onSuccess: workspace => {
+			updWorkspace(workspace);
+		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -33,6 +41,9 @@ export const useWorkspaceEdit = () => {
 		mutationFn: ({ workspaceId, dto }: { workspaceId: string; dto: WorkspaceSettings }) =>
 			workspaceService.updSettings(workspaceId, dto),
 		mutationKey: ['workspaces-settings'],
+		onSuccess: workspace => {
+			updWorkspace(workspace);
+		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},
@@ -44,8 +55,9 @@ export const useWorkspaceEdit = () => {
 		onSettled: () => {
 			router.push(ROUTES.BOARDS);
 		},
-		onSuccess: ({ message }) => {
+		onSuccess: ({ message }, workspaceId) => {
 			toast.success(message, { closeButton: false });
+			removeWorkspace(workspaceId);
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });

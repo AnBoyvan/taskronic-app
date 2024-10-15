@@ -71,10 +71,10 @@ export const AddTaskMemberPopover: React.FC<AddTaskMemberPopoverProps> = ({
 								name={member.name}
 								description={member.email}
 								avatarProps={{
-									name: member.avatarName,
+									name: member.initials,
 									size: 'sm',
 									classNames: {
-										base: `${colorVariants[member.avatarColor]}`,
+										base: `${colorVariants[member.avatar]}`,
 									},
 								}}
 							/>

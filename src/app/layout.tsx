@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 
 import { Toaster } from 'sonner';
 
+import { Loader } from '@/components/layout/Loader';
 import { ENV } from '@/configs/env.config';
 import { APP_NAME, SITE_DESCRIPTION } from '@/constants/seo.constants';
 import '@/styles/globals.css';
@@ -63,10 +64,10 @@ export default async function RootLayout({
 	return (
 		<html lang={locale} className={roboto.className} suppressHydrationWarning>
 			<body>
-				<Suspense fallback={<div>Loading...</div>}>
+				<Suspense fallback={<Loader />}>
 					<NextIntlClientProvider messages={messages}>
 						<Providers>
-							<div className="h-svh max-h-svh overflow-y-hidden flex flex-col">{children}</div>
+							<div className="flex flex-col h-svh overflow-hidden">{children}</div>
 							<Toaster
 								position="top-right"
 								expand={true}

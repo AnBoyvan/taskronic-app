@@ -1,4 +1,4 @@
-type Order = 'asc' | 'desc';
+type Order = 'asc' | 'desc' | 'ascending' | 'descending';
 
 interface PriorityItem<T> {
 	field: keyof T;
@@ -25,7 +25,7 @@ export const sorter = <T>(
 	const sortedArray = array.sort((a, b) => {
 		const aValue = a[field];
 		const bValue = b[field];
-		const isDateField = field === 'createdAt' || field === 'updatedAt';
+		const isDateField = field === 'createdAt' || field === 'updatedAt' || 'dueDate';
 
 		let aField: any = aValue;
 		let bField: any = bValue;
@@ -38,25 +38,25 @@ export const sorter = <T>(
 		if (typeof aField === 'string' && typeof bField === 'string') {
 			const aFieldLower = aField.toLowerCase();
 			const bFieldLower = bField.toLowerCase();
-			if (order === 'asc') {
+			if (order === 'asc' || order === 'ascending') {
 				return aFieldLower.localeCompare(bFieldLower);
 			} else {
 				return bFieldLower.localeCompare(aFieldLower);
 			}
 		} else if (typeof aField === 'number' && typeof bField === 'number') {
-			if (order === 'asc') {
+			if (order === 'asc' || order === 'ascending') {
 				return aField - bField;
 			} else {
 				return bField - aField;
 			}
 		} else if (typeof aField === 'boolean' && typeof bField === 'boolean') {
-			if (order === 'asc') {
+			if (order === 'asc' || order === 'ascending') {
 				return aField === bField ? 0 : aField ? -1 : 1;
 			} else {
 				return aField === bField ? 0 : aField ? 1 : -1;
 			}
 		} else if (aField instanceof Date && bField instanceof Date) {
-			if (order === 'asc') {
+			if (order === 'asc' || order === 'ascending') {
 				return aField.getTime() - bField.getTime();
 			} else {
 				return bField.getTime() - aField.getTime();

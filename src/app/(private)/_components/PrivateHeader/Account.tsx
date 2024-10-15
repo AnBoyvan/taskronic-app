@@ -22,7 +22,7 @@ import { dashboardNav } from '@/configs/nav.config';
 import { ROUTES } from '@/configs/routes.config';
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useContactsModal } from '@/hooks/useContactsModal';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useUser } from '@/hooks/useUser';
 
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
@@ -32,10 +32,8 @@ export const Account: React.FC = () => {
 
 	const router = useRouter();
 	const t = useTranslations();
-	const { user } = useCurrentUser();
+	const { name, email, initials, avatar, logout } = useUser();
 	const { onOpen } = useContactsModal();
-
-	if (!user) return null;
 
 	const onWorkspaceSelect = (workspaceId: string) => {
 		router.push(`${ROUTES.WORKSPACE}/${workspaceId}`);
@@ -48,25 +46,24 @@ export const Account: React.FC = () => {
 			onOpenChange={open => setIsOpen(open)}
 			closeOnSelect={false}
 			className="w-52"
+			classNames={{
+				base: 'overflow-hidden',
+				content: 'overflow-y-auto',
+			}}
 		>
 			<DropdownTrigger>
-				<UserAvatar
-					avatarName={user.avatarName}
-					avatarColor={user.avatarColor}
-					size="sm"
-					as="button"
-				/>
+				<UserAvatar avatarName={initials} avatarColor={avatar} size="sm" as="button" />
 			</DropdownTrigger>
-			<DropdownMenu aria-label={t('account.profile')}>
+			<DropdownMenu aria-label={t('account.profile')} className="max-h-[calc(100vh_-_6rem)] p-1">
 				<DropdownSection showDivider>
-					<DropdownItem isReadOnly textValue={user.name} className="cursor-default">
+					<DropdownItem isReadOnly textValue={name} className="cursor-default">
 						<User
-							name={user.name}
-							description={user.email}
+							name={name}
+							description={email}
 							avatarProps={{
-								name: user.avatarName,
+								name: initials,
 								classNames: {
-									base: `${colorVariants[user.avatarColor]}`,
+									base: `${colorVariants[avatar]}`,
 								},
 							}}
 						/>
@@ -78,9 +75,7 @@ export const Account: React.FC = () => {
 						<DropdownItem
 							key={label}
 							closeOnSelect={true}
-							onPress={() => {
-								router.push(value);
-							}}
+							href={value}
 							aria-label={t(label as any)}
 						>
 							{t(label as any)}
@@ -106,12 +101,7 @@ export const Account: React.FC = () => {
 				</DropdownSection>
 
 				<DropdownSection showDivider>
-					<DropdownItem
-						onPress={() => {
-							router.push(ROUTES.PROFILE);
-						}}
-						aria-label={t('account.profile')}
-					>
+					<DropdownItem href={ROUTES.PROFILE} aria-label={t('account.profile')}>
 						{t('account.profile')}
 					</DropdownItem>
 					<DropdownItem
@@ -146,6 +136,7 @@ export const Account: React.FC = () => {
 						closeOnSelect={true}
 						onPress={() => {
 							signOut();
+							logout();
 						}}
 					>
 						{t('account.logout')}

@@ -18,7 +18,7 @@ export const BoardMenuAddMembersItem: React.FC<BoardMenuAddMembersItemProps> = (
 }) => {
 	const { addMember } = useBoardMembers();
 
-	const { _id, name, email, avatarName, avatarColor } = member;
+	const { _id, name, email, initials, avatar } = member;
 
 	const addNewMember = () => {
 		addMember.mutate({ boardId, dto: { _id, name } });
@@ -31,9 +31,9 @@ export const BoardMenuAddMembersItem: React.FC<BoardMenuAddMembersItemProps> = (
 				description={email}
 				className="justify-start"
 				avatarProps={{
-					name: avatarName,
+					name: initials,
 					classNames: {
-						base: `${colorVariants[avatarColor]}`,
+						base: `${colorVariants[avatar]}`,
 					},
 				}}
 			/>

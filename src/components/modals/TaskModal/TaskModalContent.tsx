@@ -1,6 +1,6 @@
 'use client';
 
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useUser } from '@/hooks/useUser';
 import { Task } from '@/types/tasks.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
@@ -17,9 +17,9 @@ type TaskModalContentProps = {
 };
 
 export const TaskModalContent: React.FC<TaskModalContentProps> = ({ task }) => {
-	const { user } = useCurrentUser();
+	const { _id } = useUser();
 
-	const permissions = getBoardPermissions(task.board, user?.sub);
+	const permissions = getBoardPermissions(task.board, _id);
 
 	return (
 		<>
@@ -27,8 +27,8 @@ export const TaskModalContent: React.FC<TaskModalContentProps> = ({ task }) => {
 			<TaskModalGeneral task={task} permissions={permissions} />
 			<TaskModalDescription task={task} permissions={permissions} />
 			<TaskModalSubtasks task={task} permissions={permissions} />
-			<TaskModalComments task={task} permissions={permissions} userId={user?.sub} />
-			<TaskModalActivity taskId={task._id} boardId={task.board._id} userId={user?.sub} />
+			<TaskModalComments task={task} permissions={permissions} userId={_id} />
+			<TaskModalActivity taskId={task._id} boardId={task.board._id} userId={_id} />
 			<TaskModalRemove task={task} permissions={permissions} />
 		</>
 	);

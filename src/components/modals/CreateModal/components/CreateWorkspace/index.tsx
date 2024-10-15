@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
@@ -15,9 +15,9 @@ import { Icon } from '@/components/ui/Icon';
 import { ROUTES } from '@/configs/routes.config';
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useCreateModal } from '@/hooks/useCreateModal';
+import { useUser } from '@/hooks/useUser';
 import { useValidation } from '@/hooks/useValidation';
 import { useWorkspaceEdit } from '@/hooks/useWorkspaceEdit';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
 import { WorkspaceCompose } from '@/types/workspace.interface';
 
 import { ChangeColor } from './ChangeColor';
@@ -30,12 +30,15 @@ type CreateWorkspaceModalProps = {
 export const CreateWorkspaceModal: React.FC<CreateWorkspaceModalProps> = ({ isEditing }) => {
 	const t = useTranslations();
 	const router = useRouter();
+	const { workspaceId } = useParams<{ workspaceId: string }>();
 	const { onClose } = useCreateModal();
+	const { workspaces } = useUser();
 	const { workspaceComposeSchema } = useValidation();
-	const { current } = useWorkspacesList();
 	const { create, updGeneral } = useWorkspaceEdit();
 
 	const [isEnable, setIsEnable] = useState<boolean>(false);
+
+	const current = workspaces.find(({ _id }) => _id === workspaceId);
 
 	const {
 		watch,

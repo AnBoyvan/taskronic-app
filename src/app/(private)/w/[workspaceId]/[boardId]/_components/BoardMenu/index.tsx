@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { Icon } from '@/components/ui/Icon';
 import { useBoardMenu } from '@/hooks/useBoardMenu';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useUser } from '@/hooks/useUser';
 import { Board } from '@/types/board.interface';
 import { getBoardPermissions } from '@/utils/helpers/getBoardPermissions';
 
@@ -37,12 +37,12 @@ const variants = {
 };
 
 export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
-	const { user } = useCurrentUser();
+	const user = useUser();
 	const { isOpen, section, onOpen, onClose } = useBoardMenu();
 
 	const { _id, description, closed, workspace, admins } = board;
 
-	const permissions = getBoardPermissions(board, user?.sub);
+	const permissions = getBoardPermissions(board, user._id);
 
 	return (
 		<div
@@ -95,7 +95,7 @@ export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
 							board={board}
 							isAdmin={permissions.isAdmin}
 							canAdd={permissions.addMember}
-							currentUserId={user?.sub}
+							currentUserId={user._id}
 						/>
 					)}
 					{section === 'addMembers' && <BoardMenuAddMembers board={board} />}

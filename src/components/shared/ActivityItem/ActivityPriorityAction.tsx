@@ -11,7 +11,7 @@ import { ActivityActionProps } from '.';
 export const ActivityPriorityAction: React.FC<ActivityActionProps> = ({ activity, taskId }) => {
 	const t = useTranslations();
 	const { onOpen } = useTaskModal();
-	const { task, entityId, entityTitle, to } = activity;
+	const { task, entityTitle, to } = activity;
 
 	const openTaskModal = useCallback(
 		(id?: string) => {

@@ -6,45 +6,47 @@ import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/rea
 import { useQuery } from '@tanstack/react-query';
 
 import { Icon } from '@/components/ui/Icon';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { useUser } from '@/hooks/useUser';
 import { inviteService } from '@/services/invite.service';
-import { Invite } from '@/types/workspace.interface';
+import { Invite, JoinRequest } from '@/types/workspace.interface';
 
 import { InviteNotification } from './InviteNotification';
 import { JoinRequestNotification } from './JoinRequestNotification';
 
 export const Notifications = () => {
-	const { user } = useCurrentUser();
-	const { workspaces } = useWorkspacesList();
+	const { workspaces, _id, email, isLoggedIn } = useUser();
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [joinRequests, setJoinRequests] = useState<JoinRequest[]>([]);
+	const [invites, setInvites] = useState<Invite[]>([]);
 
 	const { data } = useQuery<Invite[]>({
 		queryKey: ['invites'],
-		queryFn: async () => await inviteService.findByEmail(user?.email!),
-		enabled: user ? true : false,
+		queryFn: async () => await inviteService.findByEmail(email),
+		enabled: isLoggedIn,
 	});
-
-	const withRequests = workspaces
-		.filter(({ admins }) => admins.includes(user?.sub!))
-		.filter(({ requests }) => requests.length > 0);
-
-	const joinRequests = withRequests.flatMap(({ _id, name, requests }) => {
-		return requests.map(req => ({
-			user: req,
-			workspaceName: name,
-			workspaceId: _id,
-		}));
-	});
-
-	const notifications = Boolean(data && data.length > 0) || Boolean(withRequests.length > 0);
 
 	useEffect(() => {
-		if (!notifications && isOpen) {
-			setIsOpen(false);
+		const withRequests = workspaces
+			.filter(({ admins }) => admins.includes(_id))
+			.filter(({ requests }) => requests.length > 0);
+
+		const requests = withRequests.flatMap(({ _id, name, requests }) => {
+			return requests.map(req => ({
+				user: req,
+				workspaceName: name,
+				workspaceId: _id,
+			}));
+		});
+
+		setJoinRequests(requests);
+
+		if (data) {
+			setInvites(data);
 		}
-	}, [isOpen, notifications]);
+	}, [data, workspaces]);
+
+	const hasNotifications = Boolean(joinRequests.length > 0) || Boolean(invites.length > 0);
 
 	return (
 		<Popover
@@ -58,14 +60,14 @@ export const Notifications = () => {
 		>
 			<PopoverTrigger>
 				<Button
-					color={notifications ? 'success' : 'default'}
+					color={hasNotifications ? 'success' : 'default'}
 					isIconOnly
 					size="sm"
 					variant="light"
 					radius="full"
-					isDisabled={!notifications}
+					isDisabled={!hasNotifications}
 				>
-					<Icon name={notifications ? 'BellRing' : 'Bell'} size={notifications ? 20 : 16} />
+					<Icon name={hasNotifications ? 'BellRing' : 'Bell'} size={hasNotifications ? 20 : 16} />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="p-0 max-h-[400px] overflow-hidden justify-start">

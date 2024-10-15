@@ -44,8 +44,8 @@ export const NewBoardBackground: React.FC<NewBoardBackgroundProps> = ({ setColor
 
 		setSelectedImageId(selected.id);
 		setSelectedColor(undefined);
+		setColor(undefined, undefined);
 		setImg(small, full, textColor);
-		setColor(undefined);
 	};
 
 	const onColorSelect = (selected: BoardColor) => {
@@ -57,8 +57,8 @@ export const NewBoardBackground: React.FC<NewBoardBackgroundProps> = ({ setColor
 
 		setSelectedImageId(undefined);
 		setSelectedColor(selected);
-		setColor(selected, textColor);
 		setImg(undefined, undefined, undefined);
+		setColor(selected, textColor);
 	};
 
 	useEffect(() => {

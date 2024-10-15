@@ -43,12 +43,12 @@ export default {
 						return null;
 					}
 
-					const data = await authService.login({
+					const accessToken = await authService.login({
 						...credentials,
 					});
 
-					if (data) {
-						return data;
+					if (accessToken) {
+						return { accessToken };
 					}
 
 					return null;

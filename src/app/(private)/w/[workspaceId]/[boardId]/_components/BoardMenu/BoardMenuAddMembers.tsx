@@ -8,7 +8,7 @@ import { Divider, Input, Tab, Tabs } from '@nextui-org/react';
 import { useQuery } from '@tanstack/react-query';
 
 import { Icon } from '@/components/ui/Icon';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { useUser } from '@/hooks/useUser';
 import { userService } from '@/services/user.service';
 import { Board } from '@/types/board.interface';
 import { Member } from '@/types/root.interface';
@@ -23,7 +23,7 @@ type Variant = 'workspace' | 'contacts';
 
 export const BoardMenuAddMembers: React.FC<BoardMenuAddMembersProps> = ({ board }) => {
 	const t = useTranslations();
-	const { current } = useWorkspacesList();
+	const { workspaces } = useUser();
 
 	const [variant, setVariant] = useState<Variant>('workspace');
 	const [users, setUsers] = useState<Member[]>([]);
@@ -33,6 +33,8 @@ export const BoardMenuAddMembers: React.FC<BoardMenuAddMembersProps> = ({ board 
 		queryKey: ['contacts'],
 		queryFn: async () => await userService.findContacts(),
 	});
+
+	const current = workspaces.find(({ _id }) => _id === board.workspace?._id);
 
 	useEffect(() => {
 		if (variant === 'workspace' && current) {

@@ -42,8 +42,8 @@ export interface Activity extends Base {
 		_id: string;
 		name?: string;
 		email?: string;
-		avatarName?: string;
-		avatarColor?: ColorVariant;
+		initials?: string;
+		avatar?: ColorVariant;
 	};
 	author: Member;
 	action: ActivityAction;

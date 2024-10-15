@@ -9,7 +9,7 @@ import { Section } from '@/components/layout/Section';
 import { BoardCard } from '@/components/shared/BoardCard';
 import { CreateBoardButton } from '@/components/shared/CreateBoardButton';
 import { useCreateModal } from '@/hooks/useCreateModal';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useUser } from '@/hooks/useUser';
 import { BoardBasic } from '@/types/board.interface';
 import { Workspace } from '@/types/workspace.interface';
 import { getWorkspacePermissions } from '@/utils/helpers/getWorkspacePermissions';
@@ -24,7 +24,7 @@ type WorkspaceBoards = {
 export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 	const t = useTranslations();
 	const modal = useCreateModal();
-	const { user } = useCurrentUser();
+	const { _id } = useUser();
 
 	const [filter, setFilter] = useState<WorkspaceBoardsFilter>({
 		sortBy: {
@@ -39,25 +39,7 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 		workspace.boards.filter(({ closed }) => !closed),
 	);
 
-	const permissions = getWorkspacePermissions(workspace, user?.sub);
-
-	const filteredBoards = () => {
-		const sortedBoards = sorter(
-			workspace.boards,
-			filter.sortBy.field as keyof BoardBasic,
-			filter.sortBy.order,
-		);
-
-		const showHidden = sortedBoards.filter(({ closed }) =>
-			filter.closed === 'hide' ? !closed : true,
-		);
-
-		const searched = showHidden.filter(({ title }) =>
-			title.toLowerCase().includes(filter.search.toLowerCase()),
-		);
-
-		return searched;
-	};
+	const permissions = getWorkspacePermissions(workspace, _id);
 
 	useEffect(() => {
 		const sortedBoards = sorter(

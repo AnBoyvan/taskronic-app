@@ -59,3 +59,13 @@ export type WorkspaceInvite = {
 export interface WorkspacePermissions extends WorkspaceSettings {
 	isAdmin: boolean;
 }
+
+export interface WorkspaceWithPermissions extends Workspace {
+	permissions: WorkspacePermissions;
+}
+
+export interface JoinRequest {
+	user: Member;
+	workspaceName: string;
+	workspaceId: string;
+}

@@ -30,7 +30,7 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 	const t = useTranslations();
 	const { removeMember, addAdmin, removeAdmin, leave } = useBoardMembers();
 
-	const { _id, name, email, avatarName, avatarColor } = member;
+	const { _id, name, email, initials, avatar } = member;
 
 	const isOnlyAdmin = isMemberAdmin && boardAdmins.length < 2;
 
@@ -72,9 +72,9 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 				description={email}
 				className="min-w-64 justify-start"
 				avatarProps={{
-					name: avatarName,
+					name: initials,
 					classNames: {
-						base: `${colorVariants[avatarColor]}`,
+						base: `${colorVariants[avatar]}`,
 					},
 				}}
 			/>

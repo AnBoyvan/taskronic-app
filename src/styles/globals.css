@@ -20,3 +20,7 @@
 		text-wrap: balance;
 	}
 }
+
+.recharts-text {
+	fill: hsl(var(--nextui-foreground));
+}

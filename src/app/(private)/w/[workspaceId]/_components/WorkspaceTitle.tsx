@@ -10,8 +10,8 @@ import { Section } from '@/components/layout/Section';
 import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { useCreateModal } from '@/hooks/useCreateModal';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useInviteModal } from '@/hooks/useInviteModal';
+import { useUser } from '@/hooks/useUser';
 import { useWorkspaceMembers } from '@/hooks/useWorkspaceMembers';
 import { Workspace } from '@/types/workspace.interface';
 import { getWorkspacePermissions } from '@/utils/helpers/getWorkspacePermissions';
@@ -24,11 +24,11 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 	const t = useTranslations();
 	const createModal = useCreateModal();
 	const inviteModal = useInviteModal();
-	const { user } = useCurrentUser();
+	const user = useUser();
 	const { addRequest } = useWorkspaceMembers();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
-	const permissions = getWorkspacePermissions(workspace, user?.sub);
+	const permissions = getWorkspacePermissions(workspace, user._id);
 
 	useEffect(() => {
 		if (isOpen && addRequest.isSuccess) {
@@ -38,9 +38,9 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 
 	const { _id, name, avatarColor, avatarIcon, description, members, requests } = workspace;
 
-	const isGuest = !members.some(({ _id }) => _id === user?.sub);
+	const isGuest = !members.some(({ _id }) => _id === user._id);
 
-	const isRequest = requests.some(({ _id }) => _id === user?.sub);
+	const isRequest = requests.some(({ _id }) => _id === user._id);
 
 	return (
 		<Section className="flex flex-col md:flex-row px-4 lg:px-8 pb-4 lg:pb-8 border-b border-divider w-full gap-4 justify-between">

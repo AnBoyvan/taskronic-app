@@ -7,7 +7,7 @@ import { useTransition } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, CardBody, Link } from '@nextui-org/react';
+import { Button, Link } from '@nextui-org/react';
 
 import { toast } from 'sonner';
 
@@ -49,7 +49,7 @@ export const Register: React.FC = () => {
 	};
 
 	return (
-		<CardBody as="form" className="gap-4 py-4 px-0" onSubmit={handleSubmit(onSubmit)}>
+		<form className="flex flex-col gap-4 py-4 px-0" onSubmit={handleSubmit(onSubmit)}>
 			<FormInput
 				control={control}
 				variant="faded"
@@ -115,6 +115,6 @@ export const Register: React.FC = () => {
 					{t('auth.sign_in')}
 				</Link>
 			</div>
-		</CardBody>
+		</form>
 	);
 };

@@ -6,8 +6,8 @@ import { Accordion, AccordionItem, Button, Listbox, ListboxItem } from '@nextui-
 import { Icon } from '@/components/ui/Icon';
 import { WorkspaceBadge } from '@/components/ui/WorkspaceBadge';
 import { workspaceNav } from '@/configs/nav.config';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useInviteModal } from '@/hooks/useInviteModal';
+import { useUser } from '@/hooks/useUser';
 import { Workspace } from '@/types/workspace.interface';
 
 type WorkspacesListProps = {
@@ -17,7 +17,7 @@ type WorkspacesListProps = {
 export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) => {
 	const router = useRouter();
 	const t = useTranslations();
-	const { user } = useCurrentUser();
+	const { _id } = useUser();
 	const modal = useInviteModal();
 
 	return (
@@ -63,8 +63,7 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 								title={t(label)}
 								startContent={<Icon name={icon} size={12} />}
 								endContent={
-									((user && w.admins.includes(user?.sub)) || w.settings.invite) &&
-									label === 'common.members' ? (
+									(w.admins.includes(_id) || w.settings.invite) && label === 'common.members' ? (
 										<Button
 											variant="light"
 											color="primary"

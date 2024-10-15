@@ -8,7 +8,7 @@ export default function PublicLayout({
 	return (
 		<>
 			<PublicHeader />
-			<main className="flex flex-grow flex-col items-center justify-center py-auto bg-gradient-to-b from-primary-400 to-primary-100 px-4">
+			<main className="flex flex-grow flex-col items-center justify-center py-auto bg-gradient-to-b from-primary-400 to-primary-100 overflow-hidden">
 				{children}
 			</main>
 		</>

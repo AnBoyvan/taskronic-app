@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { useState } from 'react';
 
+import { TaskMovePopover } from '@/components/shared/MoveTaskPopover';
 import { Icon } from '@/components/ui/Icon';
 import { useReorder } from '@/hooks/useReorder';
 import { useTasksEdit } from '@/hooks/useTasksEdit';
@@ -11,7 +12,6 @@ import { BoardPermissions } from '@/types/board.interface';
 import { Task } from '@/types/tasks.interface';
 
 import { ArchiveTaskPopover } from './ArchiveTaskPopover';
-import { TaskMovePopover } from './MoveTaskPopover';
 import { TaskModalSection } from './TaskModalSection';
 import { TaskModalTitle } from './TaskModalTitle';
 
@@ -46,9 +46,7 @@ export const TaskModalHeader: React.FC<TaskModalHeaderProps> = ({ task, permissi
 		if (archive.isPending) {
 			return;
 		}
-
-		const updated = await archive.mutateAsync(task._id);
-
+		archive.mutateAsync(task._id);
 		setIsArchived(true);
 	};
 

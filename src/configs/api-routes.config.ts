@@ -27,6 +27,7 @@ export const API_ROUTES = {
 		addList: (boardId: string) => `/boards/lists/add/${boardId}`,
 		updList: (boardId: string) => `/boards/lists/update/${boardId}`,
 		listsOrder: (boardId: string) => `/boards/lists/order/${boardId}`,
+		deleteList: (boardId: string) => `/boards/lists/remove/${boardId}`,
 		delete: (boardId: string) => `/boards/delete/${boardId}`,
 	},
 	comments: {
@@ -70,10 +71,12 @@ export const API_ROUTES = {
 		delete: (taskId: string) => `/tasks/delete/${taskId}`,
 	},
 	users: {
+		getCurrent: '/users/find/current',
 		updGeneral: 'users/update/general',
 		addContact: (contactId: string) => `/users/contacts/add/${contactId}`,
 		removeContact: (contactId: string) => `/users/contacts/remove/${contactId}`,
 		findContacts: '/users/contacts',
+		deleteCheck: '/users/delete/check',
 		deleteAccount: '/users/delete/account',
 	},
 	workspaces: {

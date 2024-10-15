@@ -48,7 +48,7 @@ export const WorkspaceMembersRequests: React.FC<WorkspaceMembersRequestsProps> =
 			</PopoverTrigger>
 			<PopoverContent className="p-0 max-h-[400px] overflow-hidden justify-start">
 				<ul className="flex flex-col p-2 overflow-auto">
-					{requests.map(({ _id, name, email, avatarColor, avatarName }) => (
+					{requests.map(({ _id, name, email, initials, avatar }) => (
 						<li key={_id} className="flex flex-col p-2 gap-2">
 							<div className="w-full flex flex-col md:flex-row gap-2 md:gap-4 justify-between items-center">
 								<User
@@ -56,9 +56,9 @@ export const WorkspaceMembersRequests: React.FC<WorkspaceMembersRequestsProps> =
 									description={email}
 									className="min-w-64 justify-start"
 									avatarProps={{
-										name: avatarName,
+										name: initials,
 										classNames: {
-											base: `${colorVariants[avatarColor]}`,
+											base: `${colorVariants[avatar]}`,
 										},
 									}}
 								/>

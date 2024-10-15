@@ -1,9 +1,18 @@
 import { API_ROUTES } from '@/configs/api-routes.config';
+import { Board } from '@/types/board.interface';
 import { Member } from '@/types/root.interface';
 import { IUser, UserUpd } from '@/types/user.interface';
+import { Workspace } from '@/types/workspace.interface';
 import { apiRequest } from '@/utils/api/apiRequest';
 
 export const userService = {
+	async getCurrent(): Promise<IUser> {
+		return await apiRequest({
+			method: 'GET',
+			url: API_ROUTES.users.getCurrent,
+		});
+	},
+
 	async updGeneral(dto: UserUpd): Promise<IUser> {
 		return await apiRequest({
 			method: 'PATCH',
@@ -31,6 +40,13 @@ export const userService = {
 		return await apiRequest({
 			method: 'PATCH',
 			url: API_ROUTES.users.removeContact(contactId),
+		});
+	},
+
+	async deleteCheck(): Promise<{ workspaces: Workspace[]; boards: Board[] }> {
+		return await apiRequest({
+			method: 'GET',
+			url: API_ROUTES.users.deleteCheck,
 		});
 	},
 

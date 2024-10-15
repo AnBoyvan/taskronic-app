@@ -9,7 +9,7 @@ import { Divider, Input } from '@nextui-org/react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { Section } from '@/components/layout/Section';
 import { Icon } from '@/components/ui/Icon';
-import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useUser } from '@/hooks/useUser';
 import { Member } from '@/types/root.interface';
 import { Workspace } from '@/types/workspace.interface';
 import { filterUsers, UsersFilter } from '@/utils/helpers/filterUsers';
@@ -25,7 +25,7 @@ type WorkspaceMembersProps = {
 
 export const WorkspaceMembers: React.FC<WorkspaceMembersProps> = ({ workspace }) => {
 	const t = useTranslations();
-	const { user } = useCurrentUser();
+	const { _id } = useUser();
 
 	const [filter, setFilter] = useState<UsersFilter>({
 		search: '',
@@ -35,7 +35,7 @@ export const WorkspaceMembers: React.FC<WorkspaceMembersProps> = ({ workspace })
 	const [show, setShow] = useState<Member[]>(workspace.members);
 
 	const { users, membersIds } = getAllUsers(workspace);
-	const permissions = getWorkspacePermissions(workspace, user?.sub);
+	const permissions = getWorkspacePermissions(workspace, _id);
 
 	const onSearchChange = (value: string) => {
 		setFilter({
@@ -51,7 +51,7 @@ export const WorkspaceMembers: React.FC<WorkspaceMembersProps> = ({ workspace })
 
 	return (
 		<PageContainer scroll title={t('common.members')}>
-			<Section className="flex-col lg:flex-row gap-4 lg:gap-8">
+			<Section className="flex flex-col lg:flex-row gap-4 lg:gap-8">
 				<WorkspaceMembersFilter
 					filter={filter}
 					setFilter={setFilter}
@@ -83,7 +83,7 @@ export const WorkspaceMembers: React.FC<WorkspaceMembersProps> = ({ workspace })
 								boards={workspace.boards}
 								workspaceId={workspace._id}
 								permissions={permissions}
-								currentUserId={user?.sub}
+								currentUserId={_id}
 							/>
 							<Divider className="mt-2" />
 						</li>

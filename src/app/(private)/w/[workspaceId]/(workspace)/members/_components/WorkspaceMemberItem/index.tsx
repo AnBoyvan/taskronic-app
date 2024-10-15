@@ -6,7 +6,7 @@ import { Button, User } from '@nextui-org/react';
 
 import { colorVariants } from '@/constants/color-variants.constants';
 import { useInviteModal } from '@/hooks/useInviteModal';
-import { useWorkspacesList } from '@/hooks/useWorkspacesList';
+import { useUser } from '@/hooks/useUser';
 import { BoardBasic } from '@/types/board.interface';
 import { Member } from '@/types/root.interface';
 import { WorkspacePermissions } from '@/types/workspace.interface';
@@ -37,9 +37,8 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 }) => {
 	const t = useTranslations();
 	const modal = useInviteModal();
-	const { current } = useWorkspacesList();
-
-	const { _id, name, email, avatarName, avatarColor } = member;
+	const { workspaces } = useUser();
+	const { _id, name, email, initials, avatar } = member;
 	const { invite, isAdmin } = permissions;
 
 	const memberBoards = boards.filter(board => isBoardMember(board, member._id));
@@ -48,6 +47,8 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 
 	const isOnlyAdmin = isMemberAdmin && admins.length < 2;
 
+	const current = workspaces.find(({ _id }) => _id === workspaceId);
+
 	return (
 		<div className="flex flex-wrap flex-row gap-4 w-full justify-between px-2">
 			<User
@@ -55,9 +56,9 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 				description={email}
 				className="min-w-64 justify-start"
 				avatarProps={{
-					name: avatarName,
+					name: initials,
 					classNames: {
-						base: `${colorVariants[avatarColor]}`,
+						base: `${colorVariants[avatar]}`,
 					},
 				}}
 			/>

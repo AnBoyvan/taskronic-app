@@ -43,6 +43,7 @@ export const PrioritySwitcher: React.FC<PrioritySwitcherProps> = ({
 			disabledKeys={[String(selected)]}
 			placeholder={t('placeholder.select')}
 			onChange={onPrioritySelect}
+			variant="flat"
 			disallowEmptySelection
 			renderValue={items => {
 				return items.map(item => (
@@ -56,7 +57,7 @@ export const PrioritySwitcher: React.FC<PrioritySwitcherProps> = ({
 				));
 			}}
 			classNames={{
-				trigger: 'p-0 overflow-hidden',
+				trigger: 'p-0 overflow-hidden shadow-md',
 				innerWrapper: 'w-full h-full',
 				value: 'h-full ',
 			}}

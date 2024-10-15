@@ -61,7 +61,8 @@
 		"add_contact": "Add to contacts",
 		"contact_added": "Contact added",
 		"remove_contact": "Remove contact?",
-		"updated": "Profile updated"
+		"updated": "Profile updated",
+		"only_admin": "You cannot delete your account while being the only admin in a board or workspace. Please designate a new admin first."
 	},
 	"workspace": {
 		"no_workspace": "Your workspace list is empty",
@@ -96,7 +97,9 @@
 		"invite_user": "invited you to join the workspace",
 		"request_notification": "wants to join the workspace",
 		"join_requests": "Join requests",
-		"last_admin": "Workspace must have at least one admin"
+		"last_admin": "Workspace must have at least one admin",
+		"guest": "Guest workspaces",
+		"guest_info": "You’re a member of these boards, but not a member of the Workspace the boards are in."
 	},
 	"board": {
 		"board_not_found": "Board not found",
@@ -131,6 +134,7 @@
 		"close": "Close board",
 		"reopen": "Reopen board",
 		"add_list": "Add new list",
+		"new_list": "New list",
 		"list_actions": "List actions",
 		"list_move": "Move list",
 		"list_move_tasks": "Move all cards in list",
@@ -143,13 +147,20 @@
 		"remove_warn": "Board deletion is permanent. All cards and actions will be deleted. You won't be able to restore it.",
 		"last_admin": "Board must have at least one admin",
 		"delete_list": "Delete list",
-		"delete_list_warn": "List deletion is permanent. All cards and actions will be deleted. You won't be able to restore it."
+		"delete_list_warn": "List deletion is permanent. All cards and actions will be deleted. You won't be able to restore it.",
+		"closed_boards": "Closed boards",
+		"show_closed": "View closed boards",
+		"per_list": "Cards per list",
+		"per_due": "Cards per due date",
+		"per_priority": "Cards per priority",
+		"per_member": "Cards per member"
 	},
 	"task": {
 		"task_not_found": "Card not found",
 		"subtask_not_found": "Checklist not found",
 		"removed": "Card removed",
 		"add": "Add a card",
+		"new": "New card",
 		"remove_member": "Remove from card",
 		"leave_task": "Leave card",
 		"in_list": "in list",
@@ -164,7 +175,8 @@
 		"comments_hide": "Hide comments",
 		"comments_show": "Show comments",
 		"remove_task": "Remove card",
-		"remove_warn": "Card deletion is permanent. All actions and comments will be deleted You won't be able to restore it."
+		"remove_warn": "Card deletion is permanent. All actions and comments will be deleted You won't be able to restore it.",
+		"filter": "Filter cards"
 	},
 	"comment": {
 		"not_found": "Comment not found",
@@ -202,7 +214,9 @@
 		"show": "Show",
 		"hide": "Hide",
 		"workspace": "Workspace",
+		"workspaces": "Workspaces",
 		"board": "Board",
+		"boards": "Boards",
 		"list": "List",
 		"lists": "Lists",
 		"task": "Card",
@@ -231,7 +245,14 @@
 		"edited": "(edited)",
 		"load_more": "Load more",
 		"delete": "Delete",
-		"archive_items": "Archive"
+		"archive_items": "Archive",
+		"clear_filter": "Clear filters",
+		"details": "Details",
+		"view": "View",
+		"table": "Table",
+		"dashboard": "Dashboard",
+		"filter": "Filter",
+		"grid": "Grid"
 	},
 	"sort": {
 		"by_name": "by name",
@@ -241,7 +262,11 @@
 		"by_title_desc": "Alphabetically Z-A",
 		"by_created_asc": "Oldest first",
 		"by_created_desc": "Newest first",
-		"by_active": "Last ctive"
+		"by_active": "Last ctive",
+		"by_board": "Sort by board",
+		"by_due": "Sort by due date",
+		"by_priority": "Sort by priority",
+		"by_lists": "Sort by list"
 	},
 	"roles": {
 		"all": "All",
@@ -301,6 +326,12 @@
 		"3": "Medium",
 		"4": "High",
 		"5": "Critical"
+	},
+	"due": {
+		"none": "None",
+		"progress": "In progress",
+		"completed": "Completed",
+		"overdue": "Overdue"
 	},
 	"activity": {
 		"added": " added ",

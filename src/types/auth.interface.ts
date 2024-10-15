@@ -1,9 +1,6 @@
-import { IUser } from './user.interface';
-
 export type RegisterForm = {
 	name: string;
 	email: string;
-	avatarColor?: string;
 	password: string;
 	confirmPassword: string;
 };
@@ -21,16 +18,11 @@ export type GoogleAuth = {
 export type Token = {
 	accessToken: string;
 };
-export interface jwtPayload extends IUser {
+export interface jwtPayload {
+	sub: string;
+	name: string;
+	email: string;
 	iat: number;
-}
-
-export interface AccessToken {
-	header: {
-		alg: string;
-		typ: string;
-	};
-	payload: jwtPayload;
 }
 
 export type ChangePassForm = {

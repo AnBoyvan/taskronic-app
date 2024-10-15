@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import { Listbox, ListboxItem } from '@nextui-org/react';
 
@@ -8,7 +8,6 @@ import { dashboardNav } from '@/configs/nav.config';
 
 export const DashboardSidebarNav = () => {
 	const t = useTranslations();
-	const router = useRouter();
 	const pathname = usePathname();
 
 	return (
@@ -22,9 +21,7 @@ export const DashboardSidebarNav = () => {
 			{dashboardNav.map(({ value, label, icon }) => (
 				<ListboxItem
 					key={value}
-					onPress={() => {
-						router.push(value);
-					}}
+					href={value}
 					aria-label={value}
 					startContent={<Icon name={icon} size={16} />}
 					isReadOnly={Boolean(pathname === value)}
