@@ -31,7 +31,7 @@ export default async function UserBoardsPage() {
 			<StarredBoards starredBoards={starredBoards} userBoards={data || []} />
 			<UserWorkspacesBoards workspaces={userWorkspaces} boards={userWorkspacesBoards} />
 			<GuestWorkspaces boards={guestureWorkspacesBoards} />
-			<ClosedBoards boards={closedBoards} />
+			<ClosedBoards boards={closedBoards} userId={session.user.sub} />
 		</PageContainer>
 	);
 }
