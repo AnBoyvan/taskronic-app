@@ -1,3 +1,5 @@
+import { PageContainer } from '@/components/layout/PageContainer';
+
 export default function CalendarPage() {
-	return <div></div>;
+	return <PageContainer scroll>CalendarPage</PageContainer>;
 }
