@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 
 import { Accordion, AccordionItem, Button, Listbox, ListboxItem } from '@nextui-org/react';
 
@@ -15,7 +14,6 @@ type WorkspacesListProps = {
 };
 
 export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) => {
-	const router = useRouter();
 	const t = useTranslations();
 	const { _id } = useUser();
 	const modal = useInviteModal();
@@ -52,15 +50,13 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 							base: 'p-0 pl-2 h-7',
 							title: 'text-tiny',
 						}}
-						onAction={key => {
-							router.push(key.toString());
-						}}
 					>
 						{workspaceNav(w._id).map(({ label, value, icon }) => (
 							<ListboxItem
 								aria-label={t(label)}
 								key={value}
 								title={t(label)}
+								href={value}
 								startContent={<Icon name={icon} size={12} />}
 								endContent={
 									(w.admins.includes(_id) || w.settings.invite) && label === 'common.members' ? (

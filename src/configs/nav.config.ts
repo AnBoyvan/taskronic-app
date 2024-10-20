@@ -44,3 +44,21 @@ export const workspaceNav = (_id: string): NavItemConfig[] => [
 		icon: 'Settings',
 	},
 ];
+
+export const profileNav: NavItemConfig[] = [
+	{
+		label: 'account.profile',
+		value: ROUTES.PROFILE,
+		icon: 'User',
+	},
+	{
+		label: 'common.activity',
+		value: `${ROUTES.PROFILE}/activity`,
+		icon: 'Users',
+	},
+	{
+		label: 'common.settings',
+		value: `${ROUTES.PROFILE}/settings`,
+		icon: 'Activity',
+	},
+];

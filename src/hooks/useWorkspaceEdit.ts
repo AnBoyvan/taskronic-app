@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 import { useMutation } from '@tanstack/react-query';
@@ -7,10 +8,13 @@ import { toast } from 'sonner';
 import { ROUTES } from '@/configs/routes.config';
 import { workspaceService } from '@/services/workspace.service';
 import { WorkspaceCompose, WorkspaceSettings } from '@/types/workspace.interface';
+import { getMessageKey } from '@/utils/locale/getMessageKey';
 
+import en from '../../messages/en.json';
 import { useUser } from './useUser';
 
 export const useWorkspaceEdit = () => {
+	const t = useTranslations();
 	const { addWorkspace, updWorkspace, removeWorkspace } = useUser();
 	const router = useRouter();
 
@@ -56,7 +60,8 @@ export const useWorkspaceEdit = () => {
 			router.push(ROUTES.BOARDS);
 		},
 		onSuccess: ({ message }, workspaceId) => {
-			toast.success(message, { closeButton: false });
+			const key = getMessageKey(message, en);
+			toast.success(key ? t(key as any) : message, { closeButton: false });
 			removeWorkspace(workspaceId);
 		},
 		onError: err => {

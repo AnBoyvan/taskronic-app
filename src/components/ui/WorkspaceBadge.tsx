@@ -62,7 +62,7 @@ export const WorkspaceBadge = forwardRef(
 				<span
 					className={clsx(
 						!mediumText && !largeText && 'truncate text-tiny',
-						mediumText && 'text-sm ',
+						mediumText && 'text-sm',
 						largeText && 'text-base',
 						truncateTitle && 'truncate',
 					)}

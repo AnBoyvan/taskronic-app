@@ -52,8 +52,9 @@ export const apiRequest = async ({
 		}
 
 		return response.data;
-	} catch (error) {
+	} catch (error: any) {
 		const message = await apiErrorTranslate(error);
+
 		throw new Error(message);
 	}
 };

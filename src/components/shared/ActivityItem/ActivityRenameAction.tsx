@@ -10,7 +10,7 @@ import { ActivityActionProps } from '.';
 export const ActivityRenameAction: React.FC<ActivityActionProps> = ({ activity, taskId }) => {
 	const t = useTranslations();
 	const { onOpen } = useTaskModal();
-	const { entityType, entityTitle, entityId, board, task, from } = activity;
+	const { entityType, entityTitle, board, task, from } = activity;
 
 	const openTaskModal = useCallback(
 		(id?: string) => {

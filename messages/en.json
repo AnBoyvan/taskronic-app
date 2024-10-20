@@ -46,7 +46,8 @@
 		"invalid_id_format": "Invalid ID format",
 		"invalid_credentials": "Invalid credentials format",
 		"incorrect_credentials": "Incorrect login or password",
-		"invalid_token": "Invalid token"
+		"invalid_token": "Invalid token",
+		"change_pass": "Password change"
 	},
 	"account": {
 		"profile": "Profile",
@@ -62,7 +63,14 @@
 		"contact_added": "Contact added",
 		"remove_contact": "Remove contact?",
 		"updated": "Profile updated",
-		"only_admin": "You cannot delete your account while being the only admin in a board or workspace. Please designate a new admin first."
+		"only_admin": "You cannot delete your account while being the only admin in a board or workspace. Please designate a new admin first.",
+		"bio": "Bio",
+		"delete": "Delete account",
+		"delete_warn": "WARNING: Account deletion is permanent. You will not be able to recover your account.",
+		"delete_check": "Before deleting your account, ensure you are not the only admin of any boards or workspaces.",
+		"delete_admins": "Assign a new admins to continue.",
+		"delete_allow": "You can delete account",
+		"avatar": "Avatar"
 	},
 	"workspace": {
 		"no_workspace": "Your workspace list is empty",
@@ -252,7 +260,8 @@
 		"table": "Table",
 		"dashboard": "Dashboard",
 		"filter": "Filter",
-		"grid": "Grid"
+		"grid": "Grid",
+		"check": "Check"
 	},
 	"sort": {
 		"by_name": "by name",
@@ -287,6 +296,7 @@
 		"pass": "Password",
 		"confirm_pass": "Confirm password",
 		"new_pass": "New password",
+		"new_pass_confirm": "Confirm new password",
 		"title": "Name",
 		"sort": "Sort",
 		"search": "Search",
@@ -372,7 +382,8 @@
 		"bg": " background of ",
 		"from": " from ",
 		"onto": " to ",
-		"on": " on "
+		"on": " on ",
+		"on_board": "on board "
 	},
 	"api": {
 		"bad_request": "Bad Request",

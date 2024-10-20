@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { ForwardedRef, forwardRef } from 'react';
 
 import { Avatar, AvatarProps } from '@nextui-org/react';
@@ -18,8 +19,6 @@ export const UserAvatar = forwardRef(
 		{ avatarName, avatarColor, name, small, isAdmin, ...props }: UserAvatarProps,
 		ref: ForwardedRef<HTMLSpanElement>,
 	) => {
-		const smallStyle = small ? 'h-6 w-6 text-tiny' : '';
-
 		return (
 			<div className="relative">
 				<Avatar
@@ -28,7 +27,7 @@ export const UserAvatar = forwardRef(
 					aria-label={name ? name : undefined}
 					name={avatarName}
 					classNames={{
-						base: `${colorVariants[avatarColor]} ${smallStyle}`,
+						base: clsx(colorVariants[avatarColor], small && 'h-6 w-6 text-tiny'),
 					}}
 				/>
 				{isAdmin && (

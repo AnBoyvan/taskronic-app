@@ -29,6 +29,7 @@ export enum EntityType {
 export interface Activity extends Base {
 	board: {
 		_id: string;
+		workspace: string;
 		title: string;
 		lists: List[];
 	};

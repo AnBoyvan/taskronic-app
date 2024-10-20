@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 import { useMutation } from '@tanstack/react-query';
@@ -7,8 +8,12 @@ import { toast } from 'sonner';
 import { ROUTES } from '@/configs/routes.config';
 import { boardService } from '@/services/board.service';
 import { BoardCompose, BoardOpen, BoardSettings } from '@/types/board.interface';
+import { getMessageKey } from '@/utils/locale/getMessageKey';
+
+import en from '../../messages/en.json';
 
 export const useBoardsEdit = () => {
+	const t = useTranslations();
 	const router = useRouter();
 
 	const create = useMutation({
@@ -68,7 +73,8 @@ export const useBoardsEdit = () => {
 		mutationFn: (boardId: string) => boardService.starred(boardId),
 		mutationKey: ['boards-starred'],
 		onSuccess: ({ message }) => {
-			toast.success(message, { closeButton: false });
+			const key = getMessageKey(message, en);
+			toast.success(key ? t(key as any) : message, { closeButton: false });
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
@@ -79,7 +85,8 @@ export const useBoardsEdit = () => {
 		mutationFn: (boardId: string) => boardService.deleteBoard(boardId),
 		mutationKey: ['boards-delete'],
 		onSuccess: ({ message }) => {
-			toast.success(message, { closeButton: false });
+			const key = getMessageKey(message, en);
+			toast.success(key ? t(key as any) : message, { closeButton: false });
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });

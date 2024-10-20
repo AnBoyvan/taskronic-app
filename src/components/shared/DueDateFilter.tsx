@@ -11,8 +11,8 @@ import { dueStatuses } from '@/configs/task-due-statuses.config';
 import { TasksFilter } from '@/utils/helpers/filterTasks';
 
 type DueDateFilterProps = {
-	value?: TasksFilter['dueDate'];
-	setValue: (newValue: TasksFilter['dueDate']) => void;
+	value?: TasksFilter['dueStatuses'];
+	setValue: (newValue: TasksFilter['dueStatuses']) => void;
 };
 
 export const DueDateFilter: React.FC<DueDateFilterProps> = ({ value, setValue }) => {
@@ -23,7 +23,7 @@ export const DueDateFilter: React.FC<DueDateFilterProps> = ({ value, setValue })
 			label={t('task.due_date')}
 			color="primary"
 			value={value}
-			onValueChange={val => setValue(val as TasksFilter['dueDate'])}
+			onValueChange={val => setValue(val as TasksFilter['dueStatuses'])}
 			size="md"
 			classNames={{
 				label: 'text-sm font-medium',

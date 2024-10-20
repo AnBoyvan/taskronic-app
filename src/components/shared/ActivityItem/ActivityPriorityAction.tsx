@@ -40,7 +40,9 @@ export const ActivityPriorityAction: React.FC<ActivityActionProps> = ({ activity
 				</>
 			)}
 			{t('activity.onto')}
-			<span className={`${priorityColors[Number(to) as Priority]} rounded-md p-0.5`}>
+			<span
+				className={`${priorityColors[Number(to) as Priority]} leading-none rounded-md p-1 pt-0.5 `}
+			>
 				&ldquo;{t(`priority.${Number(to) as Priority}`)}&rdquo;
 			</span>
 		</>

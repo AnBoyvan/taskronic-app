@@ -33,6 +33,8 @@ export const FormInput = forwardRef(
 				name={name}
 				control={props.control}
 				render={({ field, fieldState, formState }) => {
+					const isValid = fieldState.isDirty && !fieldState.invalid;
+
 					return (
 						<Input
 							ref={ref}
@@ -41,7 +43,7 @@ export const FormInput = forwardRef(
 							id={name}
 							labelPlacement={labelPlacement ? labelPlacement : 'outside'}
 							isInvalid={!!formState.errors?.[name]?.message}
-							color={field.value && !fieldState.invalid ? 'success' : color || 'default'}
+							color={isValid ? 'success' : color || 'default'}
 							errorMessage={formState.errors?.[name]?.message?.toString()}
 							value={field.value}
 							onChange={field.onChange}

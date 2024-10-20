@@ -60,8 +60,9 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 						{canInvite.map(workspace => (
 							<Button
 								variant="ghost"
+								fullWidth
 								key={workspace._id}
-								className="max-w-40 p-1"
+								className="w-52 p-1 justify-start"
 								onPress={() => inviteContact(workspace)}
 							>
 								<WorkspaceBadge

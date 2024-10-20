@@ -16,7 +16,7 @@ export const CreateBoardButton: React.FC<Partial<CardProps>> = ({ ...props }) =>
 			isPressable
 			{...props}
 			classNames={{
-				base: clsx(`h-28 bg-default-200 hover:opacity-80 hover:text-primary transition-color`),
+				base: clsx(`h-28 bg-default-200 hover:opacity-80 hover:text-primary transition-colors`),
 				body: 'flex items0center justify-center text-sm text-center',
 			}}
 		>

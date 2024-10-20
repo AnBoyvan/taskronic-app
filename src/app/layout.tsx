@@ -62,7 +62,7 @@ export default async function RootLayout({
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale} className={roboto.className} suppressHydrationWarning>
+		<html lang={locale} className={roboto.className} suppressHydrationWarning={true}>
 			<body>
 				<Suspense fallback={<Loader />}>
 					<NextIntlClientProvider messages={messages}>

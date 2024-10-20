@@ -101,7 +101,11 @@ export const Account: React.FC = () => {
 				</DropdownSection>
 
 				<DropdownSection showDivider>
-					<DropdownItem href={ROUTES.PROFILE} aria-label={t('account.profile')}>
+					<DropdownItem
+						href={ROUTES.PROFILE}
+						aria-label={t('account.profile')}
+						closeOnSelect={true}
+					>
 						{t('account.profile')}
 					</DropdownItem>
 					<DropdownItem

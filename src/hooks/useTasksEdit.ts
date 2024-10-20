@@ -1,11 +1,18 @@
+import { useTranslations } from 'next-intl';
+
 import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
 import { taskService } from '@/services/task.service';
 import { TaskCreate, TaskUpdGeneral, TaskUpdOrder } from '@/types/tasks.interface';
+import { getMessageKey } from '@/utils/locale/getMessageKey';
+
+import en from '../../messages/en.json';
 
 export const useTasksEdit = () => {
+	const t = useTranslations();
+
 	const create = useMutation({
 		mutationFn: ({ boardId, data }: { boardId: string; data: TaskCreate }) =>
 			taskService.create(boardId, data),
@@ -86,7 +93,8 @@ export const useTasksEdit = () => {
 		}) => taskService.deleteTask(taskId, boardId, workspaceId),
 		mutationKey: ['tasks-delete'],
 		onSuccess: ({ message }) => {
-			toast.success(message, { closeButton: false });
+			const key = getMessageKey(message, en);
+			toast.success(key ? t(key as any) : message, { closeButton: false });
 		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
