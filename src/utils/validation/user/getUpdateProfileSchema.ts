@@ -12,7 +12,5 @@ export const getUpdateProfileSchema = (
 		avatar: Yup.mixed<ColorVariant>(),
 
 		bio: Yup.string(),
-
-		noteGroups: Yup.array().of(Yup.string().defined()),
 	});
 };

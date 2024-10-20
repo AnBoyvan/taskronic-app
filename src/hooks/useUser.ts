@@ -31,7 +31,6 @@ const defaultUserStore = {
 	contacts: [],
 	workspaces: [],
 	starred: [],
-	noteGroups: [],
 	isLoading: true,
 	isLoggedIn: false,
 };

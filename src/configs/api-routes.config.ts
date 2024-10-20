@@ -45,14 +45,6 @@ export const API_ROUTES = {
 		findByEmail: (email: string) => `/invite/find/email?email=${email}`,
 		findById: (inviteId: string) => `/invite/find/id/${inviteId}`,
 	},
-	notes: {
-		create: '/notes/create',
-		findById: (noteId: string) => `/notes/find/id/${noteId}`,
-		findByOwner: '/notes/find/owner',
-		update: (noteId: string) => `/notes/update/${noteId}`,
-		resetDueDate: (noteId: string) => `/notes/reset/${noteId}`,
-		delete: (noteId: string) => `/notes/delete/${noteId}`,
-	},
 	tasks: {
 		create: (boardId: string) => `/tasks/create/${boardId}`,
 		findById: (taskId: string) => `/tasks/find/id/${taskId}`,

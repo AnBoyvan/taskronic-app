@@ -9,11 +9,6 @@ type CreateEntity = {
 
 export const createButtonConfig: CreateEntity[] = [
 	{
-		variant: 'note',
-		label: 'common.note',
-		icon: 'NotebookPen',
-	},
-	{
 		variant: 'board',
 		label: 'common.board',
 		icon: 'Trello',

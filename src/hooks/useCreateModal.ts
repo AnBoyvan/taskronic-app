@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type CreateVariant = 'workspace' | 'workspace-edit' | 'board' | 'note';
+export type CreateVariant = 'workspace' | 'workspace-edit' | 'board';
 
 interface CreateModalStore {
 	variant?: CreateVariant;

@@ -16,11 +16,6 @@ export const dashboardNav: NavItemConfig[] = [
 		icon: 'ListTodo',
 	},
 	{
-		label: 'nav.notes',
-		value: ROUTES.NOTES,
-		icon: 'NotebookPen',
-	},
-	{
 		label: 'nav.calendar',
 		value: ROUTES.CALENDAR,
 		icon: 'CalendarCheck2',

@@ -9,7 +9,6 @@ const withAuth = {
 	PROFILE: '/profile',
 	BOARDS: '/boards',
 	TASKS: '/tasks',
-	NOTES: '/notes',
 	CALENDAR: '/calendar',
 	WORKSPACE: '/w',
 };

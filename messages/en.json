@@ -10,14 +10,13 @@
 	},
 	"site": {
 		"slogan": "Boost your productivity",
-		"description": "Discover Taskronic, your go-to solution for managing tasks and enhancing productivity. Enjoy a user-friendly interface, collaborative real-time features, notes and schedule to streamline your workflow.",
+		"description": "Discover Taskronic, your go-to solution for managing tasks and enhancing productivity. Enjoy a user-friendly interface, collaborative real-time features and schedule to streamline your workflow.",
 		"email": "taskronic@gmail.com"
 	},
 	"nav": {
 		"navigation": "Navigaton",
 		"boards": "Boards",
 		"tasks": "Cards",
-		"notes": "Notes",
 		"calendar": "Calendar",
 		"workspace": "Workspace"
 	},
@@ -192,10 +191,6 @@
 		"write": "Write a comment",
 		"delete": "Delete comment"
 	},
-	"note": {
-		"not_found": "Note not found",
-		"removed": "Note removed"
-	},
 	"common": {
 		"accept": "Accept",
 		"decline": "Decline",
@@ -230,7 +225,6 @@
 		"task": "Card",
 		"tasks": "Cards",
 		"subtask": "Checklist",
-		"note": "Note",
 		"photos": "Photos",
 		"colors": "Colors",
 		"menu": "Menu",

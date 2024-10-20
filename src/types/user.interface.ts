@@ -14,12 +14,10 @@ export interface IUser {
 	contacts: Member[];
 	workspaces: Workspace[];
 	starred: BoardBasic[];
-	noteGroups: string[];
 }
 
 export type UserUpd = {
 	name?: string;
 	avatar?: ColorVariant;
 	bio?: string;
-	noteGroups?: string[];
 };
