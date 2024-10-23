@@ -255,7 +255,8 @@
 		"dashboard": "Dashboard",
 		"filter": "Filter",
 		"grid": "Grid",
-		"check": "Check"
+		"check": "Check",
+		"schedule": "Schedule"
 	},
 	"sort": {
 		"by_name": "by name",

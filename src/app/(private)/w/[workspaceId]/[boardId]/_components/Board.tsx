@@ -8,6 +8,7 @@ import { Board as BoardType } from '@/types/board.interface';
 
 import { BoardDashboard } from './BoardDashboard';
 import { BoardGridView } from './BoardGridView';
+import { BoardSchedule } from './BoardSchedule';
 import { BoardTableView } from './BoardTableView';
 import { BoardView } from './BoardView';
 
@@ -30,6 +31,10 @@ export const Board: React.FC<BoardProps> = ({ board }) => {
 
 	if (boardView === BoardViewOption.dashboard) {
 		return <BoardDashboard board={board} />;
+	}
+
+	if (boardView === BoardViewOption.schedule) {
+		return <BoardSchedule board={board} />;
 	}
 
 	if (boardView === BoardViewOption.grid) {

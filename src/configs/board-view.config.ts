@@ -5,6 +5,7 @@ export enum BoardView {
 	table = 'table',
 	dashboard = 'dashboard',
 	grid = 'grid',
+	schedule = 'schedule',
 }
 
 export type BoardViewOption = {
@@ -28,6 +29,11 @@ export const boardViewConfig: BoardViewOption[] = [
 		value: BoardView.grid,
 		label: 'common.grid',
 		icon: 'LayoutGrid',
+	},
+	{
+		value: BoardView.schedule,
+		label: 'common.schedule',
+		icon: 'Calendar',
 	},
 	{
 		value: BoardView.dashboard,
