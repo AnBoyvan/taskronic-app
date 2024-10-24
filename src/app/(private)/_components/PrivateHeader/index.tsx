@@ -6,7 +6,9 @@ import { AUTH_REDIRECT } from '@/configs/routes.config';
 
 import { Account } from './Account';
 import { CreateButton } from './CreateButton';
+import { Info } from './Info';
 import { Notifications } from './Notifications';
+import { SearchBar } from './SearchBar';
 
 export const PrivateHeader: React.FC = () => {
 	return (
@@ -17,10 +19,10 @@ export const PrivateHeader: React.FC = () => {
 			position="static"
 			className="border-b border-divider h-12 min-h-12"
 			classNames={{
-				wrapper: 'px-4 sm:px-6',
+				wrapper: 'px-4 md:px-6',
 			}}
 		>
-			<NavbarContent justify="start" className="flex flex-row justify-start gap-4">
+			<NavbarContent justify="start" className="relative flex flex-row justify-start gap-4">
 				<NavbarBrand className="flex flex-row flex-grow-0 gap-4 px-0">
 					<Link
 						color="foreground"
@@ -34,7 +36,9 @@ export const PrivateHeader: React.FC = () => {
 				<CreateButton />
 			</NavbarContent>
 
-			<NavbarContent justify="end" className="gap-2">
+			<NavbarContent justify="end" className="gap-1">
+				<SearchBar />
+				<Info />
 				<Notifications />
 				<Account />
 			</NavbarContent>
