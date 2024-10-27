@@ -18,7 +18,7 @@ export const CreateButton: React.FC = () => {
 	};
 
 	return (
-		<Dropdown>
+		<Dropdown radius="md">
 			<DropdownTrigger>
 				<Button
 					color="primary"
@@ -27,11 +27,11 @@ export const CreateButton: React.FC = () => {
 					className="flex flex-row gap-2 min-w-8 md:min-w-16 p-0 md:px-3"
 				>
 					<Icon name="Plus" size={20} className="flex md:hidden" />
-					<span className="hidden md:flex">{t('common.create')}</span>
+					<span className="hidden md:flex">{t('actions.create')}</span>
 				</Button>
 			</DropdownTrigger>
 
-			<DropdownMenu aria-label={t('common.create')}>
+			<DropdownMenu aria-label={t('actions.create')}>
 				{createButtonConfig.map(({ variant, label, icon }) => (
 					<DropdownItem
 						key={variant}

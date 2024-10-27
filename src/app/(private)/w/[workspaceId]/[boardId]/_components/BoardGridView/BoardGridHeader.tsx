@@ -38,15 +38,17 @@ export const BoardGridHeader: React.FC<BoardGridHeaderProps> = ({
 	return (
 		<div className="flex flex-row w-full py-4 items-center justify-between gap-4 flex-wrap">
 			<Select
-				aria-label={t('label.sort')}
+				aria-label={t('actions.sort')}
 				disallowEmptySelection
 				selectionMode="single"
 				variant="faded"
 				size="md"
+				radius="sm"
 				fullWidth={false}
 				classNames={{
 					base: 'flex w-fit',
 					innerWrapper: 'w-fit pr-7',
+					popoverContent: 'rounded-lg',
 				}}
 				popoverProps={{
 					className: 'w-fit',
@@ -54,14 +56,14 @@ export const BoardGridHeader: React.FC<BoardGridHeaderProps> = ({
 				selectedKeys={[sortBy]}
 				onSelectionChange={key => handleChangeSorting(key)}
 			>
-				<SelectItem key="lists" aria-label={t('sort.by_lists')} className="w-fit">
-					{t('sort.by_lists')}
+				<SelectItem key="lists" aria-label={t('actions.sort_lists')} className="w-full">
+					{t('actions.sort_lists')}
 				</SelectItem>
-				<SelectItem key="priority" aria-label={t('sort.by_priority')} className="w-fit">
-					{t('sort.by_priority')}
+				<SelectItem key="priority" aria-label={t('actions.sort_priority')} className="w-full">
+					{t('actions.sort_priority')}
 				</SelectItem>
-				<SelectItem key="due" aria-label={t('sort.by_due')} className="w-fit">
-					{t('sort.by_due')}
+				<SelectItem key="due" aria-label={t('actions.sort_due')} className="w-full">
+					{t('actions.sort_due')}
 				</SelectItem>
 			</Select>
 			<div className="inline-flex flex-row justify-around gap-4">

@@ -1,0 +1,9 @@
+{
+	"priority": {
+		"1": "No priority",
+		"2": "Low",
+		"3": "Medium",
+		"4": "High",
+		"5": "Critical"
+	}
+}

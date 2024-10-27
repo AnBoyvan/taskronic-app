@@ -6,17 +6,17 @@ type NavItemConfig = { label: TranslationKeys; value: string; icon: IconName };
 
 export const dashboardNav: NavItemConfig[] = [
 	{
-		label: 'nav.boards',
+		label: 'common.boards',
 		value: ROUTES.BOARDS,
 		icon: 'Trello',
 	},
 	{
-		label: 'nav.tasks',
+		label: 'common.tasks',
 		value: ROUTES.TASKS,
 		icon: 'ListTodo',
 	},
 	{
-		label: 'nav.calendar',
+		label: 'common.calendar',
 		value: ROUTES.CALENDAR,
 		icon: 'CalendarCheck2',
 	},
@@ -24,7 +24,7 @@ export const dashboardNav: NavItemConfig[] = [
 
 export const workspaceNav = (_id: string): NavItemConfig[] => [
 	{
-		label: 'nav.boards',
+		label: 'common.boards',
 		value: `${ROUTES.WORKSPACE}/${_id}`,
 		icon: 'Trello',
 	},
@@ -42,7 +42,7 @@ export const workspaceNav = (_id: string): NavItemConfig[] => [
 
 export const profileNav: NavItemConfig[] = [
 	{
-		label: 'account.profile',
+		label: 'user.profile',
 		value: ROUTES.PROFILE,
 		icon: 'User',
 	},

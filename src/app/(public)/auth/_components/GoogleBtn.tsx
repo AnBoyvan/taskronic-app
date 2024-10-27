@@ -28,6 +28,7 @@ export const GoogleBtn: React.FC = () => {
 	return (
 		<Button
 			variant="ghost"
+			radius="sm"
 			color="primary"
 			fullWidth={true}
 			startContent={gLogo}

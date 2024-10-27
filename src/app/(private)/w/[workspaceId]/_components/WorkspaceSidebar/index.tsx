@@ -92,7 +92,7 @@ export const WorkspaceSidebar: React.FC<WorkspaceSidebarProps> = ({ workspace })
 				} h-full absolute left-0 top-0 flex items-center justify-center`}
 			>
 				<Button
-					className="relative min-w-4 w-4 p-0 rounded-none h-full overflow-visible"
+					className="relative min-w-4 w-4 p-0 rounded-none h-full overflow-visible bg-default-50"
 					disableAnimation
 					variant="solid"
 					color="default"

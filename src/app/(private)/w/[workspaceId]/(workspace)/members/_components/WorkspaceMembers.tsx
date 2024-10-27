@@ -67,7 +67,8 @@ export const WorkspaceMembers: React.FC<WorkspaceMembersProps> = ({ workspace })
 					<Input
 						variant="bordered"
 						size="md"
-						placeholder={t('placeholder.search')}
+						radius="sm"
+						placeholder={t('common.search')}
 						startContent={<Icon name="Search" size={16} />}
 						type="search"
 						value={filter.search}

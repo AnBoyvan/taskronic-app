@@ -31,10 +31,10 @@ export const DeleteBoardPopover: React.FC<DeleteBoardPopoverProps> = ({ boardId,
 	}, [deleteBoard.isSuccess]);
 
 	return (
-		<Popover isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover isOpen={isOpen} onOpenChange={open => setIsOpen(open)} radius="md">
 			<PopoverTrigger>
 				<Button size="sm" variant="solid" color="danger">
-					{t('common.delete')}
+					{t('actions.delete')}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="p-2 w-64 flex-col gap-2">
@@ -42,6 +42,7 @@ export const DeleteBoardPopover: React.FC<DeleteBoardPopoverProps> = ({ boardId,
 				<Button
 					fullWidth
 					variant="solid"
+					radius="sm"
 					color="danger"
 					onPress={removeBoard}
 					spinnerPlacement="end"

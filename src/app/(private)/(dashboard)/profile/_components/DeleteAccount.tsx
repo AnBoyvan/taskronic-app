@@ -48,27 +48,28 @@ export const DeleteAccount = () => {
 		<div className="w-full max-w-2xl flex flex-col gap-4 items-center mx-auto py-4 lg:py-8">
 			<div className="flex flex-row items-center gap-4 text-danger border-2 border-danger rounded-lg p-4">
 				<Icon name="TriangleAlert" size={32} className="min-w-8 min-h-8" />
-				<div>{t('account.delete_warn')}</div>
+				<div>{t('user.delete_warn')}</div>
 			</div>
-			<p className="fomt-medium">{t('account.delete_check')}</p>
+			<p className="fomt-medium">{t('user.delete_check')}</p>
 			<Button
 				variant="bordered"
+				radius="sm"
 				color="warning"
 				isLoading={isFetching}
 				spinnerPlacement="end"
 				onPress={() => refetch()}
 			>
-				{t('common.check')}
+				{t('actions.check')}
 			</Button>
 			{data && isOnlyAdmin && (
 				<>
-					<p className="w-full text-start text-danger">{t('account.delete_admins')}</p>
+					<p className="w-full text-start text-danger">{t('user.delete_admins')}</p>
 					<OnlyAdminList data={data} />
 				</>
 			)}
 			{canDelete && (
 				<>
-					<p>{t('account.delete_allow')}</p>
+					<p>{t('user.delete_allow')}</p>
 					<Button
 						variant="solid"
 						color="danger"
@@ -77,7 +78,7 @@ export const DeleteAccount = () => {
 						spinnerPlacement="end"
 						onPress={() => removeAccount.mutate()}
 					>
-						{t('account.delete')}
+						{t('user.delete')}
 					</Button>
 				</>
 			)}

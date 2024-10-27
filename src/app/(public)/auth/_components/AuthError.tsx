@@ -18,7 +18,7 @@ export const AuthError: React.FC = () => {
 			</CardHeader>
 			<CardBody className="text-center">
 				{t(`auth.auth_error_message`)}&nbsp;-&nbsp;
-				{t('site.email')}
+				{t('general.email')}
 			</CardBody>
 			<CardFooter className="justify-center">
 				<Link

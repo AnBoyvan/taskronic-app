@@ -55,8 +55,8 @@ export const Register: React.FC = () => {
 				variant="faded"
 				icon="User"
 				name="name"
-				label={t('label.name')}
-				placeholder={t('placeholder.name')}
+				label={t('common.name')}
+				placeholder={t('auth.placeholder_name')}
 				isRequired
 				isDisabled={isPending}
 			/>
@@ -65,8 +65,8 @@ export const Register: React.FC = () => {
 				variant="faded"
 				icon="Mail"
 				name="email"
-				label={t('label.email')}
-				placeholder={t('placeholder.email')}
+				label={t('common.email')}
+				placeholder={t('auth.placeholder_email')}
 				isRequired
 				isDisabled={isPending}
 			/>
@@ -75,8 +75,8 @@ export const Register: React.FC = () => {
 				variant="faded"
 				icon="LockKeyhole"
 				name="password"
-				label={t('label.pass')}
-				placeholder={t('placeholder.pass')}
+				label={t('common.pass')}
+				placeholder={t('auth.placeholder_pass')}
 				isRequired
 				type="password"
 				isDisabled={isPending}
@@ -86,14 +86,15 @@ export const Register: React.FC = () => {
 				variant="faded"
 				icon="LockKeyhole"
 				name="confirmPassword"
-				label={t('label.confirm_pass')}
-				placeholder={t('placeholder.pass')}
+				label={t('auth.confirm_pass')}
+				placeholder={t('auth.placeholder_pass')}
 				isRequired
 				type="password"
 				isDisabled={isPending}
 			/>
 			<Button
 				fullWidth={true}
+				radius="sm"
 				color="primary"
 				variant="solid"
 				type="submit"

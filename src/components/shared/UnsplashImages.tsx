@@ -50,7 +50,7 @@ export const UnsplashImages: React.FC<UnsplashImagesProps> = ({ current, setCurr
 					<div
 						key={image.id}
 						className={clsx(
-							'cursor-pointer relative rounded-md aspect-video group hover:opacity-70 transition ',
+							'cursor-pointer relative rounded aspect-video group hover:opacity-70 transition ',
 							image.id === current && 'opacity-70',
 							image.urls.full === current && 'opacity-70',
 						)}

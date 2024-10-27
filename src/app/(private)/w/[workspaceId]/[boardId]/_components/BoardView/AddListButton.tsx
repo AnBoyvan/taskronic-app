@@ -38,7 +38,7 @@ export const AddListButton: React.FC<AddListButtonProps> = ({ boardId }) => {
 					fullWidth
 					onPress={enableEditing}
 				>
-					{t('board.add_list')}
+					{t('board.list_add')}
 				</Button>
 			)}
 		</div>

@@ -39,6 +39,7 @@ export const WorkspaceMembersRequests: React.FC<WorkspaceMembersRequestsProps> =
 			<PopoverTrigger>
 				<Button
 					variant="bordered"
+					radius="sm"
 					color={noRequests ? 'default' : 'success'}
 					isDisabled={noRequests}
 					className="min-w-36 lg:w-full"
@@ -71,7 +72,7 @@ export const WorkspaceMembersRequests: React.FC<WorkspaceMembersRequestsProps> =
 										onPress={() => acceptRequest.mutate({ workspaceId, userId: _id })}
 										isDisabled={acceptRequest.isPending || declineRequest.isPending}
 									>
-										{t('common.accept')}
+										{t('actions.accept')}
 									</Button>
 									<Button
 										size="sm"
@@ -81,7 +82,7 @@ export const WorkspaceMembersRequests: React.FC<WorkspaceMembersRequestsProps> =
 										onPress={() => declineRequest.mutate({ workspaceId, userId: _id })}
 										isDisabled={acceptRequest.isPending || declineRequest.isPending}
 									>
-										{t('common.decline')}
+										{t('actions.decline')}
 									</Button>
 								</div>
 							</div>

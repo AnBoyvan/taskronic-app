@@ -1,0 +1,13 @@
+{
+	"api": {
+		"access_denied": "Access denied",
+		"bad_request": "Bad Request",
+		"conflict": "Conflict",
+		"email_auth_error": "Email service authorization error",
+		"forbidden": "Forbidden",
+		"mailer_error": "Mailer error",
+		"not_found": "Not Found",
+		"server_error": "Server Error",
+		"unauthorized": "Unauthorized"
+	}
+}

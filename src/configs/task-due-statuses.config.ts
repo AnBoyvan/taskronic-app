@@ -12,7 +12,7 @@ export type DueStatus = {
 export const dueStatuses: DueStatus[] = [
 	{
 		value: 'none',
-		label: 'due.none',
+		label: 'task.due_none',
 		icon: 'Calendar',
 		color: 'default',
 		hex: '#d4d4d8',
@@ -20,7 +20,7 @@ export const dueStatuses: DueStatus[] = [
 	},
 	{
 		value: 'progress',
-		label: 'due.progress',
+		label: 'task.due_progress',
 		icon: 'CalendarClock',
 		color: 'primary',
 		hex: '#006fee',
@@ -28,7 +28,7 @@ export const dueStatuses: DueStatus[] = [
 	},
 	{
 		value: 'completed',
-		label: 'due.completed',
+		label: 'task.due_completed',
 		icon: 'CalendarCheck2',
 		color: 'success',
 		hex: '#17c964',
@@ -36,7 +36,7 @@ export const dueStatuses: DueStatus[] = [
 	},
 	{
 		value: 'overdue',
-		label: 'due.overdue',
+		label: 'task.due_overdue',
 		icon: 'CalendarX2',
 		color: 'danger',
 		hex: '#f31260',

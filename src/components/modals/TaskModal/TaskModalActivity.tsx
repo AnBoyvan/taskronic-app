@@ -79,7 +79,7 @@ export const TaskModalActivity: React.FC<TaskModalActivityProps> = ({ taskId, us
 								spinnerPlacement="end"
 								className="self-center"
 							>
-								{t('common.load_more')}
+								{t('actions.load_more')}
 							</Button>
 						)}
 					</>

@@ -48,7 +48,7 @@ export const ResetPassword: React.FC = () => {
 	};
 
 	return (
-		<Card fullWidth className="max-w-[500px] bg-default-50 gap-4 p-4">
+		<Card fullWidth radius="sm" className="max-w-[500px] bg-default-50 gap-4 p-4">
 			{error || success ? (
 				<CardBody
 					className={`flex-row gap-4 items-center p-4 ${error ? 'bg-red-500/20 text-red-500' : 'bg-green-500/20 text-green-500'} rounded-2xl`}
@@ -67,8 +67,8 @@ export const ResetPassword: React.FC = () => {
 							variant="faded"
 							icon="LockKeyhole"
 							name="password"
-							label={t('label.pass')}
-							placeholder={t('placeholder.pass')}
+							label={t('common.pass')}
+							placeholder={t('auth.placeholder_pass')}
 							isRequired
 							type="password"
 							isDisabled={isPending}
@@ -78,14 +78,15 @@ export const ResetPassword: React.FC = () => {
 							variant="faded"
 							icon="LockKeyhole"
 							name="confirmPassword"
-							label={t('label.confirm_pass')}
-							placeholder={t('placeholder.pass')}
+							label={t('auth.confirm_pass')}
+							placeholder={t('auth.placeholder_pass')}
 							isRequired
 							type="password"
 							isDisabled={isPending}
 						/>
 						<Button
 							isDisabled={isPending}
+							radius="sm"
 							fullWidth={true}
 							color="primary"
 							variant="solid"
@@ -93,7 +94,7 @@ export const ResetPassword: React.FC = () => {
 							isLoading={isPending}
 							spinnerPlacement="end"
 						>
-							{t('auth.confirm')}
+							{t('actions.confirm')}
 						</Button>
 					</CardBody>
 				</>

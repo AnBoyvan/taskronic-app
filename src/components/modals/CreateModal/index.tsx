@@ -23,6 +23,7 @@ export const CreateModal: React.FC = () => {
 			isOpen={isOpen}
 			onOpenChange={onClose}
 			placement="center"
+			radius="md"
 			closeButton
 			backdrop="blur"
 		>

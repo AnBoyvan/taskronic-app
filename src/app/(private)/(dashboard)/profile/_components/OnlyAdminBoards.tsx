@@ -42,7 +42,7 @@ export const OnlyAdminBoards: React.FC<OnlyAdminBoardsProps> = ({ boards, onAddA
 										board.thumbImage ? { backgroundImage: `url(${board.thumbImage})` } : undefined
 									}
 									className={clsx(
-										'h-8 w-10 min-h-8 min-w-10 rounded-md shadow-sm bg-cover',
+										'h-8 w-10 min-h-8 min-w-10 rounded shadow-sm bg-cover',
 										board.bgColor && `${boardColors[board.bgColor]}`,
 									)}
 								/>

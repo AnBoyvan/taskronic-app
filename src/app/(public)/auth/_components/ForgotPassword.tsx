@@ -46,7 +46,7 @@ export const ForgotPassword: React.FC = () => {
 	};
 
 	return (
-		<Card fullWidth className="max-w-[500px] bg-default-50 gap-4 p-4">
+		<Card fullWidth radius="sm" className="max-w-[500px] bg-default-50 gap-4 p-4">
 			{error || success ? (
 				<CardBody
 					className={`flex-row gap-4 items-center p-4 ${error ? 'bg-red-500/20 text-red-500' : 'bg-green-500/20 text-green-500'} rounded-2xl`}
@@ -66,13 +66,14 @@ export const ForgotPassword: React.FC = () => {
 							variant="faded"
 							icon="Mail"
 							name="email"
-							label={t('label.email')}
-							placeholder={t('placeholder.email')}
+							label={t('common.email')}
+							placeholder={t('auth.placeholder_email')}
 							isRequired
 							isDisabled={isPending}
 						/>
 						<Button
 							isDisabled={isPending}
+							radius="sm"
 							fullWidth={true}
 							color="primary"
 							variant="solid"
@@ -80,7 +81,7 @@ export const ForgotPassword: React.FC = () => {
 							isLoading={isPending}
 							spinnerPlacement="end"
 						>
-							{t('auth.send')}
+							{t('actions.send')}
 						</Button>
 					</CardBody>
 				</>

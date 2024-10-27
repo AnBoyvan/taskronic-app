@@ -37,9 +37,7 @@ export const InviteModal: React.FC = () => {
 		setInvitations: state.setInvitations,
 	}));
 
-	const [invitationLang, setInvitationLang] = useState<Locale>(
-		t('LocaleSwitcher.current') as Locale,
-	);
+	const [invitationLang, setInvitationLang] = useState<Locale>(t('locale.current') as Locale);
 	const [invitationMessage, setInvitationMessage] = useState<string>('');
 
 	const addInvitation = (email: string) => {
@@ -53,7 +51,7 @@ export const InviteModal: React.FC = () => {
 
 	const closeModal = () => {
 		onClose();
-		setInvitationLang(t('LocaleSwitcher.current') as Locale);
+		setInvitationLang(t('locale.current') as Locale);
 		setInvitationMessage('');
 	};
 
@@ -82,7 +80,14 @@ export const InviteModal: React.FC = () => {
 	}, [invite.isSuccess]);
 
 	return (
-		<Modal isOpen={isOpen} onOpenChange={closeModal} placement="center" closeButton backdrop="blur">
+		<Modal
+			isOpen={isOpen}
+			onOpenChange={closeModal}
+			placement="center"
+			closeButton
+			backdrop="blur"
+			radius="md"
+		>
 			<ModalContent className="flex-col justify-start p-2 gap-4">
 				<ModalHeader className="justify-center py-0 px-6 text-center">
 					{t('workspace.invite_title')}
@@ -115,7 +120,8 @@ export const InviteModal: React.FC = () => {
 					)}
 					<Textarea
 						variant="bordered"
-						placeholder={t('placeholder.invite_message')}
+						radius="sm"
+						placeholder={t('workspace.invite_message')}
 						value={invitationMessage}
 						onValueChange={value => setInvitationMessage(value)}
 					/>
@@ -125,6 +131,7 @@ export const InviteModal: React.FC = () => {
 							variant="solid"
 							color="primary"
 							size="lg"
+							radius="sm"
 							onPress={sendInvites}
 							startContent={<Icon name="MailCheck" size={20} />}
 							fullWidth
@@ -133,7 +140,7 @@ export const InviteModal: React.FC = () => {
 							isLoading={invite.isPending}
 							spinnerPlacement="end"
 						>
-							{t('workspace.invite')}
+							{t('actions.invite')}
 						</Button>
 					</div>
 				</ModalBody>

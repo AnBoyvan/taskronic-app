@@ -9,7 +9,7 @@ type ChartProps = {
 
 export const Chart: React.FC<ChartProps> = ({ children, title }) => {
 	return (
-		<Card shadow="md" className="bg-background aspect-video gap-4 p-4">
+		<Card shadow="md" radius="sm" className="bg-background aspect-video gap-4 p-4">
 			<CardHeader className="p-0 text-sm justify-center font-medium">{title}</CardHeader>
 			<CardBody className="p-0 justify-center">{children}</CardBody>
 		</Card>

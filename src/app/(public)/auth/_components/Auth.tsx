@@ -12,7 +12,11 @@ type AuthProps = {
 export const Auth: React.FC<AuthProps> = ({ title, children }) => {
 	const t = useTranslations();
 	return (
-		<Card fullWidth className="max-w-[500px] h-full bg-default-50 dark:bg-default-50 p-0">
+		<Card
+			fullWidth
+			radius="sm"
+			className="max-w-[500px] h-full bg-default-50 dark:bg-default-50 p-0"
+		>
 			<CardBody className="p-4">
 				<h1 className="w-full text-2xl text-center">{t(`auth.${title}`)}</h1>
 				{children}

@@ -29,6 +29,7 @@ export const AddTaskPopover: React.FC<AddTaskPopoverProps> = ({ boardId, lists }
 				content: 'p-0 w-64',
 			}}
 			placement="bottom"
+			radius="md"
 		>
 			<PopoverTrigger>
 				<Button

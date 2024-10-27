@@ -32,7 +32,7 @@ export const TasksGridViewByBoard: React.FC<TasksGridViewByBoardProps> = ({ task
 			<div className="flex flex-row items-center gap-2">
 				<div
 					style={thumbImage ? { backgroundImage: `url(${thumbImage})` } : undefined}
-					className={clsx('h-10 w-14 rounded-md shadow-sm', bgColor && `${boardColors[bgColor]}`)}
+					className={clsx('h-10 w-14 rounded shadow-sm', bgColor && `${boardColors[bgColor]}`)}
 				></div>
 				<Link
 					href={`${ROUTES.WORKSPACE}/${workspace?._id}/${_id}`}

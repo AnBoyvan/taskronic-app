@@ -72,7 +72,7 @@ export const NewBoardBackground: React.FC<NewBoardBackgroundProps> = ({ setColor
 					<div
 						key={image.id}
 						className={clsx(
-							'cursor-pointer relative rounded-md aspect-video group hover:opacity-70 transition ',
+							'cursor-pointer relative rounded aspect-video group hover:opacity-70 transition ',
 							image.id === selectedImageId && 'opacity-70',
 						)}
 						onClick={() => onImageSelect(image)}
@@ -108,7 +108,7 @@ export const NewBoardBackground: React.FC<NewBoardBackgroundProps> = ({ setColor
 						<div
 							key={color}
 							className={clsx(
-								'cursor-pointer flex items-center justify-center hover:opacity-70 transition rounded-md',
+								'cursor-pointer flex items-center justify-center hover:opacity-70 transition rounded',
 								`${boardColors[color]}`,
 								color === selectedColor && 'opacity-70',
 							)}

@@ -114,7 +114,7 @@ export const ListHeader: React.FC<ListHeaderProps> = ({
 						variant="bordered"
 						name="label"
 						ref={inputRef}
-						placeholder={t('placeholder.list_title')}
+						placeholder={t('board.list_title')}
 						isDisabled={updList.isPending}
 						onBlur={onBlur}
 					/>

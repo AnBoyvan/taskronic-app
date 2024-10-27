@@ -49,7 +49,7 @@ export const UserActivity: React.FC = () => {
 
 	return (
 		<div className="w-full flex flex-col gap-4 py-4 lg:py-8">
-			{isFetching && !activities ? (
+			{isFetching && activities.length === 0 ? (
 				<Spinner size="sm" />
 			) : activities.length > 0 ? (
 				<>
@@ -65,7 +65,7 @@ export const UserActivity: React.FC = () => {
 							isLoading={isFetchingNextPage}
 							spinnerPlacement="end"
 						>
-							{t('common.load_more')}
+							{t('actions.load_more')}
 						</Button>
 					)}
 				</>

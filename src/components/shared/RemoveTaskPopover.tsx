@@ -27,6 +27,7 @@ export const RemoveTaskPopover: React.FC<RemoveTaskPopoverProps> = ({
 			onOpenChange={open => setIsOpen(open)}
 			offset={0}
 			isTriggerDisabled={!canRemove}
+			radius="md"
 		>
 			<PopoverTrigger>{trigger}</PopoverTrigger>
 
@@ -43,7 +44,7 @@ export const RemoveTaskPopover: React.FC<RemoveTaskPopoverProps> = ({
 					}}
 					fullWidth
 				>
-					{t('task.remove_task')}
+					{t('task.remove')}
 				</Button>
 			</PopoverContent>
 		</Popover>

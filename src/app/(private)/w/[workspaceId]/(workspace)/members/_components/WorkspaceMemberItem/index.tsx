@@ -91,7 +91,7 @@ export const WorkspaceMemberItem: React.FC<WorkspaceMemberItemProps> = ({
 							}
 						}}
 					>
-						{t('workspace.invite')}
+						{t('actions.invite')}
 					</Button>
 				) : (
 					<RemoveWorkspaceMember

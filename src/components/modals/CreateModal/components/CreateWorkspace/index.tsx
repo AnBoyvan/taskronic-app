@@ -124,8 +124,8 @@ export const CreateWorkspaceModal: React.FC<CreateWorkspaceModalProps> = ({ isEd
 				control={control}
 				variant="bordered"
 				name="name"
-				label={t('label.title')}
-				placeholder={t('placeholder.new_workspace')}
+				label={t('common.title')}
+				placeholder={t('workspace.new')}
 				isRequired
 				classNames={{
 					label: 'text-tiny top-2/3',
@@ -134,10 +134,11 @@ export const CreateWorkspaceModal: React.FC<CreateWorkspaceModalProps> = ({ isEd
 			/>
 			<Textarea
 				{...register('description')}
-				label={t('label.description')}
+				label={t('common.description')}
 				variant="bordered"
+				radius="sm"
 				labelPlacement="outside"
-				placeholder={t('placeholder.workspace_descr')}
+				placeholder={t('workspace.descr')}
 				classNames={{
 					label: 'text-tiny pb-0',
 				}}
@@ -147,12 +148,13 @@ export const CreateWorkspaceModal: React.FC<CreateWorkspaceModalProps> = ({ isEd
 				fullWidth={true}
 				color={!isEnable ? 'default' : 'primary'}
 				variant="solid"
+				radius="sm"
 				type="submit"
 				isLoading={create.isPending || updGeneral.isPending}
 				spinnerPlacement="end"
 				className="mt-2"
 			>
-				{t(isEditing ? 'common.edit' : 'common.create')}
+				{t(isEditing ? 'actions.edit' : 'actions.create')}
 			</Button>
 		</form>
 	);

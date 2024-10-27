@@ -1,6 +1,6 @@
-import en from './messages/en.json';
+import { messages } from '@/configs/messages.config';
 
-type Messages = typeof en;
+type Messages = typeof messages;
 
 type AllPossibleKeys = NestedKeyOf<Messages>;
 type ValidKeys = MessageKeys<Messages, AllPossibleKeys>;

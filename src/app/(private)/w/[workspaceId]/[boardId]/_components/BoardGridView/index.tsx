@@ -47,7 +47,11 @@ export const BoardGridView: React.FC<BoardGridViewProps> = ({ board }) => {
 				<BoardGridByLists tasks={boardTasks} board={board} permissions={permissions} />
 			)}
 			{sortBy === 'priority' && (
-				<BoardGridByPriority tasks={boardTasks} permissions={permissions} />
+				<BoardGridByPriority
+					tasks={boardTasks}
+					permissions={permissions}
+					textColor={board.textColor}
+				/>
 			)}
 			{sortBy === 'due' && <BoardGridByDue tasks={boardTasks} permissions={permissions} />}
 		</div>

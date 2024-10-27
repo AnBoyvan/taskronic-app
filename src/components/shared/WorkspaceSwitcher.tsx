@@ -28,6 +28,7 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 	onWorkspaceChange,
 	mediumText,
 	canCreateBoard,
+	classNames,
 	...props
 }) => {
 	const t = useTranslations();
@@ -62,14 +63,16 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 				<Select
 					{...props}
 					items={canCreateBoard ? filtered : workspaces}
-					aria-label={t('nav.workspace')}
+					aria-label={t('common.workspace')}
 					selectedKeys={[selected]}
 					disabledKeys={[selected]}
 					isDisabled={workspaces.length < 1}
-					label={t('nav.workspace')}
+					label={t('common.workspace')}
 					labelPlacement="outside"
-					placeholder={t('placeholder.select')}
+					placeholder={t('actions.select')}
+					radius="sm"
 					onSelectionChange={onWorkspaceSelect}
+					classNames={{ popoverContent: 'rounded-lg', ...classNames }}
 					renderValue={(items: SelectedItems<Workspace>) => {
 						return items.map(item => (
 							<WorkspaceBadge
@@ -89,6 +92,7 @@ export const WorkspaceSwitcher: React.FC<WorkspaceSwitcherProps> = ({
 								avatarColor={item.avatarColor}
 								avatarIcon={item.avatarIcon}
 								name={item.name}
+								truncateTitle
 							/>
 						</SelectItem>
 					)}

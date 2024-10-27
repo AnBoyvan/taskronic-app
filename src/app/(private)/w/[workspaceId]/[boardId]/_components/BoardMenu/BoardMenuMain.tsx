@@ -79,8 +79,8 @@ export const BoardMenuMain: React.FC<BoardMenuMainProps> = ({ description, isClo
 						))}
 					</ListboxSection>
 					<ListboxItem
-						key={t('board.leave_board')}
-						title={t('board.leave_board')}
+						key={t('board.leave')}
+						title={t('board.leave')}
 						startContent={<Icon name="LogOut" size={20} />}
 						color="danger"
 						className="text-danger"

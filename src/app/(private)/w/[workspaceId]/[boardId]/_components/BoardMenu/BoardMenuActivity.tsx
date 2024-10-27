@@ -76,7 +76,7 @@ export const BoardMenuActivity: React.FC<BoardMenuActivityProps> = ({ boardId })
 							spinnerPlacement="end"
 							className="min-h-8 self-center"
 						>
-							{t('common.load_more')}
+							{t('actions.load_more')}
 						</Button>
 					)}
 				</div>

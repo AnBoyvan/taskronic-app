@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 import { Button } from '@nextui-org/react';
 
@@ -26,7 +26,6 @@ export const UserWorkspacesBoards: React.FC<UserWorkspacesBoardsProps> = ({
 	boards,
 }) => {
 	const t = useTranslations();
-	const router = useRouter();
 	const { _id } = useUser();
 	const modal = useCreateModal();
 
@@ -61,14 +60,13 @@ export const UserWorkspacesBoards: React.FC<UserWorkspacesBoardsProps> = ({
 						<div className="flex flex-wrap md:flex-nowrap gap-2">
 							{workspaceNav(workspace._id).map(({ label, value, icon }) => (
 								<Button
+									as={Link}
 									key={value}
 									variant="solid"
+									href={value}
 									color="default"
 									size="sm"
 									startContent={<Icon name={icon} size={16} />}
-									onPress={() => {
-										router.push(value);
-									}}
 									endContent={
 										label === 'common.members' ? (
 											<span>{`(${workspace.members.length})`}</span>

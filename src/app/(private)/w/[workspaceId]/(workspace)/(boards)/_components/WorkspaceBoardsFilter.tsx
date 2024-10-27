@@ -62,35 +62,38 @@ export const WorkspaceBoardsFilter: React.FC<WorkspaceMembersFilterProps> = ({
 					}}
 				/>
 				<Select
-					aria-label={t('label.closed')}
+					aria-label={t('common.closed')}
 					labelPlacement="outside"
-					label={t('label.closed')}
-					placeholder={t('placeholder.select')}
+					label={t('common.closed')}
+					placeholder={t('actions.select')}
 					disallowEmptySelection
 					selectionMode="single"
 					variant="bordered"
 					size="md"
+					radius="sm"
 					selectedKeys={[filter.closed]}
 					onChange={onShowClosedChange}
 					classNames={{
 						base: 'w-44 data-[has-label=true]:mt-5',
 						label: 'text-tiny top-2/3 pl-1',
+						popoverContent: 'rounded-lg',
 					}}
 				>
-					<SelectItem key="show" aria-label={t('common.show')}>
-						{t('common.show')}
+					<SelectItem key="show" aria-label={t('actions.show')}>
+						{t('actions.show')}
 					</SelectItem>
-					<SelectItem key="hide" aria-label={t('common.hide')}>
-						{t('common.hide')}
+					<SelectItem key="hide" aria-label={t('actions.hide')}>
+						{t('actions.hide')}
 					</SelectItem>
 				</Select>
 			</div>
 			<Input
 				variant="bordered"
 				size="md"
-				label={t('label.search')}
+				radius="sm"
+				label={t('common.search')}
 				labelPlacement="outside"
-				placeholder={t('placeholder.search_boards')}
+				placeholder={t('board.search')}
 				startContent={<Icon name="Search" size={16} />}
 				type="search"
 				value={filter.search}

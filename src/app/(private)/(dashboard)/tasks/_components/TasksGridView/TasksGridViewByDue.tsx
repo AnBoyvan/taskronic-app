@@ -33,7 +33,7 @@ export const TasksGridViewByDue: React.FC<TasksGridViewByDueProps> = ({
 	return (
 		<Section className="flex flex-col gap-2">
 			<div className="flex flex-row items-center gap-2">
-				<Chip color={color} variant="solid" size="lg" radius="md" className="p-0">
+				<Chip color={color} variant="solid" size="lg" radius="sm" className="p-0">
 					<Icon name={icon} size={20} />
 				</Chip>
 				<span>{t(label)}</span>

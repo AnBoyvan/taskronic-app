@@ -10,7 +10,11 @@ import {
 	Selection,
 } from '@nextui-org/react';
 
-export const ThemeSwitcher: React.FC = () => {
+type ThemeSwitcherProps = {
+	onSelect?: () => void;
+};
+
+export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onSelect }) => {
 	const t = useTranslations();
 
 	const { theme, setTheme } = useTheme();
@@ -18,23 +22,26 @@ export const ThemeSwitcher: React.FC = () => {
 	const onThemeChange = (keys: Selection) => {
 		const selected = Array.from(keys).join(', ');
 		setTheme(selected);
+		if (onSelect) {
+			onSelect();
+		}
 	};
 
 	return (
 		<>
 			<Popover placement="left-start" offset={18} triggerType="menu">
-				<PopoverTrigger>{t('account.theme')}</PopoverTrigger>
+				<PopoverTrigger>{t('theme.label')}</PopoverTrigger>
 				<PopoverContent>
 					<Listbox
-						aria-label={t('account.theme')}
+						aria-label={t('theme.label')}
 						disallowEmptySelection
 						selectionMode="single"
 						selectedKeys={[theme ? theme : '']}
 						onSelectionChange={onThemeChange}
 					>
-						<ListboxItem key="light">{t('account.light')}</ListboxItem>
-						<ListboxItem key="dark">{t('account.dark')}</ListboxItem>
-						<ListboxItem key="system">{t('account.system')}</ListboxItem>
+						<ListboxItem key="light">{t('theme.light')}</ListboxItem>
+						<ListboxItem key="dark">{t('theme.dark')}</ListboxItem>
+						<ListboxItem key="system">{t('theme.system')}</ListboxItem>
 					</Listbox>
 				</PopoverContent>
 			</Popover>

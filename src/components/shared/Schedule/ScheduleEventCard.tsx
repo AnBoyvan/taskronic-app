@@ -22,7 +22,7 @@ export const ScheduleEventCard: React.FC<ScheduleEventCardProps> = ({
 	return (
 		<div
 			className={clsx(
-				'flex flex-row items-center border-2 h-8 overflow-hidden rounded-md cursor-pointer hover:opacity-75 transition',
+				'flex flex-row items-center border-2 h-8 overflow-hidden rounded cursor-pointer hover:opacity-75 transition',
 				`border-${status?.color}`,
 			)}
 			onClick={() => modal.onOpen(id)}

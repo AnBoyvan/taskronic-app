@@ -86,6 +86,7 @@ export const TaskMember: React.FC<TaskMemberProps> = ({
 				}}
 				isOpen={isOpen}
 				onOpenChange={open => setIsOpen(open)}
+				radius="md"
 			>
 				<PopoverTrigger>
 					<UserAvatar

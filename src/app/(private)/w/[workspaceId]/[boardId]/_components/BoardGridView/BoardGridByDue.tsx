@@ -27,7 +27,11 @@ export const BoardGridByDue: React.FC<BoardGridByDueProps> = ({ tasks, permissio
 			{dueStatuses.map(({ value, label, color, icon }) => (
 				<Section key={value} noTopMargin className="flex flex-col gap-2 mt-2">
 					<div
-						className={clsx('flex flex-row items-center gap-4 p-2 h-14 rounded-lg', `bg-${color}`)}
+						className={clsx(
+							'flex flex-row items-center gap-4 p-2 h-14 rounded',
+							`bg-${color}`,
+							`text-${color}-foreground`,
+						)}
 					>
 						<Icon name={icon} size={24} />
 						<span>{t(label)}</span>

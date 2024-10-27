@@ -65,12 +65,13 @@ export const MemberActivityModal: React.FC = () => {
 			onOpenChange={onClose}
 			placement="center"
 			backdrop="blur"
+			radius="md"
 			classNames={{
 				base: 'my-12',
 				closeButton: 'right-2 top-2',
 			}}
 			closeButton={
-				<Button isIconOnly variant="light" size="md">
+				<Button isIconOnly variant="light" size="md" radius="sm">
 					<Icon name="X" size={20} />
 				</Button>
 			}
@@ -107,7 +108,7 @@ export const MemberActivityModal: React.FC = () => {
 									spinnerPlacement="end"
 									className="self-center"
 								>
-									{t('common.load_more')}
+									{t('actions.load_more')}
 								</Button>
 							)}
 						</>

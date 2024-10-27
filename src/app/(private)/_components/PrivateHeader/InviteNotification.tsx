@@ -37,7 +37,7 @@ export const InviteNotification: React.FC<InviteNotificationProps> = ({ invite }
 					spinnerPlacement="end"
 					isLoading={acceptInvite.isPending || rejectInvite.isPending}
 				>
-					{t('common.accept')}
+					{t('actions.accept')}
 				</Button>
 				<Button
 					size="sm"
@@ -49,7 +49,7 @@ export const InviteNotification: React.FC<InviteNotificationProps> = ({ invite }
 					spinnerPlacement="end"
 					isLoading={acceptInvite.isPending || rejectInvite.isPending}
 				>
-					{t('common.decline')}
+					{t('actions.decline')}
 				</Button>
 			</div>
 			<Divider />

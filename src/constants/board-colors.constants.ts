@@ -1,5 +1,5 @@
 export const boardColors = {
-	default: 'bg-content1',
+	default: 'bg-default-300',
 	blue: 'bg-blue-300',
 	purple: 'bg-purple-300',
 	green: 'bg-green-300',

@@ -23,9 +23,13 @@ export const LocaleSwitcher: React.FC = () => {
 			className="w-[72px]"
 			color="primary"
 			variant="faded"
+			radius="sm"
 			aria-label="language"
 			selectedKeys={[locale]}
 			onChange={onChange}
+			classNames={{
+				popoverContent: 'rounded-lg',
+			}}
 		>
 			{localesConfig.map(({ value, label }) => (
 				<SelectItem key={value}>{t(label)}</SelectItem>

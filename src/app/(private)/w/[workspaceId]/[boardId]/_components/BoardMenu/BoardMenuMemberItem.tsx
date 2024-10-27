@@ -37,7 +37,7 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 	const adminToggle = () => {
 		if (isMemberAdmin) {
 			if (isOnlyAdmin) {
-				toast.error(t('board.last_admin'));
+				toast.error(t('board.only_admin'));
 				return;
 			}
 
@@ -51,7 +51,7 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 
 	const remove = () => {
 		if (isOnlyAdmin) {
-			toast.error(t('board.last_admin'));
+			toast.error(t('board.only_admin'));
 			return;
 		}
 		removeMember.mutate({ boardId, dto: { _id, name } });
@@ -59,7 +59,7 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 
 	const leaveBoard = () => {
 		if (isOnlyAdmin) {
-			toast.error(t('board.last_admin'));
+			toast.error(t('board.only_admin'));
 			return;
 		}
 		leave.mutate(boardId);
@@ -88,12 +88,12 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 							size="sm"
 							className="w-20"
 						>
-							{t('roles.user_admin')}
+							{t('common.admin')}
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent className="p-2">
 						<Button variant="ghost" color="default" size="md" radius="sm" onPress={adminToggle}>
-							{t(isMemberAdmin ? 'roles.remove_admin' : 'roles.add_admin')}
+							{t(isMemberAdmin ? 'user.admin_remove' : 'user.admin_add')}
 						</Button>
 					</PopoverContent>
 				</Popover>
@@ -109,7 +109,7 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 							size="sm"
 							className="w-20"
 						>
-							{isCurrentUser ? t('common.leave') : t('common.remove')}
+							{isCurrentUser ? t('actions.leave') : t('actions.remove')}
 						</Button>
 					</PopoverTrigger>
 
@@ -121,7 +121,7 @@ export const BoardMenuMemberItem: React.FC<BoardMenuMemberItemProps> = ({
 							radius="sm"
 							onPress={isCurrentUser ? leaveBoard : remove}
 						>
-							{isCurrentUser ? t('board.leave_board') : t('board.remove_member')}
+							{isCurrentUser ? t('board.leave') : t('board.remove_member')}
 						</Button>
 					</PopoverContent>
 				</Popover>

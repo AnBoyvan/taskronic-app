@@ -48,15 +48,15 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 	return (
 		<div className="h-full flex flex-col overflow-hidden py-2">
 			<div className="flex flex-row items-center justify-between px-2">
-				<span className="text-sm font-medium">{t('nav.boards')}:</span>
-				<Dropdown>
+				<span className="text-sm font-medium">{t('common.boards')}:</span>
+				<Dropdown radius="md">
 					<DropdownTrigger>
 						<Button isIconOnly variant="light" size="sm">
 							<Icon name="Ellipsis" size={16} />
 						</Button>
 					</DropdownTrigger>
 					<DropdownMenu>
-						<DropdownItem aria-label={t('label.sort')} closeOnSelect={false} isReadOnly>
+						<DropdownItem aria-label={t('actions.sort')} closeOnSelect={false} isReadOnly>
 							<SortBy current={sortBy} setCurrent={setSortBy} />
 						</DropdownItem>
 					</DropdownMenu>
@@ -64,8 +64,8 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 			</div>
 			<Listbox
 				className="flex flex-col overflow-y-auto gap-2"
-				emptyContent={t('workspace.no_boards')}
-				aria-label={t('nav.boards')}
+				emptyContent={t('board.no_boards')}
+				aria-label={t('common.boards')}
 			>
 				{sortedBoards.map(b => (
 					<ListboxItem
@@ -80,7 +80,7 @@ export const WorkspaceSidebarBoards: React.FC<WorkspaceSidebarBoardsProps> = ({
 							<div
 								style={b.thumbImage ? { backgroundImage: `url(${b.thumbImage})` } : undefined}
 								className={clsx(
-									'h-6 w-8 min-w-8 rounded-md shadow-sm truncate',
+									'h-6 w-8 min-w-8 rounded-sm shadow-sm truncate',
 									b.bgColor && `${boardColors[b.bgColor]}`,
 								)}
 							></div>

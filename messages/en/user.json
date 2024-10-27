@@ -1,0 +1,25 @@
+{
+	"user": {
+		"add_contact": "Add to contacts",
+		"admin_add": "Grant admin access",
+		"admin_remove": "Revoke admin access",
+		"already_admin": "User is already admin",
+		"already_member": "User is already member",
+		"avatar": "Avatar",
+		"bio": "Bio",
+		"contact_added": "Contact added",
+		"contacts": "Contacts",
+		"delete": "Delete account",
+		"delete_admins": "Assign a new admins to continue.",
+		"delete_allow": "You can delete account",
+		"delete_check": "Before deleting your account, ensure you are not the only admin of any boards or workspaces.",
+		"delete_warn": "WARNING: Account deletion is permanent. You will not be able to recover your account.",
+		"invites": "Invites",
+		"no_contacts": "Your contacts list is empty",
+		"not_found": "User not found",
+		"only_admin": "You cannot delete your account while being the only admin in a board or workspace. Please designate a new admin first.",
+		"profile": "Profile",
+		"remove_contact": "Remove contact?",
+		"updated": "Profile updated"
+	}
+}

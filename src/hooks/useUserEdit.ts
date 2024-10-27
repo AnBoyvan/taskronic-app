@@ -5,13 +5,13 @@ import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
+import { messages } from '@/configs/messages.config';
 import { authService } from '@/services/auth.service';
 import { userService } from '@/services/user.service';
 import { ChangePassForm } from '@/types/auth.interface';
 import { UserUpd } from '@/types/user.interface';
 import { getMessageKey } from '@/utils/locale/getMessageKey';
 
-import en from '../../messages/en.json';
 import { useUser } from './useUser';
 
 export const useUserEdit = () => {
@@ -33,7 +33,7 @@ export const useUserEdit = () => {
 		mutationFn: (dto: ChangePassForm) => authService.passChange(dto),
 		mutationKey: ['user-change-password'],
 		onSuccess: ({ message }) => {
-			const key = getMessageKey(message, en);
+			const key = getMessageKey(message, messages);
 			toast.success(key ? t(key as any) : message, { closeButton: false });
 		},
 		onError: err => {

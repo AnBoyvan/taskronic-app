@@ -40,7 +40,7 @@ export const ArchiveTaskPopover: React.FC<ArchiveTaskPopoverProps> = ({
 						setIsOpen(false);
 					}}
 				>
-					{isArchived ? t('common.restore') : t('common.archive')}
+					{isArchived ? t('actions.restore') : t('actions.archive')}
 				</Button>
 			</PopoverContent>
 		</Popover>

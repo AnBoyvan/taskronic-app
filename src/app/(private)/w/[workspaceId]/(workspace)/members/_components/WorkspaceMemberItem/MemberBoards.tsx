@@ -69,16 +69,16 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 					size="sm"
 					className="w-20"
 				>
-					{`${t('nav.boards')} (${userBoards.length})`}
+					{`${t('common.boards')} (${userBoards.length})`}
 				</Button>
 			</PopoverTrigger>
 
 			<PopoverContent className="p-0">
-				<span className="text-center pt-2">{t('workspace.ws_boards')}</span>
+				<span className="text-center pt-2">{t('workspace.boards')}</span>
 				<Listbox
 					className="w-64 flex flex-col overflow-y-auto gap-2 p-2"
-					emptyContent={t('workspace.no_boards')}
-					aria-label={t('nav.boards')}
+					emptyContent={t('board.no_boards')}
+					aria-label={t('common.boards')}
 				>
 					{userBoardsList.map(board => (
 						<ListboxItem
@@ -98,7 +98,7 @@ export const MemberBoards: React.FC<WorkspaceMemberItemProps> = ({
 									className="h-6"
 									onPress={() => handleRemoveMember(board._id)}
 								>
-									{t('common.remove')}
+									{t('actions.remove')}
 								</Button>
 							)}
 						</ListboxItem>

@@ -39,6 +39,7 @@ export const MembersCell: React.FC<MembersCellProps> = ({ task, permissions, tex
 					offset={0}
 					isOpen={isOpen}
 					onOpenChange={open => setIsOpen(open)}
+					radius="md"
 				>
 					<PopoverTrigger>
 						<Button

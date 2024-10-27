@@ -25,8 +25,8 @@ export const WorkspaceSettings: React.FC<WorkspaceSettingsProps> = ({ workspace 
 	return (
 		<PageContainer scroll title={t('workspace.settings_title')}>
 			<Section noTopMargin className="flex flex-col max-w-[800px] mt-2 items-center gap-4">
-				<p className="text-xs">{t('workspace.settings_desc')}</p>
-				<ul className="flex flex-col items-center gap-8 w-full p-8 rounded-2xl border border-divider">
+				<p className="text-xs">{t('workspace.settings_descr')}</p>
+				<ul className="flex flex-col items-center gap-8 w-full p-8 rounded-lg border border-divider">
 					{workspaceSettings.map(({ value, label }) => (
 						<WorkspaceSettingsItem
 							key={value}

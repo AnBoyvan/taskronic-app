@@ -40,7 +40,7 @@ export const InviteForm: React.FC<InviteFormProps> = ({ invitations, addInvitati
 		const isAdded = invitations.some(inv => inv === email);
 
 		if (isMember) {
-			setError('email', { message: t('roles.already_member') });
+			setError('email', { message: t('user.already_member') });
 			return;
 		}
 
@@ -63,8 +63,14 @@ export const InviteForm: React.FC<InviteFormProps> = ({ invitations, addInvitati
 				isClearable
 				onClear={reset}
 			/>
-			<Button color={'primary'} variant="solid" type="submit" isDisabled={!isDirty || !isValid}>
-				{t('common.add')}
+			<Button
+				color={'primary'}
+				variant="solid"
+				radius="sm"
+				type="submit"
+				isDisabled={!isDirty || !isValid}
+			>
+				{t('actions.add')}
 			</Button>
 		</form>
 	);

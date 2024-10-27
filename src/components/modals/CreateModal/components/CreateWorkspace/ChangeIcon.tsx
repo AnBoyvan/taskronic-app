@@ -31,7 +31,13 @@ export const ChangeIcon: React.FC<ChangeIconProps> = ({
 	};
 
 	return (
-		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover
+			placement="bottom"
+			offset={0}
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			radius="md"
+		>
 			<PopoverTrigger>
 				<Button variant="bordered" size="sm" className="w-28">
 					{t('workspace.change_icon')}
@@ -41,6 +47,7 @@ export const ChangeIcon: React.FC<ChangeIconProps> = ({
 				{workspaceIconsArray.map(icon => (
 					<Button
 						key={icon}
+						radius="sm"
 						isIconOnly
 						isDisabled={icon === currentIcon}
 						className={colorVariants[currentColor]}

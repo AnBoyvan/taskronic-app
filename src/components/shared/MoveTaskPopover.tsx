@@ -19,7 +19,7 @@ import { List } from '@/types/board.interface';
 import { Task } from '@/types/tasks.interface';
 import { sorter } from '@/utils/helpers/sorter';
 
-interface TaskMovePopoverProps {
+interface MoveTaskPopoverProps {
 	trigger: ReactNode;
 	currentList: List;
 	currentIndex: number;
@@ -28,7 +28,7 @@ interface TaskMovePopoverProps {
 	boardTasks: Task[];
 }
 
-export const TaskMovePopover: React.FC<TaskMovePopoverProps> = ({
+export const MoveTaskPopover: React.FC<MoveTaskPopoverProps> = ({
 	trigger,
 	currentList,
 	currentIndex,
@@ -70,10 +70,16 @@ export const TaskMovePopover: React.FC<TaskMovePopoverProps> = ({
 	const positions = Array(positionsCount).fill(0);
 
 	return (
-		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover
+			placement="bottom"
+			offset={0}
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			radius="sm"
+		>
 			<PopoverTrigger>{trigger}</PopoverTrigger>
 			<PopoverContent className="p-2 w-80 overflow-auto">
-				<p className="font-medium text-center pt-1">{t('task.move_task')}</p>
+				<p className="font-medium text-center pt-1">{t('task.move')}</p>
 				<Button
 					isIconOnly
 					variant="light"
@@ -89,14 +95,16 @@ export const TaskMovePopover: React.FC<TaskMovePopoverProps> = ({
 						variant="bordered"
 						label={t('common.list')}
 						labelPlacement="outside"
-						placeholder={t('placeholder.select')}
+						placeholder={t('actions.select')}
 						selectionMode="single"
 						selectedKeys={[destList]}
 						disabledKeys={[destList]}
 						disallowEmptySelection
+						radius="sm"
 						classNames={{
 							base: 'text-sm',
 							label: 'text-tiny top-2/3',
+							popoverContent: 'rounded-lg',
 						}}
 						onChange={selectList}
 					>
@@ -115,15 +123,17 @@ export const TaskMovePopover: React.FC<TaskMovePopoverProps> = ({
 						variant="bordered"
 						label={t('common.position')}
 						labelPlacement="outside"
-						placeholder={t('placeholder.select')}
+						placeholder={t('actions.select')}
 						selectionMode="single"
 						selectedKeys={[String(destIndex)]}
 						disabledKeys={Boolean(destList === currentList._id) ? [currentIndex.toString()] : []}
 						disallowEmptySelection
 						onChange={selectPosition}
+						radius="sm"
 						classNames={{
 							base: 'text-sm min-w-20 w-20',
 							label: `text-tiny top-2/3`,
+							popoverContent: 'rounded-lg',
 						}}
 					>
 						{positions.map((_, idx) => (
@@ -146,13 +156,14 @@ export const TaskMovePopover: React.FC<TaskMovePopoverProps> = ({
 					variant="solid"
 					color="primary"
 					size="md"
+					radius="sm"
 					onPress={() => {
 						onMoveSelect(destList, destIndex);
 						setIsOpen(false);
 					}}
 					className="mt-2 mr-auto"
 				>
-					{t('common.move')}
+					{t('actions.move')}
 				</Button>
 			</PopoverContent>
 		</Popover>

@@ -16,6 +16,7 @@ interface VisibilitySwitcherProps extends Partial<SelectProps> {
 export const VisibilitySwitcher: React.FC<VisibilitySwitcherProps> = ({
 	current = false,
 	setCurrent,
+	classNames,
 	...props
 }) => {
 	const t = useTranslations();
@@ -37,16 +38,18 @@ export const VisibilitySwitcher: React.FC<VisibilitySwitcherProps> = ({
 
 	return (
 		<Select
-			aria-label={t('label.visibility')}
+			aria-label={t('common.visibility')}
 			labelPlacement="outside"
-			label={t('label.visibility')}
-			placeholder={t('placeholder.select')}
+			label={t('common.visibility')}
+			placeholder={t('actions.select')}
 			disallowEmptySelection
 			selectionMode="single"
+			radius="sm"
 			variant={props.variant || 'bordered'}
 			size={props.size || 'md'}
 			selectedKeys={[visibility]}
 			onSelectionChange={key => changeVariant(key)}
+			classNames={{ popoverContent: 'rounded-lg', ...classNames }}
 			{...props}
 		>
 			{boardVisibility.map(({ value, label, descr }) => (

@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
+import { messages } from '@/configs/messages.config';
 import { getMessageKey } from '@/utils/locale/getMessageKey';
-
-import en from '../../../messages/en.json';
 
 export const apiErrorTranslate = async (error: any): Promise<string> => {
 	const t = await getTranslations();
@@ -15,7 +14,7 @@ export const apiErrorTranslate = async (error: any): Promise<string> => {
 			: errMessage
 		: error.message;
 
-	const messageKey = getMessageKey(message, en);
+	const messageKey = getMessageKey(message, messages);
 
 	return messageKey ? t(messageKey as any) : message;
 };

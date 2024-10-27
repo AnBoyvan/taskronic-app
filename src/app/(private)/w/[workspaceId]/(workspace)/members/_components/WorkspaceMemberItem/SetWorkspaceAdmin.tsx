@@ -36,7 +36,7 @@ export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
 		const dto = { _id: userId, name: userName };
 		if (admin) {
 			if (isOnlyAdmin) {
-				toast.error(t('workspace.last_admin'));
+				toast.error(t('workspace.only_admin'));
 				setIsOpen(false);
 				return;
 			}
@@ -73,13 +73,13 @@ export const SetWorkspaceAdmin: React.FC<SetWorkspaceAdminProps> = ({
 					size="sm"
 					className="w-20"
 				>
-					{t('roles.user_admin')}
+					{t('common.admin')}
 				</Button>
 			</PopoverTrigger>
 
 			<PopoverContent className="p-2">
 				<Button variant="ghost" color="default" size="md" radius="sm" onPress={adminToggle}>
-					{t(admin ? 'roles.remove_admin' : 'roles.add_admin')}
+					{t(admin ? 'user.admin_remove' : 'user.admin_add')}
 				</Button>
 			</PopoverContent>
 		</Popover>

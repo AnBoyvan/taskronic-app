@@ -38,7 +38,7 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 		const dto = { _id: userId, name: userName };
 
 		if (isOnlyAdmin) {
-			toast.error(t('workspace.last_admin'));
+			toast.error(t('workspace.only_admin'));
 			setIsOpen(false);
 			return;
 		}
@@ -49,7 +49,7 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 
 	const leaveWorkspace = () => {
 		if (isOnlyAdmin) {
-			toast.error(t('workspace.last_admin'));
+			toast.error(t('workspace.only_admin'));
 			setIsOpen(false);
 			return;
 		}
@@ -75,7 +75,7 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 					size="sm"
 					className="w-20"
 				>
-					{isCurrentUser ? t('common.leave') : t('common.remove')}
+					{isCurrentUser ? t('actions.leave') : t('actions.remove')}
 				</Button>
 			</PopoverTrigger>
 
@@ -87,7 +87,7 @@ export const RemoveWorkspaceMember: React.FC<RemoveWorkspaceMemberProps> = ({
 					radius="sm"
 					onPress={isCurrentUser ? leaveWorkspace : remove}
 				>
-					{isCurrentUser ? t('workspace.leave_ws') : t('workspace.remove_member')}
+					{isCurrentUser ? t('workspace.leave') : t('workspace.remove_member')}
 				</Button>
 			</PopoverContent>
 		</Popover>

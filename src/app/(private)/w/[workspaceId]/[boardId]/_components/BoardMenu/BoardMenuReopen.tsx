@@ -61,21 +61,23 @@ export const BoardMenuReopen: React.FC<BoardMenuReopenProps> = ({ boardId, works
 					fullWidth
 					variant="bordered"
 					color="default"
+					radius="sm"
 					onPress={() => onOpen('main')}
 					isDisabled={open.isPending}
 				>
-					{t('common.back')}
+					{t('actions.back')}
 				</Button>
 				<Button
 					fullWidth
 					variant="solid"
 					color="success"
+					radius="sm"
 					onPress={openBoard}
 					spinnerPlacement="end"
 					isLoading={open.isPending}
 					isDisabled={open.isPending || !selectedWorkspace}
 				>
-					{t('common.open')}
+					{t('actions.open')}
 				</Button>
 			</div>
 		</div>

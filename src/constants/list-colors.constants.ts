@@ -2,8 +2,7 @@ export type ListColor = { color: string; hex: string; rgb: string; text: string 
 
 export const listColors: ListColor[] = [
 	{
-		color: 'bg-default-200',
-		// hex: '#E11D48',
+		color: 'bg-default-50',
 		hex: 'theme',
 		rgb: 'theme',
 		text: 'text-foreground',

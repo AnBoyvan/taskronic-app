@@ -57,27 +57,29 @@ export const BoardMenuInfo: React.FC<BoardMenuInfoProps> = ({ board, canUpdate }
 					control={control}
 					variant="bordered"
 					name="title"
-					label={t('label.title')}
+					label={t('common.title')}
 				/>
 				<Textarea
 					isReadOnly={!canUpdate || updGeneral.isPending}
 					{...register('description')}
-					label={t('label.description')}
+					label={t('common.description')}
 					variant="bordered"
+					radius="sm"
 					labelPlacement="outside"
-					placeholder={t('placeholder.board_descr')}
+					placeholder={t('board.descr')}
 				/>
 				<Button
 					isDisabled={updGeneral.isPending || !isDirty || !isValid}
 					fullWidth={true}
 					color={!isDirty || !isValid ? 'default' : 'primary'}
 					variant="solid"
+					radius="sm"
 					type="submit"
 					isLoading={updGeneral.isPending}
 					spinnerPlacement="end"
 					className="min-h-10"
 				>
-					{t('common.edit')}
+					{t('actions.edit')}
 				</Button>
 			</form>
 		</div>

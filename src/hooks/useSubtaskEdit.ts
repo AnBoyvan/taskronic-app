@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -16,8 +16,6 @@ type CreateSubtaskProps = {
 };
 
 export const useSubtaskEdit = () => {
-	const queryClient = useQueryClient();
-
 	const addSubtask = useMutation({
 		mutationFn: ({ taskId, data }: CreateSubtaskProps) => taskService.addSubtask(taskId, data),
 		mutationKey: ['subtasks-create'],

@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 import { Accordion, AccordionItem, Button, Listbox, ListboxItem } from '@nextui-org/react';
 
@@ -8,6 +9,7 @@ import { workspaceNav } from '@/configs/nav.config';
 import { useInviteModal } from '@/hooks/useInviteModal';
 import { useUser } from '@/hooks/useUser';
 import { Workspace } from '@/types/workspace.interface';
+import { getWorkspacePermissions } from '@/utils/helpers/getWorkspacePermissions';
 
 type WorkspacesListProps = {
 	workspaces: Workspace[];
@@ -17,6 +19,11 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 	const t = useTranslations();
 	const { _id } = useUser();
 	const modal = useInviteModal();
+
+	const canInviteMembers = (workspace: Workspace) => {
+		const { invite } = getWorkspacePermissions(workspace, _id);
+		return invite;
+	};
 
 	return (
 		<Accordion
@@ -55,8 +62,6 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 							<ListboxItem
 								aria-label={t(label)}
 								key={value}
-								title={t(label)}
-								href={value}
 								startContent={<Icon name={icon} size={12} />}
 								endContent={
 									(w.admins.includes(_id) || w.settings.invite) && label === 'common.members' ? (
@@ -74,7 +79,11 @@ export const WorkspacesList: React.FC<WorkspacesListProps> = ({ workspaces }) =>
 										</Button>
 									) : null
 								}
-							/>
+							>
+								<Link href={value} className="flex flex-row items-center">
+									{t(label)}
+								</Link>
+							</ListboxItem>
 						))}
 					</Listbox>
 				</AccordionItem>

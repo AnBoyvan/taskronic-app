@@ -25,7 +25,7 @@ export const boardMenu: BoardMenuConfig = {
 			icon: 'MessageSquareText',
 		},
 		{
-			label: 'common.archive_items',
+			label: 'common.archive',
 			section: 'archive',
 			icon: 'Archive',
 		},

@@ -41,9 +41,10 @@ export const PrioritySwitcher: React.FC<PrioritySwitcherProps> = ({
 			aria-label={t('common.priority')}
 			selectedKeys={[String(selected)]}
 			disabledKeys={[String(selected)]}
-			placeholder={t('placeholder.select')}
+			placeholder={t('actions.select')}
 			onChange={onPrioritySelect}
 			variant="flat"
+			radius="sm"
 			disallowEmptySelection
 			renderValue={items => {
 				return items.map(item => (
@@ -60,6 +61,7 @@ export const PrioritySwitcher: React.FC<PrioritySwitcherProps> = ({
 				trigger: 'p-0 overflow-hidden shadow-md',
 				innerWrapper: 'w-full h-full',
 				value: 'h-full ',
+				popoverContent: 'rounded-lg',
 			}}
 		>
 			{({ value, label, color }) => (

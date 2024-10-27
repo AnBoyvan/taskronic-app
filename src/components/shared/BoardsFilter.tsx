@@ -33,12 +33,13 @@ export const BoardsFilter: React.FC<BoardsFilterProps> = ({ value, setValue, boa
 				items={boards}
 				selectedKeys={value}
 				aria-label={t('common.boards')}
-				placeholder={t('placeholder.select')}
+				placeholder={t('actions.select')}
 				value={stringValue}
 				isMultiline={true}
 				selectionMode="multiple"
 				variant="bordered"
 				size="lg"
+				radius="sm"
 				onSelectionChange={handleChange}
 				renderValue={(items: SelectedItems<Board>) => {
 					return (
@@ -62,6 +63,7 @@ export const BoardsFilter: React.FC<BoardsFilterProps> = ({ value, setValue, boa
 				classNames={{
 					innerWrapper: 'py-2',
 					value: 'text-sm',
+					popoverContent: 'rounded-lg',
 				}}
 			>
 				{boards.map(({ _id, title, thumbImage, bgColor }) => (
@@ -70,7 +72,7 @@ export const BoardsFilter: React.FC<BoardsFilterProps> = ({ value, setValue, boa
 							<div
 								style={thumbImage ? { backgroundImage: `url(${thumbImage})` } : undefined}
 								className={clsx(
-									'h-6 w-8 rounded-md shadow-sm',
+									'h-6 min-w-8 w-8 rounded shadow-sm',
 									bgColor && `${boardColors[bgColor]}`,
 								)}
 							></div>

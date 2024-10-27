@@ -88,7 +88,7 @@ export const ActivityItem: React.FC<ActivityActionProps> = ({
 				</p>
 				<div className="flex flex-col  text-default-500">
 					<span className="text-tiny">
-						{formatDate(activity.createdAt, t('LocaleSwitcher.current') as Locale, 'full')}
+						{formatDate(activity.createdAt, t('locale.current') as Locale, 'full')}
 					</span>
 					{showBoard && (
 						<span className="text-tiny">

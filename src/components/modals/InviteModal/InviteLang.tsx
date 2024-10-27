@@ -26,7 +26,11 @@ export const InviteLang: React.FC<InviteLangProps> = ({ current, setLang }) => {
 			variant="bordered"
 			selectedKeys={[current]}
 			onChange={onChange}
-			label={t('label.invite_lang')}
+			radius="sm"
+			label={t('workspace.invite_lang')}
+			classNames={{
+				popoverContent: 'rounded-lg',
+			}}
 		>
 			{localesConfig.map(({ value, title }) => (
 				<SelectItem key={value}>{t(title)}</SelectItem>

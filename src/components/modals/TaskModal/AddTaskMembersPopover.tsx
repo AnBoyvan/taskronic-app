@@ -40,7 +40,7 @@ export const AddTaskMemberPopover: React.FC<AddTaskMemberPopoverProps> = ({
 		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
 			<PopoverTrigger>{trigger}</PopoverTrigger>
 			<PopoverContent className="p-2 w-80 max-h-96 overflow-hidden">
-				<p className="font-medium text-center pt-1">{t('common.add_members')}</p>
+				<p className="font-medium text-center pt-1">{t('actions.add_members')}</p>
 				<Button
 					isIconOnly
 					variant="light"
@@ -53,7 +53,7 @@ export const AddTaskMemberPopover: React.FC<AddTaskMemberPopoverProps> = ({
 				<Input
 					variant="bordered"
 					size="md"
-					placeholder={t('placeholder.search')}
+					placeholder={t('common.search')}
 					startContent={<Icon name="Search" size={16} />}
 					type="search"
 					value={search}

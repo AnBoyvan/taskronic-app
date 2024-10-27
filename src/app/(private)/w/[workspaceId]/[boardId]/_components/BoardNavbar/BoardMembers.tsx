@@ -37,6 +37,7 @@ export const BoardMembers: React.FC<BoardMembersProps> = ({ board }) => {
 					offset={0}
 					isOpen={isOpen}
 					onOpenChange={open => setIsOpen(open)}
+					radius="md"
 				>
 					<PopoverTrigger>
 						<Button

@@ -60,7 +60,7 @@ export const WorkspaceInvite: React.FC<WorkspaceInviteProps> = ({ invite, error 
 							spinnerPlacement="end"
 							isLoading={acceptInvite.isPending || rejectInvite.isPending}
 						>
-							{t('common.accept')}
+							{t('actions.accept')}
 						</Button>
 						<Button
 							size="sm"
@@ -74,7 +74,7 @@ export const WorkspaceInvite: React.FC<WorkspaceInviteProps> = ({ invite, error 
 							spinnerPlacement="end"
 							isLoading={acceptInvite.isPending || rejectInvite.isPending}
 						>
-							{t('common.decline')}
+							{t('actions.decline')}
 						</Button>
 					</div>
 				</Section>

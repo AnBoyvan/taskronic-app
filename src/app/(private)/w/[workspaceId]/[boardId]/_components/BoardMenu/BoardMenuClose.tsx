@@ -27,14 +27,16 @@ export const BoardMenuClose: React.FC<BoardMenuCloseProps> = ({ boardId }) => {
 					fullWidth
 					variant="bordered"
 					color="default"
+					radius="sm"
 					onPress={() => onOpen('main')}
 					isDisabled={close.isPending}
 				>
-					{t('common.back')}
+					{t('actions.back')}
 				</Button>
 				<Button
 					fullWidth
 					variant="solid"
+					radius="sm"
 					color="danger"
 					onPress={() => {
 						close.mutate(boardId);
@@ -42,7 +44,7 @@ export const BoardMenuClose: React.FC<BoardMenuCloseProps> = ({ boardId }) => {
 					}}
 					isDisabled={close.isPending}
 				>
-					{t('common.close')}
+					{t('actions.close')}
 				</Button>
 			</div>
 		</div>

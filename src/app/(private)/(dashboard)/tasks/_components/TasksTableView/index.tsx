@@ -72,7 +72,7 @@ export const TasksTableView: React.FC<TasksTableViewProps> = ({ tasks }) => {
 			sortDescriptor={sortDescriptor}
 			onSortChange={setSortDescriptor}
 			classNames={{
-				base: 'hidden lg:flex flex-col px-0 py-8 overflow-auto',
+				base: 'hidden lg:flex flex-col px-0 pt-8 overflow-auto',
 				table: 'flex flex-col min-h-20 h-full ',
 				tbody: 'overflow-y-auto max-h-full',
 				th: 'pl-2 pr-0 flex items-center ',
@@ -87,7 +87,7 @@ export const TasksTableView: React.FC<TasksTableViewProps> = ({ tasks }) => {
 					</TableColumn>
 				)}
 			</TableHeader>
-			<TableBody items={sortedTasks} emptyContent={t('task.task_not_found')}>
+			<TableBody items={sortedTasks} emptyContent={t('task.not_found')}>
 				{item => (
 					<TableRow key={item._id} className="border-b-1">
 						{columnKey => <TableCell>{renderCell(item, columnKey)}</TableCell>}

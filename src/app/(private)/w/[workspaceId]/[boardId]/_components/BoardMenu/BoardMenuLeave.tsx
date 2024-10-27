@@ -35,7 +35,7 @@ export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({
 
 	const leaveBoard = () => {
 		if (isOnlyAdmin) {
-			toast.error(t('board.last_admin'));
+			toast.error(t('board.only_admin'));
 			return;
 		}
 		leave.mutate(boardId);
@@ -58,29 +58,31 @@ export const BoardMenuLeave: React.FC<BoardMenuLeaveProps> = ({
 	return (
 		<div className="flex flex-col">
 			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
-				{t('board.leave_board')}?
+				{t('board.leave')}?
 			</div>
 			<Divider className="my-2" />
 			<div className="flex flex-row gap-4">
 				<Button
 					fullWidth
 					variant="bordered"
+					radius="sm"
 					color="default"
 					onPress={() => onOpen('main')}
 					isDisabled={leave.isPending}
 				>
-					{t('common.back')}
+					{t('actions.back')}
 				</Button>
 				<Button
 					fullWidth
 					variant="solid"
+					radius="sm"
 					color="danger"
 					onPress={leaveBoard}
 					isDisabled={leave.isPending}
 					spinnerPlacement="end"
 					isLoading={leave.isPending}
 				>
-					{t('common.leave')}
+					{t('actions.leave')}
 				</Button>
 			</div>
 		</div>

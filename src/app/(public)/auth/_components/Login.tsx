@@ -53,8 +53,8 @@ export const Login: React.FC = () => {
 				variant="faded"
 				icon="Mail"
 				name="email"
-				label={t('label.email')}
-				placeholder={t('placeholder.email')}
+				label={t('common.email')}
+				placeholder={t('auth.placeholder_email')}
 				isRequired
 				isDisabled={isPending}
 			/>
@@ -63,8 +63,8 @@ export const Login: React.FC = () => {
 				variant="faded"
 				icon="LockKeyhole"
 				name="password"
-				label={t('label.pass')}
-				placeholder={t('placeholder.pass')}
+				label={t('common.pass')}
+				placeholder={t('auth.placeholder_pass')}
 				isRequired
 				type="password"
 				isDisabled={isPending}
@@ -75,6 +75,7 @@ export const Login: React.FC = () => {
 			<Button
 				isDisabled={isPending}
 				fullWidth={true}
+				radius="sm"
 				color="primary"
 				variant="solid"
 				type="submit"

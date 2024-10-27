@@ -33,7 +33,13 @@ export const ChangeColor: React.FC<ChangeColorProps> = ({
 	const colors = Object.keys(colorVariants) as ColorVariant[];
 
 	return (
-		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover
+			placement="bottom"
+			offset={0}
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			radius="md"
+		>
 			<PopoverTrigger>
 				<Button variant="bordered" size="sm" className="w-28">
 					{t('workspace.change_color')}
@@ -43,6 +49,7 @@ export const ChangeColor: React.FC<ChangeColorProps> = ({
 				{colors.map(color => (
 					<Button
 						key={color}
+						radius="sm"
 						isIconOnly
 						isDisabled={color === currentColor}
 						className={colorVariants[color]}

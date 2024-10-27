@@ -40,7 +40,7 @@ export const BoardFilter: React.FC<BoardFilterProps> = ({ board }) => {
 					size="sm"
 					variant="solid"
 					color="default"
-					startContent={<Icon name="Filter" size={16} />}
+					startContent={<Icon name="Filter" className="text-foreground" size={16} />}
 					onPress={() => setIsOpen(true)}
 					className={clsx(
 						'hidden md:flex bg-default-100 text-sm',
@@ -54,7 +54,7 @@ export const BoardFilter: React.FC<BoardFilterProps> = ({ board }) => {
 					variant="solid"
 					color="default"
 					isIconOnly
-					startContent={<Icon name="Filter" size={16} />}
+					startContent={<Icon name="Filter" size={16} className="text-foreground" />}
 					onPress={() => setIsOpen(true)}
 					className={clsx(
 						'flex md:hidden bg-default-100',
@@ -80,6 +80,7 @@ export const BoardFilter: React.FC<BoardFilterProps> = ({ board }) => {
 				onOpenChange={open => setIsOpen(open)}
 				placement="center"
 				backdrop="blur"
+				radius="md"
 				classNames={{
 					closeButton: 'right-2 top-3',
 				}}
@@ -93,12 +94,14 @@ export const BoardFilter: React.FC<BoardFilterProps> = ({ board }) => {
 					<ModalHeader className="p-2 justify-center text-base">{t('task.filter')}</ModalHeader>
 					<ModalBody className="p-0 pb-10 gap-8 mt-2">
 						<Input
-							variant="flat"
+							variant="bordered"
 							size="md"
-							placeholder={t('placeholder.search')}
+							radius="sm"
+							placeholder={t('common.search')}
 							startContent={<Icon name="Search" size={16} />}
 							type="search"
 							value={filter.search}
+							className="border-divider"
 							onValueChange={value => changeFilter('search', value)}
 						/>
 						<PriorityFilter

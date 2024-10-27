@@ -77,7 +77,7 @@ export const OnlyAdminItemMembers: React.FC<OnlyAdminItemMembersProps> = ({
 				isLoading={isLoading}
 				spinnerPlacement="end"
 			>
-				{t('common.add')}
+				{t('actions.add')}
 			</Button>
 			<CheckboxGroup
 				color="primary"

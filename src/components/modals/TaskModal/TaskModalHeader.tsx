@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { useState } from 'react';
 
-import { TaskMovePopover } from '@/components/shared/MoveTaskPopover';
+import { MoveTaskPopover } from '@/components/shared/MoveTaskPopover';
 import { Icon } from '@/components/ui/Icon';
 import { useReorder } from '@/hooks/useReorder';
 import { useTasksEdit } from '@/hooks/useTasksEdit';
@@ -57,7 +57,7 @@ export const TaskModalHeader: React.FC<TaskModalHeaderProps> = ({ task, permissi
 				<div className="flex flex-row items-center text-tiny h-7">
 					<span>{t('task.in_list')}&nbsp;</span>
 					{permissions?.taskOrder ? (
-						<TaskMovePopover
+						<MoveTaskPopover
 							trigger={
 								<button className="p-0 min-w-0 min-h-0 text-foreground underline hover:opacity-90">
 									{currentList.label}

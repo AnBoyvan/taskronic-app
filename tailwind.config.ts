@@ -27,6 +27,13 @@ const config: Config = {
 	darkMode: ['class', 'class'],
 	plugins: [
 		nextui({
+			layout: {
+				radius: {
+					small: '4px',
+					medium: '8px',
+					large: '16px',
+				},
+			},
 			themes: {
 				light: {
 					colors: {
@@ -34,17 +41,23 @@ const config: Config = {
 							DEFAULT: '#3f3f46',
 						},
 						background: {
-							DEFAULT: '#fafafa',
+							DEFAULT: '#f9fafc',
 						},
 					},
 				},
 				dark: {
 					colors: {
 						foreground: {
-							DEFAULT: '#e4e4e7',
+							DEFAULT: '#b6bec9',
 						},
 						background: {
+							DEFAULT: '#18181b',
+						},
+						content1: {
 							DEFAULT: '#27272a',
+						},
+						default: {
+							DEFAULT: '#52525b',
 						},
 					},
 				},

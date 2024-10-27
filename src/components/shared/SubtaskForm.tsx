@@ -19,7 +19,7 @@ type SubtaskFormProps = {
 	actions?: ReactNode;
 };
 
-export const SubtaskFormForm: React.FC<SubtaskFormProps> = ({
+export const SubtaskForm: React.FC<SubtaskFormProps> = ({
 	label,
 	isEditing,
 	onAccept,
@@ -67,6 +67,7 @@ export const SubtaskFormForm: React.FC<SubtaskFormProps> = ({
 			<Textarea
 				{...register('value')}
 				value={watch('value')}
+				radius="sm"
 				variant="bordered"
 				minRows={2}
 				onValueChange={value => setValue('value', value)}
@@ -80,7 +81,7 @@ export const SubtaskFormForm: React.FC<SubtaskFormProps> = ({
 					color="primary"
 					isDisabled={!isDirty || !isValid}
 				>
-					{t(isEditing ? 'common.save' : 'common.add')}
+					{t(isEditing ? 'actions.save' : 'actions.add')}
 				</Button>
 				<Button type="button" isIconOnly variant="light" size="sm" onPress={disableEditing}>
 					<Icon name="X" size={20} />

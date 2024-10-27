@@ -43,7 +43,7 @@ export const BoardGridByLists: React.FC<BoardGridByListsProps> = ({
 		<>
 			{orderedLists.map(list => (
 				<Section key={list._id} noTopMargin className="flex flex-col gap-2 mt-2">
-					<div className={clsx('pt-1 pb-4 h-14 rounded-lg shadow-md', list.bgColor)}>
+					<div className={clsx('pt-1 pb-4 h-14 rounded shadow-md', list.bgColor)}>
 						<ListHeader
 							list={list}
 							boardId={board._id}

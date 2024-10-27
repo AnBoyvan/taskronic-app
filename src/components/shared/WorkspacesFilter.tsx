@@ -36,12 +36,13 @@ export const WorkspacesFilter: React.FC<WorkspacesFilterProps> = ({
 				items={workspaces}
 				selectedKeys={value}
 				aria-label={t('common.workspaces')}
-				placeholder={t('placeholder.select')}
+				placeholder={t('actions.select')}
 				value={stringValue}
 				isMultiline={true}
 				selectionMode="multiple"
 				variant="bordered"
 				size="lg"
+				radius="sm"
 				onSelectionChange={handleChange}
 				renderValue={(items: SelectedItems<WorkspaceBasic>) => {
 					return (
@@ -65,6 +66,7 @@ export const WorkspacesFilter: React.FC<WorkspacesFilterProps> = ({
 				classNames={{
 					innerWrapper: 'py-2',
 					value: 'text-sm',
+					popoverContent: 'rounded-lg',
 				}}
 			>
 				{workspaces.map(({ _id, name, avatarColor, avatarIcon }) => (

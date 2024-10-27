@@ -16,12 +16,12 @@ export const fnsLocale = {
 export const localesConfig: { value: Locale; label: TranslationKeys; title: TranslationKeys }[] = [
 	{
 		value: 'en',
-		label: 'LocaleSwitcher.en',
-		title: 'LocaleSwitcher.en_full',
+		label: 'locale.en',
+		title: 'locale.en_full',
 	},
 	{
 		value: 'uk',
-		label: 'LocaleSwitcher.uk',
-		title: 'LocaleSwitcher.uk_full',
+		label: 'locale.uk',
+		title: 'locale.uk_full',
 	},
 ];

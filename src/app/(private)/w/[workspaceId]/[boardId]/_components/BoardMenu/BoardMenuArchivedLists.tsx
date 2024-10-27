@@ -78,25 +78,26 @@ export const BoardMenuArchivedLists: React.FC<BoardMenuArchivedListsProps> = ({
 								className="text-foreground hover:text-success transition-colors text-tiny"
 								onClick={() => restoreList(list)}
 							>
-								{t('common.restore')}
+								{t('actions.restore')}
 							</button>
 
 							{checkTasksPermission(list._id) && (
-								<Popover placement="bottom" offset={0}>
+								<Popover placement="bottom" offset={0} radius="md">
 									<PopoverTrigger>
 										<button className="text-foreground hover:text-danger transition-colors text-tiny">
-											{t('common.delete')}
+											{t('actions.delete')}
 										</button>
 									</PopoverTrigger>
 									<PopoverContent className="p-2 gap-2 w-72">
-										<p className="text-center">{t('board.delete_list_warn')}</p>
+										<p className="text-center">{t('board.list_delete_warn')}</p>
 										<Button
 											variant="solid"
 											color="danger"
 											fullWidth
+											radius="sm"
 											onPress={() => removeList(list)}
 										>
-											{t('board.delete_list')}?
+											{t('board.list_delete')}?
 										</Button>
 									</PopoverContent>
 								</Popover>

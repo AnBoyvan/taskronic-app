@@ -25,18 +25,20 @@ export const SortBy: React.FC<SortByProps> = ({ current, setCurrent, ...props })
 
 	return (
 		<Select
-			aria-label={t('label.sort')}
+			aria-label={t('actions.sort')}
 			labelPlacement="outside"
-			label={t('label.sort')}
-			placeholder={t('placeholder.select')}
+			label={t('actions.sort')}
+			placeholder={t('actions.select')}
 			disallowEmptySelection
 			selectionMode="single"
 			variant={props.variant || 'bordered'}
 			size={props.size || 'md'}
+			radius="sm"
 			selectedKeys={[`${current.field}-${current.order}`]}
 			onSelectionChange={key => changeVariant(key)}
 			popoverProps={{
 				className: 'w-fit',
+				radius: 'md',
 			}}
 			{...props}
 		>

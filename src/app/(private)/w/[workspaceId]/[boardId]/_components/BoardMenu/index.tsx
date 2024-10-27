@@ -46,7 +46,7 @@ export const BoardMenu: React.FC<BoardMenuProps> = ({ board }) => {
 
 	return (
 		<div
-			className={`absolute bg-background h-full z-20 top-0 right-0 transition-all duration-200 ${!isOpen ? 'w-0' : 'w-80 p-2'} overflow-hidden`}
+			className={`absolute bg-background h-full z-20 top-0 right-0 transition-all duration-200 ${!isOpen ? 'w-0' : 'w-80 p-2'} overflow-hidden border-l border-divider`}
 		>
 			<Button
 				isIconOnly

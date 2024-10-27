@@ -36,6 +36,7 @@ export const CreateBoardDrawer: React.FC<CreateBoardDrawerProps> = ({
 				}}
 				placement="bottom-end"
 				offset={0}
+				radius="md"
 			>
 				<DropdownTrigger>
 					<Button isIconOnly variant="solid" size="sm" color="default">

@@ -34,14 +34,14 @@ export const ChangePassword: React.FC = () => {
 
 	return (
 		<form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
-			<div className="text-start bg-default p-2 w-full rounded-lg">{t('auth.change_pass')}</div>
+			<div className="text-start bg-default p-2 w-full rounded">{t('auth.change_pass')}</div>
 			<FormInput
 				control={control}
 				variant="bordered"
 				icon="LockKeyhole"
 				name="password"
-				label={t('label.pass')}
-				placeholder={t('placeholder.pass')}
+				label={t('common.pass')}
+				placeholder={t('auth.placeholder_pass')}
 				isRequired
 				type="password"
 				isDisabled={changePassword.isPending}
@@ -51,8 +51,8 @@ export const ChangePassword: React.FC = () => {
 				variant="bordered"
 				icon="LockKeyhole"
 				name="newPassword"
-				label={t('label.new_pass')}
-				placeholder={t('placeholder.pass')}
+				label={t('auth.new_pass')}
+				placeholder={t('auth.placeholder_pass')}
 				isRequired
 				type="password"
 				isDisabled={changePassword.isPending}
@@ -62,8 +62,8 @@ export const ChangePassword: React.FC = () => {
 				variant="bordered"
 				icon="LockKeyhole"
 				name="confirmNewPassword"
-				label={t('label.new_pass_confirm')}
-				placeholder={t('placeholder.pass')}
+				label={t('auth.new_pass_confirm')}
+				placeholder={t('auth.placeholder_pass')}
 				isRequired
 				type="password"
 				isDisabled={changePassword.isPending}
@@ -72,11 +72,12 @@ export const ChangePassword: React.FC = () => {
 				isDisabled={changePassword.isPending}
 				color="primary"
 				variant="solid"
+				radius="sm"
 				type="submit"
 				isLoading={changePassword.isPending}
 				spinnerPlacement="end"
 			>
-				{t('auth.confirm')}
+				{t('actions.confirm')}
 			</Button>
 		</form>
 	);

@@ -45,7 +45,7 @@ export const TaskModalRemove: React.FC<TaskModalRemoveProps> = ({ task, permissi
 			<RemoveTaskPopover
 				trigger={
 					<Button variant="light" color="danger" size="sm">
-						{t('task.remove_task')}
+						{t('task.remove')}
 					</Button>
 				}
 				canRemove={permissions.deleteTask}

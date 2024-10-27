@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Button, Listbox, ListboxItem } from '@nextui-org/react';
@@ -38,7 +39,6 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 					key={value}
 					startContent={<Icon name={icon} size={16} />}
 					isReadOnly={Boolean(pathname === value)}
-					href={value}
 					className="h-10"
 					classNames={{
 						base: pathname === value ? 'text-primary bg-primary-50' : '',
@@ -60,12 +60,12 @@ export const WorkspaceSidebarNav: React.FC<DWorkspaceSidebarNavProps> = ({
 						) : null
 					}
 				>
-					<span className="flex flex-row gap-2 items-center">
+					<Link href={value} className="flex flex-row gap-2 items-center">
 						{t(label)}
 						{label === 'common.members' && requests.length > 0 && (
 							<Icon name="CircleAlert" size={16} className="text-success" />
 						)}
-					</span>
+					</Link>
 				</ListboxItem>
 			))}
 		</Listbox>

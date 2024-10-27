@@ -17,7 +17,7 @@ export const useContacts = () => {
 		mutationFn: (data: Member) => userService.addContact(data._id),
 		mutationKey: ['contacts-add'],
 		onSuccess: (_, data) => {
-			toast.success(t('account.contact_added'), { closeButton: false });
+			toast.success(t('user.contact_added'), { closeButton: false });
 			addUserContact(data);
 		},
 		onError: err => {

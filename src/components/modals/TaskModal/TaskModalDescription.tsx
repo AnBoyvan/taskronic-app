@@ -75,7 +75,7 @@ export const TaskModalDescription: React.FC<TaskModalDescriptionProps> = ({
 		<TaskModalSection
 			icon="Text"
 			title={t('common.description')}
-			button={permissions?.createTask ? t('common.edit') : ''}
+			button={permissions?.createTask ? t('actions.edit') : ''}
 			action={() => setIsEditing(true)}
 		>
 			{isEditing ? (
@@ -90,12 +90,12 @@ export const TaskModalDescription: React.FC<TaskModalDescriptionProps> = ({
 						ref={textareaRef}
 						variant="bordered"
 						color="primary"
+						radius="sm"
 						minRows={5}
 						onValueChange={value => setValue('value', value)}
 						classNames={{
 							base: 'mt-2',
-							inputWrapper: 'p-2',
-
+							inputWrapper: 'p-2 bg-default-50',
 							input: 'text-sm',
 						}}
 					/>
@@ -109,7 +109,7 @@ export const TaskModalDescription: React.FC<TaskModalDescriptionProps> = ({
 							isDisabled={updGeneral.isPending}
 							spinnerPlacement="end"
 						>
-							{t('common.save')}
+							{t('actions.save')}
 						</Button>
 						<Button
 							type="button"
@@ -119,16 +119,16 @@ export const TaskModalDescription: React.FC<TaskModalDescriptionProps> = ({
 							isDisabled={updGeneral.isPending}
 							onPress={disableEditing}
 						>
-							{t('common.cancel')}
+							{t('actions.cancel')}
 						</Button>
 					</div>
 				</form>
 			) : (
 				<div
 					onClick={enableEditing}
-					className={`w-full flex text-sm min-h-20 border-transparent border-2 bg-default-100 rounded-2xl mt-2 p-2`}
+					className={`w-full flex text-sm min-h-20 border-transparent border-2 bg-default-50 rounded mt-2 p-2`}
 				>
-					{taskDescription ? taskDescription : t('placeholder.task_descr')}
+					{taskDescription ? taskDescription : t('task.descr')}
 				</div>
 			)}
 		</TaskModalSection>

@@ -107,9 +107,11 @@ export const AddTaskForm: React.FC<AddTaskFormProps> = ({
 					label={t('common.list')}
 					labelPlacement="outside"
 					isRequired
+					radius="sm"
 					classNames={{
 						base: 'text-sm data-[has-label=true]:mt-4',
 						label: 'text-tiny top-2/3',
+						popoverContent: 'rounded-lg',
 					}}
 				>
 					{lists.map(list => (
@@ -122,6 +124,7 @@ export const AddTaskForm: React.FC<AddTaskFormProps> = ({
 			<Textarea
 				{...register('title')}
 				value={watch('title')}
+				radius="sm"
 				ref={textareaRef}
 				variant="bordered"
 				minRows={2}
@@ -136,7 +139,7 @@ export const AddTaskForm: React.FC<AddTaskFormProps> = ({
 					variant="solid"
 					color="primary"
 				>
-					{t('common.add')}
+					{t('actions.add')}
 				</Button>
 				<Button type="button" isIconOnly variant="light" size="sm" onPress={disableEditing}>
 					<Icon name="X" size={20} />

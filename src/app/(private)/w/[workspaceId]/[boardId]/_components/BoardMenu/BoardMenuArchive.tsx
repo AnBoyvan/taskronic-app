@@ -25,7 +25,7 @@ export const BoardMenuArchive: React.FC<BoardMenuArchiveProps> = ({ board, permi
 	return (
 		<div className="flex flex-col h-full overflow-hidden">
 			<div className="min-h-10 h-10 flex items-center justify-center font-medium">
-				{t('common.archive_items')}&nbsp;
+				{t('common.archive')}&nbsp;
 				<span className="font-normal">
 					&#10088;{t(showTasks ? 'common.tasks' : 'common.lists')}&#10089;
 				</span>
@@ -35,13 +35,20 @@ export const BoardMenuArchive: React.FC<BoardMenuArchiveProps> = ({ board, permi
 				<Input
 					variant="bordered"
 					size="md"
-					placeholder={t('placeholder.search')}
+					radius="sm"
+					placeholder={t('common.search')}
 					startContent={<Icon name="Search" size={16} />}
 					type="search"
 					value={search}
 					onValueChange={value => setSearch(value)}
 				/>
-				<Button size="md" variant="solid" color="primary" onPress={() => setItemsType(!showTasks)}>
+				<Button
+					size="md"
+					variant="solid"
+					radius="sm"
+					color="primary"
+					onPress={() => setItemsType(!showTasks)}
+				>
 					{t(showTasks ? 'common.lists' : 'common.tasks')}
 				</Button>
 			</div>

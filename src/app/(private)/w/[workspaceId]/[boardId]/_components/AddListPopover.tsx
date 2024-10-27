@@ -27,6 +27,7 @@ export const AddListPopover: React.FC<AddListPopoverProps> = ({ boardId }) => {
 				content: 'p-0 w-64',
 			}}
 			placement="bottom"
+			radius="md"
 		>
 			<PopoverTrigger>
 				<Button

@@ -47,7 +47,7 @@ export const PriorityCell: React.FC<PriorityCellProps> = ({
 	};
 
 	return (
-		<Dropdown isDisabled={!canEdit} offset={0}>
+		<Dropdown isDisabled={!canEdit} offset={0} radius="md">
 			<DropdownTrigger>
 				<Button
 					variant="solid"

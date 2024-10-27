@@ -95,14 +95,14 @@ export const AddListForm: React.FC<AddListFormProps> = ({
 			className="p-2 rounded-lg bg-background space-y-2 shadow-md w-full"
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			{showTitle && <div className="text-center">{t('board.new_list')}</div>}
+			{showTitle && <div className="text-center">{t('board.list_new')}</div>}
 			<FormInput
 				control={control}
 				size="sm"
 				variant="bordered"
 				name="label"
 				ref={inputRef}
-				placeholder={t('placeholder.list_title')}
+				placeholder={t('board.list_title')}
 				isDisabled={addList.isPending}
 			/>
 			<div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ export const AddListForm: React.FC<AddListFormProps> = ({
 					variant="solid"
 					color="primary"
 				>
-					{t('common.add')}
+					{t('actions.add')}
 				</Button>
 				<Button type="button" isIconOnly variant="light" size="sm" onPress={disableEditing}>
 					<Icon name="X" size={20} />

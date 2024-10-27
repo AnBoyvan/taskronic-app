@@ -48,10 +48,16 @@ export const OpenBoardPopover: React.FC<OpenBoardPopoverProps> = ({
 	}, [open.isSuccess]);
 
 	return (
-		<Popover isOpen={isOpen} onOpenChange={open => setIsOpen(open)} placement="bottom" offset={0}>
+		<Popover
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			placement="bottom"
+			offset={0}
+			radius="md"
+		>
 			<PopoverTrigger>
 				<Button size="sm" variant="solid" color="success">
-					{t('common.open')}
+					{t('actions.open')}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="p-2 w-64 flex-col gap-2">
@@ -72,13 +78,14 @@ export const OpenBoardPopover: React.FC<OpenBoardPopoverProps> = ({
 				<Button
 					fullWidth
 					variant="solid"
+					radius="sm"
 					color="success"
 					onPress={openBoard}
 					spinnerPlacement="end"
 					isLoading={open.isPending}
 					isDisabled={open.isPending || !selectedWorkspace}
 				>
-					{t('common.open')}
+					{t('actions.open')}
 				</Button>
 			</PopoverContent>
 		</Popover>

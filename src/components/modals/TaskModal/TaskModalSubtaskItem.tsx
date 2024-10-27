@@ -10,7 +10,7 @@ import { Icon } from '@/components/ui/Icon';
 import { useSubtaskEdit } from '@/hooks/useSubtaskEdit';
 import { Subtask } from '@/types/tasks.interface';
 
-import { SubtaskFormForm } from '../../shared/SubtaskForm';
+import { SubtaskForm } from '../../shared/SubtaskForm';
 
 type TaskModalSubtaskItemProps = {
 	subtask: Subtask;
@@ -60,7 +60,7 @@ export const TaskModalSubtaskItem: React.FC<TaskModalSubtaskItemProps> = ({
 				onValueChange={checkedToggle}
 			/>
 			{isEditing ? (
-				<SubtaskFormForm
+				<SubtaskForm
 					label={subtask.label}
 					isEditing
 					onAccept={handleEdit}
@@ -81,7 +81,7 @@ export const TaskModalSubtaskItem: React.FC<TaskModalSubtaskItemProps> = ({
 							</PopoverTrigger>
 							<PopoverContent className="p-2">
 								<Button variant="solid" color="danger" onPress={handleRemove}>
-									{t('common.remove')}
+									{t('actions.remove')}
 								</Button>
 							</PopoverContent>
 						</Popover>
@@ -91,6 +91,7 @@ export const TaskModalSubtaskItem: React.FC<TaskModalSubtaskItemProps> = ({
 				<Button
 					variant="light"
 					size="md"
+					radius="sm"
 					onPress={() => setIsEditing(true)}
 					fullWidth
 					className="p-2 justify-start text-start text-wrap min-h-8 h-fit"

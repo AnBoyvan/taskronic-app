@@ -1,0 +1,11 @@
+{
+	"validation": {
+		"already_added": "Already added",
+		"email_req": "Email is required",
+		"email_valid": "Invalid email address",
+		"name": "Name is required",
+		"pass": "Password must be 6+ characters, with at least one digit",
+		"passDoNotMatch": "Passwords do not match",
+		"title": "Enter a name"
+	}
+}

@@ -45,7 +45,7 @@ export const JoinRequestNotification: React.FC<JoinRequestNotificationProps> = (
 					onPress={() => acceptRequest.mutate({ workspaceId, userId: _id })}
 					isDisabled={acceptRequest.isPending || declineRequest.isPending}
 				>
-					{t('common.accept')}
+					{t('actions.accept')}
 				</Button>
 				<Button
 					size="sm"
@@ -55,7 +55,7 @@ export const JoinRequestNotification: React.FC<JoinRequestNotificationProps> = (
 					onPress={() => declineRequest.mutate({ workspaceId, userId: _id })}
 					isDisabled={acceptRequest.isPending || declineRequest.isPending}
 				>
-					{t('common.decline')}
+					{t('actions.decline')}
 				</Button>
 			</div>
 			<Divider />

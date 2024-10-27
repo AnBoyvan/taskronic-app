@@ -79,7 +79,13 @@ export const ListOptions: React.FC<ListOptionsProps> = ({
 	};
 
 	return (
-		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover
+			placement="bottom"
+			offset={0}
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			radius="md"
+		>
 			<PopoverTrigger>
 				<Button variant="light" size="sm" className={`${list.textColor}`} isIconOnly>
 					<Icon name="Ellipsis" size={16} />

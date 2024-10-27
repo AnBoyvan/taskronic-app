@@ -60,7 +60,7 @@ export const BoardMenuDelete: React.FC<BoardMenuDeleteProps> = ({
 					onPress={() => onOpen('main')}
 					isDisabled={deleteBoard.isPending}
 				>
-					{t('common.back')}
+					{t('actions.back')}
 				</Button>
 				<Button
 					fullWidth
@@ -71,7 +71,7 @@ export const BoardMenuDelete: React.FC<BoardMenuDeleteProps> = ({
 					isLoading={deleteBoard.isPending}
 					isDisabled={deleteBoard.isPending || !isAdmin}
 				>
-					{t('common.remove')}
+					{t('actions.remove')}
 				</Button>
 			</div>
 		</div>

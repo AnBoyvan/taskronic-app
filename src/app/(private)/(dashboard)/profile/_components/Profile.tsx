@@ -63,18 +63,19 @@ export const Profile = () => {
 				variant="bordered"
 				labelPlacement="outside"
 				name="name"
-				label={t('label.name')}
+				label={t('common.name')}
 			/>
 			<Textarea
 				isReadOnly={update.isPending}
 				{...register('bio')}
-				label={t('account.bio')}
+				label={t('user.bio')}
 				variant="bordered"
 				labelPlacement="outside"
 				placeholder=" "
+				radius="sm"
 			/>
 			<div className="flex flex-col gap-1">
-				<div className="text-sm">{t('account.avatar')}</div>
+				<div className="text-sm">{t('user.avatar')}</div>
 				<div className="grid grid-cols-[repeat(auto-fill,40px)] gap-2">
 					{colors.map(color => (
 						<Button
@@ -103,12 +104,13 @@ export const Profile = () => {
 				fullWidth={true}
 				color={!isDirty || !isValid ? 'default' : 'primary'}
 				variant="solid"
+				radius="sm"
 				type="submit"
 				isLoading={update.isPending}
 				spinnerPlacement="end"
 				className="min-h-10"
 			>
-				{t('common.save')}
+				{t('actions.save')}
 			</Button>
 		</form>
 	);

@@ -42,6 +42,7 @@ export const UserTasksFilter: React.FC<UserTasksFilterProps> = ({
 		<>
 			<Button
 				size="md"
+				radius="sm"
 				variant="faded"
 				color="default"
 				startContent={<Icon name="Filter" size={16} />}
@@ -51,6 +52,7 @@ export const UserTasksFilter: React.FC<UserTasksFilterProps> = ({
 			</Button>
 			<Modal
 				size="xs"
+				radius="md"
 				scrollBehavior="inside"
 				isOpen={isOpen}
 				onOpenChange={open => setIsOpen(open)}
@@ -60,7 +62,7 @@ export const UserTasksFilter: React.FC<UserTasksFilterProps> = ({
 					closeButton: 'right-2 top-3',
 				}}
 				closeButton={
-					<Button isIconOnly variant="light" size="md">
+					<Button isIconOnly variant="light" size="md" radius="sm">
 						<Icon name="X" size={20} />
 					</Button>
 				}
@@ -71,7 +73,8 @@ export const UserTasksFilter: React.FC<UserTasksFilterProps> = ({
 						<Input
 							variant="bordered"
 							size="md"
-							placeholder={t('placeholder.search')}
+							radius="sm"
+							placeholder={t('common.search')}
 							startContent={<Icon name="Search" size={16} />}
 							type="search"
 							value={filter.search}

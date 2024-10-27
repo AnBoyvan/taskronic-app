@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
-import { Button, Link, Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react';
+import { Button, Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react';
 
 import { Logo } from '@/components/svg/Logo';
 import { Name } from '@/components/svg/Name';
@@ -10,12 +11,11 @@ import { ROUTES } from '@/configs/routes.config';
 export const PublicHeader: React.FC = () => {
 	const t = useTranslations();
 	return (
-		<Navbar isBlurred maxWidth="full">
+		<Navbar isBlurred maxWidth="full" position="static">
 			<NavbarBrand>
 				<Link
-					color="foreground"
 					href={`/`}
-					className="flex flex-row justify-between gap-1 h-10 hover:opacity-hover transition-opacity"
+					className="flex flex-row text-foreground justify-between gap-1 h-10 hover:opacity-hover transition-opacity"
 				>
 					<Logo width={24} />
 					<Name width={100} />
@@ -23,7 +23,7 @@ export const PublicHeader: React.FC = () => {
 			</NavbarBrand>
 			<NavbarContent justify="end">
 				<LocaleSwitcher />
-				<Button as={Link} href={`${ROUTES.LOGIN}`} color="primary" variant="solid">
+				<Button as={Link} href={`${ROUTES.LOGIN}`} color="primary" variant="solid" radius="sm">
 					{t('auth.sign_in')}
 				</Button>
 			</NavbarContent>

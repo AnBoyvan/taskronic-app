@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { Button, Progress } from '@nextui-org/react';
 
-import { SubtaskFormForm } from '@/components/shared/SubtaskForm';
+import { SubtaskForm } from '@/components/shared/SubtaskForm';
 import { Icon } from '@/components/ui/Icon';
 import { useSubtaskEdit } from '@/hooks/useSubtaskEdit';
 import { BoardPermissions } from '@/types/board.interface';
@@ -98,7 +98,7 @@ export const TaskModalSubtasks: React.FC<TaskModalSubtasksProps> = ({ task, perm
 				))}
 			</ul>
 			{isFormOpen ? (
-				<SubtaskFormForm onAccept={handleAddSubtask} onReject={() => setIsFormOpen(false)} />
+				<SubtaskForm onAccept={handleAddSubtask} onReject={() => setIsFormOpen(false)} />
 			) : (
 				<Button
 					size="sm"
@@ -109,7 +109,7 @@ export const TaskModalSubtasks: React.FC<TaskModalSubtasksProps> = ({ task, perm
 					startContent={<Icon name="Plus" size={16} />}
 					onPress={() => setIsFormOpen(true)}
 				>
-					{t('common.add')}
+					{t('actions.add')}
 				</Button>
 			)}
 		</TaskModalSection>

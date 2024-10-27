@@ -97,8 +97,8 @@ export const CreateBoardModal: React.FC<CreateBoardModalProps> = ({ workspaceId 
 				control={control}
 				variant="bordered"
 				name="title"
-				label={t('label.title')}
-				placeholder={t('placeholder.new_board')}
+				label={t('common.title')}
+				placeholder={t('board.new')}
 				isRequired
 				classNames={{
 					label: 'text-tiny top-2/3',
@@ -129,12 +129,13 @@ export const CreateBoardModal: React.FC<CreateBoardModalProps> = ({ workspaceId 
 				fullWidth={true}
 				color={!isDirty || !isValid || !selectedWorkspace ? 'default' : 'primary'}
 				variant="solid"
+				radius="sm"
 				type="submit"
 				isLoading={create.isPending}
 				spinnerPlacement="end"
 				className="mt-2"
 			>
-				{t('common.create')}
+				{t('actions.create')}
 			</Button>
 		</form>
 	);

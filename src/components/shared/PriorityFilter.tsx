@@ -39,7 +39,7 @@ export const PriorityFilter: React.FC<PriorityFilterProps> = ({ value, setValue 
 		>
 			{priorityConfig.map(({ value, label, color }) => (
 				<Checkbox key={value} value={value.toString()} className="-my-0">
-					<span className={clsx('p-2 rounded-lg text-sm', color)}>{t(label)}</span>
+					<span className={clsx('p-2 rounded text-sm', color)}>{t(label)}</span>
 				</Checkbox>
 			))}
 		</CheckboxGroup>

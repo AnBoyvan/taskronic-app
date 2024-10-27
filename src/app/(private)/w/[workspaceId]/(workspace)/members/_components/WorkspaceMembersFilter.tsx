@@ -24,9 +24,9 @@ type WorkspaceMembersFilterProps = {
 };
 
 const roles: { value: 'all' | 'members' | 'guests'; label: TranslationKeys }[] = [
-	{ value: 'all', label: 'roles.all' },
-	{ value: 'members', label: 'roles.members' },
-	{ value: 'guests', label: 'roles.guests' },
+	{ value: 'all', label: 'common.all' },
+	{ value: 'members', label: 'common.members' },
+	{ value: 'guests', label: 'common.guests' },
 ];
 
 export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
@@ -51,10 +51,12 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 				aria-label="roles"
 				variant="bordered"
 				size="md"
+				radius="sm"
 				className="flex md:hidden"
 				classNames={{
 					mainWrapper: 'w-32',
 					value: 'text-tiny',
+					popoverContent: 'rounded-lg',
 				}}
 				listboxProps={{
 					itemClasses: {
@@ -76,7 +78,7 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 				variant="bordered"
 				classNames={{
 					wrapper: 'lg:w-full',
-					tabList: 'lg:flex-col h-10 lg:h-fit lg:w-full lg:p-2',
+					tabList: 'lg:flex-col h-10 lg:h-fit lg:w-full lg:p-2 rounded',
 				}}
 				className="hidden md:flex lg:w-full"
 				selectedKey={filter.role}
@@ -87,7 +89,7 @@ export const WorkspaceMembersFilter: React.FC<WorkspaceMembersFilterProps> = ({
 						key={value}
 						isDisabled={Boolean(count[value] < 1)}
 						title={<div>{`${t(label)} (${count[value]})`}</div>}
-						className="w-20 lg:w-full text-tiny lg:text-sm"
+						className="w-20 lg:w-full text-tiny lg:text-sm rounded"
 					/>
 				))}
 			</Tabs>

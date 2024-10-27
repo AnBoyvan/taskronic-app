@@ -57,6 +57,7 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 						<Button
 							isIconOnly
 							size="md"
+							radius="sm"
 							variant="light"
 							color="success"
 							onPress={() => {
@@ -84,11 +85,12 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 							variant="solid"
 							color={!isRequest ? 'primary' : 'default'}
 							size="md"
+							radius="sm"
 							isDisabled={isRequest}
 							startContent={<Icon name="UserPlus" size={20} />}
 							className="min-w-48 ml-auto"
 						>
-							{t(isRequest ? 'workspace.request_exist' : 'common.join')}
+							{t(isRequest ? 'workspace.request_exist' : 'actions.join')}
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent className="p-2">
@@ -103,7 +105,7 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 							isLoading={addRequest.isPending}
 							spinnerPlacement="end"
 						>
-							{t('common.send_request')}
+							{t('workspace.request_send')}
 						</Button>
 					</PopoverContent>
 				</Popover>
@@ -112,6 +114,7 @@ export const WorkspaceTitle: React.FC<WorkspaceTitleProps> = ({ workspace }) => 
 					variant="solid"
 					color={permissions.invite ? 'primary' : 'default'}
 					size="md"
+					radius="sm"
 					isDisabled={!permissions.invite}
 					startContent={<Icon name="UserPlus" size={20} />}
 					className="min-w-48 w-48 ml-auto"

@@ -73,6 +73,7 @@ export const BoardMemberItem: React.FC<BoardMemberItemProps> = ({
 				}}
 				isOpen={isOpen}
 				onOpenChange={open => setIsOpen(open)}
+				radius="md"
 			>
 				<PopoverTrigger>
 					<UserAvatar
@@ -105,7 +106,7 @@ export const BoardMemberItem: React.FC<BoardMemberItemProps> = ({
 							onPress={addToContacts}
 							className={clsx(disabled && 'hidden')}
 						>
-							{t('account.add_contact')}
+							{t('user.add_contact')}
 						</ListboxItem>
 					</Listbox>
 				</PopoverContent>

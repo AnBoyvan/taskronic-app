@@ -93,7 +93,7 @@ export const TaskModalComments: React.FC<TaskModalCommentsProps> = ({
 		<TaskModalSection
 			icon="MessageSquareText"
 			title={t('common.comments')}
-			button={t(showComments ? 'task.comments_hide' : 'task.comments_show')}
+			button={t(showComments ? 'task.comment_hide' : 'task.comment_show')}
 			action={() => setShowComments(!showComments)}
 		>
 			<div className="flex flex-col w-full mt-2">
@@ -122,7 +122,7 @@ export const TaskModalComments: React.FC<TaskModalCommentsProps> = ({
 									spinnerPlacement="end"
 									className="self-center"
 								>
-									{t('common.load_more')}
+									{t('actions.load_more')}
 								</Button>
 							)}
 						</>
@@ -140,7 +140,7 @@ export const TaskModalComments: React.FC<TaskModalCommentsProps> = ({
 					startContent={<Icon name="Plus" size={16} />}
 					onPress={() => setIsFormOpen(true)}
 				>
-					{t('comment.write')}
+					{t('task.comment_write')}
 				</Button>
 			)}
 		</TaskModalSection>

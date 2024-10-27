@@ -44,6 +44,7 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 					isOpen={isOpen}
 					onOpenChange={open => setIsOpen(open)}
 					offset={0}
+					radius="md"
 				>
 					<PopoverTrigger>
 						<Button
@@ -59,7 +60,8 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 					<PopoverContent className="max-h-80 p-2">
 						{canInvite.map(workspace => (
 							<Button
-								variant="ghost"
+								variant="light"
+								radius="sm"
 								fullWidth
 								key={workspace._id}
 								className="w-52 p-1 justify-start"
@@ -69,6 +71,7 @@ export const ContactInvite: React.FC<ContactInviteProps> = ({ contactId, contact
 									avatarColor={workspace.avatarColor}
 									avatarIcon={workspace.avatarIcon}
 									name={workspace.name}
+									truncateTitle
 								/>
 							</Button>
 						))}

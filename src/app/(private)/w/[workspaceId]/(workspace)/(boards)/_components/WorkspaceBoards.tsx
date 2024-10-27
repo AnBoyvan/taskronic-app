@@ -64,7 +64,7 @@ export const WorkspaceBoards: React.FC<WorkspaceBoards> = ({ workspace }) => {
 	};
 
 	return (
-		<PageContainer scroll title={t('nav.boards')}>
+		<PageContainer scroll title={t('common.boards')}>
 			<Section>
 				<WorkspaceBoardsFilter filter={filter} setFilter={setFilter} />
 			</Section>

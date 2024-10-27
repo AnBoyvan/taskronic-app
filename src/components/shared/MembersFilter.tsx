@@ -31,12 +31,13 @@ export const MembersFilter: React.FC<MembersFilterProps> = ({ value, setValue, m
 				items={members}
 				selectedKeys={value}
 				aria-label={t('common.members')}
-				placeholder={t('placeholder.select')}
+				placeholder={t('actions.select')}
 				value={stringValue}
 				isMultiline={true}
 				selectionMode="multiple"
 				variant="bordered"
 				size="lg"
+				radius="sm"
 				onSelectionChange={handleChange}
 				renderValue={(items: SelectedItems<Member>) => {
 					return (
@@ -66,6 +67,7 @@ export const MembersFilter: React.FC<MembersFilterProps> = ({ value, setValue, m
 				classNames={{
 					innerWrapper: 'py-2',
 					value: 'text-sm',
+					popoverContent: 'rounded-lg',
 				}}
 			>
 				{members.map(member => (

@@ -47,14 +47,15 @@ export const Account: React.FC = () => {
 			closeOnSelect={false}
 			className="w-52"
 			classNames={{
-				base: 'overflow-hidden',
+				base: 'overflow-hidden rounded-lg shadow-lg',
 				content: 'overflow-y-auto',
 			}}
+			radius="md"
 		>
 			<DropdownTrigger>
 				<UserAvatar avatarName={initials} avatarColor={avatar} size="sm" as="button" />
 			</DropdownTrigger>
-			<DropdownMenu aria-label={t('account.profile')} className="max-h-[calc(100vh_-_6rem)] p-1">
+			<DropdownMenu aria-label={t('user.profile')} className="max-h-[calc(100vh_-_6rem)] p-1">
 				<DropdownSection showDivider>
 					<DropdownItem isReadOnly textValue={name} className="cursor-default">
 						<User
@@ -84,7 +85,7 @@ export const Account: React.FC = () => {
 				</DropdownSection>
 
 				<DropdownSection showDivider>
-					<DropdownItem aria-label={t('account.theme')} isReadOnly className="p-0">
+					<DropdownItem aria-label={t('theme.label')} isReadOnly className="p-0">
 						<WorkspaceSwitcher
 							variant="flat"
 							classNames={{
@@ -92,7 +93,7 @@ export const Account: React.FC = () => {
 								innerWrapper: 'w-full',
 								selectorIcon: 'right-2',
 								label: 'px-2',
-								popoverContent: 'p-0',
+								popoverContent: 'p-0 rounded-lg',
 								listbox: 'p-0',
 							}}
 							onWorkspaceChange={workspaceId => onWorkspaceSelect(workspaceId)}
@@ -101,49 +102,47 @@ export const Account: React.FC = () => {
 				</DropdownSection>
 
 				<DropdownSection showDivider>
-					<DropdownItem
-						href={ROUTES.PROFILE}
-						aria-label={t('account.profile')}
-						closeOnSelect={true}
-					>
-						{t('account.profile')}
+					<DropdownItem href={ROUTES.PROFILE} aria-label={t('user.profile')} closeOnSelect={true}>
+						{t('user.profile')}
 					</DropdownItem>
 					<DropdownItem
-						aria-label={t('LocaleSwitcher.label')}
+						aria-label={t('locale.label')}
 						endContent={<Icon name="ChevronRight" size={16} />}
 					>
-						<LanguageSwitcher />
+						<LanguageSwitcher onAction={() => setIsOpen(false)} />
 					</DropdownItem>
 					<DropdownItem
-						aria-label={t('account.theme')}
+						aria-label={t('theme.label')}
 						endContent={<Icon name="ChevronRight" size={16} />}
 					>
-						<ThemeSwitcher />
+						<ThemeSwitcher onSelect={() => setIsOpen(false)} />
 					</DropdownItem>
 					<DropdownItem
 						closeOnSelect={true}
 						onPress={() => {
+							setIsOpen(false);
 							onOpen();
 						}}
-						aria-label={t('account.contacts')}
+						aria-label={t('user.contacts')}
 					>
-						{t('account.contacts')}
+						{t('user.contacts')}
 					</DropdownItem>
 				</DropdownSection>
 
 				<DropdownSection className="mb-0">
 					<DropdownItem
-						aria-label={t('account.logout')}
+						aria-label={t('auth.logout')}
 						color="danger"
 						className="text-danger"
 						endContent={<Icon name="LogOut" size={16} />}
 						closeOnSelect={true}
 						onPress={() => {
+							setIsOpen(false);
 							signOut();
 							logout();
 						}}
 					>
-						{t('account.logout')}
+						{t('auth.logout')}
 					</DropdownItem>
 				</DropdownSection>
 			</DropdownMenu>

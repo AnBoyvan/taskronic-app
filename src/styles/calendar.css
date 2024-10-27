@@ -23,11 +23,11 @@
 }
 
 .rbc-month-row:last-of-type {
-	@apply rounded-b-lg border-b;
+	@apply rounded-b border-b;
 }
 
 :not(.rbc-month-row ~ .rbc-month-row).rbc-month-row {
-	@apply rounded-t-lg;
+	@apply rounded-t;
 }
 
 .rbc-month-row + .rbc-month-row {

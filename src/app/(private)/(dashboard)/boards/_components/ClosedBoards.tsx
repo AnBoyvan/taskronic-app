@@ -49,6 +49,7 @@ export const ClosedBoards: React.FC<ClosedBoardsProps> = ({ boards, userId }) =>
 				variant="solid"
 				color="default"
 				size="md"
+				radius="sm"
 				onPress={() => setIsOpen(true)}
 				className="min-h-10"
 			>
@@ -61,6 +62,7 @@ export const ClosedBoards: React.FC<ClosedBoardsProps> = ({ boards, userId }) =>
 				onOpenChange={setIsOpen}
 				placement="center"
 				backdrop="blur"
+				radius="md"
 				classNames={{
 					closeButton: 'right-2 top-2',
 				}}
@@ -87,7 +89,7 @@ export const ClosedBoards: React.FC<ClosedBoardsProps> = ({ boards, userId }) =>
 											board.thumbImage ? { backgroundImage: `url(${board.thumbImage})` } : undefined
 										}
 										className={clsx(
-											'h-8 w-10 min-h-8 min-w-10 rounded-md shadow-sm bg-cover',
+											'h-8 w-10 min-h-8 min-w-10 rounded shadow-sm bg-cover',
 											board.bgColor && `${boardColors[board.bgColor]}`,
 										)}
 									/>

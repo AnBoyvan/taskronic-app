@@ -74,6 +74,7 @@ export const TaskModalTitle: React.FC<TaskModalTitleProps> = ({ taskId, title, c
 						value={watch('value')}
 						ref={textareaRef}
 						variant="bordered"
+						radius="sm"
 						color="primary"
 						minRows={1}
 						onValueChange={value => setValue('value', value)}

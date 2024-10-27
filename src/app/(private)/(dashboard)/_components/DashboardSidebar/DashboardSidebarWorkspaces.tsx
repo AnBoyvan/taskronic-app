@@ -13,7 +13,7 @@ export const DashboardSidebarWorkspaces = () => {
 
 	return (
 		<div className="flex flex-col h-full shrink overflow-hidden">
-			<span className="text-sm">{t('workspace.ws_list_title')}:</span>
+			<span className="text-sm">{t('common.workspaces')}:</span>
 			{isLoading ? (
 				<WorkspaceListSkeleton />
 			) : (

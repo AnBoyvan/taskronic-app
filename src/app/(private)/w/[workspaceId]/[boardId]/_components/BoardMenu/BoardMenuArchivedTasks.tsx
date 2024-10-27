@@ -63,7 +63,7 @@ export const BoardMenuArchivedTasks: React.FC<BoardMenuArchivedTasksProps> = ({
 								className="text-foreground hover:text-success transition-colors text-tiny"
 								onClick={() => restoreTask(task._id)}
 							>
-								{t('common.restore')}
+								{t('actions.restore')}
 							</button>
 						)}
 
@@ -71,7 +71,7 @@ export const BoardMenuArchivedTasks: React.FC<BoardMenuArchivedTasksProps> = ({
 							<RemoveTaskPopover
 								trigger={
 									<button className="text-foreground hover:text-danger transition-colors text-tiny">
-										{t('common.delete')}
+										{t('actions.delete')}
 									</button>
 								}
 								onRemove={() => removeTask(task)}

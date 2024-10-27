@@ -43,6 +43,8 @@ export const BoardViewSwitcher: React.FC<BoardViewSwitcherProps> = ({ boardId })
 				base: 'flex w-fit ml-2',
 				value: 'hidden md:block text-sm',
 				innerWrapper: 'w-fit pr-7',
+				trigger: 'data-[hover=true]:bg-default-100 data-[hover=true]:opacity-hover',
+				popoverContent: 'rounded-lg',
 			}}
 			popoverProps={{
 				className: 'w-fit',
@@ -58,9 +60,9 @@ export const BoardViewSwitcher: React.FC<BoardViewSwitcherProps> = ({ boardId })
 			{boardViewConfig.map(({ value, label, icon }) => (
 				<SelectItem
 					key={value}
-					aria-label={t('sort.by_due')}
+					aria-label={t(label)}
 					startContent={<Icon name={icon} size={16} />}
-					className="w-fit"
+					className="w-full"
 				>
 					{t(label)}
 				</SelectItem>

@@ -43,15 +43,17 @@ export const UserTasks: React.FC<UserTasksProps> = ({ tasks }) => {
 		<div className="flex flex-col h-full w-full overflow-auto lg:overflow-hidden">
 			<div className="flex flex-row self-center justify-center items-center gap-4 flex-wrap">
 				<Select
-					aria-label={t('label.sort')}
+					aria-label={t('actions.sort')}
 					disallowEmptySelection
 					selectionMode="single"
 					variant="faded"
 					size="md"
+					radius="sm"
 					fullWidth={false}
 					classNames={{
 						base: 'flex lg:hidden w-fit',
 						innerWrapper: 'w-fit pr-7',
+						popoverContent: 'rounded-lg',
 					}}
 					popoverProps={{
 						className: 'w-fit',
@@ -59,11 +61,11 @@ export const UserTasks: React.FC<UserTasksProps> = ({ tasks }) => {
 					selectedKeys={[sortBy]}
 					onSelectionChange={key => changeSorting(key)}
 				>
-					<SelectItem key="board" aria-label={t('sort.by_board')} className="w-fit">
-						{t('sort.by_board')}
+					<SelectItem key="board" aria-label={t('actions.sort_board')} className="w-full">
+						{t('actions.sort_board')}
 					</SelectItem>
-					<SelectItem key="due" aria-label={t('sort.by_due')} className="w-fit">
-						{t('sort.by_due')}
+					<SelectItem key="due" aria-label={t('actions.sort_due')} className="w-full">
+						{t('actions.sort_due')}
 					</SelectItem>
 				</Select>
 				<UserTasksFilter
@@ -72,8 +74,8 @@ export const UserTasks: React.FC<UserTasksProps> = ({ tasks }) => {
 					filter={filter}
 					setFilter={setFilter}
 				/>
-				<Button size="md" variant="faded" onPress={() => setFilter(defaultTaskFilter)}>
-					{t('common.clear_filter')}
+				<Button size="md" variant="faded" radius="sm" onPress={() => setFilter(defaultTaskFilter)}>
+					{t('actions.clear_filter')}
 				</Button>
 			</div>
 			<TasksGridView tasks={userTasks} boards={boards} sortBy={sortBy} />

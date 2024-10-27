@@ -21,7 +21,7 @@ export const UserSettings = () => {
 				size="sm"
 				className="mt-4 lg:mt-8 self-start"
 			>
-				{t('account.delete')}
+				{t('user.delete')}
 			</Button>
 		</div>
 	);

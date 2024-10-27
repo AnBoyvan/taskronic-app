@@ -35,12 +35,19 @@ export const ListColors: React.FC<ListColorsProps> = ({ list, boardId }) => {
 	};
 
 	return (
-		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover
+			placement="bottom"
+			offset={0}
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			radius="md"
+		>
 			<PopoverTrigger>{t('board.list_color')}</PopoverTrigger>
 			<PopoverContent className="grid grid-cols-5 gap-2 p-2">
 				{listColors.map((item, idx) => (
 					<Button
 						size="md"
+						radius="sm"
 						key={idx}
 						isIconOnly={updList.isPending}
 						isDisabled={item.color === list.bgColor}

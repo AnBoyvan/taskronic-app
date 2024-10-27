@@ -30,7 +30,7 @@ export const BoardTableTopContent: React.FC<BoardTableTopContentProps> = ({
 			<Input
 				variant="flat"
 				size="sm"
-				placeholder={t('placeholder.search')}
+				placeholder={t('common.search')}
 				startContent={<Icon name="Search" size={16} />}
 				type="search"
 				value={filter.search}

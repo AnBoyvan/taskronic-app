@@ -25,7 +25,7 @@ export const BackgroundColors: React.FC<BackgroundColorsProps> = ({ current, set
 					<div
 						key={color}
 						className={clsx(
-							'cursor-pointer flex items-center rounded-md justify-center aspect-video hover:opacity-70 transition',
+							'cursor-pointer flex items-center rounded justify-center aspect-video hover:opacity-70 transition',
 							`${boardColors[color]}`,
 							color === current && 'opacity-70',
 						)}

@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -6,8 +6,6 @@ import { boardService } from '@/services/board.service';
 import { CreateListDto, List } from '@/types/board.interface';
 
 export const useLists = () => {
-	const queryClient = useQueryClient();
-
 	const addList = useMutation({
 		mutationFn: ({ boardId, data }: { boardId: string; data: CreateListDto }) =>
 			boardService.addList(boardId, data),

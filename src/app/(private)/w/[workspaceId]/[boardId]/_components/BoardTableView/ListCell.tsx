@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Button } from '@nextui-org/react';
 
-import { TaskMovePopover } from '@/components/shared/MoveTaskPopover';
+import { MoveTaskPopover } from '@/components/shared/MoveTaskPopover';
 import { useReorder } from '@/hooks/useReorder';
 import { Task } from '@/types/tasks.interface';
 
@@ -35,7 +35,7 @@ export const ListCell: React.FC<ListCellProps> = ({ task, canEdit }) => {
 	return (
 		<>
 			{canEdit ? (
-				<TaskMovePopover
+				<MoveTaskPopover
 					trigger={
 						<Button
 							fullWidth

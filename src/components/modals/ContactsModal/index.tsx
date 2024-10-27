@@ -38,14 +38,22 @@ export const ContactsModal: React.FC = () => {
 		contactsList.filter(contact => contact.name.toLowerCase().includes(search.toLowerCase()));
 
 	return (
-		<Modal size="sm" isOpen={isOpen} onOpenChange={onClose} placement="center" backdrop="blur">
-			<ModalContent className="flex-col justify-start p-4 gap-2 h-[500px] ">
+		<Modal
+			size="sm"
+			isOpen={isOpen}
+			onOpenChange={onClose}
+			placement="center"
+			backdrop="blur"
+			radius="sm"
+		>
+			<ModalContent className="flex-col justify-start p-4 gap-2 h-[500px]">
 				<ModalHeader className="flex-col justify-center p-0 gap-2">
-					<p className="text-center">{t('account.contacts')}</p>
+					<p className="text-center">{t('user.contacts')}</p>
 					<Input
 						variant="bordered"
 						size="md"
-						placeholder={t('placeholder.search')}
+						radius="sm"
+						placeholder={t('common.search')}
 						startContent={<Icon name="Search" size={16} />}
 						type="search"
 						value={search}
@@ -59,7 +67,7 @@ export const ContactsModal: React.FC = () => {
 					) : isLoading ? (
 						<ContactsSkeleton />
 					) : (
-						<Card className="justify-center p-4 gap-4">{t('account.no_contacts')}</Card>
+						<Card className="justify-center p-4 gap-4">{t('user.no_contacts')}</Card>
 					)}
 				</ModalBody>
 			</ModalContent>

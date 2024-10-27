@@ -17,7 +17,7 @@ export type FormInputProps = {
 
 export const FormInput = forwardRef(
 	(
-		{ name, icon, type, color, autoComplete, labelPlacement, ...props }: FormInputProps,
+		{ name, icon, type, color, autoComplete, labelPlacement, radius, ...props }: FormInputProps,
 		ref: ForwardedRef<HTMLInputElement>,
 	) => {
 		const [isVisible, setIsVisible] = useState(false);
@@ -48,6 +48,7 @@ export const FormInput = forwardRef(
 							value={field.value}
 							onChange={field.onChange}
 							type={isVisible ? 'text' : type}
+							radius={radius ? radius : 'sm'}
 							startContent={startIcon}
 							endContent={
 								passNames.includes(name) ? (

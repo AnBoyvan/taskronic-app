@@ -33,6 +33,7 @@ export const TaskModal: React.FC = () => {
 	return (
 		<Modal
 			size="2xl"
+			radius="md"
 			scrollBehavior="outside"
 			isOpen={isOpen}
 			onOpenChange={onClose}

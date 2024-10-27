@@ -80,7 +80,7 @@ export const CommentItem: React.FC<CommentItemProps> = ({
 						)}
 					</p>
 					<span className="text-tiny opacity-80">
-						{formatDate(createdAt, t('LocaleSwitcher.current') as Locale, 'short')}
+						{formatDate(createdAt, t('locale.current') as Locale, 'short')}
 						&nbsp;
 						{isEdited && t('common.edited')}
 					</span>
@@ -94,7 +94,7 @@ export const CommentItem: React.FC<CommentItemProps> = ({
 					/>
 				) : (
 					<>
-						<span className="text-wrap break-words p-2 bg-default-50 rounded-xl shadow-md">
+						<span className="text-wrap break-words p-2 bg-default-200 rounded-lg shadow-md">
 							{content}
 						</span>
 						{!isMenu && (
@@ -104,19 +104,19 @@ export const CommentItem: React.FC<CommentItemProps> = ({
 										className="text-foreground hover:text-primary transition-colors text-tiny"
 										onClick={() => setIsEditing(true)}
 									>
-										{t('common.edit')}
+										{t('actions.edit')}
 									</button>
 								)}
 								{(isAdmin || author._id === userId) && (
 									<Popover placement="bottom" offset={0}>
 										<PopoverTrigger>
 											<button className="text-foreground hover:text-primary transition-colors text-tiny">
-												{t('common.remove')}
+												{t('actions.remove')}
 											</button>
 										</PopoverTrigger>
 										<PopoverContent className="p-2">
 											<Button variant="solid" color="danger" onPress={handleRemove}>
-												{t('comment.delete')}?
+												{t('actions.delete')}?
 											</Button>
 										</PopoverContent>
 									</Popover>

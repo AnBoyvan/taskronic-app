@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { toast } from 'sonner';
 
@@ -11,8 +11,6 @@ type MemberServiceProps = {
 };
 
 export const useTaskMembers = () => {
-	const queryClient = useQueryClient();
-
 	const addMember = useMutation({
 		mutationFn: ({ taskId, data }: MemberServiceProps) => taskService.addMember(taskId, data),
 		mutationKey: ['tasks-add-member'],

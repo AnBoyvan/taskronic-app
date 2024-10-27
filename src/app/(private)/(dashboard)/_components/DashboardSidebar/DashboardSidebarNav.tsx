@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Listbox, ListboxItem } from '@nextui-org/react';
@@ -12,7 +13,7 @@ export const DashboardSidebarNav = () => {
 
 	return (
 		<Listbox
-			aria-label={t('nav.navigation')}
+			aria-label={t('common.navigation')}
 			color="primary"
 			classNames={{
 				base: 'px-0',
@@ -21,7 +22,6 @@ export const DashboardSidebarNav = () => {
 			{dashboardNav.map(({ value, label, icon }) => (
 				<ListboxItem
 					key={value}
-					href={value}
 					aria-label={value}
 					startContent={<Icon name={icon} size={16} />}
 					isReadOnly={Boolean(pathname === value)}
@@ -30,7 +30,7 @@ export const DashboardSidebarNav = () => {
 						title: 'font-medium',
 					}}
 				>
-					{t(label)}
+					<Link href={value}>{t(label)}</Link>
 				</ListboxItem>
 			))}
 		</Listbox>

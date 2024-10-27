@@ -127,21 +127,19 @@ export const TaskModalDueDate: React.FC<TaskModalDueDateProps> = ({
 							shouldFlip={false}
 							isOpen={isOpen}
 							onOpenChange={open => setIsOpen(open)}
+							radius="md"
 						>
 							<PopoverTrigger>
 								<Button
 									isDisabled={!canEdit}
 									color={color}
+									radius="sm"
 									endContent={taskDueDate ? <Icon name="CalendarClock" size={16} /> : undefined}
 									className="data-[disabled=true]:opacity-100"
 								>
 									{taskDueDate
-										? formatDate(
-												taskDueDate.toISOString(),
-												t('LocaleSwitcher.current') as Locale,
-												'full',
-											)
-										: t('common.add')}
+										? formatDate(taskDueDate.toISOString(), t('locale.current') as Locale, 'full')
+										: t('actions.add')}
 								</Button>
 							</PopoverTrigger>
 							<PopoverContent className="p-2">
@@ -165,6 +163,7 @@ export const TaskModalDueDate: React.FC<TaskModalDueDateProps> = ({
 									aria-label={t('task.due_date')}
 									variant="bordered"
 									hideTimeZone
+									radius="sm"
 									value={selectedDate ? parseAbsoluteToLocal(selectedDate?.toISOString()) : null}
 									onChange={(value: ZonedDateTime) =>
 										setSelectedDate(new Date(value.toAbsoluteString()))
@@ -174,21 +173,23 @@ export const TaskModalDueDate: React.FC<TaskModalDueDateProps> = ({
 									fullWidth
 									color="primary"
 									variant="solid"
+									radius="sm"
 									className="mt-2"
 									onPress={setDueDate}
 									isDisabled={updGeneral.isPending || resetDueDate.isPending}
 								>
-									{t('common.accept')}
+									{t('actions.accept')}
 								</Button>
 								<Button
 									fullWidth
 									color="default"
 									variant="solid"
+									radius="sm"
 									className="mt-2"
 									onPress={removeDueDate}
 									isDisabled={updGeneral.isPending || resetDueDate.isPending}
 								>
-									{t('common.remove')}
+									{t('actions.remove')}
 								</Button>
 							</PopoverContent>
 						</Popover>

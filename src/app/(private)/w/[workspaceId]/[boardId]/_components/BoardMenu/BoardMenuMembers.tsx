@@ -48,7 +48,8 @@ export const BoardMenuMembers: React.FC<BoardMenuMembersProps> = ({
 				<Input
 					variant="bordered"
 					size="md"
-					placeholder={t('placeholder.search')}
+					radius="sm"
+					placeholder={t('common.search')}
 					startContent={<Icon name="Search" size={16} />}
 					type="search"
 					value={search}
@@ -57,11 +58,12 @@ export const BoardMenuMembers: React.FC<BoardMenuMembersProps> = ({
 				<Button
 					isDisabled={!canAdd}
 					size="md"
+					radius="sm"
 					variant="solid"
 					color="primary"
 					onPress={() => onOpen('addMembers')}
 				>
-					{t('common.add')}
+					{t('actions.add')}
 				</Button>
 			</div>
 			<div className="flex flex-col overflow-y-auto">

@@ -25,7 +25,13 @@ export const ListMoveOptions: React.FC<ListMoveOptionsProps> = ({ current, lists
 	};
 
 	return (
-		<Popover placement="bottom" offset={0} isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover
+			placement="bottom"
+			offset={0}
+			isOpen={isOpen}
+			onOpenChange={open => setIsOpen(open)}
+			radius="md"
+		>
 			<PopoverTrigger>{t('board.list_move')}</PopoverTrigger>
 			<PopoverContent className="p-2 max-h-64 overflow-auto">
 				<div className="flex flex-col gap-2 h-full overflow-auto">

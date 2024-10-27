@@ -64,6 +64,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({
 				{...register('comment')}
 				value={watch('comment')}
 				variant="bordered"
+				radius="sm"
 				minRows={2}
 				onValueChange={value => setValue('comment', value)}
 			/>
@@ -76,10 +77,10 @@ export const CommentForm: React.FC<CommentFormProps> = ({
 					color="primary"
 					isDisabled={!isDirty || !isValid}
 				>
-					{t(isEditing ? 'common.save' : 'common.add')}
+					{t(isEditing ? 'actions.save' : 'actions.add')}
 				</Button>
 				<Button type="button" variant="light" size="sm" onPress={disableEditing}>
-					{t('common.cancel')}
+					{t('actions.cancel')}
 				</Button>
 			</div>
 		</form>

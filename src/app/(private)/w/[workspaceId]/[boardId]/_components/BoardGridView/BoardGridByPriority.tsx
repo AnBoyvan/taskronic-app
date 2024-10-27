@@ -8,19 +8,22 @@ import { Section } from '@/components/layout/Section';
 import { TaskCard } from '@/components/shared/TaskCard';
 import { priorityConfig } from '@/configs/priority-config';
 import { BoardPermissions } from '@/types/board.interface';
+import { Priority } from '@/types/root.interface';
 import { Task } from '@/types/tasks.interface';
 import { sorter } from '@/utils/helpers/sorter';
-import { tasksByDueStatus } from '@/utils/helpers/tasksByDueStatus';
 
 type BoardGridByPriorityProps = {
 	tasks: Task[];
 	permissions: BoardPermissions;
+	textColor?: string;
 };
 
-export const BoardGridByPriority: React.FC<BoardGridByPriorityProps> = ({ tasks, permissions }) => {
+export const BoardGridByPriority: React.FC<BoardGridByPriorityProps> = ({
+	tasks,
+	permissions,
+	textColor,
+}) => {
 	const t = useTranslations();
-
-	const tasksByStatus = tasksByDueStatus(tasks);
 
 	const priorities = sorter(priorityConfig, 'value', 'desc');
 
@@ -28,7 +31,12 @@ export const BoardGridByPriority: React.FC<BoardGridByPriorityProps> = ({ tasks,
 		<>
 			{priorities.map(({ value, label, color }) => (
 				<Section key={value} noTopMargin className="flex flex-col gap-2 mt-2">
-					<div className={clsx('flex flex-row items-center gap-4 p-2 h-14 rounded-lg', color)}>
+					<div
+						className={clsx(
+							'flex flex-row items-center gap-4 p-2 h-14 rounded',
+							value === Priority.NO ? textColor : color,
+						)}
+					>
 						{t(label)}
 					</div>
 					<div className="w-full grid gap-2 grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">

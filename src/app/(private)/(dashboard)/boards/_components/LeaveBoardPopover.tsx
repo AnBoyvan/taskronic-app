@@ -31,10 +31,10 @@ export const LeaveBoardPopover: React.FC<LeaveBoardPopoverProps> = ({ boardId, o
 	}, [leave.isSuccess]);
 
 	return (
-		<Popover isOpen={isOpen} onOpenChange={open => setIsOpen(open)}>
+		<Popover isOpen={isOpen} onOpenChange={open => setIsOpen(open)} radius="md">
 			<PopoverTrigger>
 				<Button size="sm" variant="solid" color="danger">
-					{t('common.delete')}
+					{t('actions.leave')}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="p-2 w-64 flex-col gap-2">
@@ -42,13 +42,14 @@ export const LeaveBoardPopover: React.FC<LeaveBoardPopoverProps> = ({ boardId, o
 				<Button
 					fullWidth
 					variant="solid"
+					radius="sm"
 					color="danger"
 					onPress={leaveBoard}
 					spinnerPlacement="end"
 					isLoading={leave.isPending}
 					isDisabled={leave.isPending}
 				>
-					{t('board.delete')}
+					{t('board.leave')}
 				</Button>
 			</PopoverContent>
 		</Popover>

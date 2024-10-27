@@ -58,7 +58,7 @@ export const BoardMenuAddMembers: React.FC<BoardMenuAddMembersProps> = ({ board 
 	return (
 		<div className="flex flex-col h-full overflow-hidden">
 			<div className="h-10 flex items-center justify-center font-medium">
-				{t('common.add_members')}?
+				{t('actions.add_members')}?
 			</div>
 			<Divider className="my-2" />
 			<Tabs
@@ -69,13 +69,14 @@ export const BoardMenuAddMembers: React.FC<BoardMenuAddMembersProps> = ({ board 
 				}}
 			>
 				<Tab key={'workspace'} title={t('common.workspace')} />
-				<Tab key={'contacts'} title={t('account.contacts')} />
+				<Tab key={'contacts'} title={t('user.contacts')} />
 			</Tabs>
 			<Divider className="my-2" />
 			<Input
 				variant="bordered"
 				size="md"
-				placeholder={t('placeholder.search')}
+				radius="sm"
+				placeholder={t('common.search')}
 				startContent={<Icon name="Search" size={16} />}
 				type="search"
 				value={search}

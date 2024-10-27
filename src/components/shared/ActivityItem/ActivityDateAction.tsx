@@ -46,13 +46,13 @@ export const ActivityDateAction: React.FC<ActivityActionProps> = ({ activity, ta
 			{from && (
 				<>
 					{t('activity.from')}
-					{formatDate(from, t('LocaleSwitcher.current') as Locale, 'short')}
+					{formatDate(from, t('locale.current') as Locale, 'short')}
 				</>
 			)}
 			{to && (
 				<>
 					{t('activity.onto')}
-					{formatDate(to, t('LocaleSwitcher.current') as Locale, 'short')}
+					{formatDate(to, t('locale.current') as Locale, 'short')}
 				</>
 			)}
 		</>

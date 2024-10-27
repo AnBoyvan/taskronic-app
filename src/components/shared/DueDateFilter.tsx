@@ -37,10 +37,10 @@ export const DueDateFilter: React.FC<DueDateFilterProps> = ({ value, setValue })
 					className="-my-0"
 					classNames={{ label: 'flex items-center' }}
 				>
-					<Chip color={color} variant="solid" size="lg" radius="md" className="p-0">
+					<Chip color={color} variant="solid" size="lg" radius="sm" className="p-0">
 						<Icon name={icon} size={16} />
 					</Chip>
-					<span className={clsx('p-2 rounded-lg text-sm', color)}>{t(label)}</span>
+					<span className={clsx('p-2 rounded text-sm', color)}>{t(label)}</span>
 				</Checkbox>
 			))}
 		</CheckboxGroup>

@@ -116,7 +116,7 @@ export const BoardTableView: React.FC<BoardTableViewProps> = ({ board }) => {
 						</TableColumn>
 					)}
 				</TableHeader>
-				<TableBody items={sortedTasks} emptyContent={t('task.task_not_found')}>
+				<TableBody items={sortedTasks} emptyContent={t('task.not_found')}>
 					{item => (
 						<TableRow key={item._id} className="border-b-1">
 							{columnKey => <TableCell>{renderCell(item, columnKey)}</TableCell>}

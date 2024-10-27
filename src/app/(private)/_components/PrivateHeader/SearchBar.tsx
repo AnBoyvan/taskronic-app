@@ -79,7 +79,7 @@ export const SearchBar = () => {
 						ref={inputRef}
 						variant="bordered"
 						size="sm"
-						placeholder={t('placeholder.search')}
+						placeholder={t('common.search')}
 						startContent={<Icon name="Search" size={16} />}
 						type="search"
 						value={search}
@@ -89,7 +89,7 @@ export const SearchBar = () => {
 						}}
 					/>
 					{search.length > 0 && (
-						<div className="flex flex-col w-full mt-2 max-h-[400px] overflow-hidden bg-content1 border border-divider rounded-md shadow-md gap-1">
+						<div className="flex flex-col w-full mt-2 max-h-[400px] overflow-hidden bg-content1 border border-divider rounded shadow-md gap-1">
 							{boards.length > 0 ? (
 								<>
 									{boards.map(board => (
@@ -105,7 +105,7 @@ export const SearchBar = () => {
 														: undefined
 												}
 												className={clsx(
-													'h-8 w-10 min-h-8 min-w-10 rounded-md shadow-sm bg-cover',
+													'h-8 w-10 min-h-8 min-w-10 rounded shadow-sm bg-cover',
 													board.bgColor && `${boardColors[board.bgColor]}`,
 												)}
 											/>
@@ -119,9 +119,7 @@ export const SearchBar = () => {
 									))}
 								</>
 							) : (
-								<p className="w-full text-center p-3 text-default-500">
-									{t('workspace.no_boards')}
-								</p>
+								<p className="w-full text-center p-3 text-default-500">{t('board.no_boards')}</p>
 							)}
 						</div>
 					)}
@@ -148,7 +146,7 @@ export const SearchBar = () => {
 						startContent={<Icon name="Search" size={16} />}
 						onPress={() => setIsOpen(true)}
 					>
-						{t('placeholder.search')}
+						{t('common.search')}
 					</Button>
 				</>
 			)}
