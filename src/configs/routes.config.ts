@@ -1,3 +1,10 @@
+const infoPages = {
+	INFO: '/info',
+	ABOUT: '/info/about',
+	PRIVACY: '/info/privacy',
+	TERMS: '/info/terms',
+};
+
 const withouthAuth = {
 	LOGIN: '/auth/login',
 	REGISTER: '/auth/register',
@@ -21,4 +28,4 @@ export const publicRoutes = Object.values(withouthAuth);
 
 export const privateRoutes = Object.values(withAuth);
 
-export const ROUTES = { ...withouthAuth, ...withAuth };
+export const ROUTES = { ...withouthAuth, ...withAuth, ...infoPages };

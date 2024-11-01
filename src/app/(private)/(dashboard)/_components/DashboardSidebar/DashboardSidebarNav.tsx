@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import clsx from 'clsx';
+
 import { Listbox, ListboxItem } from '@nextui-org/react';
 
 import { Icon } from '@/components/ui/Icon';
@@ -23,14 +25,17 @@ export const DashboardSidebarNav = () => {
 				<ListboxItem
 					key={value}
 					aria-label={value}
-					startContent={<Icon name={icon} size={16} />}
+					// startContent={<Icon name={icon} size={16} />}
 					isReadOnly={Boolean(pathname === value)}
 					classNames={{
-						base: pathname === value ? 'text-primary bg-primary-50' : '',
-						title: 'font-medium',
+						base: clsx('p-0', pathname === value && 'text-primary bg-primary-50'),
+						// title: 'font-medium w-full p-0',
 					}}
 				>
-					<Link href={value}>{t(label)}</Link>
+					<Link href={value} className="w-full flex flex-row items-center font-medium gap-1 p-2">
+						<Icon name={icon} size={16} />
+						<span>{t(label)}</span>
+					</Link>
 				</ListboxItem>
 			))}
 		</Listbox>

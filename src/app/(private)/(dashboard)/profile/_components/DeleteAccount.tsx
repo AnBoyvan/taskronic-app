@@ -1,5 +1,6 @@
 'use client';
 
+import { signOut } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { Icon } from '@/components/ui/Icon';
+import { useUser } from '@/hooks/useUser';
 import { useUserEdit } from '@/hooks/useUserEdit';
 import { userService } from '@/services/user.service';
 import { Board } from '@/types/board.interface';
@@ -19,6 +21,7 @@ import { OnlyAdminList } from './OnlyAdminList';
 
 export const DeleteAccount = () => {
 	const t = useTranslations();
+	const { logout } = useUser();
 	const { removeAccount } = useUserEdit();
 
 	const [canDelete, setCanDelete] = useState<boolean>(false);
@@ -33,6 +36,17 @@ export const DeleteAccount = () => {
 	});
 
 	const isOnlyAdmin = Boolean(data && (data?.workspaces.length > 0 || data?.boards.length > 0));
+
+	const deleteAccount = () => {
+		logout();
+		removeAccount.mutate();
+	};
+
+	useEffect(() => {
+		if (removeAccount.isSuccess) {
+			signOut();
+		}
+	}, [removeAccount.isSuccess]);
 
 	useEffect(() => {
 		if (data && !isOnlyAdmin) {
@@ -76,7 +90,7 @@ export const DeleteAccount = () => {
 						isDisabled={removeAccount.isPending}
 						isLoading={removeAccount.isPending}
 						spinnerPlacement="end"
-						onPress={() => removeAccount.mutate()}
+						onPress={deleteAccount}
 					>
 						{t('user.delete')}
 					</Button>

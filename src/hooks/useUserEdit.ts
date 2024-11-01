@@ -1,4 +1,3 @@
-import { signOut } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
 import { useMutation } from '@tanstack/react-query';
@@ -16,7 +15,7 @@ import { useUser } from './useUser';
 
 export const useUserEdit = () => {
 	const t = useTranslations();
-	const { updUser, logout } = useUser();
+	const { updUser } = useUser();
 
 	const update = useMutation({
 		mutationFn: (dto: UserUpd) => userService.updGeneral(dto),
@@ -44,10 +43,6 @@ export const useUserEdit = () => {
 	const removeAccount = useMutation({
 		mutationFn: () => userService.deleteAccount(),
 		mutationKey: ['user-remove'],
-		onSuccess: () => {
-			signOut();
-			logout();
-		},
 		onError: err => {
 			toast.error(err.message, { closeButton: false });
 		},

@@ -1,0 +1,56 @@
+{
+	"terms": {
+		"title": "Terms of Service",
+		"label": "Terms of Service",
+		"updated": "Last updated: October 27, 2024",
+		"descr": "Welcome to Taskronic, accessible at taskronic.vercel.app. These Terms and Conditions govern your use of our website and services. By accessing or using Taskronic, you agree to comply with and be bound by these Terms. If you do not agree with any part of these Terms, you must not use our website.",
+		"summary": "By using Taskronic, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.",
+		"terms_list": {
+			"acceptance": {
+				"title": "Acceptance of Terms",
+				"descr": "By using Taskronic, you confirm that you are at least 18 years old and have the legal capacity to enter into these Terms. If you are using the website on behalf of an organization, you represent that you have the authority to bind that organization to these Terms."
+			},
+			"changes": {
+				"title": "Changes to Terms",
+				"descr": "Taskronic reserves the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on this page. Your continued use of the website after any changes constitutes your acceptance of the new Terms."
+			},
+			"accounts": {
+				"title": "User Accounts",
+				"descr": "To access certain features of Taskronic, you may be required to create an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for maintaining the confidentiality of your account and password and for restricting access to your account."
+			},
+			"conduct": {
+				"title": "User Conduct",
+				"descr": "You agree not to engage in any of the following prohibited activities:",
+				"options": {
+					"option1": "Violating any applicable laws or regulations.",
+					"option2": "Posting or transmitting any content that is unlawful, harmful, threatening, abusive, harassing, defamatory, vulgar, obscene, or otherwise objectionable.",
+					"option3": "Attempting to gain unauthorized access to any portion of the website or any other systems or networks connected to the website."
+				}
+			},
+			"copyright": {
+				"title": "**Copyright and Ownership",
+				"descr": "All content, trademarks, and other proprietary rights on Taskronic are the property of Taskronic or its licensors. You may not reproduce, distribute, or create derivative works from any content on Taskronic without our express written permission."
+			},
+			"disclaimers": {
+				"title": "Disclaimers",
+				"descr": "Taskronic is provided on an \"as-is\" and \"as-available\" basis. We make no warranties or representations about the accuracy, reliability, or availability of the website. To the fullest extent permitted by law, Taskronic disclaims all warranties, express or implied."
+			},
+			"limitation": {
+				"title": "Limitation of Liability",
+				"descr": "To the maximum extent permitted by law, Taskronic shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the website or services, even if we have been advised of the possibility of such damages."
+			},
+			"indemnification": {
+				"title": "Indemnification",
+				"descr": "You agree to indemnify, defend, and hold harmless Taskronic and its affiliates, officers, directors, employees, and agents from any claims, losses, liabilities, damages, costs, or expenses (including reasonable attorney fees) arising out of or in connection with your use of the website or violation of these Terms."
+			},
+			"law": {
+				"title": "Governing Law",
+				"descr": "These Terms shall be governed by and construed in accordance with the laws of [Insert Jurisdiction], without regard to its conflict of law principles."
+			},
+			"contact": {
+				"title": "Contact Information",
+				"descr": "If you have any questions about this Terms, You can contact us by email: taskronic@gmail.com"
+			}
+		}
+	}
+}

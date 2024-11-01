@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-export default async function WorkspaceNotFound() {
+export default async function BoardNotFound() {
 	const t = await getTranslations();
 
 	return (
@@ -8,7 +8,7 @@ export default async function WorkspaceNotFound() {
 			<p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[13rem] text-divider/5 font-semibold">
 				404
 			</p>
-			<p className="text-3xl text-center">{t('workspace.not_found')}</p>
+			<p className="text-3xl text-center">{t('board.not_found')}</p>
 		</div>
 	);
 }

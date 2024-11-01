@@ -1,0 +1,49 @@
+{
+	"about": {
+		"title": "About Taskronic",
+		"intro": "Welcome to our demo task manager website, inspired by Trello and designed to help you manage tasks efficiently and boost your productivity. Here, we offer a user-friendly platform with a range of features tailored to meet your task management needs.",
+		"features_title": "Key Features",
+		"features": {
+			"workspaces": {
+				"title": "Workspaces",
+				"descr": " Create distinct workspaces to organize your projects or teams. Each workspace can house multiple boards, making it easy to separate and manage different areas of your work."
+			},
+			"boards-and-cards": {
+				"title": "Boards and Cards",
+				"descr": " Boards help you visualize your projects, and cards represent individual tasks. You can create, move, and organize cards within boards to keep track of progress."
+			},
+			"schedule": {
+				"title": "Schedule",
+				"descr": " Our integrated calendar allows you to schedule tasks and events, providing a comprehensive view of your commitments."
+			},
+			"priority": {
+				"title": "Priority Levels",
+				"descr": "Assign one of five priority levels to each task or note, ensuring you can focus on what matters most."
+			},
+			"comments": {
+				"title": "Due Dates and Comments",
+				"descr": " Set due dates to keep track of deadlines and add comments to tasks for better collaboration and communication."
+			},
+			"checklists": {
+				"title": "Checklists",
+				"descr": " Add checklists to cards to break down tasks into smaller, manageable steps."
+			},
+			"filtering-options": {
+				"title": "Filtering Options",
+				"descr": " Use advanced filtering options to find and sort tasks, notes, and cards based on various criteria, ensuring you always have a clear view of your workload."
+			},
+			"real-time-collaboration": {
+				"title": "Real-time Collaboration",
+				"descr": " Work together with your team in real time, ensuring everyone stays on the same page and can contribute to the project seamlessly."
+			},
+			"auth": {
+				"title": "Authentication and Data Privacy",
+				"descr": " We use Auth.js for secure authentication, storing only the necessary data (name, email, and password). Your data is used solely for login purposes and is not shared with third parties. You can contact us via email regarding your data."
+			},
+			"purpose": {
+				"title": "Purpose",
+				"descr": "Our goal is to provide the best solution for task management and productivity. With an intuitive interface and robust features, our platform is designed to optimize your workflow, enhance real-time collaboration, and offer comprehensive tools for task management, note-taking, and scheduling.\n\nThank you for choosing our task manager to streamline your projects and improve your productivity. We are committed to continuously enhancing our platform to meet your evolving needs."
+			}
+		}
+	}
+}

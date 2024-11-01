@@ -16,7 +16,7 @@ type UserProviderProps = {
 export const UserProvider: React.FC<UserProviderProps> = ({ user, error }) => {
 	const [loading, setLoading] = useState<boolean>(true);
 
-	const { isLoading, setUser } = useUser();
+	const { isLoading, setUser, logout } = useUser();
 
 	useEffect(() => {
 		if (error) {
@@ -27,6 +27,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ user, error }) => {
 	useEffect(() => {
 		if (user) {
 			setUser(user);
+		}
+		if (!user) {
+			logout();
 		}
 	}, [user]);
 

@@ -1,13 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useTransition } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Link } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 
 import { toast } from 'sonner';
 
@@ -92,6 +93,16 @@ export const Register: React.FC = () => {
 				type="password"
 				isDisabled={isPending}
 			/>
+			<p className="text-wrap text-xs break-words">
+				{t('auth.agree')}
+				<Link href={ROUTES.PRIVACY} className="text-primary hover:underline">
+					{t('privacy.label')}
+				</Link>
+				{t('common.and')}
+				<Link href={ROUTES.TERMS} className="text-primary hover:underline">
+					{t('terms.label')}
+				</Link>
+			</p>
 			<Button
 				fullWidth={true}
 				radius="sm"
@@ -108,9 +119,7 @@ export const Register: React.FC = () => {
 				<span>{t('auth.have_account')}&nbsp;</span>
 				<Link
 					href={`${ROUTES.LOGIN}`}
-					underline="hover"
-					color="primary"
-					className="hover:cursor-pointer"
+					className="text-primary hover:underline"
 					data-focus-visible={false}
 				>
 					{t('auth.sign_in')}

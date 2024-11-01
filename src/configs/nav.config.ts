@@ -57,3 +57,26 @@ export const profileNav: NavItemConfig[] = [
 		icon: 'Activity',
 	},
 ];
+
+export const infoNav: NavItemConfig[] = [
+	{
+		label: 'common.info',
+		value: ROUTES.INFO,
+		icon: 'Info',
+	},
+	{
+		label: 'about.title',
+		value: ROUTES.ABOUT,
+		icon: 'FileText',
+	},
+	{
+		label: 'privacy.title',
+		value: ROUTES.PRIVACY,
+		icon: 'ScrollText',
+	},
+	{
+		label: 'terms.title',
+		value: ROUTES.TERMS,
+		icon: 'ScrollText',
+	},
+];

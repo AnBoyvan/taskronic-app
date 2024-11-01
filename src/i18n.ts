@@ -8,6 +8,7 @@ export default getRequestConfig(async () => {
 	return {
 		locale,
 		messages: {
+			...(await import(`../messages/${locale}/about.json`)).default,
 			...(await import(`../messages/${locale}/actions.json`)).default,
 			...(await import(`../messages/${locale}/activity.json`)).default,
 			...(await import(`../messages/${locale}/api.json`)).default,
@@ -17,7 +18,9 @@ export default getRequestConfig(async () => {
 			...(await import(`../messages/${locale}/general.json`)).default,
 			...(await import(`../messages/${locale}/locale.json`)).default,
 			...(await import(`../messages/${locale}/priority.json`)).default,
+			...(await import(`../messages/${locale}/privacy.json`)).default,
 			...(await import(`../messages/${locale}/task.json`)).default,
+			...(await import(`../messages/${locale}/terms.json`)).default,
 			...(await import(`../messages/${locale}/theme.json`)).default,
 			...(await import(`../messages/${locale}/user.json`)).default,
 			...(await import(`../messages/${locale}/validation.json`)).default,

@@ -21,6 +21,7 @@
 		"leave": "Leave card",
 		"move": "Move card",
 		"new": "New card",
+		"no_tasks": "No cards to display",
 		"not_found": "Card not found",
 		"remove_member": "Remove from card",
 		"remove": "Remove card",
